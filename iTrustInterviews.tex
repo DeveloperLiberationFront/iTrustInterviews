@@ -254,7 +254,7 @@ Developers are concerned with the security of their applications, but lack adequ
 
 Toolsmiths are equipped with an exhaustive set of research findings and guidelines to aid in the design of usable tools [CITE].
 However, their tools go unused, in part because they do not help developers answer relevant questions [CITE]. 
-Our work aims to inform toolsmiths of the 
+Our work aims to inform toolsmiths of the security-related questions that developers ask.
 
 General Problem
 Related Stuff
@@ -364,8 +364,6 @@ Several studies have explored the knowledge requirements of developers, however 
 
 Questions asked Self reported vs Working with code
 
-\section{Tool Usage}
-Developers don’t use tools, because they don’t answer questions
 
 \section{Methodology}
 We conducted semi-structured interviews with software developers.
@@ -377,57 +375,12 @@ Subsection I details the interview process and subsection II describes question 
 
 
 \subsection{Research Questions}
-1)      What types of security related questions do developers ask?
-2)      What types of security related questions do developers fail to answer?
-
-\subsection{Interviews}
-
-First, we conducted a series of seven preliminary pilot interviews, in which every participant spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.  
-Accordingly, we presented participants with four vulnerabilities.
-Interviews lasted approximately 40-60 minutes.
-
-\subsubsection{Participants}
-We conducted semi-structured interviews with 10 software developers. 
-We recruited participants from personal contacts and class rosters, using snowball sampling to find more participants that were qualified.
-
-\subsection{Data Analysis}
-OVERVIEW
-What is grounded theory [CITE]. 
-
-
-First, we transcribed all the audio files using oTranscribe~\footnote{\url{otranscribe.com}}.
-Using a grounded theory approach, each of the interviews was analyzed by two of the authors for implicit and explicit questions. 
-We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. ?? The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
-In the remainder of this section, we will detail the question extraction process, including the criteria used to determine which statements qualified as questions.
-\subsubsection{Question Criteria}
-Participants ask both explicit and implicit questions. We developed 5 criteria to assist in the uniform classification of participant statements. A statement was coded as a question only if it met one of the following criteria.
-
 \begin{itemize}
-\item \textbf{Participant ....}
-\\ \textit{EXAMPLE}
-\item \textbf{Participant ....}
-\\ \textit{EXAMPLE}
-\item \textbf{Participant ....}
-\\ \textit{EXAMPLE}
-\item \textbf{Participant ....}
-\\ \textit{EXAMPLE}
-\item \textbf{Participant ....}
-\\ \textit{EXAMPLE}
-
+\item RQ1: What types of security related questions do developers ask?
+\item RQ2: What types of security related questions do developers fail to answer?
 \end{itemize}
 
-\subsubsection{Question Extraction}
-Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. 
-When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
-
-FIGURE OF WORD
-
-To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it.
-During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
-If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
-When reviewers did agree, we determined the  phrasing for the the question that was most strongly grounded in the interview artifacts. 
-AGREEMENT NUMBERS Ranged from xx to xx and averaged across participatns to xx 
-
+\subsection{Study Design}
 -Tool choice (list comparison)
 \\
 -Background on iTrust
@@ -451,6 +404,67 @@ AGREEMENT NUMBERS Ranged from xx to xx and averaged across participatns to xx
             	~1 hour. Appropriate length in pilots. Eclipse
 \\-Interview Questions
 \\
+
+\subsubsection{Materials}
+Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
+Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
+We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
+
+
+\subsubsection{Participants}
+We conducted semi-structured interviews with 10 software developers. 
+We recruited participants from personal contacts and class rosters, using snowball sampling to find more participants that had experience with iTrust.
+
+\subsubsection{Tasks}
+To inform the design of our study, we conducted a series of seven preliminary pilot interviews, in which participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.  
+Accordingly, we presented each participant with four vulnerabilities. 
+To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. 
+Find Security Bugs identified three types of naturally occurring vulnerabilities, cross site scripting, path traversal, and predictable random vulnerabilities. 
+We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
+Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented on OWASP.
+
+
+
+\subsection{Data Analysis}
+OVERVIEW
+What is grounded theory [CITE]. 
+
+[CITE LETOVSKY]
+
+First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
+Using a grounded theory approach, each of the interviews was analyzed by two of the authors for implicit and explicit questions. 
+We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. ?? The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
+In the remainder of this section, we will detail the question extraction process, including the criteria used to determine which statements qualified as questions.
+\subsubsection{Question Criteria}
+Participants ask both explicit and implicit questions. We developed 5 criteria to assist in the uniform classification of participant statements. A statement was coded as a question only if it met one of the following criteria.
+
+\begin{itemize}
+\item \textbf{The participant explicitly asks a question.}
+\\ \textit{EXAMPLE}
+\item \textbf{The participant makes a statement and explores the validity of that statement.}
+\\ \textit{EXAMPLE}
+\item \textbf{The participant uses key words such as, "I assume," "I guess," or "I don't know."}
+\\ \textit{EXAMPLE}
+\item \textbf{The participant clearly expresses uncertainty over a statement.}
+\\ \textit{EXAMPLE}
+\item \textbf{The participant clearly expresses a knowledge requirement by describing plans to acquire information.}
+\\ \textit{EXAMPLE}
+
+\end{itemize}
+
+\subsubsection{Question Extraction}
+Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. 
+When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
+
+FIGURE OF WORD
+
+To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it.
+During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
+If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
+When reviewers did agree, we determined the  phrasing for the the question that was most strongly grounded in the interview artifacts. 
+AGREEMENT NUMBERS Ranged from xx to xx and averaged across participatns to xx 
+
+
 -Transcription
 \\
 -Question extracton
