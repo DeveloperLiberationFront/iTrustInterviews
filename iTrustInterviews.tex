@@ -124,7 +124,6 @@
 
 
 
-
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
@@ -169,6 +168,7 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+\usepackage{url}
 
 \begin{document}
 %
@@ -220,9 +220,14 @@ Raleigh, North Carolina}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-The abstract goes here.
+To assist developers in creating and understanding secure code, we should understand their knowledge requirements when working with code. 
+To enhance our understanding, we conducted 10 semi-structured interviews with software developers, observing their interactions with security vulnerabilities. 
+From these interactions, we extracted questions developers asked while assessing the security of iTrust, a Java medical records software system. 
+Participants asked X questions which we grouped into Y categories. RESULTS...
+Tool IMPLICATIONS...
 
-Security Usability
+What topic?
+
 \end{abstract}
 
 % no keywords
@@ -241,14 +246,29 @@ Security Usability
 
 \section{Introduction}
 % no \IEEEPARstart
+Widespread security vulnerabilities enable potential attackers to exploit vital software systems. 
+Accordingly, developers concerned with the security of their systems increasingly stress the importance of identifying and eliminating vulnerabilities as early as possible.
+Distributing a defective piece of software may compromise the security of the entire system.
+
+Developers are concerned with the security of their applications, but lack adequate support for reasoning about the security of their systems.
+
+Toolsmiths are equipped with an exhaustive set of research findings and guidelines to aid in the design of usable tools [CITE].
+However, their tools go unused, in part because they do not help developers answer relevant questions [CITE]. 
+Our work aims to inform toolsmiths of the 
+
+General Problem
+Related Stuff
+
+What is the paper about
+	What did we do
+
+Contribution:
+	Inform toolsmiths of knowledge requirements.
+
+Structure
+
 Assess knowledge requirements that software developers have.
 
-\subsection{Subsection Heading Here}
-Subsection text here.
-
-
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
 
 
 % An example of a floating figure using the graphicx package.
@@ -327,19 +347,22 @@ Subsubsection text here.
 %\end{table}
 
 
-% Note that IEEE does not put floats in the very first column - or typically
-% anywhere on the first page for that matter. Also, in-text middle ("here")
-% positioning is not used. Most IEEE journals/conferences use top floats
-% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
-% command of the stfloats package.
-
-
-
-\section{Background}
-
 \section{Related Work}
-Other studies evaluating questions developers ask.
+Two types of related work... Introduce them!
+
+\subsection{Technical Approaches}
+Developers working on code use strategies and tools to help secure their systems. 
+Many studies have assessed the effectiveness...
+
+A significant body of work focuses on making static analysis tools more effective from a technical perspective, rather than more usable. 
+For example, researchers approach improving tools from a variety of angles, including reducing the number false positives, identifying new types of vulnerabilities, and optimizing taint checking~\cite{jovanovic2006pixy, livshits2005finding}.
+
+
+\subsection{Questions Papers}
+Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
+
+
+Questions asked Self reported vs Working with code
 
 \section{Tool Usage}
 Developers don’t use tools, because they don’t answer questions
@@ -394,11 +417,16 @@ Participants ask both explicit and implicit questions. We developed 5 criteria t
 \end{itemize}
 
 \subsubsection{Question Extraction}
-Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
+Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. 
+When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
 
 FIGURE OF WORD
 
-To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it. During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria. If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. When reviewers did agree, we determined the  phrasing for the the question that was most strongly grounded in the interview artifacts. AGREEMENT NUMBERS Ranged from xx to xx and averaged across participatns to xx 
+To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it.
+During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
+If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
+When reviewers did agree, we determined the  phrasing for the the question that was most strongly grounded in the interview artifacts. 
+AGREEMENT NUMBERS Ranged from xx to xx and averaged across participatns to xx 
 
 -Tool choice (list comparison)
 \\
@@ -435,6 +463,7 @@ To handle instances where the two coders disagreed, each interview was reviewed 
 We extracted x questions, removing repeats, we came up with x questions
 
 \section{Discussion}
+Data suggests that tools should focus on XYZ
 
 \section{Conclusion}
 The conclusion goes here.
@@ -452,38 +481,13 @@ The conclusion goes here.
 The authors would like to thank...
 
 
-
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
+\bibliography{iTrustInterviews}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
 
 
 
