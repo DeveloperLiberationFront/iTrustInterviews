@@ -350,22 +350,42 @@ Assess knowledge requirements that software developers have.
 Figure, high res, png or vector (pdf)
 
 \section{Related Work}
-Two types of related work... Introduce them!
+There exists research has explored the questions developers ask when modifying, understanding, or debugging their code~\cite{}. Some studies focused on the technical aspects of these processes (i.e. tool availability); others focus on providing insights into how tool designs can be improved to answer the questions developers have. Below we discuss previous research in more detail and how our work differs.
+
 Structure
 
-\subsection{Technical Approaches}
-Developers working on code use strategies and tools to help secure their systems. 
-Many studies have assessed the effectiveness...
+\subsection{Effectiveness of Techniques}
 
-A significant body of work focuses on making static analysis tools more effective from a technical perspective, rather than more usable. 
-For example, researchers approach improving tools from a variety of angles, including reducing the number false positives, identifying new types of vulnerabilities, and optimizing taint checking~\cite{jovanovic2006pixy, livshits2005finding}.
+Developers use strategies and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and strategies developers use to find and remove vulnerabilities from their code, irregardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
+
+Some research has focused on building new tools or improving existing tools or techniques~\cite{jovanovic2006pixy, livshits2005finding, chen2002mops}.
+
+Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}.
+
+Similarly, Livshits and Lam evaluated their own approach to static analysis 
+
+Other studies explored the availability and effectiveness of tools and techniques for finding security vulnerabilities~\cite{austin2011one, dukes2013case, chess2004static}. 
 
 
-\subsection{Questions Papers}
+Unlike existing studies, or study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
+
+
+\subsection{Answering Developer Questions}
 Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
 
+LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities~\cite{latoza2010hard}.
 
-Questions asked Self reported vs Working with code
+Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements, or reachability questions~\cite{latoza2010developers}. 
+
+Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions developers have. They found that developers were able to complete more debugging tasks when using their tool than they could without it.
+
+Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
+
+we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
+
+These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to implications of code changes on the security of their code. Our study aims to discover the questions developers have about potential security vulnerabilities in code and implications of the changes they may make when attempting to resolve them. 
+
+Questions asked Self reported vs Working with codes
 
 
 \section{Methodology}
