@@ -352,14 +352,13 @@ Figure, high res, png or vector (pdf)
 \section{Related Work}
 There exists research has explored the questions developers ask when modifying, understanding, or debugging their code~\cite{}. Some studies focused on the technical aspects of these processes (i.e. tool availability); others focus on providing insights into how tool designs can be improved to answer the questions developers have. Below we discuss previous research in more detail and how our work differs.
 
-Structure
 
 \subsection{Effectiveness of Techniques}
 
 * space of security tools (static analysis, taint analysis, dynamic analysis, combination of techniques) - a lot of ways tools measure effectiveness but none look at ability to answer developer questions
 	-- how did they determine the effectiveness of their tools?
 
-Developers use strategies and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and strategies developers use to find and remove vulnerabilities from their code, irregardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
+Developers can use various techniques and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and techniques developers use to find and remove vulnerabilities from their code, irregardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
 
 Some research has focused on building new tools or improving existing tools or techniques~\cite{jovanovic2006pixy, livshits2005finding, chen2002mops}.
 
@@ -372,9 +371,22 @@ Other studies explored the availability and effectiveness of tools and technique
 
 Unlike existing studies, or study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
 
-* removing/understanding vulnerabilities/program analysis tools?
-	-- none talk about security tools; why is this important? why does that matter? why might it be different?
+\subsection{Developer Understanding}
+	
+	-- why might it be different? what is the closest paper of developer understanding; why did we have to study security tools beyond that?
 
+Some research shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods (interviews, surveys, etc.). 
+
+Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
+
+Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
+
+Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
+
+
+Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
+
+These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when reporting security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. The goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
 
 \subsection{Answering Developer Questions}
 Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
