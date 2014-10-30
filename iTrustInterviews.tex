@@ -127,12 +127,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+   \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
+   \graphicspath{{Images/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -374,71 +374,61 @@ Each interview included a five-minute briefing section, followed by encounters w
 All participants consented to have their session recorded using screen and audio capture software.
 Finally, each interview concluded with several demographic and open-ended questions.
 
-Subsection I details the interview process and subsection II describes question extraction and analysis.
+SECTION OUTLINE
 
 
 \subsection{Research Questions}
+INTRODUCE RQs
 \begin{itemize}
 \item RQ1: What types of security related questions do developers ask?
 \item RQ2: What types of security related questions do developers fail to answer?
 \end{itemize}
 
 \subsection{Study Design}
--Tool choice (list comparison)
-\\
--Background on iTrust
-\\
--In person
-\\
--Vulnerabilities
-\\
--Participant recruiting
-            	Snowball sampling
-            	Email recruitments
-            	Familiarity with code base.
-            	Stop when responses stabalized, not much new data
-		Extraction time intensive
-\\
--Participants
-            	Experience
-            	Students and Professionals
-\\
--Interview Procedure
-            	~1 hour. Appropriate length in pilots. Eclipse
-\\-Interview Questions
-\\
+
+
 
 \subsubsection{Materials}
+SCREEN CAP ENVIRONMENT
+FINDBUGS/iTRUST CONFIG
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
 We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
 
 
 \subsubsection{Participants}
-We conducted semi-structured interviews with 10 software developers. 
-We recruited participants from personal contacts and class rosters, using snowball sampling to find more participants that had experience with iTrust.
+We interviewed a total of 10 software developers, 6 students and 4 professionals. 
+All interviews were conducted in-person.
+We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
+Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize.
+To simulate a more realistic work environment, all participants were required to have significant experience working on the iTrust code base. 
+Table ?? gives additional demographic information on each of the 10 participants. 
+
 
 \subsubsection{Tasks}
+-Interview Questions
+
+
 To inform the design of our study, we conducted a series of seven preliminary pilot interviews, in which participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.  
 Accordingly, we presented each participant with four vulnerabilities. 
 To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. 
 Find Security Bugs identified three types of naturally occurring vulnerabilities, cross site scripting, path traversal, and predictable random vulnerabilities. 
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
 Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented on OWASP.
-
+Participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
 
 
 \subsection{Data Analysis}
-OVERVIEW
 What is grounded theory [CITE]. 
 
-[CITE LETOVSKY]
 
 First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
 Using a grounded theory approach, each of the interviews was analyzed by two of the authors for implicit and explicit questions. 
 We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. ?? The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
-In the remainder of this section, we will detail the question extraction process, including the criteria used to determine which statements qualified as questions.
+In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
+[CITE LETOVSKY] HERE
+
 Participants ask both explicit and implicit questions. We developed 5 criteria to assist in the uniform classification of participant statements. A statement was coded as a question only if it met one of the following criteria.
 
 \begin{itemize}
@@ -459,34 +449,36 @@ Participants ask both explicit and implicit questions. We developed 5 criteria t
 Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. 
 When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
 
+%Include the figure here!
 FIGURE OF WORD
+
 
 To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it.
 During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
 If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
-When reviewers did agree, we determined the  phrasing for the the question that was most strongly grounded in the interview artifacts. 
-AGREEMENT NUMBERS Ranged from xx to xx and averaged across participatns to xx 
+When reviewers did agree, they determined the phrasing for the question that was most strongly grounded in the interview artifacts. 
+AGREEMENT NUMBERS Ranged from xx to xx and averaged across participants to xx 
 
+\subsubsection{Question Sorting}
+To organize our questions and facilitate discussion, we preformed an \textit{open} card sort~\cite{hudson2013sorting}. 
+Card sorting is typically used to help structure data by grouping related information into categories. 
+In an \textit{open} sort, the process begins with no notion of pre-defined categories. 
+Rather, sorters derive categories from emergent themes in the cards. 
 
--Transcription
-\\
--Question extracton
-\\
-https://www.interaction-design.org/encyclopedia/card_sorting.html
+We preformed our card sort in three stages. 
+In the first stage we formed question clusters by grouping questions that identified the same information requirements. 
+For example, (EXAMPLES)
+
+In the second stage we identified emergent themes and grouped the clusters into categories based on the themes. 
+Table ?? contains the X categories along with the number of distinct clusters each contains.
+
+To validate the categories we identified, DESCRIBE VERIFICATION STAGE! 
+
+%https://www.interaction-design.org/encyclopedia/card_sorting.html
 
 -Card Sorting
 Dr. E Category validation?
 
-
-Two rounds of sorting. 
-First identify question clusters. Which questions are asking the same thing?
-Second identify emergent themes and group cards based on themes.
-To facilitate the discussion, we sorted cards into categories.
-
-Verification
-
-
--Rater Reliability
 
 \section{Results}
 We extracted x questions, removing repeats, we came up with x questions
