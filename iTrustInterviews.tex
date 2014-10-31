@@ -352,6 +352,7 @@ Figure, high res, png or vector (pdf)
 \section{Related Work}
 There exists research that has explored the questions developers ask when modifying, understanding, and debugging their code~\cite{}. Some studies focused on the technical aspects of these processes (i.e. tool availability); others focus on providing insights into how tool designs can be improved to answer the questions developers have. Below we discuss previous research in more detail and how our work differs.
 
+Structure
 
 \subsection{Effectiveness of Techniques}
 
@@ -379,6 +380,8 @@ Johnson and colleagues conducted semi-structured interviews with professional de
 Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
 
 These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when reporting security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. The goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
+
+Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
 
 \subsection{Answering Developer Questions}
 Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
@@ -430,27 +433,26 @@ We chose Find Security Bugs as a representative tool by comparing the available 
 We interviewed a total of 10 software developers, 6 students and 4 professionals. 
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize.
+Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize. WHAT DOES THAT MEAN?
 To simulate a more realistic work environment, all participants were required to have significant experience working on the iTrust code base. 
 Table ?? gives additional demographic information on each of the 10 participants. 
 
 
 \subsubsection{Tasks}
 -Interview Questions
+Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
-
-To inform the design of our study, we conducted a series of seven preliminary pilot interviews, in which participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.  
-Accordingly, we presented each participant with four vulnerabilities. 
-To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. 
-Find Security Bugs identified three types of naturally occurring vulnerabilities, cross site scripting, path traversal, and predictable random vulnerabilities. 
+FLOW
+To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. WHAT ARE THE CATEGORIES 
+Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities. HOW DID I CHOOSE WHICH ONES?
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
 Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented on OWASP.
 Participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
 
+QUESTIONS AND THINK ALOUD
 
 \subsection{Data Analysis}
 What is grounded theory [CITE]. 
-
 
 First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
 Using a grounded theory approach, each of the interviews was analyzed by two of the authors for implicit and explicit questions. 
