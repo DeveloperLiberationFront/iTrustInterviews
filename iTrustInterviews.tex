@@ -103,7 +103,7 @@
 
 % *** CITATION PACKAGES ***
 %
-%\usepackage{cite}
+\usepackage{cite}
 % cite.sty was written by Donald Arseneau
 % V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
 % \cite{} output to follow that of IEEE. Loading the cite package will
@@ -248,7 +248,9 @@ What topic?
 % no \IEEEPARstart
 Widespread security vulnerabilities enable potential attackers to exploit vital software systems. 
 Accordingly, developers concerned with the security of their systems increasingly stress the importance of identifying and eliminating vulnerabilities as early as possible.
-Distributing a defective piece of software may compromise the security of the entire system.
+Distributing a defective piece of software may compromise the security of the entire system.0
+
+[GENERAL PROBLEM CITE]
 
 Developers are concerned with the security of their applications, but lack adequate support for reasoning about the security of their systems.
 
@@ -347,46 +349,56 @@ Assess knowledge requirements that software developers have.
 %\end{table}
 
 
-Figure, high res, png or vector (pdf)
+%Figure, high res, png or vector (pdf)
 
 \section{Related Work}
-There exists research that has explored the questions developers ask when modifying, understanding, and debugging their code~\cite{}. Some studies focused on the technical aspects of these processes (i.e. tool availability); others focus on providing insights into how tool designs can be improved to answer the questions developers have. Below we discuss previous research in more detail and how our work differs.
 
-Structure
+We have organized the related work into three sections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
 
-\subsection{Effectiveness of Techniques}
+\subsection{Evaluation of Techniques}
+\label{evaluation}
+Developers use several techniques and tools to help secure their systems.
+Using a variety of metrics, many studies have assessed the effectiveness of the tools and techniques developers use to find and remove vulnerabilities from their code~\cite{martin2005finding, austin2011one, livshits2005finding}.  
 
-Developers can use various techniques and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and techniques developers use to find and remove vulnerabilities from their code, irregardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
+Much research has evaluated the effectiveness of tools and techniques based on their false positive rates and how many vulnerabilities they detect~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. 
+Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}. 
+They considered their tool effective because of its low false positive rate (50\%) and its ability to find vulnerabilities previously unknown. 
+Similarly, Livshits and Lam evaluated their own approach to static analysis for detecting security vulnerabilities; the static analyzers used are created from specifications provided by the user~\cite{livshits2005finding}. 
+They also found their tool to be effective because it had a low false positive rate. 
 
-Much of this research has explored the availability and effectiveness of tools and techniques for finding security vulnerabilities~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}. They considered their tool effective because of its low false positive rate (50\%) and the ability to find vulnerabilities previously unknown. Similarly, Livshits and Lam evaluated their own approach to static analysis for detecting security vulnerabilities; the static analyzers used are created from specifications provided by the user~\cite{livshits2005finding}. They also found their tool to be effective because it had a low false positive rate. 
+Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
+Comparing the four approaches based on number of vulnerabilities found, false positive rate, and efficiency, they reported that no one technique was capable of discovering every type of vulnerability. 
+Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. 
+They found that the combination of manual testing and static analysis was most effective, because it found the most vulnerabilities.
 
-Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities; systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. They discovered that no one technique was capable of discovering every type of vulnerability. Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. They found that the combination of manual testing and static analysis was most effective because it found the most vulnerabilities.
 
-
-These studies use various ways of measuring effectiveness, such as false positive rates or vulnerabilities they find, but none look at ability of developers to answer questions they have about the code or vulnerability. Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
+These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. Further, they do not evaluate whether the tools under study answer questions that developer have about the code or vulnerabilities. 
+Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
 
 \subsection{Developer Understanding}
-	
-	-- why might it be different? what is the closest paper of developer understanding; why did we have to study security tools beyond that?
+\label{understanding}
+In other, non-security domains, research has shifted focus from the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
+These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. Such studies examine proposed and existing approaches using various qualitative methods such as interviews and surveys. 
 
-Some research shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods (interviews, surveys, etc.). 
-
-Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
+Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool, FindBugs~\cite{ayewah2008report, ayewah2008using}.
 
 Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
 
-Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
+Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. 
+Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
 
 Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
 
-These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when reporting security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. The goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
-
-Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
+These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers interpret the reporting of security vulnerabilities. 
+It is particularly important to consider security tools and vulnerabilities, because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. 
+Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}.  
+The goal of our study is to identify the security-related questions developers ask when approaching security vulnerabilities so that tool designers understand the information requirements of security-minded developers.
 
 \subsection{Answering Developer Questions}
+\label{questions}
 Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
 
-LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities~\cite{latoza2010hard}.
+LaToza and Myers surveyed professional software developers to understand the questions asked during their daily coding activities~\cite{latoza2010hard}.
 
 Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements, or reachability questions~\cite{latoza2010developers}. 
 
@@ -394,12 +406,11 @@ Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of deb
 
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
-we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
+%we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
 
-These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to implications of code changes on the security of their code. Our study aims to discover the questions developers have about potential security vulnerabilities in code and implications of the changes they may make when attempting to resolve them. 
-
-Questions asked Self reported vs Working with codes
-
+These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. 
+In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to the implications of code changes on the security of their code. 
+Our study aims to discover the questions developers have about potential code vulnerabilities and the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
 We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. Section \ref{rqs} outlines the research questions we sought to answer. Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
@@ -516,8 +527,16 @@ Dr. E Category validation?
 \section{Results}
 We extracted x questions, removing repeats, we came up with x questions
 
+
+Question Category\\
+-Example question\\
+-Example question\\
+-Example question\\
+
+Description of questions in this category
+
 \section{Discussion}
-Data suggests that tools should focus on XYZ
+Data suggests that tools should focus on XYZ. Discuss categories and implications.
 
 \section{Conclusion}
 The conclusion goes here.
