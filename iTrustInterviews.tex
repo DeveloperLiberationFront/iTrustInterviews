@@ -350,26 +350,19 @@ Assess knowledge requirements that software developers have.
 Figure, high res, png or vector (pdf)
 
 \section{Related Work}
-There exists research has explored the questions developers ask when modifying, understanding, or debugging their code~\cite{}. Some studies focused on the technical aspects of these processes (i.e. tool availability); others focus on providing insights into how tool designs can be improved to answer the questions developers have. Below we discuss previous research in more detail and how our work differs.
+There exists research that has explored the questions developers ask when modifying, understanding, and debugging their code~\cite{}. Some studies focused on the technical aspects of these processes (i.e. tool availability); others focus on providing insights into how tool designs can be improved to answer the questions developers have. Below we discuss previous research in more detail and how our work differs.
 
 
 \subsection{Effectiveness of Techniques}
 
-* space of security tools (static analysis, taint analysis, dynamic analysis, combination of techniques) - a lot of ways tools measure effectiveness but none look at ability to answer developer questions
-	-- how did they determine the effectiveness of their tools?
-
 Developers can use various techniques and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and techniques developers use to find and remove vulnerabilities from their code, irregardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
 
-Some research has focused on building new tools or improving existing tools or techniques~\cite{jovanovic2006pixy, livshits2005finding, chen2002mops}.
+Much of this research has explored the availability and effectiveness of tools and techniques for finding security vulnerabilities~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}. They considered their tool effective because of its low false positive rate (50\%) and the ability to find vulnerabilities previously unknown. Similarly, Livshits and Lam evaluated their own approach to static analysis for detecting security vulnerabilities; the static analyzers used are created from specifications provided by the user~\cite{livshits2005finding}. They also found their tool to be effective because it had a low false positive rate. 
 
-Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}.
-
-Similarly, Livshits and Lam evaluated their own approach to static analysis 
-
-Other studies explored the availability and effectiveness of tools and techniques for finding security vulnerabilities~\cite{austin2011one, dukes2013case, chess2004static}. 
+Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities; systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. They discovered that no one technique was capable of discovering every type of vulnerability. Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. They found that the combination of manual testing and static analysis was most effective because it found the most vulnerabilities.
 
 
-Unlike existing studies, or study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
+These studies use various ways of measuring effectiveness, such as false positive rates or vulnerabilities they find, but none look at ability of developers to answer questions they have about the code or vulnerability. Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
 
 \subsection{Developer Understanding}
 	
@@ -382,7 +375,6 @@ Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along
 Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
 
 Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
-
 
 Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
 
