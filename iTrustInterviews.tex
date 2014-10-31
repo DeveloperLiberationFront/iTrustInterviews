@@ -369,7 +369,7 @@ These studies use various ways of measuring effectiveness, such as false positiv
 	
 	-- why might it be different? what is the closest paper of developer understanding; why did we have to study security tools beyond that?
 
-Some research shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods (interviews, surveys, etc.). 
+Some research surrounding tool effectiveness shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods, such as interviews and surveys.
 
 Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
 
@@ -379,14 +379,13 @@ Johnson and colleagues conducted semi-structured interviews with professional de
 
 Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
 
-These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when reporting security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. The goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
-
-Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
+These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when they report security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. Unlike existing studies, the goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
+   
 
 \subsection{Answering Developer Questions}
 Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
 
-LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities~\cite{latoza2010hard}.
+LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
 
 Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements, or reachability questions~\cite{latoza2010developers}. 
 
@@ -394,11 +393,7 @@ Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of deb
 
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
-we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
-
-These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to implications of code changes on the security of their code. Our study aims to discover the questions developers have about potential security vulnerabilities in code and implications of the changes they may make when attempting to resolve them. 
-
-Questions asked Self reported vs Working with codes
+These studies explore the questions developers ask when building and debugging software, therefore we know that findings answers to these questions can sometimes be tedious. However, they do not study the questions developers ask when they have a potential security vulnerability in their code. In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to implications of code changes on the security of their code. Our study aims to discover the questions developers have about both potential security vulnerabilities in code and implications of the changes they may make when attempting to resolve them. 
 
 
 \section{Methodology}
