@@ -355,8 +355,18 @@ There exists research has explored the questions developers ask when modifying, 
 Structure
 
 \subsection{Effectiveness of Techniques}
+-Framing the effectiveness of a tool
+	-Lack evaluation
+	-False positives
+	-Vulnerabilities
+	-Efficiency
+	
+-How programmers understand programming tools
 
-Developers use strategies and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and strategies developers use to find and remove vulnerabilities from their code, irregardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
+
+	
+-None of the papers have investigated whether 
+Developers use strategies and tools to help secure their systems. Many studies have assessed the effectiveness of the tools and strategies developers use to find and remove vulnerabilities from their code, regardless of the questions being asked or answered~\cite{martin2005finding, austin2011one, livshits2005finding}.
 
 Some research has focused on building new tools or improving existing tools or techniques~\cite{jovanovic2006pixy, livshits2005finding, chen2002mops}.
 
@@ -367,7 +377,7 @@ Similarly, Livshits and Lam evaluated their own approach to static analysis
 Other studies explored the availability and effectiveness of tools and techniques for finding security vulnerabilities~\cite{austin2011one, dukes2013case, chess2004static}. 
 
 
-Unlike existing studies, or study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
+Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
 
 
 \subsection{Answering Developer Questions}
@@ -420,27 +430,26 @@ We chose Find Security Bugs as a representative tool by comparing the available 
 We interviewed a total of 10 software developers, 6 students and 4 professionals. 
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize.
+Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize. WHAT DOES THAT MEAN?
 To simulate a more realistic work environment, all participants were required to have significant experience working on the iTrust code base. 
 Table ?? gives additional demographic information on each of the 10 participants. 
 
 
 \subsubsection{Tasks}
 -Interview Questions
+Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
-
-To inform the design of our study, we conducted a series of seven preliminary pilot interviews, in which participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.  
-Accordingly, we presented each participant with four vulnerabilities. 
-To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. 
-Find Security Bugs identified three types of naturally occurring vulnerabilities, cross site scripting, path traversal, and predictable random vulnerabilities. 
+FLOW
+To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. WHAT ARE THE CATEGORIES 
+Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities. HOW DID I CHOOSE WHICH ONES?
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
 Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented on OWASP.
 Participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
 
+QUESTIONS AND THINK ALOUD
 
 \subsection{Data Analysis}
 What is grounded theory [CITE]. 
-
 
 First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
 Using a grounded theory approach, each of the interviews was analyzed by two of the authors for implicit and explicit questions. 
