@@ -397,29 +397,29 @@ These studies explore the questions developers ask when building and debugging s
 
 
 \section{Methodology}
-We conducted semi-structured interviews with software developers.
-Each interview included a five-minute briefing section, followed by encounters with four vulnerabilities.
-All participants consented to have their session recorded using screen and audio capture software.
-Finally, each interview concluded with several demographic and open-ended questions.
-
-SECTION OUTLINE
+We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. Section \ref{rqs} outlines the research questions we sought to answer. Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
 \subsection{Research Questions}
-INTRODUCE RQs
+\label{rqs}
+We want to answer the following research questions:
 \begin{itemize}
-\item RQ1: What types of security related questions do developers ask?
-\item RQ2: What types of security related questions do developers fail to answer?
+\item \textbf{RQ1}: What types of security related questions do developers ask?
+\item \textbf{RQ2}: What types of security related questions do developers fail to answer?
 \end{itemize}
 
 \subsection{Study Design}
-
+\label{studyDesign}
+Each interview started with a five-minute briefing section, followed by encounters with four vulnerabilities.
+All participants consented to have their session recorded using screen and audio capture software.
+Finally, each interview concluded with several demographic and open-ended discussion questions.
 
 
 \subsubsection{Materials}
 SCREEN CAP ENVIRONMENT
 FINDBUGS/iTRUST CONFIG
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
+During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
 We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
 
@@ -428,16 +428,16 @@ We chose Find Security Bugs as a representative tool by comparing the available 
 We interviewed a total of 10 software developers, 6 students and 4 professionals. 
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize. WHAT DOES THAT MEAN?
-To simulate a more realistic work environment, all participants were required to have significant experience working on the iTrust code base. 
+Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
+To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 Table ?? gives additional demographic information on each of the 10 participants. 
-
 
 \subsubsection{Tasks}
 -Interview Questions
-Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
+Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 FLOW
+
 To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. WHAT ARE THE CATEGORIES 
 Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities. HOW DID I CHOOSE WHICH ONES?
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
@@ -447,6 +447,7 @@ Participants were told that they were in charge of security for iTrust and to ap
 QUESTIONS AND THINK ALOUD
 
 \subsection{Data Analysis}
+\label{dataAnalysis}
 What is grounded theory [CITE]. 
 
 First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
