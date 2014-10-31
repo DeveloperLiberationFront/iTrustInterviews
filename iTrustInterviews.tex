@@ -379,6 +379,22 @@ Other studies explored the availability and effectiveness of tools and technique
 
 Unlike existing studies, our study explores the questions developers have when attempting to understand the vulnerabilities found in their code by existing tools.  
 
+\subsection{Developer Understanding}
+	
+	-- why might it be different? what is the closest paper of developer understanding; why did we have to study security tools beyond that?
+
+Some research shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods (interviews, surveys, etc.). 
+
+Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
+
+Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
+
+Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
+
+
+Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
+
+These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when reporting security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. The goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
 
 \subsection{Answering Developer Questions}
 Several studies have explored the knowledge requirements of developers, however few such studies have focused specifically on the knowledge requirements of developers when assessing security vulnerabilities~\cite{begel2014analyze, latoza2010hard, latoza2010developers}.
@@ -399,29 +415,29 @@ Questions asked Self reported vs Working with codes
 
 
 \section{Methodology}
-We conducted semi-structured interviews with software developers.
-Each interview included a five-minute briefing section, followed by encounters with four vulnerabilities.
-All participants consented to have their session recorded using screen and audio capture software.
-Finally, each interview concluded with several demographic and open-ended questions.
-
-SECTION OUTLINE
+We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. Section \ref{rqs} outlines the research questions we sought to answer. Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
 \subsection{Research Questions}
-INTRODUCE RQs
+\label{rqs}
+We want to answer the following research questions:
 \begin{itemize}
-\item RQ1: What types of security related questions do developers ask?
-\item RQ2: What types of security related questions do developers fail to answer?
+\item \textbf{RQ1}: What types of security related questions do developers ask?
+\item \textbf{RQ2}: What types of security related questions do developers fail to answer?
 \end{itemize}
 
 \subsection{Study Design}
-
+\label{studyDesign}
+Each interview started with a five-minute briefing section, followed by encounters with four vulnerabilities.
+All participants consented to have their session recorded using screen and audio capture software.
+Finally, each interview concluded with several demographic and open-ended discussion questions.
 
 
 \subsubsection{Materials}
 SCREEN CAP ENVIRONMENT
 FINDBUGS/iTRUST CONFIG
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
+During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
 We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
 
@@ -430,16 +446,16 @@ We chose Find Security Bugs as a representative tool by comparing the available 
 We interviewed a total of 10 software developers, 6 students and 4 professionals. 
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when interview responses began to stabilize. WHAT DOES THAT MEAN?
-To simulate a more realistic work environment, all participants were required to have significant experience working on the iTrust code base. 
+Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
+To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 Table ?? gives additional demographic information on each of the 10 participants. 
-
 
 \subsubsection{Tasks}
 -Interview Questions
-Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
+Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 FLOW
+
 To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. WHAT ARE THE CATEGORIES 
 Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities. HOW DID I CHOOSE WHICH ONES?
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
@@ -449,6 +465,7 @@ Participants were told that they were in charge of security for iTrust and to ap
 QUESTIONS AND THINK ALOUD
 
 \subsection{Data Analysis}
+\label{dataAnalysis}
 What is grounded theory [CITE]. 
 
 First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
