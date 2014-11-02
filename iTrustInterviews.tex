@@ -246,9 +246,10 @@ What topic?
 
 \section{Introduction}
 % no \IEEEPARstart
-Widespread security vulnerabilities enable potential attackers to exploit vital software systems. 
-Accordingly, developers concerned with the security of their systems increasingly stress the importance of identifying and eliminating vulnerabilities as early as possible.
-Distributing a defective piece of software may compromise the security of the entire system.0
+Widespread security vulnerabilities enable potential attackers to exploit vital software systems. Distributing a defective piece of software may compromise the security of the entire system. Accordingly, research and industry increasingly stress the importance of identifying and eliminating vulnerabilities as early as possible in their systems~\cite{austin2011one, bessey2010few}. When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers ask themselves various questions about the code ~\cite{latoza2010hard, }
+
+There exists a variety of tools that can automate, and ideally simplify, the process of identifying and removing vulnerabilities, known as program analysis tools
+
 
 [GENERAL PROBLEM CITE]
 
@@ -380,13 +381,9 @@ Unlike existing studies, our study explores the questions developers ask when at
 In other, non-security domains, research has shifted focus from the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
 These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. Such studies examine proposed and existing approaches using various qualitative methods such as interviews and surveys. 
 
-<<<<<<< HEAD
-Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool, FindBugs~\cite{ayewah2008report, ayewah2008using}.
-=======
 Some research surrounding tool effectiveness shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods, such as interviews and surveys.
 
 Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
->>>>>>> origin/master
 
 Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
 
@@ -395,15 +392,10 @@ Their findings suggest that one of the biggest reasons developers may have for n
 
 Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
 
-<<<<<<< HEAD
 These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers interpret the reporting of security vulnerabilities. 
 It is particularly important to consider security tools and vulnerabilities, because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. 
 Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}.  
 The goal of our study is to identify the security-related questions developers ask when approaching security vulnerabilities so that tool designers understand the information requirements of security-minded developers.
-=======
-These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers deal with tools when they report security vulnerabilities. It is particularly important to consider security tools and vulnerabilities because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}. Unlike existing studies, the goal of our study is to identify the questions developers have when understanding security vulnerabilities to help security tool designers understand exactly how they can help developers when they change code inside secure systems.
-   
->>>>>>> origin/master
 
 \subsection{Answering Developer Questions}
 \label{questions}
@@ -413,7 +405,7 @@ LaToza and Myers surveyed professional software developers to understand the que
 
 Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements, or reachability questions~\cite{latoza2010developers}. 
 
-Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions developers have. They found that developers were able to complete more debugging tasks when using their tool than they could without it.
+Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions developers have~\cite{ko2004designing}. They found that developers were able to complete more debugging tasks when using their tool than they could without it.
 
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
