@@ -246,31 +246,29 @@ What topic?
 
 \section{Introduction}
 % no \IEEEPARstart
-Widespread security vulnerabilities enable potential attackers to exploit vital software systems. Distributing a defective piece of software may compromise the security of the entire system. Accordingly, research and industry increasingly stress the importance of identifying and eliminating vulnerabilities as early as possible in their systems~\cite{austin2011one, bessey2010few}. When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers ask themselves various questions about the code ~\cite{latoza2010hard, }
-
-There exists a variety of tools that can automate, and ideally simplify, the process of identifying and removing vulnerabilities, known as program analysis tools
-
-
-[GENERAL PROBLEM CITE]
-
-Developers are concerned with the security of their applications, but lack adequate support for reasoning about the security of their systems.
-
-Toolsmiths are equipped with an exhaustive set of research findings and guidelines to aid in the design of usable tools [CITE].
-However, their tools go unused, in part because they do not help developers answer relevant questions [CITE]. 
-Our work aims to inform toolsmiths of the security-related questions that developers ask.
-
 General Problem
+
+Widespread security vulnerabilities enable potential attackers to exploit vital software systems. Distributing a defective piece of software may compromise the security of the entire system. Accordingly, research and industry increasingly stress the importance of identifying and eliminating  vulnerabilities as early as possible in their systems~\cite{austin2011one, bessey2010few}. When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers ask themselves various questions about the code ~\cite{latoza2010hard, ko2004designing}. This area of research also suggests that there may be a need for tool support to help developers answer the questions they have about their code~\cite{latoza2010hard}. 
+
+There exists a variety of tools and techniques developed to assist developers with writing and analyzing code, however, often developers do not use these tools~\cite{}.
+
 Related Stuff
+
+Developers are concerned with the security of their applications, but lack adequate support for reasoning about the security of their systems [CITE?].
+Toolsmiths are equipped with an exhaustive set of research findings and guidelines to aid in the design of usable tools [CITE]. 
+However, their tools go unused, in part because they do not help developers answer relevant questions or find relevant information~\cite{johnson2013don, latoza2010hard}. In fact, research suggests that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}. There exists research that determines the questions developers ask about their code. However, to our knowledge, there does not exist research that explores the questions developers ask specifically pertaining to security vulnerabilities in their code. Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
+
 
 What is the paper about
 	What did we do
 
-Contribution:
-	Inform toolsmiths of knowledge requirements.
+In this paper, we report a study conducted with 10 developers with experience coding in the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} We observed each developer as they assessed potential security vulnerabilities in their code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted XXX cards into XXX categories. [QUICK SUMMARY OF FINDINGS]. 
 
-Structure
+Contribution
 
-Assess knowledge requirements that software developers have.
+The main contribution of this paper is categorized questions developers ask to inform toolsmiths of knowledge requirements developers have when faced with security vulnerabilities.
+
+The remainder of the paper is organized as follows. In Section~\ref{sec:rw}, we discuss previous work related to our own. Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. Next, we discuss the findings of our study in Section~\ref{sec:results} and implications of our findings in Section~\ref{sec:disc}. Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
 
 
 
@@ -353,6 +351,7 @@ Assess knowledge requirements that software developers have.
 %Figure, high res, png or vector (pdf)
 
 \section{Related Work}
+\label{sec:rw}
 
 We have organized the related work into three sections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
 
@@ -416,6 +415,7 @@ In fact, our work builds on the work of LaToza and Myers, which found that some 
 Our study aims to discover the questions developers have about potential code vulnerabilities and the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
+\label{sec:meth}
 We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. Section \ref{rqs} outlines the research questions we sought to answer. Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
@@ -519,10 +519,16 @@ Rather, sorters derive categories from emergent themes in the cards.
 \label{fig:cardsort} 
 \end{figure}
 
-
 We preformed our card sort in three stages. 
 In the first stage we formed question clusters by grouping questions that identified the same information requirements (Figure~\ref{fig:cardsort}). 
 For example, (EXAMPLES)
+
+\begin{figure}
+\centering
+\includegraphics[width=3in]{Images/categories.pdf}
+\caption{Sorting cards into categories based on emergent themes.}
+\label{fig:cardsort} 
+\end{figure}
 
 In the second stage we identified emergent themes and grouped the clusters into categories based on the themes. 
 Table ?? contains the X categories along with the number of distinct clusters each contains.
@@ -536,7 +542,15 @@ Dr. E Category validation?
 
 
 \section{Results}
+\label{sec:results}
 We extracted x questions, removing repeats, we came up with x questions
+
+Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis. We also discuss the common thread between the questions in each category and speculate as to why these bits of information may be important when assessing potential security vulnerabilities.
+
+\subsubsection{Developer Planning and Reflection}
+\label{planning}
+\emph{What was I looking for}
+
 
 
 Question Category\\
@@ -547,9 +561,14 @@ Question Category\\
 Description of questions in this category
 
 \section{Discussion}
+\label{sec:disc}
 Data suggests that tools should focus on XYZ. Discuss categories and implications.
 
+\section{Future Work}
+\label{sec:fw}
+
 \section{Conclusion}
+\label{sec:concl}
 The conclusion goes here.
 
 
