@@ -262,7 +262,7 @@ However, their tools go unused, in part because they do not help developers answ
 What is the paper about
 	What did we do
 
-In this paper, we report a study conducted with 10 developers with experience coding in the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} We observed each developer as they assessed potential security vulnerabilities in their code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted XXX cards into XXX categories. [QUICK SUMMARY OF FINDINGS]. 
+In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted XXX cards into XXX categories. [QUICK SUMMARY OF FINDINGS]. 
 
 Contribution
 
@@ -545,18 +545,26 @@ Dr. E Category validation?
 \label{sec:results}
 We extracted x questions, removing repeats, we came up with x questions
 
-Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis. We also discuss the common thread between the questions in each category and speculate as to why these bits of information may be important when assessing potential security vulnerabilities.
+Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis~\cite{latoza2010hard}. We also discuss the common thread between the questions in each category and speculate as to why these bits of information may be important when assessing potential security vulnerabilities.
 
-\subsubsection{Developer Planning and Reflection}
-\label{planning}
-\emph{What was I looking for}
+\noindent\subsection{\textbf{Developer Planning and Reflection}} 
 
+\noindent\emph{What was I looking for? (X)} \\
+\emph{What do I know now? (X)} \\
+\emph{What should I do first? (X)} \\
+\emph{Do I understand? (X)} \\
+\emph{Have I seen this before? (X)} \\
+\emph{What was that again? (X)} \\
+\emph{What's next? (X)} \\
+\emph{Where am I in the code? (X)} \\
+\emph{Is this worth my time? (X)} \\
+\emph{Is this my responsibility? (X)} \\
+\emph{Why do I care? (X)} \\
 
+One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. XXX of the XXX questions extracted fit into this category. All of the questions in this category involve general thoughts the developer has pertaining to the vulnerability, rather than specifics of the code or the error notification.  As shown by the counts, the most common occurring question in this category was...
 
-Question Category\\
--Example question\\
--Example question\\
--Example question\\
+Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. For example, one question participants asked was ``Have I seen this before?'' A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
+
 
 Description of questions in this category
 
