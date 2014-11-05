@@ -440,6 +440,8 @@ The first rater agreed with our categorization with a Cohen's Kappa of $\kappa =
 Between the first and second rater we reworded and clarified some ambiguous questions. The second rater exhibited greater agreement ($\kappa = .70$). 
 Given the high number of categories, these values are well within the acceptable ranges.
 
+DISCARDING
+
 \section{Results}
 \label{sec:results}
 We extracted x questions, removing repeats, we came up with x questions
@@ -545,6 +547,7 @@ We also extracted questions pertaining to the potential attacks that could arise
 
 Some FindBugs notifications attempt to provide developers with the means for answering some of these questions by providing links to relevant documentation. Some of the questions, such as \emph{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. ...maybe something about requiring tool support?
 
+TOOL SHOULD PROVIDE INFO ON WHAT THE ATTACK IS, NOT JUST WHY CODE IS BROKEN
 
 %%%%%%%%%%%% Data Storage 
 
@@ -583,6 +586,7 @@ The call hierarchy tool in Eclipse provides a way of understanding control flow,
 
 We also extracted questions related to the flow of control through the program and information pertaining to the methods that get called, or do not get called, in the code. As the name of this category may elude to, these questions can generally be answered using a tool for viewing the call hierarchy, when available. Without such a tool, and sometimes with it, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this}.
 
+EXPAND ON CALL HIERARCHY TOOL
 
 %%%%%%%%%%%% Application Context
 
@@ -599,6 +603,7 @@ We also extracted questions related to the flow of control through the program a
 
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application. 7 of the XXX distinct questions revolved around how the code works in the context of a portion of or the entire system.
 
+FAMILIARITY
 
 %%%%%%%%%%%% Resources
 
@@ -618,6 +623,7 @@ Another kind of question we extracted pertained to the resources and documentati
 Some tools link to documentation, FindBugs being one of them...
 Do any deal with easily contacting team members, gauging reliability of resource?...
 
+SEARCHING OUTSIDE FINDBUGS/NOT CLICKING LINKS
 
 %%%%%%%%%%%% Understanding Interacting Tools
 
@@ -632,7 +638,11 @@ Do any deal with easily contacting team members, gauging reliability of resource
 \emph{How is the information presented by the tool organized?} \\
 \emph{Miscellaneous} \\
 
+Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool and find references, for example. Participants asked questions about how to access specific tools and how to interpret their output.
 
+[ACCESSIBILITY (4 letter word)]
+
+[Presentation of tool information]
 
 
 
@@ -649,6 +659,9 @@ Do any deal with easily contacting team members, gauging reliability of resource
 \emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
 
+Participants look elsewhere for information about their code or vulnerability. When presented with alternative solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+
+This process was complicated by the fact that alternative approaches were suggested by a variety of sources (SO, official docs, quick fixes). Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggested approach. (PREFERENCE FOR STACK OVERFLOW)
 
 %%%%%%%%%%%% Bug Severity/Ranking
 
@@ -670,6 +683,7 @@ Some participants had questions regarding the severity or ranking of the bug bei
 \emph{Are all the bugs related in my code?} \\
 \emph{Are all of these notifications vulnerabilities?} \\
 
+Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
 
 %%%%%%%%%%%% End-User Interaction
 
@@ -679,16 +693,9 @@ Some participants had questions regarding the severity or ranking of the bug bei
 \emph{Does the user have access to this code?} \\
 \emph{Does user input get validated/sanitized?} \\
 
+These questions deal with how the end user might interact with the system. Participants want to know whether users can access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
 
-%%%%%%%%%%%% Error Messages
-
-\noindent\subsection{\textbf{Error Messages (3)}}
-
-\noindent\emph{What is the relationship between the error message and the code?} \\
-\emph{What code caused this error message to occur?} \\
-\emph{What does the error message say?} \\
-
-
+To our knowledge, developers lack tool support in determining which parts of the code users can interact with. 
 
 %%%%%%%%%%%% Understanding Concepts
 
@@ -700,6 +707,7 @@ Some participants had questions regarding the severity or ranking of the bug bei
 \emph{What is this concept?} \\
 \emph{Miscellaneous} \\
 
+The concepts that the notification contains are incompatible with the developer's mental model. Developer lacks education or experience (ability) to understand concepts that occur in the code or in the notification. 
 
 %%%%%%%%%%%% Confirming Expectations
 
@@ -707,11 +715,26 @@ Some participants had questions regarding the severity or ranking of the bug bei
 
 \noindent\emph{Is this doing what I expect it to?} \\
 
+[CITE] Developers build mental models when exploring code. As they build and alter mental models, developers seek confirmation that they fully understand the problem.
 
+%%%%%%%%%%%% Error Messages
+
+\noindent\subsection{\textbf{Error Messages (3)}}
+
+\noindent\emph{What is the relationship between the error message and the code?} \\
+\emph{What code caused this error message to occur?} \\
+\emph{What does the error message say?} \\
+
+As expected, participants asked questions concerning the content of the error messages. 
+More surprisingly, they also asked questions about how to relate information contained in the error message back to the code. 
 
 \section{Discussion}
 \label{sec:disc}
 Data suggests that tools should focus on XYZ. Discuss interesting/contradictory categories and implications.
+
+COME UP WITH SECTION HEADERS
+
+Whyline, flow of data and control
 
 \section{Future Work}
 \label{sec:fw}
