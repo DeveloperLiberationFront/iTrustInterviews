@@ -1,14 +1,87 @@
+%% iTrustInterviews.tex
+%% V1.4
+%% 2012/12/27
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex,
+%%                    bare_jrnl_transmag.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
 % Also note that the "draftcls" or "draftclsnofoot", not "draft", option
 % should be used if it is desired that the figures are to be displayed in
 % draft mode.
 %
 \documentclass[conference]{IEEEtran}
 % Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 
+
+% *** CITATION PACKAGES ***
+%
 \usepackage{cite}
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
 \ifCLASSINFOpdf
    \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
@@ -294,14 +367,7 @@ Finally, each interview concluded with several demographic and open-ended discus
 
 
 \subsubsection{Materials}
-
-\begin{figure}
-\centering
-\includegraphics[width=3in]{Images/environment.png}
-\caption{The environment participants were presented with.}
-\label{fig:environment} 
-\end{figure}
-	
+SCREEN CAP ENVIRONMENT
 FINDBUGS/iTRUST CONFIG
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
@@ -370,12 +436,12 @@ To handle instances where the two coders disagreed, each interview was reviewed 
 During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
 If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
 When reviewers did agree, they determined the phrasing for the question that was most strongly grounded in the interview artifacts. 
-Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
+AGREEMENT NUMBERS Ranged from xx to xx and averaged across participants to xx 
 
 \subsubsection{Question Sorting}
 To organize our questions and facilitate discussion, we preformed an \textit{open} card sort~\cite{hudson2013sorting}. 
 Card sorting is typically used to help structure data by grouping related information into categories. 
-In an \textit{open} sort, the process begins with no notion of predefined categories. 
+In an \textit{open} sort, the process begins with no notion of pre-defined categories. 
 Rather, sorters derive categories from emergent themes in the cards. 
 
 \begin{figure}
@@ -485,7 +551,7 @@ The answers to these questions can be found inside the IDE, which makes it more 
 \emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
 \emph{What other changes do I need to make to apply this fix?} \\
 
-Another kind of question participants asked pertained to the process of fixing the code. The goal of these questions were to better understand how they would actually apply a fix to their code and the effects of doing so on their code. 9 of the XXX distinct questions participants asked were put into this category.
+Another kind of question we extracted pertained to the process of fixing the code. The goal of these questions were to better understand how they would actually apply a fix to their code and the effects of doing so on their code. 9 of the XXX distinct questions participants asked were put into this category.
 
 Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues to developer Quick Fix Scout~\cite{mucslu2012speculative}. Their tool attempts to help developers answer the question \emph{does this fix introduce other bugs?} None of our participants asked this question specifically, however, questions like \emph{how hard is it to apply} and \emph{does the code stand to additional tests prior to/after applying} could possibly be answered using a similar process.
 
@@ -500,11 +566,15 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{Why is this a vulnerability?} \\
 \emph{What are the possible attacks that could occur?} \\
 \emph{How can I prevent this attack?} \\
-\emph{How should I address this problem? (1)} \\
+\emph{How should I address this problem? } \\
 \emph{What is the problem (potential attack)?} \\
 \emph{Is this a real vulnerability?} \\
 \emph{How do I find out if this is a real vulnerability?} \\
 \emph{Miscellaneous} \\
+
+We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. These questions aimed to understand what attacks could stem from the vulnerability, how those attacks might occur, and how they might prevent attacks now and in the future. 9 of the XXX distinct questions we gathered belong in this category.
+
+Some FindBugs notifications attempt to provide developers with the means for answering some of these questions by providing links to relevant documentation. Some of the questions, such as \emph{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. ...maybe something about requiring tool support?
 
 
 %%%%%%%%%%%% Data Storage 
@@ -520,12 +590,13 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{Is any of the data malicious?} \\
 \emph{Where is the data coming from?} \\
 \emph{Miscellaneous} \\
-\noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
 
-\noindent\emph{How serious is this bug?} \\
-\emph{Are all these bugs the same severity?} \\
-\emph{How do the rankings compare?} \\
-\emph{What do the bug rankings mean?} \\
+Some of the questions we found pertained to the data being stored and carried throughout the program. Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 8 of the XXX distinct questions fell into this category.
+
+The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data would travel when the program is run. The developer would have to retrieve this information either in the documentation or debugging the code, or some combination of both.
+% tools that do data flow analysis (i.e. Pixy) but do not allow developer to explore the flow of data.
+
+
 
 %%%%%%%%%%%% Control Flow/Call Information
 
@@ -541,6 +612,8 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{How often is this code called?} \\
 \emph{Miscellaneous} \\
 
+We also extracted questions related to the flow of control through the program and information pertaining to the methods that get called, or do not get called, in the code. As the name of this category may elude to, these questions can generally be answered using a tool for viewing the call hierarchy, when available. Without such a tool, and sometimes with it, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this}.
+
 
 %%%%%%%%%%%% Application Context
 
@@ -549,11 +622,13 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \noindent\emph{What is the method/variable used for in the program?} \\
 \emph{Are we handling secure data in this context?} \\
 \emph{What is the context of this bug/code?} \\
-\emph{How does the system work??} \\
+\emph{How does the system work?} \\
 \emph{Will usage of this method change?} \\
 \emph{Is the method/variable every being used?} \\
 \emph{Is this code used to test the program/functionality?} \\
 \emph{Miscellaneous} \\
+
+Some participants wanted to know how code entities or pieces of code fit into the overall context of the application. 7 of the XXX distinct questions revolved around how the code works in the context of a portion of or the entire system.
 
 
 %%%%%%%%%%%% Resources
@@ -568,6 +643,8 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{Is this a reliable/trusted resource?} \\
 \emph{How do resources prevent or resolve this?} \\
 \emph{Miscellaneous} \\
+
+Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 7 of the XXX distinct questions fell into this category. 
 
 
 %%%%%%%%%%%% Understanding Interacting Tools
@@ -598,6 +675,17 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
 
+
+%%%%%%%%%%%% Bug Severity/Ranking
+
+\noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
+
+\noindent\emph{How serious is this bug?} \\
+\emph{Are all these bugs the same severity?} \\
+\emph{How do the rankings compare?} \\
+\emph{What do the bug rankings mean?} \\
+
+Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions could deal with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 4 of the XXX distinct questions extracted fell into this category. Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 
 
 %%%%%%%%%%%% Relationship Between Bugs
