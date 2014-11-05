@@ -477,26 +477,241 @@ We extracted x questions, removing repeats, we came up with x questions
 
 Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis~\cite{latoza2010hard}. We also discuss the common thread between the questions in each category and speculate as to why these bits of information may be important when assessing potential security vulnerabilities.
 
-\noindent\subsection{\textbf{Developer Planning and Reflection (X)}} 
+\noindent\subsection{\textbf{Developer Planning and Self-Reflection (11)}} 
 
-\noindent\emph{What was I looking for? (X)} \\
-\emph{What do I know now? (X)} \\
-\emph{What should I do first? (X)} \\
-\emph{Do I understand? (X)} \\
-\emph{Have I seen this before? (X)} \\
-\emph{What was that again? (X)} \\
-\emph{What's next? (X)} \\
-\emph{Where am I in the code? (X)} \\
-\emph{Is this worth my time? (X)} \\
-\emph{Is this my responsibility? (X)} \\
-\emph{Why do I care? (X)} \\
+\noindent\emph{What was I looking for?} \\
+\emph{What do I know now?} \\
+\emph{What should I do first?} \\
+\emph{Do I understand?} \\
+\emph{Have I seen this before?} \\
+\emph{What was that again?} \\
+\emph{What's next?} \\
+\emph{Where am I in the code?} \\
+\emph{Is this worth my time?} \\
+\emph{Is this my responsibility?} \\
+\emph{Why do I care?} \\
+\emph{Miscellaneous} \\
 
-One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. XXX of the XXX questions extracted fit into this category. All of the questions in this category involve general thoughts the developer has pertaining to the vulnerability, rather than specifics of the code or the error notification.  As shown by the counts, the most common occurring question in this category was...
+One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the XXX distinct questions extracted fit into this category. All of the questions in this category involve general thoughts the developer has pertaining to the vulnerability, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
 
 Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. For example, one question participants asked was ``Have I seen this before?'' A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 
+%%%%%%%%%%%% Code Background
 
-Description of questions in this category
+\noindent\subsection{\textbf{Code Background and Function (9)}}
+
+\noindent\emph{Who wrote this code?} \\
+\emph{Why is this code needed?} \\
+\emph{Is this library code??} \\
+\emph{Are there tests for this code?} \\
+\emph{Why was this code written this way?} \\
+\emph{What does this code do?} \\
+\emph{Is this code doing anything?} \\
+\emph{How much effort was put into this code?} \\
+\emph{Why are we using this API in the code?} \\
+\emph{Miscellaneous} \\
+
+Another kind of question participants asked concerned the background and intended function of the code being analyzed. Nine of the XXX distinct questions extracted fit into this category. The questions in this category aim to learn more about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
+
+The answer to many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far...
+One example of this would be...
+
+
+%%%%%%%%%%%% Locating Information
+
+\noindent\subsection{\textbf{Locating Information (9)}}
+
+\noindent\emph{Where is this used in the code?} \\
+\emph{Where are other similar pieces of code?} \\
+\emph{Where is this artifact?} \\
+\emph{Is this artifact located in this class?} \\
+\emph{Where is this method defined?} \\
+\emph{Where is this class? } \\
+\emph{Where is the next occurrence of this variable?} \\
+\emph{How do I track this information in the code?} \\
+\emph{How do I navigate to other open files?} \\
+\emph{Miscellaneous} \\
+
+Some participants asked questions regarding locating, or the ability to locate, various bits of information in their coding environment. Nine questions of the XXX extracted fit into this category. The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments; \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
+
+The answers to these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example... 
+
+
+%%%%%%%%%%%% Assessing Application
+
+\noindent\subsection{\textbf{Assessing Application of the Fix (9)}}
+
+\noindent\emph{How hard is it to apply a fix to this code?} \\
+\emph{How do I use this fix in my code?} \\
+\emph{How do I fix this vulnerability?} \\
+\emph{Is there a quick fix for automatically applying a fix?} \\
+\emph{Will the code work the same after I apply the fix?} \\
+\emph{Can these fix suggestions be applied to my code?} \\
+\emph{Will the error go away when I apply this fix?} \\
+\emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
+\emph{What other changes do I need to make to apply this fix?} \\
+
+Another kind of question participants asked pertained to the process of fixing the code. The goal of these questions were to better understand how they would actually apply a fix to their code and the effects of doing so on their code. 9 of the XXX distinct questions participants asked were put into this category.
+
+Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues to developer Quick Fix Scout~\cite{mucslu2012speculative}. Their tool attempts to help developers answer the question \emph{does this fix introduce other bugs?} None of our participants asked this question specifically, however, questions like \emph{how hard is it to apply} and \emph{does the code stand to additional tests prior to/after applying} could possibly be answered using a similar process.
+
+  
+
+%%%%%%%%%%%% Preventing and Understanding Potential Attacks 
+
+\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (9)}}
+
+\noindent\emph{How can this vulnerability lead to an attack?} \\
+\emph{How can I replicate an attack that exploits this vulnerability?} \\
+\emph{Why is this a vulnerability?} \\
+\emph{What are the possible attacks that could occur?} \\
+\emph{How can I prevent this attack?} \\
+\emph{How should I address this problem? (1)} \\
+\emph{What is the problem (potential attack)?} \\
+\emph{Is this a real vulnerability?} \\
+\emph{How do I find out if this is a real vulnerability?} \\
+\emph{Miscellaneous} \\
+
+
+%%%%%%%%%%%% Data Storage 
+
+\noindent\subsection{\textbf{Data Storage and Flow (8)}}
+
+\noindent\emph{How is data put into this variable?} \\
+\emph{Does data from this method/code travel to the database?} \\
+\emph{Where does this information/data go?} \\
+\emph{How do I find where the information travels?} \\
+\emph{How does the information change as it travels through the programs?} \\
+\emph{What does the variable contain?} \\
+\emph{Is any of the data malicious?} \\
+\emph{Where is the data coming from?} \\
+\emph{Miscellaneous} \\
+\noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
+
+\noindent\emph{How serious is this bug?} \\
+\emph{Are all these bugs the same severity?} \\
+\emph{How do the rankings compare?} \\
+\emph{What do the bug rankings mean?} \\
+
+%%%%%%%%%%%% Control Flow/Call Information
+
+\noindent\subsection{\textbf{Control Flow/Call Information (8)}}
+
+\noindent\emph{What is the call hierarchy?} \\
+\emph{How can I get calling information?} \\
+\emph{Who can call this?} \\
+\emph{Where is the method being called?} \\
+\emph{What causes this to be called?} \\
+\emph{Are all calls coming from the same class?} \\
+\emph{What gets called when this method gets called?} \\
+\emph{How often is this code called?} \\
+\emph{Miscellaneous} \\
+
+
+%%%%%%%%%%%% Application Context
+
+\noindent\subsection{\textbf{Application Context/Usage (7)}}
+
+\noindent\emph{What is the method/variable used for in the program?} \\
+\emph{Are we handling secure data in this context?} \\
+\emph{What is the context of this bug/code?} \\
+\emph{How does the system work??} \\
+\emph{Will usage of this method change?} \\
+\emph{Is the method/variable every being used?} \\
+\emph{Is this code used to test the program/functionality?} \\
+\emph{Miscellaneous} \\
+
+
+%%%%%%%%%%%% Resources
+
+\noindent\subsection{\textbf{Resources/Documentation (7)}}
+
+\noindent\emph{What type of information does this resource link me to?} \\
+\emph{What is the documentation?} \\
+\emph{Can my team members/resources provide me with more information?} \\
+\emph{Where can I get more information?} \\
+\emph{What information is in the documentation?} \\
+\emph{Is this a reliable/trusted resource?} \\
+\emph{How do resources prevent or resolve this?} \\
+\emph{Miscellaneous} \\
+
+
+%%%%%%%%%%%% Understanding Interacting Tools
+
+\noindent\subsection{\textbf{Understanding and Interacting with Tools (7)}}
+
+\noindent\emph{Why is the tool complaining?} \\
+\emph{What is the tool output telling me?} \\
+\emph{Can I verify the information the tool provides?} \\
+\emph{What is the tool keybinding?} \\
+\emph{What is the tool's confidence?} \\
+\emph{What tool do I need for this?} \\
+\emph{How is the information presented by the tool organized?} \\
+\emph{Miscellaneous} \\
+
+
+
+%%%%%%%%%%%% Understanding Alt. Fixes
+
+\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (7)}}
+
+\noindent\emph{Why should I use this alternative method/approach to fix the vulnerability?} \\
+\emph{What are the alternatives for fixing this?} \\
+\emph{Does the alternative function the same as what I'm currently using?} \\
+\emph{When should I use the alternative?} \\
+\emph{Is the alternative slower?} \\
+\emph{Are there other considerations to make when using the alternative(s)?} \\
+\emph{How does my code compare to the alternative code in the example I found?} \\
+\emph{Miscellaneous} \\
+
+
+
+%%%%%%%%%%%% Relationship Between Bugs
+
+\noindent\subsection{\textbf{Relationship Between Bugs (3)}}
+
+\noindent\emph{Does this other piece code have the same bug as the code I'm working with?} \\
+\emph{Are all the bugs related in my code?} \\
+\emph{Are all of these notifications vulnerabilities?} \\
+
+
+%%%%%%%%%%%% End-User Interaction
+
+\noindent\subsection{\textbf{End-User Interaction (3)}}
+
+\noindent\emph{Is there input coming from the user?} \\
+\emph{Does the user have access to this code?} \\
+\emph{Does user input get validated/sanitized?} \\
+
+
+%%%%%%%%%%%% Error Messages
+
+\noindent\subsection{\textbf{Error Messages (3)}}
+
+\noindent\emph{What is the relationship between the error message and the code?} \\
+\emph{What code caused this error message to occur?} \\
+\emph{What does the error message say?} \\
+
+
+
+%%%%%%%%%%%% Understanding Concepts
+
+\noindent\subsection{\textbf{Understanding Concepts (4)}}
+
+\noindent\emph{What is the term for this concept?} \\
+\emph{Do these words have special meaning related to this concept/problem?} \\
+\emph{How does this concept work?} \\
+\emph{What is this concept?} \\
+\emph{Miscellaneous} \\
+
+
+%%%%%%%%%%%% Confirming Expectations
+
+\noindent\subsection{\textbf{Confirming Expectations (1)}}
+
+\noindent\emph{Is this doing what I expect it to?} \\
+
+
 
 \section{Discussion}
 \label{sec:disc}
