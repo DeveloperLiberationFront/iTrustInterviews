@@ -1,87 +1,14 @@
-%% iTrustInterviews.tex
-%% V1.4
-%% 2012/12/27
-%% by Michael Shell
-%% See:
-%% http://www.michaelshell.org/
-%% for current contact information.
-%%
-%% This is a skeleton file demonstrating the use of IEEEtran.cls
-%% (requires IEEEtran.cls version 1.8 or later) with an IEEE conference paper.
-%%
-%% Support sites:
-%% http://www.michaelshell.org/tex/ieeetran/
-%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
-%% and
-%% http://www.ieee.org/
-
-%%*************************************************************************
-%% Legal Notice:
-%% This code is offered as-is without any warranty either expressed or
-%% implied; without even the implied warranty of MERCHANTABILITY or
-%% FITNESS FOR A PARTICULAR PURPOSE! 
-%% User assumes all risk.
-%% In no event shall IEEE or any contributor to this code be liable for
-%% any damages or losses, including, but not limited to, incidental,
-%% consequential, or any other damages, resulting from the use or misuse
-%% of any information contained here.
-%%
-%% All comments are the opinions of their respective authors and are not
-%% necessarily endorsed by the IEEE.
-%%
-%% This work is distributed under the LaTeX Project Public License (LPPL)
-%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
-%% distributed and modified. A copy of the LPPL, version 1.3, is included
-%% in the base LaTeX documentation of all distributions of LaTeX released
-%% 2003/12/01 or later.
-%% Retain all contribution notices and credits.
-%% ** Modified files should be clearly indicated as such, including  **
-%% ** renaming them and changing author support contact information. **
-%%
-%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
-%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex,
-%%                    bare_jrnl_transmag.tex
-%%*************************************************************************
-
-% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
-% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
-% *** with production work. IEEE's font choices can trigger bugs that do  ***
-% *** not appear when using other class files.                            ***
-% The testflow support page is at:
-% http://www.michaelshell.org/tex/testflow/
-
-
-
-% Note that the a4paper option is mainly intended so that authors in
-% countries using A4 can easily print to A4 and see how their papers will
-% look in print - the typesetting of the document will not typically be
-% affected with changes in paper size (but the bottom and side margins will).
-% Use the testflow package mentioned above to verify correct handling of
-% both paper sizes by the user's LaTeX system.
-%
 % Also note that the "draftcls" or "draftclsnofoot", not "draft", option
 % should be used if it is desired that the figures are to be displayed in
 % draft mode.
 %
 \documentclass[conference]{IEEEtran}
 % Add the compsoc option for Computer Society conferences.
-%
-% If IEEEtran.cls has not been installed into the LaTeX system files,
-% manually specify the path to it like:
-% \documentclass[conference]{../sty/IEEEtran}
-
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 
-
-% *** CITATION PACKAGES ***
-%
 \usepackage{cite}
-
-
-% *** GRAPHICS RELATED PACKAGES ***
-%
 \ifCLASSINFOpdf
    \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
@@ -367,7 +294,14 @@ Finally, each interview concluded with several demographic and open-ended discus
 
 
 \subsubsection{Materials}
-SCREEN CAP ENVIRONMENT
+
+\begin{figure}
+\centering
+\includegraphics[width=3in]{Images/environment.png}
+\caption{The environment participants were presented with.}
+\label{fig:environment} 
+\end{figure}
+	
 FINDBUGS/iTRUST CONFIG
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
@@ -436,12 +370,12 @@ To handle instances where the two coders disagreed, each interview was reviewed 
 During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
 If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
 When reviewers did agree, they determined the phrasing for the question that was most strongly grounded in the interview artifacts. 
-AGREEMENT NUMBERS Ranged from xx to xx and averaged across participants to xx 
+Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
 
 \subsubsection{Question Sorting}
 To organize our questions and facilitate discussion, we preformed an \textit{open} card sort~\cite{hudson2013sorting}. 
 Card sorting is typically used to help structure data by grouping related information into categories. 
-In an \textit{open} sort, the process begins with no notion of pre-defined categories. 
+In an \textit{open} sort, the process begins with no notion of predefined categories. 
 Rather, sorters derive categories from emergent themes in the cards. 
 
 \begin{figure}
