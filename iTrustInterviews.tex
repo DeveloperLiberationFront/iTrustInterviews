@@ -319,7 +319,8 @@ Finally, each interview concluded with several demographic and open-ended discus
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
-We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC. Figure \ref{fig:environment} depicts the configuration of the IDE for one of the tasks.
+We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
+Figure \ref{fig:environment} depicts the configuration of the IDE for one of the tasks.
 
 
 \subsubsection{Participants}
@@ -332,7 +333,8 @@ Table ?? gives additional demographic information on each of the 10 participants
 WHY DEMOGRAPHIC INFO? ensure a degree of diversity in our sample. Cross group analysis??
 
 \subsubsection{Tasks}
-Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
+Each participant approached four vulnerabilities. 
+We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
 FindBugs and Find Security Bugs group similar error messages using a system of tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. To cover a broader set of question topics, we selected vulnerabilities with four different tags.
 Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
@@ -513,7 +515,7 @@ The answers to these questions can be found inside the IDE, which makes it more 
 \emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
 \emph{What other changes do I need to make to apply this fix?} \\
 
-Another kind of question participants asked pertained to the process of fixing the code. The goal of these questions were to better understand how they would actually apply a fix to their code and the effects of doing so on their code. 9 of the XXX distinct questions participants asked were put into this category.
+Another kind of question we extracted pertained to the process of fixing the code. The goal of these questions were to better understand how they would actually apply a fix to their code and the effects of doing so on their code. 9 of the XXX distinct questions participants asked were put into this category.
 
 Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues to developer Quick Fix Scout~\cite{mucslu2012speculative}. Their tool attempts to help developers answer the question \emph{does this fix introduce other bugs?} None of our participants asked this question specifically, however, questions like \emph{how hard is it to apply} and \emph{does the code stand to additional tests prior to/after applying} could possibly be answered using a similar process.
 
@@ -528,11 +530,15 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{Why is this a vulnerability?} \\
 \emph{What are the possible attacks that could occur?} \\
 \emph{How can I prevent this attack?} \\
-\emph{How should I address this problem? (1)} \\
+\emph{How should I address this problem? } \\
 \emph{What is the problem (potential attack)?} \\
 \emph{Is this a real vulnerability?} \\
 \emph{How do I find out if this is a real vulnerability?} \\
 \emph{Miscellaneous} \\
+
+We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. These questions aimed to understand what attacks could stem from the vulnerability, how those attacks might occur, and how they might prevent attacks now and in the future. 9 of the XXX distinct questions we gathered belong in this category.
+
+Some FindBugs notifications attempt to provide developers with the means for answering some of these questions by providing links to relevant documentation. Some of the questions, such as \emph{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. ...maybe something about requiring tool support?
 
 
 %%%%%%%%%%%% Data Storage 
@@ -548,12 +554,13 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{Is any of the data malicious?} \\
 \emph{Where is the data coming from?} \\
 \emph{Miscellaneous} \\
-\noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
 
-\noindent\emph{How serious is this bug?} \\
-\emph{Are all these bugs the same severity?} \\
-\emph{How do the rankings compare?} \\
-\emph{What do the bug rankings mean?} \\
+Some of the questions we found pertained to the data being stored and carried throughout the program. Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 8 of the XXX distinct questions fell into this category.
+
+The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data would travel when the program is run. The developer would have to retrieve this information either in the documentation or debugging the code, or some combination of both.
+% tools that do data flow analysis (i.e. Pixy) but do not allow developer to explore the flow of data.
+
+
 
 %%%%%%%%%%%% Control Flow/Call Information
 
@@ -569,6 +576,8 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{How often is this code called?} \\
 \emph{Miscellaneous} \\
 
+We also extracted questions related to the flow of control through the program and information pertaining to the methods that get called, or do not get called, in the code. As the name of this category may elude to, these questions can generally be answered using a tool for viewing the call hierarchy, when available. Without such a tool, and sometimes with it, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this}.
+
 
 %%%%%%%%%%%% Application Context
 
@@ -577,11 +586,13 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \noindent\emph{What is the method/variable used for in the program?} \\
 \emph{Are we handling secure data in this context?} \\
 \emph{What is the context of this bug/code?} \\
-\emph{How does the system work??} \\
+\emph{How does the system work?} \\
 \emph{Will usage of this method change?} \\
 \emph{Is the method/variable every being used?} \\
 \emph{Is this code used to test the program/functionality?} \\
 \emph{Miscellaneous} \\
+
+Some participants wanted to know how code entities or pieces of code fit into the overall context of the application. 7 of the XXX distinct questions revolved around how the code works in the context of a portion of or the entire system.
 
 
 %%%%%%%%%%%% Resources
@@ -596,6 +607,11 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{Is this a reliable/trusted resource?} \\
 \emph{How do resources prevent or resolve this?} \\
 \emph{Miscellaneous} \\
+
+Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 7 of the XXX distinct questions fell into this category. 
+
+Some tools link to documentation, FindBugs being one of them...
+Do any deal with easily contacting team members, gauging reliability of resource?...
 
 
 %%%%%%%%%%%% Understanding Interacting Tools
@@ -613,6 +629,8 @@ Though it is not clear how feasible it is to answer some of these questions, som
 
 
 
+
+
 %%%%%%%%%%%% Understanding Alt. Fixes
 
 \noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (7)}}
@@ -626,6 +644,17 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
 
+
+%%%%%%%%%%%% Bug Severity/Ranking
+
+\noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
+
+\noindent\emph{How serious is this bug?} \\
+\emph{Are all these bugs the same severity?} \\
+\emph{How do the rankings compare?} \\
+\emph{What do the bug rankings mean?} \\
+
+Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions could deal with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 4 of the XXX distinct questions extracted fell into this category. Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 
 
 %%%%%%%%%%%% Relationship Between Bugs
