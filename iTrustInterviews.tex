@@ -79,11 +79,17 @@ Raleigh, North Carolina}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-To assist developers in creating and understanding secure code, we should understand their knowledge requirements when working with code. 
+
+Assuring the security of software systems requires input from precise and discerning developers.
+To assist in this process, new tools and approaches should help answer the security-relevant questions that developers would otherwise struggle with. 
+To understand the knowledge requirements of 
+To assist developers in this process we must first understand their knowledge requirements.
 To enhance our understanding, we conducted 10 semi-structured interviews with software developers, observing their interactions with security vulnerabilities. 
 From these interactions, we extracted questions developers asked while assessing the security of iTrust, a Java medical records software system. 
 Participants asked X questions which we grouped into Y categories. RESULTS...
 Tool IMPLICATIONS...
+
+Educators?
 
 What topic?
 
@@ -107,7 +113,11 @@ What topic?
 % no \IEEEPARstart
 General Problem
 
-Widespread security vulnerabilities enable potential attackers to exploit vital software systems. Distributing a defective piece of software may compromise the security of the entire system. Accordingly, research and industry increasingly stress the importance of identifying and eliminating  vulnerabilities as early as possible in their systems~\cite{austin2011one, bessey2010few}. When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers ask themselves various questions about the code ~\cite{latoza2010hard, ko2004designing}. This area of research also suggests that there may be a need for tool support to help developers answer the questions they have about their code~\cite{latoza2010hard}. 
+Widespread security vulnerabilities enable potential attackers to exploit vital software systems. 
+Distributing a defective piece of software may compromise the security of the entire system. 
+Accordingly, research and industry increasingly stress the importance of identifying and eliminating  vulnerabilities as early as possible in their systems~\cite{austin2011one, bessey2010few}. 
+When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions ~\cite{latoza2010hard, ko2004designing}. 
+This area of research also suggests that there may be a need for tool support to help developers answer the questions they have about their code~\cite{latoza2010hard}. 
 
 There exists a variety of tools and techniques developed to assist developers with writing and analyzing code, however, often developers do not use these tools~\cite{}.
 
@@ -115,7 +125,10 @@ Related Stuff
 
 Developers are concerned with the security of their applications, but lack adequate support for reasoning about the security of their systems [CITE?].
 Toolsmiths are equipped with an exhaustive set of research findings and guidelines to aid in the design of usable tools [CITE]. 
-However, their tools go unused, in part because they do not help developers answer relevant questions or find relevant information~\cite{johnson2013don, latoza2010hard}. In fact, research suggests that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}. There exists research that determines the questions developers ask about their code. However, to our knowledge, there does not exist research that explores the questions developers ask specifically pertaining to security vulnerabilities in their code. Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
+However, their tools go unused, in part because they do not help developers answer relevant questions or find relevant information~\cite{johnson2013don, latoza2010hard}. 
+In fact, research suggests that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}. There exists research that determines the questions developers ask about their code. 
+However, to our knowledge, there does not exist research that explores the questions developers ask specifically pertaining to security vulnerabilities in their code. 
+Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
 
 
 What is the paper about
@@ -302,11 +315,11 @@ Finally, each interview concluded with several demographic and open-ended discus
 \label{fig:environment} 
 \end{figure}
 	
-FINDBUGS/iTRUST CONFIG
+
 Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
-We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
+We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC. Figure \ref{fig:environment} depicts the configuration of the IDE for one of the tasks.
 
 
 \subsubsection{Participants}
@@ -316,20 +329,35 @@ We recruited participants from personal contacts and class rosters, using snowba
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 Table ?? gives additional demographic information on each of the 10 participants. 
+WHY DEMOGRAPHIC INFO? ensure a degree of diversity in our sample. Cross group analysis??
 
 \subsubsection{Tasks}
--Interview Questions
-
 Each participant approached four vulnerabilities. We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
-FLOW
 
-To cover a broader set of question topics, vulnerabilities were selected from four different FindBugs categories. WHAT ARE THE CATEGORIES 
-Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities. HOW DID I CHOOSE WHICH ONES?
-We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects. 
-Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented on OWASP.
-Participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
+FindBugs and Find Security Bugs group similar error messages using a system of tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. To cover a broader set of question topics, we selected vulnerabilities with four different tags.
+Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
+We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects.
+Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented by OWASP.
+Table xx summarizes each of the four vulnerabilities. 
 
-QUESTIONS AND THINK ALOUD
+During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
+Additionally, we asked them to use a think aloud protocol. Specifically, they were asked to, "Say any questions or thoughts that cross your mind regardless of how relevant you think they are."
+
+The interviewer was equipped with the following script, but had the freedom to omit questions or ask follow-up questions based on the participant's responses.
+\begin{itemize}
+\item What are you exploring/trying to figure out right now?
+\item What information do you need to proceed?
+\item Can you explain what this warning is trying to tell you?
+\item Based on your understanding of this error message, what is the percentage likelihood you would modify this section of he code?
+\item How would you fix the problem? Where would you start?
+\item On a scale of 1-5, how confident are you in your understanding of the error message?
+\item On a scale of 1-5, how confident are you that you are making the correct judgments?
+\item What information would you like to see added to the error message?
+\item What part of the message is most helpful?
+\item Look at the error message one last time. Is there any information you initially disregarded?
+\item Is there anything else that you think I should know about this vulnerability?
+
+\end{itemize}
 
 \subsection{Data Analysis}
 \label{dataAnalysis}
