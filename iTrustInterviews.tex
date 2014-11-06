@@ -299,7 +299,7 @@ We conducted 10 semi-structured interviews with software developers. In our anal
 We want to answer the following research questions:
 \begin{itemize}
 \item \textbf{RQ1}: What types of security related questions do developers ask?
-\item \textbf{RQ2}: What types of security related questions do developers fail to answer?
+\item \textbf{RQ2}: How do current tools and approaches support developers in answering these questions?
 \end{itemize}
 
 \subsection{Study Design}
@@ -334,26 +334,26 @@ Figure \ref{fig:environment} depicts the configuration of the IDE for one of the
 \rowcolor{gray!50}
 \hline
     Participant			& Job Title 						& Security Vulnerability Familiarity 					& Programming Experience (years) \\
-    
-    P1			    	& Student (undergrad)     			& 2.5/5												 	&  4.5    \\
     \hline
-    P2			    	& Student/Test Engineer    			& 3/5									    			&  8 		\\
+    P1			    	& Student     			& 2.5/5												 	&  4.5    \\
+    \hline
+    P2			    	& Test Engineer    			& 3/5									    			&  8 		\\
     \hline
     P3 					& Development Tester       			& 2/5													&  6 	    	\\
     \hline
     P4					& Software Developer     			& 2/5				 									&  6     	\\
     \hline
-    P5					& Student (undergrad)      			& 4/5													&  10 	\\
+    P5					& Student      			& 4/5													&  10 	\\
     \hline
     P6					& Student		    				& 1/5							    					& 4		\\
     \hline
     P7					& Front-end Software Developer    	& 4/5													& 4.5              \\
     \hline
-    P8					& Student (undergrad)	    		& 3/5													& 7   \\
+    P8					& Student	    		& 3/5													& 7   \\
     \hline
     P9					& Software Consultant   	 		& 3/5													& 5	  		 \\
     \hline
-    P10			    	& Student (undergrad)    			& 3/5										 			& 8	              \\
+    P10			    	& Student    			& 3/5										 			& 8	              \\
     \hline
 \end{tabular}
 \label{table:participants}
@@ -367,9 +367,11 @@ We interviewed a total of 10 software developers, 6 students and 4 professionals
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
+
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
-Table ?? gives additional demographic information on each of the 10 participants. 
-WHY DEMOGRAPHIC INFO? ensure a degree of diversity in our sample. Cross group analysis??
+
+Table \ref{table:participants} gives additional demographic information on each of the 10 participants. 
+Since the focus of our study was to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participant's responses.
 
 \subsubsection{Tasks}
 Each participant approached four vulnerabilities. 
@@ -379,7 +381,27 @@ FindBugs and Find Security Bugs group similar error messages using a system of t
 Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects.
 Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented by OWASP.
-Table xx summarizes each of the four vulnerabilities. 
+Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
+
+\begin{table*} 
+\centering
+\caption{Four vulnerability exploration tasks}
+\begin{tabular}{|l|l|l|l|}
+\rowcolor{gray!50}
+\hline
+    Vulnerability				& Short Bug Description													& Tool's Rank 						& Tool's Confidence\\
+    \hline	
+    Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& "Scary"							 	&  Normal\\
+    \hline
+    Predictable Random			& Use of java.util.Random is predictable. 								& "Scary"								&  Normal\\
+    \hline
+    Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& "Troubling"		&  Low\\
+    \hline
+    SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& "Of Concern"		&  Low\\
+    \hline
+\end{tabular}
+\label{table:vulnerabilities}
+\end{table*}
 
 During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
 Additionally, we asked them to use a think aloud protocol. Specifically, they were asked to, "Say any questions or thoughts that cross your mind regardless of how relevant you think they are."
@@ -402,16 +424,15 @@ The interviewer was equipped with the following script, but had the freedom to o
 
 \subsection{Data Analysis}
 \label{dataAnalysis}
-What is grounded theory [CITE]. 
-
-First, we transcribed all the audio files using oTranscribe.\footnote{\url{otranscribe.com}}
-Using a grounded theory approach, each of the interviews was analyzed by two of the authors for implicit and explicit questions. 
-We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. ?? The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
+We analyzed the interview data using a grounded theory approach [CITE]. 
+First, we transcribed all the audio-video files using oTranscribe.\footnote{\url{otranscribe.com}}
+Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
+We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
-[CITE LETOVSKY] HERE
-
-Participants ask both explicit and implicit questions. We developed 5 criteria to assist in the uniform classification of participant statements. A statement was coded as a question only if it met one of the following criteria:
+Participants ask both explicit and implicit questions. 
+Drawing from previous work on utterance interpretation, we developed 5 criteria to assist in the uniform classification of participant statements~\cite{letovsky1987cognitive}. 
+A statement was coded as a question only if it met one of the following criteria:
 
 \begin{itemize}
 \item \textbf{The participant explicitly asks a question.}
