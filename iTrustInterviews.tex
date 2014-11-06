@@ -60,7 +60,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{iTrust Interviews}
+\title{Security-Related Questions Developers Ask About Their Code}
 
 
 % author names and affiliations
@@ -84,19 +84,14 @@ Raleigh, North Carolina}}
 
 Assuring the security of software systems requires input from precise and discerning developers.
 To assist in this process, new tools and approaches should help answer the security-relevant questions that developers would otherwise struggle with. 
-To understand the knowledge requirements of 
-To assist developers in this process we must first understand their knowledge requirements.
-To enhance our understanding, we conducted 10 semi-structured interviews with software developers, observing their interactions with security vulnerabilities. 
-From these interactions, we extracted questions developers asked while assessing the security of iTrust, a Java medical records software system. 
-Participants asked 559 questions which we grouped into Y categories. RESULTS...
-Tool IMPLICATIONS...
+However, we lack a catalog and categorization of such questions. Our work identifies the security-related questions developers ask, explores the strategies that developers use to answer those questions, and assesses the existing tool support for those strategies.  
+Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
 
-Educators?
+We conducted 10 semi-structured interviews with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
+From these interactions, we extracted 559 questions, which we reduced to 155 unique questions that fit into 17 categories.
 
-What topic?
 
 \end{abstract}
-
 % no keywords
 
 % For peer review papers, you can put extra information on the cover
@@ -114,34 +109,25 @@ What topic?
 \section{Introduction}
 % no \IEEEPARstart
 
-
-INTRO GENERAL PROBLEM STORY:
-Developers ask questions
-Research aims to catalog those questions
-Toolsmiths use questions to provide new tool support or refine existing approaches.
-
-Security professionals also require tool support in their work.
-Security is important
-Tools help answer important questions in security 
-Security tools aim to help developers detect critical flaws
-
-What is the paper about
-	What did we do
-
-
-When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions~\cite{latoza2010hard, ko2004designing}. There exists research that attempts to categorize and catalog the questions developers ask when coding~\cite{latoza2010hard}. Research on tool design and developer productivity have used available catalogs to design tools that support developers when attempting to answer these questions~\cite{yoon2013visualization, servant2012history}.
+When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions~\cite{livshits2005finding, ko2004designing}. 
+There exists research that attempts to categorize and catalog the questions developers ask when coding~\cite{latoza2010hard}. 
+Research on tool design and developer productivity have used available catalogs to design tools that support developers when attempting to answer these questions~\cite{yoon2013visualization, servant2012history}.
 
  
-For most software, security is an important aspect to consider; therefore, security professionals also could benefit from tool support in their work environment. There exist tools that help developers detect potential security flaws in their code, however, research suggests they may not be using them because of difficulty interpreting the output~\cite{johnson2013don}. Part of this difficulty for security developers may stem from the fact that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}.
+Professionals working on security-critical applications also could benefit from improved tool support in their work environments. 
+There exist tools that help developers detect potential security flaws in their code, however, research suggests they may not be using them because of difficulty interpreting the output~\cite{johnson2013don}. 
+Part of this difficulty for security developers may stem from the fact that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}.
 
 %This is a bit redundant but it's all here
-Despite the importance of security, no research to our knowledge exists that catalogs security related questions developers ask. Because of this, though developers are concerned with the security of their applications, they may lack adequate tool support for reasoning about the security of their systems. There exists research that determines the questions developers ask about their code. However, to our knowledge, there does not exist research that explores the questions developers ask specifically pertaining to security vulnerabilities in their code. Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
+Despite the importance of security, to our knowledge, no research exists that catalogs the specific security-related questions developers ask. 
+Therefore, we lack a framework for assessing whether existing tools fully address the knowledge requirements of developers.
 
-In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted 559 cards into XXX categories. [QUICK SUMMARY OF FINDINGS]. 
+Research that determines the questions developers ask about their code has informed and motivated toolsmiths in other domains to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
+Our work aims to extend these promising results to security by informing toolsmiths of the security-related questions that developers ask.
+In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
+We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted 559 cards into 17 categories. 
 
-Contribution
-
-The main contribution of this paper is categorized questions developers ask to inform toolsmiths of knowledge requirements developers have when faced with security vulnerabilities.
+The main contribution of this paper is categorized questions developers ask. We also asses the strategies developers may uses to answer these questions and whether or not existing tools support these strategies.
 
 The remainder of the paper is organized as follows. In Section~\ref{sec:rw}, we discuss previous work related to our own. Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. Next, we discuss the findings of our study in Section~\ref{sec:results} and implications of our findings in Section~\ref{sec:disc}. Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
 
@@ -319,7 +305,7 @@ Finally, each interview concluded with several demographic and open-ended discus
 \end{figure}
 	
 
-Participants used Eclipse to explore vulnerabilities in iTrust,\footnote{\url{agile.csc.ncsu.edu/iTrust/wiki/doku.php}} a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
+Participants used Eclipse to explore vulnerabilities in iTrust, a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
 We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
@@ -389,7 +375,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \begin{tabular}{|l|l|l|l|}
 \rowcolor{gray!50}
 \hline
-    Vulnerability				& Short Bug Description													& Tool's Rank 						& Tool's Confidence\\
+    Vulnerability				& Short Description													& Tool's Rank 						& Tool's Confidence\\
     \hline	
     Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& "Scary"							 	&  Normal\\
     \hline
