@@ -113,28 +113,29 @@ What topic?
 
 \section{Introduction}
 % no \IEEEPARstart
-General Problem
 
-Widespread security vulnerabilities enable potential attackers to exploit vital software systems. 
-Distributing a defective piece of software may compromise the security of the entire system. 
-Accordingly, research and industry increasingly stress the importance of identifying and eliminating  vulnerabilities as early as possible in their systems~\cite{austin2011one, bessey2010few}. 
-When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions ~\cite{latoza2010hard, ko2004designing}. 
-This area of research also suggests that there may be a need for tool support to help developers answer the questions they have about their code~\cite{latoza2010hard}. 
 
-There exists a variety of tools and techniques developed to assist developers with writing and analyzing code, however, often developers do not use these tools~\cite{}.
+INTRO GENERAL PROBLEM STORY:
+Developers ask questions
+Research aims to catalog those questions
+Toolsmiths use questions to provide new tool support or refine existing approaches.
 
-Related Stuff
-
-Developers are concerned with the security of their applications, but lack adequate support for reasoning about the security of their systems [CITE?].
-Toolsmiths are equipped with an exhaustive set of research findings and guidelines to aid in the design of usable tools [CITE]. 
-However, their tools go unused, in part because they do not help developers answer relevant questions or find relevant information~\cite{johnson2013don, latoza2010hard}. 
-In fact, research suggests that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}. There exists research that determines the questions developers ask about their code. 
-However, to our knowledge, there does not exist research that explores the questions developers ask specifically pertaining to security vulnerabilities in their code. 
-Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
-
+Security professionals also require tool support in their work.
+Security is important
+Tools help answer important questions in security 
+Security tools aim to help developers detect critical flaws
 
 What is the paper about
 	What did we do
+
+
+When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions~\cite{latoza2010hard, ko2004designing}. There exists research that attempts to categorize and catalog the questions developers ask when coding~\cite{latoza2010hard}. Research on tool design and developer productivity have used available catalogs to design tools that support developers when attempting to answer these questions~\cite{yoon2013visualization, servant2012history}.
+
+ 
+For most software, security is an important aspect to consider; therefore, security professionals also could benefit from tool support in their work environment. There exist tools that help developers detect potential security flaws in their code, however, research suggests they may not be using them because of difficulty interpreting the output~\cite{johnson2013don}. Part of this difficulty for security developers may stem from the fact that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}.
+
+%This is a bit redundant but it's all here
+Despite the importance of security, no research to our knowledge exists that catalogs security related questions developers ask. Because of this, though developers are concerned with the security of their applications, they may lack adequate tool support for reasoning about the security of their systems. There exists research that determines the questions developers ask about their code. However, to our knowledge, there does not exist research that explores the questions developers ask specifically pertaining to security vulnerabilities in their code. Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
 
 In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted XXX cards into XXX categories. [QUICK SUMMARY OF FINDINGS]. 
 
