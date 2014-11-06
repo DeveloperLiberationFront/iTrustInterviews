@@ -327,7 +327,7 @@ Figure \ref{fig:environment} depicts the configuration of the IDE for one of the
 
 
 
-\begin{table*} 
+\begin{table*}
 \centering
 \caption{Demographics of study participants}
 \begin{tabular}{|l|l|c|c|}
@@ -368,7 +368,7 @@ All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
-Table ?? gives additional demographic information on each of the 10 participants. 
+Table~\ref{table:participants} gives additional demographic information on each of the 10 participants. 
 WHY DEMOGRAPHIC INFO? ensure a degree of diversity in our sample. Cross group analysis??
 
 \subsubsection{Tasks}
@@ -602,7 +602,7 @@ TOOL SHOULD PROVIDE INFO ON WHAT THE ATTACK IS, NOT JUST WHY CODE IS BROKEN
 \emph{Where is the data coming from?} \\
 \emph{Miscellaneous} \\
 
-Some of the questions we found pertained to the data being stored and carried throughout the program. Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 8 of the XXX distinct questions fell into this category.
+Some of the questions we found pertained to the data being stored and carried throughout the program. Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 8 of the XXX distinct questions fall into this category.
 
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data would travel when the program is run. The developer would have to retrieve this information either in the documentation or debugging the code, or some combination of both.
 % tools that do data flow analysis (i.e. Pixy) but do not allow developer to explore the flow of data.
@@ -623,9 +623,9 @@ The call hierarchy tool in Eclipse provides a way of understanding control flow,
 \emph{How often is this code called?} \\
 \emph{Miscellaneous} \\
 
-We also extracted questions related to the flow of control through the program and information pertaining to the methods that get called, or do not get called, in the code. As the name of this category may elude to, these questions can generally be answered using a tool for viewing the call hierarchy, when available. Without such a tool, and sometimes with it, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this}.
+We also extracted questions related to the flow of control through the program and information pertaining to the methods that get called, or do not get called, in the code. As the name of this category may elude to, these questions can generally be answered using a tool for viewing the call hierarchy, when available. Without such a tool, and sometimes with it, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this}. 
 
-EXPAND ON CALL HIERARCHY TOOL
+%EXPAND ON CALL HIERARCHY TOOL
 
 %%%%%%%%%%%% Application Context
 
@@ -642,7 +642,7 @@ EXPAND ON CALL HIERARCHY TOOL
 
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application. 7 of the XXX distinct questions revolved around how the code works in the context of a portion of or the entire system.
 
-FAMILIARITY
+%FAMILIARITY
 
 %%%%%%%%%%%% Resources
 
@@ -657,12 +657,10 @@ FAMILIARITY
 \emph{How do resources prevent or resolve this?} \\
 \emph{Miscellaneous} \\
 
-Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 7 of the XXX distinct questions fell into this category. 
+Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 7 of the XXX distinct questions fall into this category. 
 
-Some tools link to documentation, FindBugs being one of them...
-Do any deal with easily contacting team members, gauging reliability of resource?...
+Some tools link to external documentation that developers can use to attempt to answer some of these questions, Find Security Bugs being one of them. Though links to external documentation and resources can provide answers to  some of these questions, they do not help answer questions concerning the reliability of the resource nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code. Lack of support for answering these questions may have contributed to participants not clicking the links in many situations. Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements, however, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
 
-SEARCHING OUTSIDE FINDBUGS/NOT CLICKING LINKS
 
 %%%%%%%%%%%% Understanding Interacting Tools
 
@@ -677,11 +675,14 @@ SEARCHING OUTSIDE FINDBUGS/NOT CLICKING LINKS
 \emph{How is the information presented by the tool organized?} \\
 \emph{Miscellaneous} \\
 
-Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool and find references, for example. Participants asked questions about how to access specific tools and how to interpret their output.
+Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool and find references, for example. While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. 7 of the XXX distinct questions we extracted fall into this category.
 
-[ACCESSIBILITY (4 letter word)]
+%[ACCESSIBILITY (4 letter word)]
+Some of the questions we extracted seemed to deal with having access to or knowing how to use the tools needed to complete a certain task. Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. 
 
-[Presentation of tool information]
+%[Presentation of tool information]
+Other questions dealt with the presentation of information provided by the tool. Participants wanted to be able to explore things about the tool's output, and typically had to manually determine the answers to their questions. For example, Find Security Bugs reports its confidence on the potential defect in the notification, however, some participants still wanted to know what the tool's confidence was in the vulnerability it was reporting.  
+
 
 
 
@@ -698,9 +699,9 @@ Throughout the study participants interacted with a variety of tools including F
 \emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
 
-Participants look elsewhere for information about their code or vulnerability. When presented with alternative solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+Sometimes participants looked elsewhere for information about their code or vulnerability. When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 7 of the XXX questions we extracted pertained to understanding the various facets of alternative approaches or solutions.   
 
-This process was complicated by the fact that alternative approaches were suggested by a variety of sources (SO, official docs, quick fixes). Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggested approach. (PREFERENCE FOR STACK OVERFLOW)
+The process of understanding the alternative options was made more complicated by the fact that a variety of sources, such as StackOverflow and official documentation, contributed to the polls of suggested alternative approaches. Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
 
 %%%%%%%%%%%% Bug Severity/Ranking
 
@@ -711,7 +712,7 @@ This process was complicated by the fact that alternative approaches were sugges
 \emph{How do the rankings compare?} \\
 \emph{What do the bug rankings mean?} \\
 
-Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions could deal with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 4 of the XXX distinct questions extracted fell into this category. Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
+Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions could deal with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 4 of the XXX distinct questions extracted fall into this category. Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 
 
 %%%%%%%%%%%% Relationship Between Bugs
@@ -722,7 +723,7 @@ Some participants had questions regarding the severity or ranking of the bug bei
 \emph{Are all the bugs related in my code?} \\
 \emph{Are all of these notifications vulnerabilities?} \\
 
-Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
+Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 3 of the XXX distinct questions we found aim to learn more about and leverage the relationships between the bugs in the code. We can speculate that one reason developers might have these kinds of questions is because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category. 
 
 %%%%%%%%%%%% End-User Interaction
 
@@ -732,9 +733,9 @@ Some participants asked questions about the connections between co-occurring vul
 \emph{Does the user have access to this code?} \\
 \emph{Does user input get validated/sanitized?} \\
 
-These questions deal with how the end user might interact with the system. Participants want to know whether users can access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
+Questions in this category deal with how the end user might interact with the system. Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity.3 of the XXX distinct questions we found fall into this category. 
 
-To our knowledge, developers lack tool support in determining which parts of the code users can interact with. 
+Research exists that studies attack surfaces; the goal of this research area is to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. To our knowledge, developers lack tool support for exploring parts of the code, or even attack surface, users can interact with. 
 
 %%%%%%%%%%%% Understanding Concepts
 
@@ -746,7 +747,11 @@ To our knowledge, developers lack tool support in determining which parts of the
 \emph{What is this concept?} \\
 \emph{Miscellaneous} \\
 
-The concepts that the notification contains are incompatible with the developer's mental model. Developer lacks education or experience (ability) to understand concepts that occur in the code or in the notification. 
+For some participants, the concepts that the notification contained were incompatible with the developer's mental model. In these situations, participants seemed to have questions surrounding one or more of the concepts relevant to the problem.
+
+For some participants, the difficulty was with the terminology used; others were not familiar with some of the general concepts being discussed. In general, it seems that if a developer does not have experience with a particular feature or concept, it is less likely they will understand a problem in their code pertaining to that concept~\cite{}.%cite building mental model paper? 
+
+Developers lacks education or experience (ability) to understand concepts that occur in the code or in the notification. 
 
 %%%%%%%%%%%% Confirming Expectations
 
