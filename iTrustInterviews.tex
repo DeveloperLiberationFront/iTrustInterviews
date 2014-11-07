@@ -125,7 +125,7 @@ Therefore, we lack a framework for assessing whether existing tools fully addres
 Research that determines the questions developers ask about their code has informed and motivated toolsmiths in other domains to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
 Our work aims to extend these promising results to security by informing toolsmiths of the security-related questions that developers ask.
 In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
-We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted 559 cards into 17 categories. 
+We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
 The main contribution of this paper is categorized questions developers ask. We also asses the strategies developers may uses to answer these questions and whether or not existing tools support these strategies.
 
@@ -472,7 +472,7 @@ In the first stage, we formed question clusters by grouping questions that ident
 In this phase we focused on phrasing similar questions consistently and grouping duplicates.
 For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using prepared statements?} and P2 asked, \textit{Where can I get more information on path traversal?} 
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
-We identified XX clusters. Note that YY of the XX clusters only contained one question.
+At this stage, we discarded 5 unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
 
 \begin{figure}
 \centering
@@ -524,16 +524,16 @@ We identified XX clusters. Note that YY of the XX clusters only contained one qu
     \hline
     Confirming Expectations					 			& 1				&  \emph{Example question...}   \\
     \hline
-%    Uncategorized										& 10    		& 	\emph{} \\
-%    \hline
+    Uncategorized										& 10    		& 	\emph{} \\
+    \hline
 \end{tabular}
 \label{table:categories}
 \end{table*}
 
 
 In the second stage, we identified emergent themes and grouped the clusters into categories based on the themes. 
-For example, we placed the question \textit{Where can I get more information?} into a category called \textbf{Resources/Documentation}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation}. 
-Table~\ref{table:categories} contains the X categories along with the number of distinct clusters each contains. 
+For example, we placed the question \textit{Where can I get more information?} into a category called \emph{\textbf{Resources/Documentation}}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation}. 
+Table~\ref{table:categories} contains the 17 categories along with the number of distinct clusters each contains. 
 
 To validate the categories we identified, we asked two independent researchers to sort the question clusters into our categories. 
 Rather than sort the entire set of questions, each rater was given a subset of the question set. 
@@ -541,13 +541,9 @@ The first rater agreed with our categorization with a Cohen's Kappa of $\kappa =
 Between the first and second rater we reworded and clarified some ambiguous questions. The second rater exhibited greater agreement ($\kappa = .70$). 
 Given the high number of categories, these values are well within the acceptable ranges.
 
-DISCARDING
-
 \section{Results}
 \label{sec:results}
-We extracted x questions, removing repeats, we came up with x questions
-
-Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis~\cite{latoza2010hard}. We also discuss the common thread between the questions in each category and speculate as to why these bits of information may be important when assessing potential security vulnerabilities.
+Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis~\cite{latoza2010hard}. For each category, we discuss the common thread that ties questions in that category together. We also contextualize each category by discussing existing tool support and  shortcomings.
 
 \noindent\subsection{\textbf{Developer Planning and Self-Reflection (11)}} 
 
@@ -564,9 +560,12 @@ Following the most similar work to our own, for each category, we list each dist
 \emph{Why do I care?} \\
 \emph{Miscellaneous} \\
 
-One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the XXX distinct questions extracted fit into this category. All of the questions in this category involve general thoughts the developer has pertaining to the vulnerability, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
+One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the 155 distinct questions extracted fit into this category. All of the questions in this category involve the thoughts the developer or the individual's relationship to the problem, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
 
-Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. For example, one question participants asked was ``Have I seen this before?'' A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
+Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
+For example, one question participants asked was \textit{Have I seen this before?} 
+A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
+The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 
 %%%%%%%%%%%% Code Background
 
@@ -583,9 +582,12 @@ Though these general questions may not be trivial to help developers answer, the
 \emph{Why are we using this API in the code?} \\
 \emph{Miscellaneous} \\
 
-Another kind of question participants asked concerned the background and intended function of the code being analyzed. Nine of the XXX distinct questions extracted fit into this category. The questions in this category aim to learn more about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
+Participants also asked questions concerning the background and intended function of the code being analyzed. 
+Nine of the 155 distinct questions extracted fit into this category. 
+The questions in this category inquire about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
 
-The answer to many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
+The answer to many of these questions, developers would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
+
 This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need. Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
 
 
@@ -604,14 +606,14 @@ This means that without proper tool support, developers interested in this infor
 \emph{How do I navigate to other open files?} \\
 \emph{Miscellaneous} \\
 
-Some participants asked questions regarding locating, or the ability to locate, various bits of information in their coding environment. Nine questions of the XXX extracted fit into this category. The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments; \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
+Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. Nine questions of the 155 extracted fit into this category. The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
 
 The answers to these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example... 
 
 
 %%%%%%%%%%%% Assessing Application
 
-\noindent\subsection{\textbf{Assessing Application of the Fix (9)}}
+\noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}
 
 \noindent\emph{How hard is it to apply a fix to this code?} \\
 \emph{How do I use this fix in my code?} \\
@@ -623,12 +625,11 @@ The answers to these questions can be found inside the IDE, which makes it more 
 \emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
 \emph{What other changes do I need to make to apply this fix?} \\
 
-Another kind of question we extracted pertained to the process of fixing the code. The goal of these questions were to better understand how they would actually apply a fix to their code and the effects of doing so on their code. 9 of the XXX distinct questions participants asked were put into this category.
+Another kind of question we extracted pertained to the process resolving vulnerabilities. These questions pertain to understanding the application and implications of a potential fix. We categorized 9 of the 155 distinct questions into this category.
 
-Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues to developer Quick Fix Scout~\cite{mucslu2012speculative}. Their tool attempts to help developers answer the question \emph{does this fix introduce other bugs?} None of our participants asked this question specifically, however, questions like \emph{how hard is it to apply} and \emph{does the code stand to additional tests prior to/after applying} could possibly be answered using a similar process.
+Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} None of our participants asked this question specifically, however, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
 
   
-
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
 \noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (9)}}
@@ -644,11 +645,13 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{How do I find out if this is a real vulnerability?} \\
 \emph{Miscellaneous} \\
 
-We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. These questions aimed to understand what attacks could stem from the vulnerability, how those attacks might occur, and how they might prevent attacks now and in the future. 9 of the XXX distinct questions we gathered belong in this category.
+We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. Nine of the 155 distinct questions we gathered belong in this category.
 
-Some FindBugs notifications attempt to provide developers with the means for answering some of these questions by providing links to relevant information. Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
+Some FindBugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
 
-Some of the questions, such as \emph{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability. If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate.
+Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
+This kind of question may require the triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability. 
+If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate.
 
 
 %%%%%%%%%%%% Control Flow/Call Information
@@ -665,13 +668,18 @@ Some of the questions, such as \emph{how do I find out if this is a real vulnera
 \emph{How often is this code called?} \\
 \emph{Miscellaneous} \\
 
-We also extracted questions related to the flow of control through the program and information pertaining to the methods that get called, or do not get called, in the code. As the name of this category suggests, these questions can generally be answered using a tool for viewing the call hierarchy, when available. 8 of the XXX distinct questions extracted dealt with acquiring control flow and call information.
+We also extracted questions relating to control flow and calling information. 
+Developers seek information information pertaining to the methods that get called, or do not get called, in the code. 
+As the name of this category suggests, these questions can generally be answered using a tool for viewing the call hierarchy, when available. 
+Eight of the 155 distinct questions extracted dealt with acquiring control flow and call information.
 
 %EXPAND ON CALL HIERARCHY TOOL
-Eclipse has a call hierarchy tool that many participants used at least once during our study. Those able to use it, despite the time it may have taken, typically found the information they were looking for; if they did not, they made educated guesses based on what they did find. 
+Eclipse includes a call hierarchy tool that, given a method, displays its callers and all its callees. 
+The tool allows users to easily traverse the call hierarchy. 
+While some participants located and employed the call hierarchy tool, others gravitated toward other more error-prone approaches, such as the 'find references' tool or manual visual inspection. 
 %find references / visual inspection
-Some participants were not aware the call hierarchy tool existed, or perhaps did not know how to use it; these participants often attempted to get the information they needed using either the Eclipse 'find references' tool or through manual visual inspection using the code highlighting provided by Eclipse to view usage of a program entity within a given file.
-It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, but it seems they all provide value in terms of understanding control flow. Even with tools like these, however, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. 
+In some cases, participants were unaware of the call hierarchy tool or how to use it. Others were predisposed to favor light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool.
+It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. Even with tools like these, however, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. Further, even tools like call hierarchy do not provide information on how parameters are modified between method calls.
 
 
 %%%%%%%%%%%% Data Storage 
@@ -688,9 +696,14 @@ It is unclear whether the call hierarchy tool is more efficient than tools like 
 \emph{Where is the data coming from?} \\
 \emph{Miscellaneous} \\
 
-Some of the questions we found pertained to the data being stored and carried throughout the program. Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 8 of the XXX distinct questions fell into this category.
+Some of the questions we found pertained to the data being stored and carried throughout the program. 
+Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 
+Eight of the 155 distinct questions fit into this category.
 
-The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data would travel when the program is run. The developer would have to retrieve this information either in the documentation or debugging the code, or some combination of both. There exists tools that do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, one can imagine how large a graph of data dependencies can get as a project grows~\cite{ghosh2001method, ferrante1987program}.
+The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
+The developer would have to retrieve this information, either from the documentation, by debugging the code, or some combination of both. 
+There exists tools that do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
+There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}.
 % tools that do data flow analysis (i.e. Pixy) but do not allow developer to explore the flow of data.
 
 
@@ -707,11 +720,11 @@ The call hierarchy tool in Eclipse provides a way of understanding control flow,
 \emph{Is this code used to test the program/functionality?} \\
 \emph{Miscellaneous} \\
 
-Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 7 of the XXX distinct questions revolved around how the code works in the context of a portion of or the entire system.
+Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. Seven of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
 
 %FAMILIARITY
 
-Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. For example, one reason for needing this type of information is to  better understand the code and likelihood that a bug is a vulnerability. However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
+Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
 
 %%%%%%%%%%%% Resources
 
@@ -726,9 +739,15 @@ Though all participants had experience coding in iTrust, and had some knowledge 
 \emph{How do resources prevent or resolve this?} \\
 \emph{Miscellaneous} \\
 
-Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 7 of the XXX distinct questions fall into this category. 
+Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 
+Seven of the 155 distinct questions fall into this category. 
 
-Some tools link to external documentation that developers can use to attempt to answer some of these questions, Find Security Bugs being one of them. Though links to external documentation and resources can provide answers to  some of these questions, they do not help answer questions concerning the reliability of the resource nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code. Lack of support for answering these questions may have contributed to participants not clicking the links in many situations. Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements, however, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
+%Fix Sentence
+Some tools link to external documentation that developers can use to attempt to answer some of these questions, Find Security Bugs being one of them. 
+Though links to external documentation and resources can provide answers to some of these questions, they do not help answer questions concerning the reliability of the resource nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code.
+%Information too complex, not sure how to apply 
+Lack of support for answering these questions may have contributed to participants not clicking the links in many situations.  
+Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements, however, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
 
 
 %%%%%%%%%%%% Understanding Interacting Tools
@@ -744,13 +763,17 @@ Some tools link to external documentation that developers can use to attempt to 
 \emph{How is the information presented by the tool organized?} \\
 \emph{Miscellaneous} \\
 
-Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool and find references, for example. While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. 7 of the XXX distinct questions we extracted fall into this category.
+Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool, and find references, for example. While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. Seven of the 155 distinct questions we extracted fall into this category.
 
 %[ACCESSIBILITY (4 letter word)]
-Some of the questions we extracted seemed to deal with having access to or knowing how to use the tools needed to complete a certain task. Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. 
+Some of the questions we extracted seemed to deal with having access to or knowing how to use the tools needed to complete a certain task. 
+Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. This seems to point to a tool awareness or education problem.
+
 
 %[Presentation of tool information]
-Other questions dealt with the presentation of information provided by the tool. Participants wanted to be able to explore things about the tool's output, and typically had to manually determine the answers to their questions. For example, Find Security Bugs reports its confidence on the potential defect in the notification, however, some participants still wanted to know what the tool's confidence was in the vulnerability it was reporting.  
+Other questions dealt with the presentation of information provided by the tool. 
+Participants wanted to be able to explore things about the tool's output, and typically had to manually determine the answers to their questions. 
+For example, Find Security Bugs reports its confidence on the potential defect in the notification, however, some participants found it difficult to process this information.
 
 
 
@@ -767,9 +790,9 @@ Other questions dealt with the presentation of information provided by the tool.
 \emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
 
-Sometimes participants looked elsewhere for information about their code or vulnerability. When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 7 of the XXX questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
+Sometimes participants looked elsewhere for information about their code or vulnerability. Primarily, participants used web resources or searched for similar code elsewhere in the project. When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. Seven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
 
-The process of understanding the alternative options was made more complicated by the fact that a variety of sources, such as StackOverflow and official documentation, contributed to the polls of suggested alternative approaches. Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
+The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats.  Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
 %%%%%%%%%%%% Bug Severity/Ranking
 
 \noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
@@ -779,7 +802,9 @@ The process of understanding the alternative options was made more complicated b
 \emph{How do the rankings compare?} \\
 \emph{What do the bug rankings mean?} \\
 
-Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions could deal with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 4 of the XXX distinct questions extracted fall into this category. Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
+Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions dealt with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 
+Four of the 155 distinct questions extracted fall into this category. 
+Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 
 %%%%%%%%%%%% Relationship Between Bugs
 
@@ -789,7 +814,10 @@ Some participants had questions regarding the severity or ranking of the bug bei
 \emph{Are all the bugs related in my code?} \\
 \emph{Are all of these notifications vulnerabilities?} \\
 
-Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 3 of the XXX distinct questions we found aim to learn more about and leverage the relationships between the bugs in the code. We can speculate that one reason developers might have these kinds of questions is because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
+Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
+Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
+We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. 
+Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
 %%%%%%%%%%%% End-User Interaction
 
 \noindent\subsection{\textbf{End-User Interaction (3)}}
@@ -798,9 +826,11 @@ Some participants asked questions about the connections between co-occurring vul
 \emph{Does the user have access to this code?} \\
 \emph{Does user input get validated/sanitized?} \\
 
-Questions in this category deal with how the end user might interact with the system. Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 3 of the XXX distinct questions we found fall into this category.
+Questions in this category deal with how the end user might interact with the system. Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. Three of the 155 distinct questions we found fall into this category.
 
-Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system; the goal of this research area is to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. To our knowledge, developers lack tool support for exploring parts of the code, or even attack surfaces, users can interact with.
+Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system. The goal of this research area is to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
+To our knowledge, developers lack tool support for navigating and reasoning about attack surfaces. 
+Many participants spent time and effort exploring the call hierarchy of the potential path traversal only to discover that the code was entirely contained in test classes.
  
 %%%%%%%%%%%% Understanding Concepts
 
@@ -820,7 +850,7 @@ Sometimes, the difficulty participants encountered was with the terminology used
 \noindent\subsection{\textbf{Confirming Expectations (1)}}
 
 \noindent\emph{Is this doing what I expect it to?} \\
-
+%Swap categories?
 Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. We only identified one distinct question, however, there are many ways to interpret the questions and may require different pieces of information to answer it.
 
 %%%%%%%%%%%% Error Messages
@@ -833,7 +863,7 @@ Developers build and alter their mental models when exploring code~\cite{canas19
 
 As expected, participants asked questions concerning the content of the error messages. Mostly, this happened when participants needed to look at the bug information to get a better understanding of the potential vulnerability. 
 
-More surprisingly, they also asked questions about how to relate information contained in the error message back to the code. For example, the Predictable Random vulnerability notes that a predicable random value is bad when being used in a secure context. Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+More surprisingly, they also asked questions about how to relate information contained in the error message back to the code. For example, the predictable random vulnerability notes that a predicable random value is bad when being used in a secure context. Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 
 \section{Discussion}
 \label{sec:disc}
@@ -841,7 +871,7 @@ Data suggests that tools should focus on XYZ. Discuss interesting/contradictory 
 
 COME UP WITH SECTION HEADERS
 
-Whyline, flow of data and control
+%Whyline, flow of data and control
 
 \section{Future Work}
 \label{sec:fw}
