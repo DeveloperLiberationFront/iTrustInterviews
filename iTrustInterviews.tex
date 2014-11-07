@@ -82,12 +82,13 @@ Raleigh, North Carolina}}
 % in the abstract
 \begin{abstract}
 
-Assuring the security of software systems requires input from precise and discerning developers.
-To assist in this process, new tools and approaches should help answer the security-relevant questions that developers would otherwise struggle with. 
-However, we lack a catalog and categorization of such questions. Our work identifies the security-related questions developers ask, explores the strategies that developers use to answer those questions, and assesses the existing tool support for those strategies.  
-Our work aims to inform toolsmiths of the security-related questions that developers ask by assessing knowledge requirements developers have when understanding potential security vulnerabilities.
+New tools and approaches should help developers answer the security-relevant questions that they would otherwise struggle with. 
+To design tools that help developers answer their questions, we must first understand what questions they ask.
+However, we lack a catalog and categorization of such questions. 
+Our work identifies the security-related questions developers ask, explores the strategies that developers use to answer those questions, and assesses the existing tool support for those strategies.  
+We contribute by informing toolsmiths of the security-related questions that developers ask.
 
-We conducted 10 semi-structured interviews with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
+We identified developers' knowledge requirements by conducting 10 semi-structured interviews with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
 From these interactions, we extracted 559 questions, which we reduced to 155 unique questions that fit into 17 categories.
 
 
@@ -115,7 +116,8 @@ Research on tool design and developer productivity have used available catalogs 
 
  
 Professionals working on security-critical applications also could benefit from improved tool support in their work environments. 
-There exist tools that help developers detect potential security flaws in their code, however, research suggests they may not be using them because of difficulty interpreting the output~\cite{johnson2013don}. 
+There exist tools that help developers detect potential security flaws in their code. 
+However, research suggests they may not be using them because of difficulty interpreting the output~\cite{johnson2013don}. 
 Part of this difficulty for security developers may stem from the fact that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}.
 
 %This is a bit redundant but it's all here
@@ -123,13 +125,18 @@ Despite the importance of security, to our knowledge, no research exists that ca
 Therefore, we lack a framework for assessing whether existing tools fully address the knowledge requirements of developers.
 
 Research that determines the questions developers ask about their code has informed and motivated toolsmiths in other domains to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
-Our work aims to extend these promising results to security by informing toolsmiths of the security-related questions that developers ask.
+Our work extends these promising results to security by informing toolsmiths of the security-related questions that developers ask.
 In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
 We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
-The main contribution of this paper is categorized questions developers ask. We also asses the strategies developers may uses to answer these questions and whether or not existing tools support these strategies.
+The main contribution of this paper is categorized questions developers ask. 
+We also assess the strategies developers use to answer these questions and whether or not existing tools support these strategies.
 
-The remainder of the paper is organized as follows. In Section~\ref{sec:rw}, we discuss previous work related to our own. Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. Next, we discuss the findings of our study in Section~\ref{sec:results} and implications of our findings in Section~\ref{sec:disc}. Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
+The remainder of the paper is organized as follows. 
+In Section~\ref{sec:rw}, we discuss previous work related to our own. 
+Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. 
+Next, we discuss the findings of our study in Section~\ref{sec:results} and implications of our findings in Section~\ref{sec:disc}. 
+Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
 
 
 
@@ -214,7 +221,8 @@ The remainder of the paper is organized as follows. In Section~\ref{sec:rw}, we 
 \section{Related Work}
 \label{sec:rw}
 
-We have organized the related work into three sections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
+We have organized the related work into three sections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. 
+Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
 
 \subsection{Evaluation of Techniques}
 \label{evaluation}
@@ -233,15 +241,18 @@ Dukes and colleagues conducted a case study comparing static analysis and manual
 They found that the combination of manual testing and static analysis was most effective, because it found the most vulnerabilities.
 
 
-These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. Further, they do not evaluate whether the tools under study answer questions that developer have about the code or vulnerabilities. 
+These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
+Further, they do not evaluate whether the tools under study answer questions that developer have about the code or vulnerabilities. 
 Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
 
 \subsection{Developer Understanding}
 \label{understanding}
 In other, non-security domains, research has shifted focus from the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
-These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. Such studies examine proposed and existing approaches using various qualitative methods such as interviews and surveys. 
+These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. 
+Such studies examine proposed and existing approaches using various qualitative methods such as interviews and surveys. 
 
-Some research surrounding tool effectiveness shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods, such as interviews and surveys.
+Some research surrounding tool effectiveness shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
+The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods, such as interviews and surveys.
 
 Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
 
@@ -273,11 +284,13 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 
 These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. 
 In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to the implications of code changes on the security of their code. 
-Our study aims to discover the questions developers have about potential code vulnerabilities and the implications of the changes they may make when attempting to resolve them. 
+Our study discovers the questions developers have about potential code vulnerabilities and discusses the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
 \label{sec:meth}
-We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. Section \ref{rqs} outlines the research questions we sought to answer. Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
+We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. 
+Section \ref{rqs} outlines the research questions we sought to answer. 
+Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
 \subsection{Research Questions}
@@ -354,7 +367,8 @@ All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
 
-To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
+To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. 
+All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 
 Table~\ref{table:participants} gives additional demographic information on each of the 10 participants. 
 Since the focus of our study was to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participant's responses.
@@ -363,7 +377,8 @@ Since the focus of our study was to identify the questions developers ask indepe
 Each participant approached four vulnerabilities. 
 We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
-FindBugs and Find Security Bugs group similar error messages using a system of tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. To cover a broader set of question topics, we selected vulnerabilities with four different tags.
+FindBugs and Find Security Bugs group similar error messages using a system of tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
+To cover a broader set of question topics, we selected vulnerabilities with four different tags.
 Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
 We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects.
 Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented by OWASP.
@@ -377,22 +392,22 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \hline
     Vulnerability				& Short Description													& Tool's Rank 						& Tool's Confidence\\
     \hline	
-    Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& "Scary"							 	&  Normal\\
+    Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& ``Scary''							 	&  Normal\\
     \hline
-    Predictable Random			& Use of java.util.Random is predictable. 								& "Scary"								&  Normal\\
+    Predictable Random			& Use of java.util.Random is predictable. 								& ``Scary''								&  Normal\\
     \hline
-    Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& "Troubling"		&  Low\\
+    Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& ``Troubling''		&  Low\\
     \hline
-    SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& "Of Concern"		&  Low\\
+    SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& ``Of Concern''		&  Low\\
     \hline
 \end{tabular}
 \label{table:vulnerabilities}
 \end{table*}
 
 During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
-Additionally, we asked them to use a think aloud protocol. Specifically, they were asked to, "Say any questions or thoughts that cross your mind regardless of how relevant you think they are."
+Additionally, we asked them to use a think aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 
-The interviewer was equipped with the following script, but had the freedom to omit questions or ask follow-up questions based on the participant's responses.
+The interviewer was equipped with the following questions, but had the freedom to omit questions or ask follow-up questions based on the participant's responses.
 \begin{itemize}
 \item What are you exploring/trying to figure out right now?
 \item What information do you need to proceed?
@@ -404,8 +419,7 @@ The interviewer was equipped with the following script, but had the freedom to o
 \item What information would you like to see added to the error message?
 \item What part of the message is most helpful?
 \item Look at the error message one last time. Is there any information you initially disregarded?
-\item Is there anything else that you think I should know about this vulnerability?
-
+\item Would you like to share any other thoughts about this vulnerability?
 \end{itemize}
 
 \subsection{Data Analysis}
@@ -413,7 +427,8 @@ The interviewer was equipped with the following script, but had the freedom to o
 We analyzed interview data using a grounded theory approach~\cite{glaser2009discovery}. 
 First, we transcribed all the audio-video files using oTranscribe.\footnote{\url{otranscribe.com}}
 Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
-We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
+We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. 
+The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
 Participants ask both explicit and implicit questions. 
@@ -425,7 +440,7 @@ A statement was coded as a question only if it met one of the following criteria
 \\ P2: \textit{Why aren't they using Prepared Statements?}
 \item \textbf{The participant makes a statement and explores the validity of that statement.}
 \\ P6: \textit{It doesn't seem to have shown what I was looking for. Oh, wait! It's right above it...}
-\item \textbf{The participant uses key words such as, "I assume," "I guess," or "I don't know."}
+\item \textbf{The participant uses key words such as, ``I assume,'' ``I guess,'' or ``I don't know.''}
 \\ P8: \textit{I don't know that it's a problem yet.}
 \item \textbf{The participant clearly expresses uncertainty over a statement.}
 \\ P10: \textit{Well, it's private to this object, right?}
@@ -506,7 +521,7 @@ At this stage, we discarded 5 unclear or non pertinent questions and organized t
     \hline
     Understanding Alternative Fixes and Approaches		& 11     		& \emph{Example question...}			\\
     \hline
-    Code Background and Function 	`					& 17     		& \emph{Example question...}			\\
+    Code Background and Function 	 					& 17     		& \emph{Example question...}			\\
     \hline
     Locating Information 								& 11      		& \emph{Example question...}			\\
     \hline
@@ -522,9 +537,9 @@ At this stage, we discarded 5 unclear or non pertinent questions and organized t
     \hline
     Understanding Concepts								& 6 			& \emph{Example question...}				\\
     \hline
-    Confirming Expectations					 			& 1				&  \emph{Example question...}   \\
+    Confirming Expectations					 			& 1				& \emph{Example question...}   \\
     \hline
-    Uncategorized										& 10    		& 	\emph{} \\
+    Uncategorized										& 10    		& \emph{} \\
     \hline
 \end{tabular}
 \label{table:categories}
@@ -543,7 +558,7 @@ Given the high number of categories, these values are well within the acceptable
 
 \section{Results}
 \label{sec:results}
-Following the most similar work to our own, for each category, we list each distinct question we extracted and the count for each in parenthesis~\cite{latoza2010hard}. For each category, we discuss the common thread that ties questions in that category together. We also contextualize each category by discussing existing tool support and  shortcomings.
+We list each distinct question we extracted and the count for each in parentheses. For each category, we discuss the common thread that ties questions in that category together. We also contextualize each category by discussing existing tool support and shortcomings.
 
 \noindent\subsection{\textbf{Developer Planning and Self-Reflection (11)}} 
 
@@ -560,10 +575,11 @@ Following the most similar work to our own, for each category, we list each dist
 \emph{Why do I care?} \\
 \emph{Miscellaneous} \\
 
-One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the 155 distinct questions extracted fit into this category. All of the questions in this category involve the thoughts the developer or the individual's relationship to the problem, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
+One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the 155 distinct questions extracted fit into this category. All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
 
 Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
-For example, one question participants asked was \textit{Have I seen this before?} 
+For example, one question participants asked was \textit{Have I seen this before?}
+%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with 
 A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
 The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 
@@ -606,7 +622,10 @@ This means that without proper tool support, developers interested in this infor
 \emph{How do I navigate to other open files?} \\
 \emph{Miscellaneous} \\
 
-Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. Nine questions of the 155 extracted fit into this category. The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
+Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
+Nine questions of the 155 extracted fit into this category.
+The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
+On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
 
 The answers to these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example... 
 
@@ -627,7 +646,9 @@ The answers to these questions can be found inside the IDE, which makes it more 
 
 Another kind of question we extracted pertained to the process resolving vulnerabilities. These questions pertain to understanding the application and implications of a potential fix. We categorized 9 of the 155 distinct questions into this category.
 
-Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} None of our participants asked this question specifically, however, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
+Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
+Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} None of our participants asked this question specifically. 
+However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
 
   
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
@@ -645,9 +666,12 @@ Though it is not clear how feasible it is to answer some of these questions, som
 \emph{How do I find out if this is a real vulnerability?} \\
 \emph{Miscellaneous} \\
 
-We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. Nine of the 155 distinct questions we gathered belong in this category.
+We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. 
+These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
+Nine of the 155 distinct questions we gathered belong in this category.
 
-Some FindBugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
+Some FindBugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
+Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
 
 Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
 This kind of question may require the triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability. 
@@ -679,7 +703,9 @@ The tool allows users to easily traverse the call hierarchy.
 While some participants located and employed the call hierarchy tool, others gravitated toward other more error-prone approaches, such as the 'find references' tool or manual visual inspection. 
 %find references / visual inspection
 In some cases, participants were unaware of the call hierarchy tool or how to use it. Others were predisposed to favor light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool.
-It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. Even with tools like these, however, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. Further, even tools like call hierarchy do not provide information on how parameters are modified between method calls.
+It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
+Even with tools like these, however, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. 
+Further, even tools like call hierarchy do not provide information on how parameters are modified between method calls.
 
 
 %%%%%%%%%%%% Data Storage 
@@ -720,11 +746,15 @@ There has been some research and development surrounding the creation of data fl
 \emph{Is this code used to test the program/functionality?} \\
 \emph{Miscellaneous} \\
 
-Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. Seven of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
+Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
+The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
+Seven of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
 
 %FAMILIARITY
 
-Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
+Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
+It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
+For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
 
 %%%%%%%%%%%% Resources
 
@@ -739,7 +769,8 @@ Though all participants had experience coding in iTrust, and had some knowledge 
 \emph{How do resources prevent or resolve this?} \\
 \emph{Miscellaneous} \\
 
-Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. Many participants found themselves in situations where they would use outside resources to decide how to proceed. 
+Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. 
+Many participants found themselves in situations where they would use outside resources to decide how to proceed. 
 Seven of the 155 distinct questions fall into this category. 
 
 %Fix Sentence
@@ -763,11 +794,14 @@ Fritz and colleagues developed a degree of knowledge model that predicts how fam
 \emph{How is the information presented by the tool organized?} \\
 \emph{Miscellaneous} \\
 
-Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool, and find references, for example. While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. Seven of the 155 distinct questions we extracted fall into this category.
+Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool, and find references, for example. 
+While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. 
+Seven of the 155 distinct questions we extracted fall into this category.
 
 %[ACCESSIBILITY (4 letter word)]
 Some of the questions we extracted seemed to deal with having access to or knowing how to use the tools needed to complete a certain task. 
-Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. This seems to point to a tool awareness or education problem.
+Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. 
+This seems to point to a tool awareness or education problem.
 
 
 %[Presentation of tool information]
@@ -790,9 +824,14 @@ For example, Find Security Bugs reports its confidence on the potential defect i
 \emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
 
-Sometimes participants looked elsewhere for information about their code or vulnerability. Primarily, participants used web resources or searched for similar code elsewhere in the project. When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. Seven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
+Sometimes participants looked elsewhere for information about their code or vulnerability. 
+Primarily, participants used web resources or searched for similar code elsewhere in the project.
+When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+Seven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
 
-The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats.  Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
+The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats.  
+Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
+Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
 %%%%%%%%%%%% Bug Severity/Ranking
 
 \noindent\subsection{\textbf{Bug Severity/Ranking (4)}}
@@ -802,7 +841,8 @@ The process of understanding the alternative options was complicated by the vari
 \emph{How do the rankings compare?} \\
 \emph{What do the bug rankings mean?} \\
 
-Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. These questions dealt with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 
+Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. 
+These questions dealt with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 
 Four of the 155 distinct questions extracted fall into this category. 
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 
@@ -817,7 +857,8 @@ Previous research on static analysis tools also found that developers may not al
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
 Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
 We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. 
-Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
+Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
+Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
 %%%%%%%%%%%% End-User Interaction
 
 \noindent\subsection{\textbf{End-User Interaction (3)}}
@@ -826,9 +867,12 @@ Another reason for asking this kind of question is to determine the possibility 
 \emph{Does the user have access to this code?} \\
 \emph{Does user input get validated/sanitized?} \\
 
-Questions in this category deal with how the end user might interact with the system. Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. Three of the 155 distinct questions we found fall into this category.
+Questions in this category deal with how the end user might interact with the system. 
+Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
+Three of the 155 distinct questions we found fall into this category.
 
-Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system. The goal of this research area is to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
+Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system. 
+The goal of this research area is to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
 To our knowledge, developers lack tool support for navigating and reasoning about attack surfaces. 
 Many participants spent time and effort exploring the call hierarchy of the potential path traversal only to discover that the code was entirely contained in test classes.
  
@@ -842,16 +886,20 @@ Many participants spent time and effort exploring the call hierarchy of the pote
 \emph{What is this concept?} \\
 \emph{Miscellaneous} \\
 
-For some participants, the concepts that the notification contained were incompatible with the developer's mental model. In these situations, participants seemed to have questions surrounding one or more of the concepts relevant to the problem.
+For some participants, the concepts that the notification contained were incompatible with the developer's mental model. 
+In these situations, participants seemed to have questions surrounding one or more of the concepts relevant to the problem.
 
-Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. In general, it seems that if a developer does not have experience with a particular feature or concept, it is less likely they will understand a problem in their code pertaining to that concept~\cite{}.%cite building mental model paper? 
+Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. 
+In general, it seems that if a developer does not have experience with a particular feature or concept, it is less likely they will understand a problem in their code pertaining to that concept~\cite{}.%cite building mental model paper? 
 %%%%%%%%%%%% Confirming Expectations
 
 \noindent\subsection{\textbf{Confirming Expectations (1)}}
 
 \noindent\emph{Is this doing what I expect it to?} \\
 %Swap categories?
-Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. We only identified one distinct question, however, there are many ways to interpret the questions and may require different pieces of information to answer it.
+Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
+As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. 
+We only identified one distinct question, however, there are many ways to interpret the questions and may require different pieces of information to answer it.
 
 %%%%%%%%%%%% Error Messages
 
@@ -861,9 +909,13 @@ Developers build and alter their mental models when exploring code~\cite{canas19
 \emph{What code caused this error message to occur?} \\
 \emph{What does the error message say?} \\
 
-As expected, participants asked questions concerning the content of the error messages. Mostly, this happened when participants needed to look at the bug information to get a better understanding of the potential vulnerability. 
+As expected, participants asked questions concerning the content of the error messages. 
+Mostly, this happened when participants needed to look at the bug information to get a better understanding of the potential vulnerability. 
 
-More surprisingly, they also asked questions about how to relate information contained in the error message back to the code. For example, the predictable random vulnerability notes that a predicable random value is bad when being used in a secure context. Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+More surprisingly, they also asked questions about how to relate information contained in the error message back to the code. 
+For example, the predictable random vulnerability notes that a predicable random value is bad when being used in a secure context. 
+Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. 
+In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 
 \section{Discussion}
 \label{sec:disc}
