@@ -811,7 +811,7 @@ P2 -- I'm thinking about different types of attacks
 
 \noindent\textbf{Tool Implications}
 
-Some FindBugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
+Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
 Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
 
 Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
@@ -970,7 +970,8 @@ P1 -- is there a quick fix/automatic application?
 \noindent\textbf{Tool Implications}
 
 Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
-Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} None of our participants asked this question specifically. 
+Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
+None of our participants asked this question specifically. 
 However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
 
 
@@ -1000,11 +1001,11 @@ We only collected general security vulnerability knowledge as a pre-study demogr
 
 \noindent\textbf{Tool Implications}
 
-In general, it seems that if a developer does not have experience with a particular feature or concept, it is less likely they will understand a problem in their code pertaining to that concept~\cite{}.%cite building mental model paper? 
+In general, if a developer does not have experience with a particular feature or concept, they may have more difficulty understanding a problem in their code pertaining to that concept~\cite{wiedenbeck1993mental}.
 Sometimes, Find Security Bugs provide links to information regarding the concepts involved, however, some of our participants did not use them because they did not know they existed until the first author pointed them out. 
 A simple solution to providing easier access to the desired information is by places the links in a  more visible area (perhaps nested in the text of the error message next to the concept it has information about). 
 One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
-Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code, tools could make an attempt at only adapting the presentation of the notifications if the developer's model suggests there is a need the answer to these types of conceptual questions.
+Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code, tools could make an attempt at only adapting notifications if the developer's model suggests there is a need the answer to these types of conceptual questions.
 % Very obvious trying to plug direction of my research but still a possible direction for this :)
 
 
@@ -1120,7 +1121,7 @@ P1 -- It's called random password, so pretty big hit that I should probably chan
 
 Determining what the error message says is a relatively simple action for the developer to complete; most tools, Find Security Bugs included, provide functionality for developers to access the details of a given error message. 
 Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the buggy code. 
-However, 
+However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not always the best indicator of the connection between the code and the error message. 
 Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code~\cite{barik14visual}.
 Answering the other two questions as easily may require additional tool support. For example, 
 
