@@ -129,8 +129,10 @@ Our work extends these promising results to security by informing toolsmiths of 
 In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
 We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
-The main contribution of this paper is categorized questions developers ask. 
-We also assess the strategies developers use to answer these questions and whether or not existing tools support these strategies.
+Our work makes three contributions. 
+First, we present a list of questions that software developers ask when examining the security of their code.
+Second, based on our observations, we discuss the strategies that developers use to answer some of their questions.
+Finally, we evaluate the existing tool support for answering security-related questions.
 
 The remainder of the paper is organized as follows. 
 In Section~\ref{sec:rw}, we discuss previous work related to our own. 
@@ -289,17 +291,19 @@ Our study discovers the questions developers have about potential code vulnerabi
 \section{Methodology}
 \label{sec:meth}
 We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. 
-Section \ref{rqs} outlines the research questions we sought to answer. 
-Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
+Section \ref{rqs} outlines the research question we sought to answer. 
+Section \ref{studyDesign} details how the study was designed. 
+Section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
-\subsection{Research Questions}
+\subsection{Research Goals}
 \label{rqs}
-We want to answer the following research questions:
+We are motivated by the following research question:
 \begin{itemize}
-\item \textbf{RQ1}: What types of security related questions do developers ask?
-\item \textbf{RQ2}: How do current tools and approaches support developers in answering these questions?
+\item \textbf{RQ1}: What types of questions do developers when assessing the security of their code?
 \end{itemize}
+
+In our investigation, we also identified some of the strategies that developers use to answer such questions and assessed whether current tools support those strategies.
 
 \subsection{Study Design}
 \label{studyDesign}
@@ -585,7 +589,6 @@ The questions in this category inquire about the code at an abstract level, such
 \\
 
 \noindent\textbf{Observations}
-
 \\
 
 \noindent\textbf{Tool Implications}
@@ -615,7 +618,6 @@ One kind of question participants asked when assessing potential security vulner
 \\
 
 \noindent\textbf{Observations}
-
 \\
 
 \noindent\textbf{Tool Implications}
@@ -688,9 +690,7 @@ Eight of the 155 distinct questions fit into this category.
 \\
 
 \noindent\textbf{Observations}
-
 \\
-
 \noindent\textbf{Tool Implications}
 
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
@@ -757,7 +757,6 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 \\
 
 \noindent\textbf{Observations}
-
 \\
 
 \noindent\textbf{Tool Implications}
@@ -788,7 +787,6 @@ Nine of the 155 distinct questions we gathered belong in this category.
 \\
 
 \noindent\textbf{Observations}
-
 \\
 
 \noindent\textbf{Tool Implications}
@@ -934,11 +932,9 @@ We categorized 9 of the 155 distinct questions into this category.
 \\
 
 \noindent\textbf{Observations}
-
 \\
 
 \noindent\textbf{Tool Implications}
-
 Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
 Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} None of our participants asked this question specifically. 
 However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
@@ -990,11 +986,9 @@ Four of the 155 distinct questions extracted fall into this category.
 \\
 
 \noindent\textbf{Observations}
-
 \\
 
 \noindent\textbf{Tool Implications}
-
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 
 %%%%%%%%%%%% Relationship Between Bugs
@@ -1012,12 +1006,11 @@ Three of the 155 distinct questions we found target the relationships between th
 \\
 
 \noindent\textbf{Observations}
-
 \\
-
 \noindent\textbf{Tool Implications}
 
-We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. 
+We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are 
+ing exists in other similar code fragments. 
 Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
 Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
 
