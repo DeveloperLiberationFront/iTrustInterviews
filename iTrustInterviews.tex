@@ -589,13 +589,16 @@ The questions in this category inquire about the code at an abstract level, such
 \\
 
 \noindent\textbf{Observations}
+
+P1 -- It's code that's actually written by someone writing iTrust, so it's not library code.
 \\
 
 \noindent\textbf{Tool Implications}
 
-The answer to many of these questions, developers would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
-
-This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need. Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
+Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
+This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need. 
+Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
+A tool that wants to accommodate these needs might collects these sorts of measures and provide developers easy access to it.
 
 \noindent\subsection{\textbf{Developer Planning and Self-Reflection (14)}} \label{dpr}
 
@@ -618,13 +621,14 @@ One kind of question participants asked when assessing potential security vulner
 \\
 
 \noindent\textbf{Observations}
+
+%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with 
 \\
 
 \noindent\textbf{Tool Implications}
 
 Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
 For example, one question participants asked was \textit{Have I seen this before?}
-%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with 
 A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
 The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 
@@ -659,13 +663,20 @@ Eclipse includes a call hierarchy tool that, given a method, displays its caller
 The tool allows users to easily traverse the call hierarchy. 
 While some participants located and employed the call hierarchy tool, others gravitated toward other more error-prone approaches, such as the 'find references' tool or manual visual inspection. 
 %find references / visual inspection
-In some cases, participants were unaware of the call hierarchy tool or how to use it. Others were predisposed to favor light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool.
+In some cases, participants were unaware of the call hierarchy tool or how to use it. 
+Others were predisposed to favor light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool.
 It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
-Even with tools like these, however, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. 
-Further, even tools like call hierarchy do not provide information on how parameters are modified between method calls.
+
+P1 -- Yeah, I don't know what this is, call hierarchy.
+
 \\
 
 \noindent\textbf{Tool Implications}
+
+Even with tools like 'find references' and the call hierarchy view tool, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. 
+Further, even tools like call hierarchy do not provide information on how parameters are modified between method calls. 
+A tool that addresses these types of needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they desire. 
+To increase visibility of the desired information, the tool might also highlight the relevant method as it appears in the call hierarchy or augment each method with the methods that can call it.
 
 
 %%%%%%%%%%%% Data Storage 
@@ -690,13 +701,16 @@ Eight of the 155 distinct questions fit into this category.
 \\
 
 \noindent\textbf{Observations}
+
+P1 -- I haven't verified that. You might be modifying the string as it goes through. But it's probably the same string.. 
 \\
 \noindent\textbf{Tool Implications}
 
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
 The developer would have to retrieve this information, either from the documentation, by debugging the code, or some combination of both. 
 There exists tools that do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
-There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}.
+There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
+It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring a visual version of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 \\
 
 %%%%%%%%%%%% Understanding Alt. Fixes
@@ -730,7 +744,10 @@ Many participants seemed to have a preference for StackOverflow as a means for u
 
 \noindent\textbf{Tool Implications}
 
-
+When elaborating a suggested fix, or alternatives to achieving the same functionality, developers may have difficulty determining at a glance the relevant details regarding the suggested approach (as the questions in this category suggest).
+One way a tool might help address this would be by noting other places in the code the alternative the developer is considering has been used, if they exist. 
+If the developer, or other developers of the code, have not used the alternative before, the tool could borrow behavior or design principles from \textsc{Whyline} by allowing developers to ask questions about the code in relation to the suggested approach~\cite{ko2004designing}. 
+The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
 
 
 %%%%%%%%%%%% Locating Information
@@ -757,11 +774,15 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 \\
 
 \noindent\textbf{Observations}
+
+P1 -- But, I assume that it is coming from, lets see
+
 \\
 
 \noindent\textbf{Tool Implications}
 
-The answers to most of these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. A few of these questions, however, would require more effort on the developer's part to answer. For instance, it is not obvious how a tool would answer the question \emph{how do I track this information in the code}; the answer could vary depending on what information the developer is trying to track.
+The answers to most of these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. A few of these questions, however, would require more effort on the developer's part to answer, therefore could benefit from tool support. For instance, it is not obvious how a tool would answer the question \emph{how do I track this information in the code}; the answer could vary depending on what information the developer is trying to track.
+Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
 
 
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
@@ -787,6 +808,9 @@ Nine of the 155 distinct questions we gathered belong in this category.
 \\
 
 \noindent\textbf{Observations}
+
+P1 -- doesn't give me much confidence that this is actually a real bug..
+P2 -- I'm thinking about different types of attacks 
 \\
 
 \noindent\textbf{Tool Implications}
@@ -795,8 +819,9 @@ Some FindBugs notifications attempt to provide developers with the means to answ
 Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
 
 Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
-This kind of question may require the triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability. 
-If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate.
+This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
+If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate. 
+One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
 
 
 %%%%%%%%%%%% Resources
@@ -823,7 +848,7 @@ Seven of the 155 distinct questions fall into this category.
 
 \noindent\textbf{Observations}
 
-talk about participants clicking links, sometimes missing them, sometimes not clicking them because not sure what kind of information it provides (or found themselves clicking things thinking they would find what they are looking for, but don't.
+maybe talk about participants clicking links, sometimes missing them, sometimes not clicking them because not sure what kind of information it provides (or found themselves clicking things thinking they would find what they are looking for, but don't.
 \\
 
 \noindent\textbf{Tool Implications}
@@ -932,6 +957,8 @@ We categorized 9 of the 155 distinct questions into this category.
 \\
 
 \noindent\textbf{Observations}
+
+P1 -- is there a quick fix/automatic application?
 \\
 
 \noindent\textbf{Tool Implications}
@@ -1009,8 +1036,7 @@ Three of the 155 distinct questions we found target the relationships between th
 \\
 \noindent\textbf{Tool Implications}
 
-We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are 
-ing exists in other similar code fragments. 
+We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. 
 Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
 Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
 
@@ -1065,6 +1091,8 @@ More surprisingly, they also asked questions about how to relate information con
 For example, the predictable random vulnerability notes that a predicable random value is bad when being used in a secure context. 
 Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. 
 In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+
+P1 -- It's called random password, so pretty big hit that I should probably change it to secure random like it asks
 \\
 
 \noindent\textbf{Tool Implications}
