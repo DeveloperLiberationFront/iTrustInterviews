@@ -60,7 +60,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{What Questions Do Developers Ask When Reasoning about the Security of Their Code?}
+\title{Security-Related Questions Developers Ask About Their Code}
 
 
 % author names and affiliations
@@ -557,77 +557,190 @@ The first rater agreed with our categorization with a Cohen's Kappa of $\kappa =
 Between the first and second rater we reworded and clarified some ambiguous questions. The second rater exhibited greater agreement ($\kappa = .70$). 
 Given the high number of categories, these values are well within the acceptable ranges.
 
-\section{Results}
-\label{sec:results}
-We list each distinct question we extracted and the count for each in parentheses. For each category, we discuss the common thread that ties questions in that category together. We also contextualize each category by discussing existing tool support and shortcomings.
+\section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
+\label{sec:results-vaf}
+We list each distinct question we extracted and the count for each in parentheses. For each category, we discuss the common thread that ties questions in that category together. 
+We also contextualize each category by discussing existing tool support and shortcomings.
+Categories have been places into four groups to facilitate discussion: Vulnerabilities, Attacks, and Fixes, Oh My!, Code and the Application, Individuals, and Problem Solving Support.
+% next paragraph, go into description of first group 
 
 
-%%%%%%%%%%%% Code Background
+%%%%%%%%%%%% Understanding Alt. Fixes
 
-\noindent\subsection{\textbf{Code Background and Functionality (17)}}
-\label{cbf}
+\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (11)}}\label{uafa}
 
-\noindent\emph{Who wrote this code?} \\
-\emph{Why is this code needed?} \\
-\emph{Is this library code?} \\
-\emph{Are there tests for this code?} \\
-\emph{Why was this code written this way?} \\
-\emph{What does this code do?} \\
-\emph{Is this code doing anything?} \\
-\emph{How much effort was put into this code?} \\
-\emph{Why are we using this API in the code?} \\
+\noindent\emph{Why should I use this alternative method/approach to fix the vulnerability?} \\
+\emph{What are the alternatives for fixing this?} \\
+\emph{Does the alternative function the same as what I'm currently using?} \\
+\emph{When should I use the alternative?} \\
+\emph{Is the alternative slower?} \\
+\emph{Are there other considerations to make when using the alternative(s)?} \\
+\emph{How does my code compare to the alternative code in the example I found?} \\
 \emph{Miscellaneous} \\
+
 
 \noindent\textbf{Data Overview}
 
-Participants also asked questions concerning the background and intended function of the code being analyzed. 
-Nine of the 155 distinct questions extracted fit into this category. 
-The questions in this category inquire about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
+Sometimes participants looked elsewhere for information about their code or vulnerability. 
+Primarily, participants used web resources or searched for similar code elsewhere in the project.
+When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+Seven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
 \\
 
 \noindent\textbf{Observations}
 
-P1 -- It's code that's actually written by someone writing iTrust, so it's not library code.
+The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats.  
+Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
+Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
 \\
 
 \noindent\textbf{Tool Implications}
 
-Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
-This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need. 
-Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
-A tool that wants to accommodate these needs might collects these sorts of measures and provide developers easy access to it.
+When elaborating a suggested fix, or alternatives to achieving the same functionality, developers may have difficulty determining at a glance the relevant details regarding the suggested approach (as the questions in this category suggest).
+One way a tool might help address this would be by noting other places in the code the alternative the developer is considering has been used, if they exist. 
+If the developer, or other developers of the code, have not used the alternative before, the tool could borrow behavior or design principles from \textsc{Whyline} by allowing developers to ask questions about the code in relation to the suggested approach~\cite{ko2004designing}. 
+The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
 
-\noindent\subsection{\textbf{Developer Planning and Self-Reflection (14)}} \label{dpr}
 
-\noindent\emph{What was I looking for?} \\
-\emph{What do I know now?} \\
-\emph{What should I do first?} \\
-\emph{Do I understand?} \\
-\emph{Have I seen this before?} \\
-\emph{What was that again?} \\
-\emph{What's next?} \\
-\emph{Where am I in the code?} \\
-\emph{Is this worth my time?} \\
-\emph{Is this my responsibility?} \\
-\emph{Why do I care?} \\
+%%%%%%%%%%%% Preventing and Understanding Potential Attacks 
+
+\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (11)}}\label{pupa}
+
+\noindent\emph{How can this vulnerability lead to an attack?} \\
+\emph{How can I replicate an attack that exploits this vulnerability?} \\
+\emph{Why is this a vulnerability?} \\
+\emph{What are the possible attacks that could occur?} \\
+\emph{How can I prevent this attack?} \\
+\emph{How should I address this problem? } \\
+\emph{What is the problem (potential attack)?} \\
+\emph{Is this a real vulnerability?} \\
+\emph{How do I find out if this is a real vulnerability?} \\
 \emph{Miscellaneous} \\
 
 \noindent\textbf{Data Overview}
 
-One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the 155 distinct questions extracted fit into this category. All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
+We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. 
+These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
+Nine of the 155 distinct questions we gathered belong in this category.
 \\
 
 \noindent\textbf{Observations}
 
-%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with 
-
+P1 -- doesn't give me much confidence that this is actually a real bug..
+P2 -- I'm thinking about different types of attacks 
+\\
 
 \noindent\textbf{Tool Implications}
 
-Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
-For example, one question participants asked was \textit{Have I seen this before?}
-A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
-The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
+Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
+Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
+
+Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
+This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
+If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate. 
+One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
+
+
+
+%%%%%%%%%%%% Assessing Application
+
+\noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
+
+\noindent\emph{How hard is it to apply a fix to this code?} \\
+\emph{How do I use this fix in my code?} \\
+\emph{How do I fix this vulnerability?} \\
+\emph{Is there a quick fix for automatically applying a fix?} \\
+\emph{Will the code work the same after I apply the fix?} \\
+\emph{Can these fix suggestions be applied to my code?} \\
+\emph{Will the error go away when I apply this fix?} \\
+\emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
+\emph{What other changes do I need to make to apply this fix?} \\
+
+
+\noindent\textbf{Data Overview}
+
+Another kind of question we extracted pertained to the process resolving vulnerabilities. 
+These questions pertain to understanding the application and implications of a potential fix. 
+We categorized 9 of the 155 distinct questions into this category.
+\\
+
+\noindent\textbf{Observations}
+
+P1 -- is there a quick fix/automatic application?
+\\
+
+\noindent\textbf{Tool Implications}
+
+Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
+Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
+None of our participants asked this question specifically. 
+However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
+
+
+%%%%%%%%%%%% Relationship Between Bugs
+
+\noindent\subsection{\textbf{Relationship Between Bugs (3)}}\label{rbb}
+
+\noindent\emph{Does this other piece code have the same bug as the code I'm working with?} \\
+\emph{Are all the bugs related in my code?} \\
+\emph{Are all of these notifications vulnerabilities?} \\
+
+
+\noindent\textbf{Data Overview}
+Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
+Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
+\\
+
+\noindent\textbf{Observations}
+
+\noindent\textbf{Tool Implications}
+
+We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
+Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
+Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
+A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
+
+
+
+\section{Results: Code and the Application}
+\label{sec:results-ca}
+
+% description of what categories fall into this group
+
+
+
+%%%%%%%%%%%% Locating Information
+
+\noindent\subsection{\textbf{Locating Information (11)}}\label{li}
+
+\noindent\emph{Where is this used in the code?} \\
+\emph{Where are other similar pieces of code?} \\
+\emph{Where is this artifact?} \\
+\emph{Is this artifact located in this class?} \\
+\emph{Where is this method defined?} \\
+\emph{Where is this class? } \\
+\emph{Where is the next occurrence of this variable?} \\
+\emph{How do I track this information in the code?} \\
+\emph{How do I navigate to other open files?} \\
+\emph{Miscellaneous} \\
+
+\noindent\textbf{Data Overview}
+
+Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
+Nine questions of the 155 extracted fit into this category.
+The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
+On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
+\\
+
+\noindent\textbf{Observations}
+
+P1 -- But, I assume that it is coming from, lets see
+\\
+
+\noindent\textbf{Tool Implications}
+
+The answers to most of these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. A few of these questions, however, would require more effort on the developer's part to answer, therefore could benefit from tool support. For instance, it is not obvious how a tool would answer the question \emph{how do I track this information in the code}; the answer could vary depending on what information the developer is trying to track.
+Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
 
 
 %%%%%%%%%%%% Control Flow/Call Information
@@ -710,114 +823,195 @@ There has been some research and development surrounding the creation of data fl
 It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring a visual version of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 \\
 
-%%%%%%%%%%%% Understanding Alt. Fixes
 
-\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (11)}}\label{uafa}
+%%%%%%%%%%%% Code Background
 
-\noindent\emph{Why should I use this alternative method/approach to fix the vulnerability?} \\
-\emph{What are the alternatives for fixing this?} \\
-\emph{Does the alternative function the same as what I'm currently using?} \\
-\emph{When should I use the alternative?} \\
-\emph{Is the alternative slower?} \\
-\emph{Are there other considerations to make when using the alternative(s)?} \\
-\emph{How does my code compare to the alternative code in the example I found?} \\
+\noindent\subsection{\textbf{Code Background and Functionality (17)}}
+\label{cbf}
+
+\noindent\emph{Who wrote this code?} \\
+\emph{Why is this code needed?} \\
+\emph{Is this library code?} \\
+\emph{Are there tests for this code?} \\
+\emph{Why was this code written this way?} \\
+\emph{What does this code do?} \\
+\emph{Is this code doing anything?} \\
+\emph{How much effort was put into this code?} \\
+\emph{Why are we using this API in the code?} \\
+\emph{Miscellaneous} \\
+
+\noindent\textbf{Data Overview}
+
+Participants also asked questions concerning the background and intended function of the code being analyzed. 
+Nine of the 155 distinct questions extracted fit into this category. 
+The questions in this category inquire about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
+\\
+
+\noindent\textbf{Observations}
+
+P1 -- It's code that's actually written by someone writing iTrust, so it's not library code.
+\\
+
+\noindent\textbf{Tool Implications}
+
+Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
+This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need. 
+Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
+A tool that wants to accommodate these needs might collects these sorts of measures and provide developers easy access to it.
+
+
+%%%%%%%%%%%% Application Context
+
+\noindent\subsection{\textbf{Application Context/Usage (9)}}\label{acu}
+
+\noindent\emph{What is the method/variable used for in the program?} \\
+\emph{Are we handling secure data in this context?} \\
+\emph{What is the context of this bug/code?} \\
+\emph{How does the system work?} \\
+\emph{Will usage of this method change?} \\
+\emph{Is the method/variable every being used?} \\
+\emph{Is this code used to test the program/functionality?} \\
 \emph{Miscellaneous} \\
 
 
 \noindent\textbf{Data Overview}
 
-Sometimes participants looked elsewhere for information about their code or vulnerability. 
-Primarily, participants used web resources or searched for similar code elsewhere in the project.
-When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
-Seven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
+Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
+The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
+Seven of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
 \\
 
 \noindent\textbf{Observations}
 
-The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats.  
-Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
-Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
+Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 \\
 
 \noindent\textbf{Tool Implications}
 
-When elaborating a suggested fix, or alternatives to achieving the same functionality, developers may have difficulty determining at a glance the relevant details regarding the suggested approach (as the questions in this category suggest).
-One way a tool might help address this would be by noting other places in the code the alternative the developer is considering has been used, if they exist. 
-If the developer, or other developers of the code, have not used the alternative before, the tool could borrow behavior or design principles from \textsc{Whyline} by allowing developers to ask questions about the code in relation to the suggested approach~\cite{ko2004designing}. 
-The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
+It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
+For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
+However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
+Most of these questions can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make developer written documentation more easily available and searchable for information of interest.
 
 
-%%%%%%%%%%%% Locating Information
+%%%%%%%%%%%% End-User Interaction
 
-\noindent\subsection{\textbf{Locating Information (11)}}\label{li}
+\noindent\subsection{\textbf{End-User Interaction (3)}}
+\label{eui}
 
-\noindent\emph{Where is this used in the code?} \\
-\emph{Where are other similar pieces of code?} \\
-\emph{Where is this artifact?} \\
-\emph{Is this artifact located in this class?} \\
-\emph{Where is this method defined?} \\
-\emph{Where is this class? } \\
-\emph{Where is the next occurrence of this variable?} \\
-\emph{How do I track this information in the code?} \\
-\emph{How do I navigate to other open files?} \\
+\noindent\emph{Is there input coming from the user?} \\
+\emph{Does the user have access to this code?} \\
+\emph{Does user input get validated/sanitized?} \\
+
+
+\noindent\textbf{Data Overview}
+
+Questions in this category deal with how the end user might interact with the system. 
+Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
+Three of the 155 distinct questions we found fall into this category.
+\\
+
+\noindent\textbf{Observations}
+
+Many participants spent time and effort exploring the call hierarchy of the potential path traversal only to discover that the code was entirely contained in test classes.
+\\
+
+\noindent\textbf{Tool Implications}
+
+Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system.
+The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
+However, developers may lack tool support for navigating through and reasoning about attack surfaces.
+Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
+
+
+
+\section{Results: Individuals}
+\label{sec:results-i}
+
+
+%%%%%%%%%%%% Developer Planning
+
+\noindent\subsection{\textbf{Developer Planning and Self-Reflection (14)}} \label{dpr}
+
+\noindent\emph{What was I looking for?} \\
+\emph{What do I know now?} \\
+\emph{What should I do first?} \\
+\emph{Do I understand?} \\
+\emph{Have I seen this before?} \\
+\emph{What was that again?} \\
+\emph{What's next?} \\
+\emph{Where am I in the code?} \\
+\emph{Is this worth my time?} \\
+\emph{Is this my responsibility?} \\
+\emph{Why do I care?} \\
 \emph{Miscellaneous} \\
 
 \noindent\textbf{Data Overview}
 
-Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
-Nine questions of the 155 extracted fit into this category.
-The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
-On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
+One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the 155 distinct questions extracted fit into this category. All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
 \\
 
 \noindent\textbf{Observations}
 
-P1 -- But, I assume that it is coming from, lets see
-\\
+%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with 
+
 
 \noindent\textbf{Tool Implications}
 
-The answers to most of these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. A few of these questions, however, would require more effort on the developer's part to answer, therefore could benefit from tool support. For instance, it is not obvious how a tool would answer the question \emph{how do I track this information in the code}; the answer could vary depending on what information the developer is trying to track.
-Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
+Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
+For example, one question participants asked was \textit{Have I seen this before?}
+A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
+The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 
 
-%%%%%%%%%%%% Preventing and Understanding Potential Attacks 
+%%%%%%%%%%%% Understanding Concepts
 
-\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (11)}}\label{pupa}
+\noindent\subsection{\textbf{Understanding Concepts (6)}}\label{uc}
 
-\noindent\emph{How can this vulnerability lead to an attack?} \\
-\emph{How can I replicate an attack that exploits this vulnerability?} \\
-\emph{Why is this a vulnerability?} \\
-\emph{What are the possible attacks that could occur?} \\
-\emph{How can I prevent this attack?} \\
-\emph{How should I address this problem? } \\
-\emph{What is the problem (potential attack)?} \\
-\emph{Is this a real vulnerability?} \\
-\emph{How do I find out if this is a real vulnerability?} \\
+\noindent\emph{What is the term for this concept?} \\
+\emph{Do these words have special meaning related to this concept/problem?} \\
+\emph{How does this concept work?} \\
+\emph{What is this concept?} \\
 \emph{Miscellaneous} \\
 
-\noindent\textbf{Data Overview}
 
-We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. 
-These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
-Nine of the 155 distinct questions we gathered belong in this category.
+\noindent\textbf{Data Overview}
+For some participants, the concepts that the notification contained were incompatible with the developer's mental model. 
+In these situations, participants seemed to have questions surrounding one or more of the concepts relevant to the problem.
+We categorized 6 of the 155 distinct questions into this category. 
 \\
 
 \noindent\textbf{Observations}
 
-P1 -- doesn't give me much confidence that this is actually a real bug..
-P2 -- I'm thinking about different types of attacks 
+
+Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. For example...
+We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
 \\
 
 \noindent\textbf{Tool Implications}
 
-Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
-Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
+In general, if a developer does not have experience with a particular feature or concept, they may have more difficulty understanding a problem in their code pertaining to that concept~\cite{wiedenbeck1993mental}.
+Sometimes, Find Security Bugs provide links to information regarding the concepts involved, however, some of our participants did not use them because they did not know they existed until the first author pointed them out. 
+A simple solution to providing easier access to the desired information is by places the links in a  more visible area (perhaps nested in the text of the error message next to the concept it has information about). 
+One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
+Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code, tools could make an attempt at only adapting notifications if the developer's model suggests there is a need the answer to these types of conceptual questions.
+% Very obvious trying to plug direction of my research but still a possible direction for this :)
 
-Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
-This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
-If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate. 
-One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
+
+%%%%%%%%%%%% Confirming Expectations
+
+\noindent\subsection{\textbf{Confirming Expectations (1)}}\label{ce}
+
+\noindent\emph{Is this doing what I expect it to?} \\
+%Swap categories?
+Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
+As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. 
+We only identified one distinct question, however, there are many ways to interpret the questions and may require different pieces of information to answer it.
+
+
+
+\section{Results: Problem Solving Support}
+\label{sec:results-pss}
 
 
 %%%%%%%%%%%% Resources
@@ -855,41 +1049,6 @@ Though links to external documentation and resources can provide answers to some
 %Information too complex, not sure how to apply 
 Lack of support for answering these questions may have contributed to participants not clicking the links in many situations.  
 Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements, however, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
-
-
-%%%%%%%%%%%% Application Context
-
-\noindent\subsection{\textbf{Application Context/Usage (9)}}\label{acu}
-
-\noindent\emph{What is the method/variable used for in the program?} \\
-\emph{Are we handling secure data in this context?} \\
-\emph{What is the context of this bug/code?} \\
-\emph{How does the system work?} \\
-\emph{Will usage of this method change?} \\
-\emph{Is the method/variable every being used?} \\
-\emph{Is this code used to test the program/functionality?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
-
-Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
-The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
-Seven of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
-\\
-
-\noindent\textbf{Observations}
-
-Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
-\\
-
-\noindent\textbf{Tool Implications}
-
-It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
-For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
-However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
-Most of these questions can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make developer written documentation more easily available and searchable for information of interest.
-
 
 
 
@@ -940,75 +1099,6 @@ A tool that could model this concise interaction could potentially provide answe
 
 
 
-%%%%%%%%%%%% Assessing Application
-
-\noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
-
-\noindent\emph{How hard is it to apply a fix to this code?} \\
-\emph{How do I use this fix in my code?} \\
-\emph{How do I fix this vulnerability?} \\
-\emph{Is there a quick fix for automatically applying a fix?} \\
-\emph{Will the code work the same after I apply the fix?} \\
-\emph{Can these fix suggestions be applied to my code?} \\
-\emph{Will the error go away when I apply this fix?} \\
-\emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
-\emph{What other changes do I need to make to apply this fix?} \\
-
-
-\noindent\textbf{Data Overview}
-
-Another kind of question we extracted pertained to the process resolving vulnerabilities. 
-These questions pertain to understanding the application and implications of a potential fix. 
-We categorized 9 of the 155 distinct questions into this category.
-\\
-
-\noindent\textbf{Observations}
-
-P1 -- is there a quick fix/automatic application?
-\\
-
-\noindent\textbf{Tool Implications}
-
-Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
-Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
-None of our participants asked this question specifically. 
-However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
-
-
-%%%%%%%%%%%% Understanding Concepts
-
-\noindent\subsection{\textbf{Understanding Concepts (6)}}\label{uc}
-
-\noindent\emph{What is the term for this concept?} \\
-\emph{Do these words have special meaning related to this concept/problem?} \\
-\emph{How does this concept work?} \\
-\emph{What is this concept?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
-For some participants, the concepts that the notification contained were incompatible with the developer's mental model. 
-In these situations, participants seemed to have questions surrounding one or more of the concepts relevant to the problem.
-We categorized 6 of the 155 distinct questions into this category. 
-\\
-
-\noindent\textbf{Observations}
-
-
-Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. For example...
-We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
-\\
-
-\noindent\textbf{Tool Implications}
-
-In general, if a developer does not have experience with a particular feature or concept, they may have more difficulty understanding a problem in their code pertaining to that concept~\cite{wiedenbeck1993mental}.
-Sometimes, Find Security Bugs provide links to information regarding the concepts involved, however, some of our participants did not use them because they did not know they existed until the first author pointed them out. 
-A simple solution to providing easier access to the desired information is by places the links in a  more visible area (perhaps nested in the text of the error message next to the concept it has information about). 
-One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
-Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code, tools could make an attempt at only adapting notifications if the developer's model suggests there is a need the answer to these types of conceptual questions.
-% Very obvious trying to plug direction of my research but still a possible direction for this :)
-
-
 %%%%%%%%%%%% Bug Severity/Ranking
 
 \noindent\subsection{\textbf{Bug Severity and Ranking (4)}}\label{bsr}
@@ -1036,59 +1126,6 @@ There exists techniques and tools for static analysis alert prioritization that 
 It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
 %over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
 Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity and/or ranking of a potential vulnerability.
-
-
-%%%%%%%%%%%% Relationship Between Bugs
-
-\noindent\subsection{\textbf{Relationship Between Bugs (3)}}\label{rbb}
-
-\noindent\emph{Does this other piece code have the same bug as the code I'm working with?} \\
-\emph{Are all the bugs related in my code?} \\
-\emph{Are all of these notifications vulnerabilities?} \\
-
-
-\noindent\textbf{Data Overview}
-Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
-Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
-\\
-
-\noindent\textbf{Observations}
-
-\noindent\textbf{Tool Implications}
-
-We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
-Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
-Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
-A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
-
-%%%%%%%%%%%% End-User Interaction
-
-\noindent\subsection{\textbf{End-User Interaction (3)}}
-\label{eui}
-
-\noindent\emph{Is there input coming from the user?} \\
-\emph{Does the user have access to this code?} \\
-\emph{Does user input get validated/sanitized?} \\
-
-
-\noindent\textbf{Data Overview}
-
-Questions in this category deal with how the end user might interact with the system. 
-Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
-Three of the 155 distinct questions we found fall into this category.
-\\
-
-\noindent\textbf{Observations}
-
-Many participants spent time and effort exploring the call hierarchy of the potential path traversal only to discover that the code was entirely contained in test classes.
-\\
-
-\noindent\textbf{Tool Implications}
-
-Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system.
-The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
-However, developers may lack tool support for navigating through and reasoning about attack surfaces.
-Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
 
 
 %%%%%%%%%%%% Error Messages
@@ -1125,16 +1162,6 @@ However, if the error message is connected to multiple parts of the code, or a d
 Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code~\cite{barik14visual}.
 Answering the other two questions as easily may require additional tool support. For example, 
 
-
-%%%%%%%%%%%% Confirming Expectations
-
-\noindent\subsection{\textbf{Confirming Expectations (1)}}\label{ce}
-
-\noindent\emph{Is this doing what I expect it to?} \\
-%Swap categories?
-Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
-As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. 
-We only identified one distinct question, however, there are many ways to interpret the questions and may require different pieces of information to answer it.
 
 \section{Discussion}
 \label{sec:disc}
