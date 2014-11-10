@@ -129,10 +129,8 @@ Our work extends these promising results to security by informing toolsmiths of 
 In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
 We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
-Our work makes three contributions. 
-First, we present a list of questions that software developers ask when examining the security of their code.
-Second, based on our observations, we discuss the strategies that developers use to answer some of their questions.
-Finally, we evaluate the existing tool support for answering security-related questions.
+The main contribution of this paper is categorized questions developers ask. 
+We also assess the strategies developers use to answer these questions and whether or not existing tools support these strategies.
 
 The remainder of the paper is organized as follows. 
 In Section~\ref{sec:rw}, we discuss previous work related to our own. 
@@ -291,19 +289,17 @@ Our study discovers the questions developers have about potential code vulnerabi
 \section{Methodology}
 \label{sec:meth}
 We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. 
-Section \ref{rqs} outlines the research question we sought to answer. 
-Section \ref{studyDesign} details how the study was designed. 
-Section \ref{dataAnalysis} describes how we preformed data analysis.
+Section \ref{rqs} outlines the research questions we sought to answer. 
+Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
-\subsection{Research Goals}
+\subsection{Research Questions}
 \label{rqs}
-We are motivated by the following research question:
+We want to answer the following research questions:
 \begin{itemize}
-\item \textbf{RQ1}: What types of questions do developers when assessing the security of their code?
+\item \textbf{RQ1}: What types of security related questions do developers ask?
+\item \textbf{RQ2}: How do current tools and approaches support developers in answering these questions?
 \end{itemize}
-
-In our investigation, we also identified some of the strategies that developers use to answer such questions and assessed whether current tools support those strategies.
 
 \subsection{Study Design}
 \label{studyDesign}
@@ -409,7 +405,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \end{table*}
 
 During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
-Additionally, we asked them to use a think-aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
+Additionally, we asked them to use a think aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 
 The interviewer was equipped with the following questions, but had the freedom to omit questions or ask follow-up questions based on the participant's responses.
 \begin{itemize}
@@ -454,29 +450,16 @@ A statement was coded as a question only if it met one of the following criteria
 \end{itemize}
 
 \subsubsection{Question Extraction}
-Using the criteria outlined in the previous section, two of the authors independently coded each interview. 
-When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participant's original statement, and clarified the question being asked.
-From the 10 interviews, the first coder extracted 421 question statements; the other coder extracted 389. 
+Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. 
+When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
 
-Since participants used a think-aloud protocol, the interviews contained many statements that were difficult to classify as questions. 
-The criteria help ensure that only the statements that reflected actual questions were classified as such. 
-The interviews were coded by two independent reviewers to help identify more of the questions being asked, especially the difficult to interpret questions.
+To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it.
+During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
+If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
+When reviewers did agree, they determined the phrasing for the question that was most strongly grounded in the interview artifacts. 
+Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
-
-
-\subsubsection{Question Review}
-To remove duplicates and ensure the validity of all the questions, each interview was reviewed jointly by the two authors that initially coded it.
-During the second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
-The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the interview artifacts.
-
-Each question that was only identified by one author required verification.
-If the other author did not agree that such a question met at least one of the criteria, the question was removed from the question set and counted as a disagreement.
-The reviewers were said to agree when they merged a duplicate or verified a question.   
-Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
-High agreement score indicates that the two reviewers consistently held similar interpretations of the question criteria.
-
-
 
 \begin{figure*}
 \centering
@@ -567,11 +550,11 @@ In the second stage, we identified emergent themes and grouped the clusters into
 For example, we placed the question \textit{Where can I get more information?} into a category called \emph{\textbf{Resources/Documentation}}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation}. 
 Table~\ref{table:categories} contains the 17 categories along with the number of distinct clusters each contains. 
 
-To validate the categories that we identified, we asked two independent researchers to sort the question clusters into our categories. 
-Rather than sort the entire set of questions, we randomly selected 43 questions for each rater to sort.
+To validate the categories we identified, we asked two independent researchers to sort the question clusters into our categories. 
+Rather than sort the entire set of questions, each rater was given a subset of the question set. 
 The first rater agreed with our categorization with a Cohen's Kappa of $\kappa = .63$. 
 Between the first and second rater we reworded and clarified some ambiguous questions. The second rater exhibited greater agreement ($\kappa = .70$). 
-These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
+Given the high number of categories, these values are well within the acceptable ranges.
 
 \section{Results}
 \label{sec:results}
@@ -636,7 +619,10 @@ One kind of question participants asked when assessing potential security vulner
 \noindent\textbf{Observations}
 
 %Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with 
+
+
 \noindent\textbf{Tool Implications}
+
 Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
 For example, one question participants asked was \textit{Have I seen this before?}
 A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
@@ -678,7 +664,7 @@ Others were predisposed to favor light-weight tools, such as inspecting code hig
 It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
 P1 -- Yeah, I don't know what this is, call hierarchy.
-
+\\
 
 \noindent\textbf{Tool Implications}
 
@@ -713,6 +699,7 @@ Eight of the 155 distinct questions fit into this category.
 
 P1 -- I haven't verified that. You might be modifying the string as it goes through. But it's probably the same string.. 
 \\
+
 \noindent\textbf{Tool Implications}
 
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
@@ -785,7 +772,7 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 \noindent\textbf{Observations}
 
 P1 -- But, I assume that it is coming from, lets see
-
+\\
 
 \noindent\textbf{Tool Implications}
 
@@ -980,6 +967,7 @@ P1 -- is there a quick fix/automatic application?
 \\
 
 \noindent\textbf{Tool Implications}
+
 Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
 Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} None of our participants asked this question specifically. 
 However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
@@ -1005,12 +993,18 @@ We categorized 6 of the 155 distinct questions into this category.
 \noindent\textbf{Observations}
 
 
-Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. 
-In general, it seems that if a developer does not have experience with a particular feature or concept, it is less likely they will understand a problem in their code pertaining to that concept~\cite{}.%cite building mental model paper? 
+Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. For example...
+We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
 \\
 
 \noindent\textbf{Tool Implications}
 
+In general, it seems that if a developer does not have experience with a particular feature or concept, it is less likely they will understand a problem in their code pertaining to that concept~\cite{}.%cite building mental model paper? 
+Sometimes, Find Security Bugs provide links to information regarding the concepts involved, however, some of our participants did not use them because they did not know they existed until the first author pointed them out. 
+A simple solution to providing easier access to the desired information is by places the links in a  more visible area (perhaps nested in the text of the error message next to the concept it has information about). 
+One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
+Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code, tools could make an attempt at only adapting the presentation of the notifications if the developer's model suggests there is a need the answer to these types of conceptual questions.
+% Very obvious trying to plug direction of my research but still a possible direction for this :)
 
 
 %%%%%%%%%%%% Bug Severity/Ranking
@@ -1031,10 +1025,16 @@ Four of the 155 distinct questions extracted fall into this category.
 \\
 
 \noindent\textbf{Observations}
-\\
+
 
 \noindent\textbf{Tool Implications}
+
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
+There exists techniques and tools for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
+It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
+%over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
+Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity and/or ranking of a potential vulnerability.
+
 
 %%%%%%%%%%%% Relationship Between Bugs
 
@@ -1051,12 +1051,13 @@ Three of the 155 distinct questions we found target the relationships between th
 \\
 
 \noindent\textbf{Observations}
-\\
+
 \noindent\textbf{Tool Implications}
 
-We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments. 
+We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
 Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
 Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
+A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
 
 %%%%%%%%%%%% End-User Interaction
 
@@ -1082,9 +1083,10 @@ Many participants spent time and effort exploring the call hierarchy of the pote
 
 \noindent\textbf{Tool Implications}
 
-Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system. 
+Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system.
 The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
-To our knowledge, developers lack tool support for navigating and reasoning about attack surfaces. 
+However, developers may lack tool support for navigating through and reasoning about attack surfaces.
+Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
 
 
 %%%%%%%%%%%% Error Messages
