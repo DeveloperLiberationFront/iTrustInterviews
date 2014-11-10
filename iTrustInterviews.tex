@@ -575,21 +575,21 @@ Categories have been places into four groups to facilitate discussion: Vulnerabi
 \emph{When should I use the alternative?} \\
 \emph{Is the alternative slower?} \\
 \emph{Are there other considerations to make when using the alternative(s)?} \\
-\emph{How does my code compare to the alternative code in the example I found?} \\
-\emph{Miscellaneous} \\
-
+\emph{How does my code compare to the alternative code in the example I found?}
 
 \noindent\textbf{Data Overview}
 
 Sometimes participants looked elsewhere for information about their code or vulnerability. 
 Primarily, participants used web resources or searched for similar code elsewhere in the project.
 When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
-Seven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
+Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
 \\
 
 \noindent\textbf{Observations}
 
-The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats.  
+The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats. 
+%P8 OWASP
+%P1, P7, P8 StackOverflow
 Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
 \\
@@ -621,13 +621,16 @@ The tool could then potentially use speculative analysis, which is used by tools
 
 We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. 
 These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
-Nine of the 155 distinct questions we gathered belong in this category.
+Eleven of the 155 distinct questions we gathered belong in this category.
 \\
+%Unique questions to security, participants asked questions about how vulnerabilitis opend them up to attacks. 
 
 \noindent\textbf{Observations}
 
 P1 -- doesn't give me much confidence that this is actually a real bug..
 P2 -- I'm thinking about different types of attacks 
+P10 -- attacker get seed
+5 participants asked what are the possible attacks that could occur
 \\
 
 \noindent\textbf{Tool Implications}
@@ -639,7 +642,6 @@ Some of the questions, such as \textit{how do I find out if this is a real vulne
 This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
 If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate. 
 One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
-
 
 
 %%%%%%%%%%%% Assessing Application
@@ -667,14 +669,19 @@ We categorized 9 of the 155 distinct questions into this category.
 \noindent\textbf{Observations}
 
 P1 -- is there a quick fix/automatic application?
+P2 -- Is there a way to automate the application of the fix
+P7 -- Test cases
+P1,P2,P6 how hard is it to apply
 \\
 
 \noindent\textbf{Tool Implications}
 
 Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
 Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
-None of our participants asked this question specifically. 
-However, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
+None of our participants asked this question specifically, but to that effect, P1 and P2 asked \textit{Will the code work the same after I apply the fix?} 
+Further, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
+
+%Fix easy to fix vulnerabilities without researching the trade-offs. Random password vulnerability.
 
 
 %%%%%%%%%%%% Relationship Between Bugs
@@ -692,6 +699,8 @@ Three of the 155 distinct questions we found target the relationships between th
 \\
 
 \noindent\textbf{Observations}
+P1 2 8 10 asked
+Are all of the bugs related in my code?
 
 \noindent\textbf{Tool Implications}
 
@@ -700,6 +709,7 @@ Another reason for asking this kind of question is to determine the possibility 
 Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
 A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
 
+%Alert prioritization. Particpants ask if notifications in the same area are the same. Research suggests that homogenous errors occur close to one another. Tools should help synthesize these similar notifications to present information to developers more effectively.
 
 
 \section{Results: Code and the Application}
@@ -723,7 +733,7 @@ A tool that answers these questions might make visible the connections between t
 \emph{How do I track this information in the code?} \\
 \emph{How do I navigate to other open files?} \\
 \emph{Miscellaneous} \\
-
+ 	
 \noindent\textbf{Data Overview}
 
 Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
@@ -734,6 +744,10 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 
 \noindent\textbf{Observations}
 
+All participants asked \textit{Where is this used in the code?}
+
+Four of the participants asked \textit{Where are other similar pieces of code?}
+%Talk about in assessing the application of a fix, or discussion section
 P1 -- But, I assume that it is coming from, lets see
 \\
 
@@ -775,10 +789,14 @@ While some participants located and employed the call hierarchy tool, others gra
 %find references / visual inspection
 In some cases, participants were unaware of the call hierarchy tool or how to use it. 
 Others were predisposed to favor light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool.
+%P4 here
 It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
 P1 -- Yeah, I don't know what this is, call hierarchy.
 \\
+%P4 Rode the struggle bus, last stop call hierarchy
+%P1, P6 Looked at highlights
+%P9 Considered using find references
 
 \noindent\textbf{Tool Implications}
 
@@ -811,7 +829,14 @@ Eight of the 155 distinct questions fit into this category.
 
 \noindent\textbf{Observations}
 
+The most popular questions in this category were \textit{Where does this information go?} and  \textit{Where is the data coming from?}
+All but P7 P
+
+10 asked about the data pipeline. 
 P1 -- I haven't verified that. You might be modifying the string as it goes through. But it's probably the same string.. 
+P1 -- Where is the form data going?
+P3 -- What parts of the code used this data?
+P8 Where are the values going?
 \\
 
 \noindent\textbf{Tool Implications}
@@ -849,13 +874,15 @@ The questions in this category inquire about the code at an abstract level, such
 
 \noindent\textbf{Observations}
 
+5 Participans asked why was the code written this way.
 P1 -- It's code that's actually written by someone writing iTrust, so it's not library code.
 \\
+P2 --How much effort was put in to this code. Use that information to determine whether they trust the code was written securely.
 
 \noindent\textbf{Tool Implications}
 
 Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
-This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need. 
+This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need.
 Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
 A tool that wants to accommodate these needs might collects these sorts of measures and provide developers easy access to it.
 
@@ -884,6 +911,7 @@ Seven of the 155 distinct questions revolved around how the code works in the co
 \noindent\textbf{Observations}
 
 Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
+P2 P4 P9 and P10 asked whether the code they were examining occurred in classes that were only used to test the application. They asked this question to determine if applying a fix was worth their time.
 \\
 
 \noindent\textbf{Tool Implications}
@@ -913,7 +941,10 @@ Three of the 155 distinct questions we found fall into this category.
 
 \noindent\textbf{Observations}
 
-Many participants spent time and effort exploring the call hierarchy of the potential path traversal only to discover that the code was entirely contained in test classes.
+Many participants spent time and effort exploring the call hierarchy of the potential path traversal only to discover that the code was entirely contained in test classes. As noted in Section \ref{acu}, the context of the code factors into how developer approach vulnerabilities. For example, 
+
+P1: all these test data generator
+P2: Suspected that random pass word was in test code, but went on to discover that it was not.
 \\
 
 \noindent\textbf{Tool Implications}
