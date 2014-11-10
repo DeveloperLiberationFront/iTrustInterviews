@@ -887,7 +887,10 @@ Though all participants had experience coding in iTrust, and had some knowledge 
 \noindent\textbf{Tool Implications}
 
 It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
-For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
+For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
+However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
+Most of these questions can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make developer written documentation more easily available and searchable for information of interest.
+
 
 
 
@@ -928,6 +931,13 @@ For example, Find Security Bugs reports its confidence on the potential defect i
 
 \noindent\textbf{Tool Implications}
 
+There exists a large body of research that explores developers' ability to understand and effectively interact with tools, however, many of these questions remain unanswered~\cite{ko2004designing, khoo2008path, johnson2013don}. 
+Many of these questions may require the input of other developers to be answered effectively. 
+For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
+Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
+A tool that could model this concise interaction could potentially provide answers to many of these questions.
+
+% whyline - why did, why didn't this happen but not why tool complaining (still question not answered as well as what is tool telling me and how information presented, cite)
 
 
 
