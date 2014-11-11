@@ -576,11 +576,9 @@ Finally, the tool should present information about the trade-offs associated wit
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
 \noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (10)}}\label{pupa}
-
-Participants sometimes asked questions to better understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
-For example,...
+Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities open the code up to potential attacks. For example, the servlet parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
 Eleven of the 155 distinct questions we gathered belong in this category.
-\\ 
+\\
 
 \noindent\emph{Is this a real vulnerability? (7)} \\
 \emph{What are the possible attacks that could occur? (5)} \\
@@ -591,25 +589,30 @@ Eleven of the 155 distinct questions we gathered belong in this category.
 \emph{How can this vulnerability lead to an attack? (1)} \\
 \emph{How should I address this problem? (1)} \\
 \emph{How do I find out if this is a real vulnerability?(1)} \\
-%Unique questions to security, participants asked questions about how vulnerabilities opened them up to attacks. 
 
 \noindent\textbf{Observations}
+Participants sought general information relating to the attacks in a given context.
+To that end, five participants asked \textit{What are the possible attacks that could occur?}
+For example, within the first minute of his analysis, P2 stated that he was thinking about the different types of attacks that could target web applications, like iTrust.
 
-P1 -- doesn't give me much confidence that this is actually a real bug..
-P2 -- I'm thinking about different types of attacks 
-P10 -- attacker get seed
-5 participants asked what are the possible attacks that could occur
+On the other hand, participants also sought specific attack-information regarding the vulnerability at hand.
+Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
+Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute an attack in the given context. For example, P10 determined that the Predictable Random vulnerability was ``real,'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 \\
-
 \noindent\textbf{Tool Implications}
+Unlike other contexts, when analyzing security vulnerabilities, developers ask questions pertaining to potential attacks.
+Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks attacks.
 
-Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
-Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are.  
+However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
+At times they inquire about all the possible attacks that could occur.
+At other times, they explore the feasibility of a specific attack.
+Security tools should support this modality by separating information about all the possible attacks from more detailed information about specific attacks.
 
-Some of the questions, such as \textit{how do I find out if this is a real vulnerability}, may not be as simple to answer by providing a link. 
-This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
-If there are resources, on the web or otherwise, that developers could use it does not seem that they are easy or intuitive to locate. 
-One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
+%Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
+%Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
+%Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
+%This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
+%One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
 
 
 %%%%%%%%%%%% Assessing Application
