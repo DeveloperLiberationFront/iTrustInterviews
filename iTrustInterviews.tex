@@ -138,8 +138,11 @@ Research that determines the questions developers ask about their code has infor
 Our work extends these promising results to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
 
 % contributions (the ones you have are good)
-The main contribution of this paper is categorized questions developers ask. 
-We also assess the strategies developers use to answer these questions and whether or not existing tools support these strategies.
+
+Our work makes three contributions. 
+First, we present a list of questions that software developers ask when examining the security of their code.
+Second, based on our observations, we discuss the strategies that developers use to answer some of their questions.
+Finally, we evaluate the existing tool support for answering security-related questions.
 
 The remainder of the paper is organized as follows. 
 In Section~\ref{sec:rw}, we discuss previous work related to our own. 
@@ -231,13 +234,15 @@ Section \ref{rqs} outlines the research questions we sought to answer.
 Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
 
 
-\subsection{Research Questions}
+\subsection{Research Goals}
 \label{rqs}
-We want to answer the following research questions:
+We are motivated by the following research question:
 \begin{itemize}
 \item \textbf{RQ1}: What types of security related questions do developers ask?
-\item \textbf{RQ2}: How do current tools and approaches support developers in answering these questions?
 \end{itemize}
+
+In our investigation, we also identified some of the strategies that developers use to answer such questions and assessed whether current tools support those strategies.
+
 
 \subsection{Study Design}
 \label{studyDesign}
@@ -344,7 +349,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \end{table*}
 
 During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
-Additionally, we asked them to use a think aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
+Additionally, we asked them to use a think-aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 
 The interviewer was equipped with the following questions, but had the freedom to omit questions or ask follow-up questions based on the participant's responses.
 \begin{itemize}
@@ -388,14 +393,25 @@ A statement was coded as a question only if it met one of the following criteria
 \end{itemize}
 
 \subsubsection{Question Extraction}
-Using the criteria outlined in the previous section, each interview was independently coded for questions by two of the authors. 
-When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participants original statement, and clarified the question being asked.
+Using the criteria outlined in the previous section, two of the authors independently coded each interview. 
+When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participant's original statement, and clarified the question being asked.
+From the 10 interviews, the first coder extracted 421 question statements; the other coder extracted 389. 
 
-To handle instances where the two coders disagreed, each interview was reviewed a second time by the two authors that initially coded it.
-During the second review, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
-If one of the reviewers did not agree that a question met at least one of the criteria, the question was removed from the question set. 
-When reviewers did agree, they determined the phrasing for the question that was most strongly grounded in the interview artifacts. 
-Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
+Since participants used a think-aloud protocol, the interviews contained many statements that were difficult to classify as questions. 
+The criteria help ensure that only the statements that reflected actual questions were classified as such. 
+The interviews were coded by two independent reviewers to help identify more of the questions being asked, especially the difficult to interpret questions.
+
+Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
+\subsubsection{Question Review}
+To remove duplicates and ensure the validity of all the questions, each interview was reviewed jointly by the two authors that initially coded it.
+During the second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
+The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the interview artifacts.
+
+Each question that was only identified by one author required verification.
+If the other author did not agree that such a question met at least one of the criteria, the question was removed from the question set and counted as a disagreement.
+The reviewers were said to agree when they merged a duplicate or verified a question.Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
+High agreement score indicates that the two reviewers consistently held similar interpretations of the question criteria.
+
 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
 
@@ -488,11 +504,11 @@ In the second stage, we identified emergent themes and grouped the clusters into
 For example, we placed the question \textit{Where can I get more information?} into a category called \emph{\textbf{Resources/Documentation}}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation}. 
 Table~\ref{table:categories} contains the 17 categories along with the number of distinct clusters each contains. 
 
-To validate the categories we identified, we asked two independent researchers to sort the question clusters into our categories. 
-Rather than sort the entire set of questions, each rater was given a subset of the question set. 
+To validate the categories that we identified, we asked two independent researchers to sort the question clusters into our categories. 
+Rather than sort the entire set of questions, we randomly selected 43 questions for each rater to sort.
 The first rater agreed with our categorization with a Cohen's Kappa of $\kappa = .63$. 
 Between the first and second rater we reworded and clarified some ambiguous questions. The second rater exhibited greater agreement ($\kappa = .70$). 
-Given the high number of categories, these values are well within the acceptable ranges.
+These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
 \label{sec:results-vaf}
@@ -506,40 +522,54 @@ Categories have been places into four groups to facilitate discussion: Vulnerabi
 
 \noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)}}\label{uafa}
 
-Sometimes participants looked elsewhere for information about their code or vulnerability. 
-Primarily, participants used web resources or searched for similar code elsewhere in the project.
-When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+When resolving security vulnerabilities, participants encountered alternative approaches that appeared to achieve the desired functionality more securely.
+For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the Prepared Statement Class instead of Java Statements. 
+Participants found many sources for alternative fixes, including web resources and even code located in other parts of the project.
+When presented with alternative approaches, participants compared the alternative with the current code and assessed the applicability of the alternative. 
 Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
 \\
 \\
-\noindent\emph{Why should I use this alternative method/approach to fix the vulnerability?} \\
-\emph{What are the alternatives for fixing this?} \\
-\emph{Does the alternative function the same as what I'm currently using?} \\
-\emph{When should I use the alternative?} \\
-\emph{Is the alternative slower?} \\
-\emph{Are there other considerations to make when using the alternative(s)?} \\
-\emph{How does my code compare to the alternative code in the example I found?}
-\\
+\noindent\emph{Why should I use this alternative method/approach to fix the vulnerability? (2)} \\
+\emph{What are the alternatives for fixing this? (4)} \\
+\emph{Does the alternative function the same as what I'm currently using? (6)} \\
+\emph{When should I use the alternative? (1)} \\
+\emph{Is the alternative slower? (1)} \\
+\emph{Are there other considerations to make when using the alternative(s)? (3)} \\
+\emph{How does my code compare to the alternative code in the example I found? (2)}
 
 \noindent\textbf{Observations}
-
-Eight participants had questions regarding alternative approaches suggested to address the vulnerability being assessed. Sometimes the notification communicating about the vulnerability suggested an alternative; sometimes participants had to go to outside sources to determine the alternatives.
-The process of understanding the alternative ways to implement functionality in a secure system was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats. Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
-P7 preferred StackOverflow as a resource because it included real-world examples and elaborated what was wrong with the code as it was currently written.  
+Eight participants had questions that fit into this category. 
+The Find Security Bugs notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
+As noted, the message associated with the SQL Injection vulnerability suggests switching to use Prepared Statements. 
+The message associated with the Predictable Random vulnerability suggests switching to uses Java.Security.SecureRandom. 
+In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
+Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
+P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
 While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP.~\footnote{\url{https://www.owasp.org/index.php/Main_Page}} 
-Because he recognized OWASP as ``the authority on security,'' he chose this link and used it to make is final decision regarding the vulnerability. 
-Despite the usefulness of the information participants may have been able to find, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
-For example, P9 found a suggestion on StackOverflow that he thought might work but it was not clear if it could be applied to the code in iTrust. 
-The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
+Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make is final decision regarding the vulnerability. 
+Despite the useful information that some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
+For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
+%The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
+%SAVE THIS CONNECTION FOR LATER
 \\
+\noindent\textbf{Tool Implications} 
+It seems especially important when dealing with potential security vulnerabilities that developers fully understand any changes they make to the code. 
+However, based on our observations, developers lack easy-access to security-relevant information on potential alternatives. 
+Rather, participants used ad-hoc strategies to seek different pieces of information from a variety of sources. 
 
-\noindent\textbf{Tool Implications}
+The questions in this category suggest that developers could use a tool that aggregates information on alternative secure coding practices.
+Our observations also suggest that such a tool should include real world examples and draw from trusted authorities on security.
+Finally, the tool should present information about the trade-offs associated with a particular alternative, such as decreased performance or the possibility of introducing additional vulnerabilities. 
 
-When elaborating a suggested fix, or alternatives to achieving the same functionality, developers may have difficulty determining at a glance the relevant details regarding the suggested approach (as the questions in this category suggest).
-It seems especially important when dealing with potential security vulnerabilities that developers fully understand any changes they make to the code.
-One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
-If the developer, or other developers of the code, have not used the alternative before, the tool could borrow behavior or design principles from \textsc{Whyline} by allowing developers to ask questions about the code in relation to the suggested approach~\cite{ko2004designing}. 
-The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
+%One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
+
+%The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
+
+%GOOD POINTS ABOVE NOT SURE HOW THEY FIT WITH STORY
+
+
+%If the developer, or other developers of the code, have not used the alternative before, the tool could borrow behavior or design principles from \textsc{Whyline} by allowing developers to ask questions about the code in relation to the suggested approach~\cite{ko2004designing}. 
+
 
 
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
@@ -1138,7 +1168,7 @@ Answering the other two questions as easily may require additional tool support.
 \label{sec:disc}
 Data suggests that tools should focus on XYZ. Discuss interesting/contradictory categories and implications.
 
-COME UP WITH SECTION HEADERS
+COME UP WITH SECTION `ERS
 
 %Whyline, flow of data and control
 
