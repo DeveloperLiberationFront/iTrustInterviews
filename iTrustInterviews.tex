@@ -54,6 +54,10 @@
 \usepackage{url}
 \usepackage[table, svgnames]{xcolor} 
 \usepackage{color}
+\usepackage{siunitx}
+
+\usepackage{dcolumn}
+\newcolumntype{Y}{D..{6.4}}
 
 \begin{document}
 %
@@ -260,7 +264,7 @@ Figure \ref{fig:environment} depicts the configuration of the IDE for one of the
 \begin{table*} 
 \centering
 \caption{Demographics of study participants}
-\begin{tabular}{|l|l|c|c|}
+\begin{tabular}{|l|l|c|S|}
 \rowcolor{gray!50}
 \hline
     Participant			& Job Title 						& Security Vulnerability Familiarity 					& Programming Experience (years) \\
