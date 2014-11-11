@@ -529,15 +529,17 @@ When presented with alternative approaches, participants compared the alternativ
 Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
 \\
 \\
-\noindent\emph{Why should I use this alternative method/approach to fix the vulnerability? (2)} \\
+\noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
 \emph{What are the alternatives for fixing this? (4)} \\
-\emph{Does the alternative function the same as what I'm currently using? (6)} \\
-\emph{When should I use the alternative? (1)} \\
-\emph{Is the alternative slower? (1)} \\
 \emph{Are there other considerations to make when using the alternative(s)? (3)} \\
 \emph{How does my code compare to the alternative code in the example I found? (2)}
+\emph{Why should I use this alternative method/approach to fix the vulnerability? (2)} \\
+\emph{When should I use the alternative? (1)} \\
+\emph{Is the alternative slower? (1)} \\
 
 \noindent\textbf{Observations}
+%The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
+%SAVE THIS CONNECTION FOR LATER
 Eight participants had questions that fit into this category. 
 The Find Security Bugs notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
 As noted, the message associated with the SQL Injection vulnerability suggests switching to use Prepared Statements. 
@@ -549,9 +551,8 @@ While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make is final decision regarding the vulnerability. 
 Despite the useful information that some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
-%The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
-%SAVE THIS CONNECTION FOR LATER
 \\
+
 \noindent\textbf{Tool Implications} 
 It seems especially important when dealing with potential security vulnerabilities that developers fully understand any changes they make to the code. 
 However, based on our observations, developers lack easy-access to security-relevant information on potential alternatives. 
@@ -574,26 +575,23 @@ Finally, the tool should present information about the trade-offs associated wit
 
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
-\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (11)}}\label{pupa}
+\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (10)}}\label{pupa}
 
-\noindent\emph{How can this vulnerability lead to an attack?} \\
-\emph{How can I replicate an attack that exploits this vulnerability?} \\
-\emph{Why is this a vulnerability?} \\
-\emph{What are the possible attacks that could occur?} \\
-\emph{How can I prevent this attack?} \\
-\emph{How should I address this problem? } \\
-\emph{What is the problem (potential attack)?} \\
-\emph{Is this a real vulnerability?} \\
-\emph{How do I find out if this is a real vulnerability?} \\
-\emph{Miscellaneous} \\
-
-\noindent\textbf{Data Overview}
-
-We also extracted questions pertaining to the potential attacks that could arise from the vulnerability found in the code. 
-These questions aimed to understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
+Participants sometimes asked questions to better understand the potential attacks that would exploit a given vulnerability, how to execute those attacks, how to prevent those attacks now and in the future. 
+For example,...
 Eleven of the 155 distinct questions we gathered belong in this category.
-\\
-%Unique questions to security, participants asked questions about how vulnerabilitis opend them up to attacks. 
+\\ 
+
+\noindent\emph{Is this a real vulnerability? (7)} \\
+\emph{What are the possible attacks that could occur? (5)} \\
+\emph{Why is this a vulnerability? (3)} \\
+\emph{How can I prevent this attack? (3)} \\
+\emph{How can I replicate an attack to exploit this vulnerability? (2)} \\
+\emph{What is the problem (potential attack)? (2)} \\
+\emph{How can this vulnerability lead to an attack? (1)} \\
+\emph{How should I address this problem? (1)} \\
+\emph{How do I find out if this is a real vulnerability?(1)} \\
+%Unique questions to security, participants asked questions about how vulnerabilities opened them up to attacks. 
 
 \noindent\textbf{Observations}
 
@@ -618,23 +616,23 @@ One way tools can help is by providing easy access to the top web resources and 
 
 \noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
 
-\noindent\emph{How hard is it to apply a fix to this code?} \\
-\emph{How do I use this fix in my code?} \\
-\emph{How do I fix this vulnerability?} \\
-\emph{Is there a quick fix for automatically applying a fix?} \\
-\emph{Will the code work the same after I apply the fix?} \\
-\emph{Can these fix suggestions be applied to my code?} \\
-\emph{Will the error go away when I apply this fix?} \\
-\emph{Does the code stand up to additional tests prior to/after applying the fix?} \\
-\emph{What other changes do I need to make to apply this fix?} \\
-
-
-\noindent\textbf{Data Overview}
-
 Another kind of question we extracted pertained to the process resolving vulnerabilities. 
-Questions in this category can be attributed to difficulty understanding the application and implications of a potential fix. 
+Questions in this category can be attributed to difficulty understanding the application and implications of a potential fix.
+For example...
 We categorized 9 of the 155 distinct questions into this category.
 \\
+
+
+\noindent\emph{Will the error go away when I apply this fix? (5)} \\
+\emph{How do I use this fix in my code? (4)} \\
+\emph{How do I fix this vulnerability? (4)} \\
+\emph{How hard is it to apply a fix to this code? (3)} \\
+\emph{Is there a quick fix for automatically applying a fix? (2)} \\
+\emph{Will the code work the same after I apply the fix? (2)} \\
+\emph{What other changes do I need to make to apply this fix? (2)} \\
+\emph{Can these fix suggestions be applied to my code? (1)} \\
+\emph{Does the code stand up to additional tests prior to/after applying the fix? (1)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -656,21 +654,22 @@ Further, questions like \textit{How hard is it to apply?} and \textit{Does the c
 
 %%%%%%%%%%%% Relationship Between Bugs
 
-\noindent\subsection{\textbf{Relationship Between Bugs (3)}}\label{rbb}
+\noindent\subsection{\textbf{Relationship Between Bugs (4)}}\label{rbb}
 
-\noindent\emph{Does this other piece code have the same bug as the code I'm working with?} \\
-\emph{Are all the bugs related in my code?} \\
-\emph{Are all of these notifications vulnerabilities?} \\
-
-
-\noindent\textbf{Data Overview}
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
+For instance...
 Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
 \\
+
+\noindent\emph{Are all the bugs related in my code? (3)} \\
+\emph{Does this other piece code have the same bug as the code I'm working with? (1)} \\
+\emph{Are all of these notifications vulnerabilities? (1)} \\
+
 
 \noindent\textbf{Observations}
 P1 2 8 10 asked
 Are all of the bugs related in my code?
+\\
 
 \noindent\textbf{Tool Implications}
 
@@ -691,26 +690,24 @@ A tool that answers these questions might make visible the connections between t
 
 %%%%%%%%%%%% Locating Information
 
-\noindent\subsection{\textbf{Locating Information (11)}}\label{li}
-
-\noindent\emph{Where is this used in the code?} \\
-\emph{Where are other similar pieces of code?} \\
-\emph{Where is this artifact?} \\
-\emph{Is this artifact located in this class?} \\
-\emph{Where is this method defined?} \\
-\emph{Where is this class? } \\
-\emph{Where is the next occurrence of this variable?} \\
-\emph{How do I track this information in the code?} \\
-\emph{How do I navigate to other open files?} \\
-\emph{Miscellaneous} \\
- 	
-\noindent\textbf{Data Overview}
+\noindent\subsection{\textbf{Locating Information (10)}}\label{li}
 
 Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
-Nine questions of the 155 extracted fit into this category.
+Eleven questions of the 155 extracted fit into this category.
 The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
 On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
 \\
+
+\noindent\emph{Where is this used in the code? (10)} \\
+\emph{Where are other similar pieces of code? (4)} \\
+\emph{How do I track this information in the code? (2)} \\
+\emph{Where is this artifact? (1)} \\
+\emph{Is this artifact located in this class? (1)} \\
+\emph{Where is this method defined? (1)} \\
+\emph{Where is this class? (1)} \\
+\emph{Where is the next occurrence of this variable? (1)} \\
+\emph{How do I navigate to other open files? (1)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -729,26 +726,24 @@ Similar to the suggestion made in Section~\ref{cf}, a tool that can automaticall
 
 %%%%%%%%%%%% Control Flow/Call Information
 
-\noindent\subsection{\textbf{Control Flow and Call Information (13)}}\label{cf}
-
-\noindent\emph{What is the call hierarchy?} \\
-\emph{How can I get calling information?} \\
-\emph{Who can call this?} \\
-\emph{Where is the method being called?} \\
-\emph{What causes this to be called?} \\
-\emph{Are all calls coming from the same class?} \\
-\emph{What gets called when this method gets called?} \\
-\emph{How often is this code called?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
+\noindent\subsection{\textbf{Control Flow and Call Information (10)}}\label{cf}
 
 We also extracted questions relating to control flow and calling information. 
 Developers seek information information pertaining to the methods that get called, or do not get called, in the code. 
 As the name of this category suggests, these questions can generally be answered using a tool for viewing the call hierarchy, when available. 
-Eight of the 155 distinct questions extracted dealt with acquiring control flow and call information.
+Thirteen of the 155 distinct questions extracted dealt with acquiring control flow and call information.
 \\
+
+
+\noindent\emph{Where is the method being called? (10)} \\
+\emph{How can I get calling information? (7)} \\
+\emph{Who can call this? (5)} \\
+\emph{Are all calls coming from the same class? (3)} \\
+\emph{What gets called when this method gets called? (2)} \\
+\emph{What is the call hierarchy? (1)} \\
+\emph{What causes this to be called? (1)} \\
+\emph{How often is this code called? (1)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -778,24 +773,22 @@ To increase visibility of the desired information, the tool might also highlight
 
 %%%%%%%%%%%% Data Storage 
 
-\noindent\subsection{\textbf{Data Storage and Flow (11)}}\label{dsf}
-
-\noindent\emph{How is data put into this variable?} \\
-\emph{Does data from this method/code travel to the database?} \\
-\emph{Where does this information/data go?} \\
-\emph{How do I find where the information travels?} \\
-\emph{How does the information change as it travels through the programs?} \\
-\emph{What does the variable contain?} \\
-\emph{Is any of the data malicious?} \\
-\emph{Where is the data coming from?} \\
-\emph{Miscellaneous} \\
-
-\noindent\textbf{Data Overview}
+\noindent\subsection{\textbf{Data Storage and Flow (10)}}\label{dsf}
 
 Some of the questions we found pertained to the data being stored and carried throughout the program. 
 Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 
-Eight of the 155 distinct questions fit into this category.
+Eleven of the 155 distinct questions fit into this category.
 \\
+
+\noindent\emph{Where does this information/data go? (9)} \\
+\emph{Where is the data coming from? (5)} \\
+\emph{How is data put into this variable? (3)} \\
+\emph{Does data from this method/code travel to the database? (2)} \\
+\emph{How do I find where the information travels? (2)} \\
+\emph{How does the information change as it travels through the programs? (2)} \\
+\emph{What does the variable contain? (1)} \\
+\emph{Is any of the data malicious? (1)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -821,33 +814,33 @@ It may be that some of the existing tools for data flow analysis could be augmen
 
 %%%%%%%%%%%% Code Background
 
-\noindent\subsection{\textbf{Code Background and Functionality (17)}}
+\noindent\subsection{\textbf{Code Background and Functionality (9)}}
 \label{cbf}
 
-\noindent\emph{Who wrote this code?} \\
-\emph{Why is this code needed?} \\
-\emph{Is this library code?} \\
-\emph{Are there tests for this code?} \\
-\emph{Why was this code written this way?} \\
-\emph{What does this code do?} \\
-\emph{Is this code doing anything?} \\
-\emph{How much effort was put into this code?} \\
-\emph{Why are we using this API in the code?} \\
-\emph{Miscellaneous} \\
-
-\noindent\textbf{Data Overview}
 
 Participants also asked questions concerning the background and intended function of the code being analyzed. 
-Nine of the 155 distinct questions extracted fit into this category. 
+Seventeen of the 155 distinct questions extracted fit into this category. 
 The questions in this category inquire about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
 \\
+
+\noindent\emph{What does this code do? (9)} \\
+\emph{Why was this code written this way? (5)} \\
+\emph{Why is this code needed? (3)} \\
+\emph{Who wrote this code? (2)} \\
+\emph{Is this library code? (2)} \\
+\emph{Why are we using this API in the code? (2)} \\
+\emph{Are there tests for this code? (1)} \\
+\emph{Is this code doing anything? (1)} \\
+\emph{How much effort was put into this code? (1)} \\
+
+
 
 \noindent\textbf{Observations}
 
 5 Participans asked why was the code written this way.
 P1 -- It's code that's actually written by someone writing iTrust, so it's not library code.
-\\
 P2 --How much effort was put in to this code. Use that information to determine whether they trust the code was written securely.
+\\
 
 \noindent\textbf{Tool Implications}
 
@@ -861,22 +854,21 @@ A tool that wants to accommodate these needs might collects these sorts of measu
 
 \noindent\subsection{\textbf{Application Context/Usage (9)}}\label{acu}
 
-\noindent\emph{What is the method/variable used for in the program?} \\
-\emph{Are we handling secure data in this context?} \\
-\emph{What is the context of this bug/code?} \\
-\emph{How does the system work?} \\
-\emph{Will usage of this method change?} \\
-\emph{Is the method/variable every being used?} \\
-\emph{Is this code used to test the program/functionality?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
 
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
 The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
-Seven of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
+Nine of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
 \\
+
+\noindent\emph{What is the context of this bug/code? (4)} \\
+\emph{Is this code used to test the program/functionality? (4)} \\
+\emph{What is the method/variable used for in the program? (3)} \\
+\emph{Will usage of this method change? (2)} \\
+\emph{Is the method/variable every being used? (2)} \\
+\emph{Are we handling secure data in this context? (1)} \\
+\emph{How does the system work? (1)} \\
+
+
 
 \noindent\textbf{Observations}
 
@@ -894,20 +886,19 @@ Most of these questions can be answered using documentation, if any exists, writ
 
 %%%%%%%%%%%% End-User Interaction
 
-\noindent\subsection{\textbf{End-User Interaction (3)}}
+\noindent\subsection{\textbf{End-User Interaction (8)}}
 \label{eui}
 
-\noindent\emph{Is there input coming from the user?} \\
-\emph{Does the user have access to this code?} \\
-\emph{Does user input get validated/sanitized?} \\
-
-
-\noindent\textbf{Data Overview}
 
 Questions in this category deal with how the end user might interact with the system. 
 Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
 Three of the 155 distinct questions we found fall into this category.
 \\
+
+\noindent\emph{Is there input coming from the user? (4)} \\
+\emph{Does the user have access to this code? (4)} \\
+\emph{Does user input get validated/sanitized? (4)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -932,25 +923,27 @@ Existing tools could extend their functionality to answer these questions by all
 
 %%%%%%%%%%%% Developer Planning
 
-\noindent\subsection{\textbf{Developer Planning and Self-Reflection (14)}} \label{dpr}
+\noindent\subsection{\textbf{Developer Planning and Self-Reflection (8)}} \label{dpr}
 
-\noindent\emph{What was I looking for?} \\
-\emph{What do I know now?} \\
-\emph{What should I do first?} \\
-\emph{Do I understand?} \\
-\emph{Have I seen this before?} \\
-\emph{What was that again?} \\
-\emph{What's next?} \\
-\emph{Where am I in the code?} \\
-\emph{Is this worth my time?} \\
-\emph{Is this my responsibility?} \\
-\emph{Why do I care?} \\
-\emph{Miscellaneous} \\
-
-\noindent\textbf{Data Overview}
-
-One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. Nine of the 155 distinct questions extracted fit into this category. All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.  The most common occurring question in this category was...
+One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. 
+Fourteen of the 155 distinct questions extracted fit into this category. 
+All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.  
+The most common occurring question in this category was...
 \\
+
+\noindent\emph{Do I understand? (3)} \\
+\emph{What should I do first? (2)} \\
+\emph{What was that again? (2)} \\
+\emph{Is this worth my time? (2)} \\
+\emph{Why do I care? (2)} \\
+\emph{What was I looking for? (1)} \\
+\emph{What do I know now? (1)} \\
+\emph{Have I seen this before? (1)} \\
+\emph{What's next? (1)} \\
+\emph{Where am I in the code? (1)} \\
+\emph{Is this my responsibility? (1)} \\
+
+
 
 \noindent\textbf{Observations}
 
@@ -967,20 +960,18 @@ The tool could also include a link to the code where the vulnerability was locat
 
 %%%%%%%%%%%% Understanding Concepts
 
-\noindent\subsection{\textbf{Understanding Concepts (6)}}\label{uc}
+\noindent\subsection{\textbf{Understanding Concepts (7)}}\label{uc}
 
-\noindent\emph{What is the term for this concept?} \\
-\emph{Do these words have special meaning related to this concept/problem?} \\
-\emph{How does this concept work?} \\
-\emph{What is this concept?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
 For some participants, the concepts that the notification contained were incompatible with the developer's mental model. 
 In these situations, participants seemed to have questions surrounding one or more of the concepts relevant to the problem.
 We categorized 6 of the 155 distinct questions into this category. 
 \\
+
+\noindent\emph{How does this concept work? (6)} \\
+\emph{What is the term for this concept? (2)} \\
+\emph{Do these words have special meaning related to this concept/problem? (1)} \\
+\emph{What is this concept? (1)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -1019,23 +1010,20 @@ We only identified one distinct question, however, there are many ways to interp
 
 \noindent\subsection{\textbf{Resources and Documentation (10)}}\label{rd}
 
-\noindent\emph{What type of information does this resource link me to?} \\
-\emph{What is the documentation?} \\
-\emph{Can my team members/resources provide me with more information?} \\
-\emph{Where can I get more information?} \\
-\emph{What information is in the documentation?} \\
-\emph{Is this a reliable/trusted resource?} \\
-\emph{How do resources prevent or resolve this?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
-
 
 Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. 
 Many participants found themselves in situations where they would use outside resources to decide how to proceed. 
-Seven of the 155 distinct questions fall into this category. 
+Ten of the 155 distinct questions fall into this category. 
 \\
+
+\noindent\emph{What type of information does this resource link me to? (2)} \\
+\emph{What is the documentation? (1)} \\
+\emph{Can my team members/resources provide me with more information? (5)} \\
+\emph{Where can I get more information? (5)} \\
+\emph{What information is in the documentation? (5)} \\
+\emph{Is this a reliable/trusted resource? (3)} \\
+\emph{How do resources prevent or resolve this? (5)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -1055,24 +1043,21 @@ Fritz and colleagues developed a degree of knowledge model that predicts how fam
 
 %%%%%%%%%%%% Understanding Interacting Tools
 
-\noindent\subsection{\textbf{Understanding and Interacting with Tools (9)}}\label{uit}
-
-\noindent\emph{Why is the tool complaining?} \\
-\emph{What is the tool output telling me?} \\
-\emph{Can I verify the information the tool provides?} \\
-\emph{What is the tool keybinding?} \\
-\emph{What is the tool's confidence?} \\
-\emph{What tool do I need for this?} \\
-\emph{How is the information presented by the tool organized?} \\
-\emph{Miscellaneous} \\
-
-
-\noindent\textbf{Data Overview}
+\noindent\subsection{\textbf{Understanding and Interacting with Tools (8)}}\label{uit}
 
 Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool, and find references, for example. 
 While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. 
-Seven of the 155 distinct questions we extracted fall into this category.
+Nine of the 155 distinct questions we extracted fall into this category.
 \\
+
+\noindent\emph{Why is the tool complaining? (3)} \\
+\emph{Can I verify the information the tool provides? (3)} \\
+\emph{What is the tool's confidence? (2)} \\
+\emph{What is the tool output telling me? (1)} \\
+\emph{What is the tool keybinding? (1)} \\
+\emph{What tool do I need for this? (1)} \\
+\emph{How is the information presented by the tool organized? (1)} \\
+
 
 \noindent\textbf{Observations}
 
@@ -1102,20 +1087,17 @@ A tool that could model this concise interaction could potentially provide answe
 
 %%%%%%%%%%%% Bug Severity/Ranking
 
-\noindent\subsection{\textbf{Bug Severity and Ranking (4)}}\label{bsr}
-
-\noindent\emph{How serious is this bug?} \\
-\emph{Are all these bugs the same severity?} \\
-\emph{How do the rankings compare?} \\
-\emph{What do the bug rankings mean?} \\
-
-
-\noindent\textbf{Data Overview}
+\noindent\subsection{\textbf{Bug Severity and Ranking (5)}}\label{bsr}
 
 Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. 
 These questions dealt with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 
 Four of the 155 distinct questions extracted fall into this category. 
 \\
+
+\noindent\emph{How serious is this bug? (2)} \\
+\emph{How do the rankings compare? (2)} \\
+\emph{What do the bug rankings mean? (2)} \\
+\emph{Are all these bugs the same severity? (1)} \\
 
 \noindent\textbf{Observations}
 
@@ -1131,19 +1113,16 @@ Based on our observations, another way to answer or prevent these questions is b
 
 %%%%%%%%%%%% Error Messages
 
-\noindent\subsection{\textbf{Error Messages (3)}}\label{em}
-
-\noindent\emph{What is the relationship between the error message and the code?} \\
-\emph{What code caused this error message to occur?} \\
-\emph{What does the error message say?} \\
-
-
-\noindent\textbf{Data Overview}
+\noindent\subsection{\textbf{Error Messages (6)}}\label{em}
 
 As expected, participants asked questions concerning the content of the error messages. 
 Mostly, this happened when participants needed to look at the bug information to get a better understanding of the potential vulnerability. 
 Three of the 155 distinct questions we extracted fall into this category.
 \\
+
+\noindent\emph{What does the error message say? (5)} \\
+\emph{What is the relationship between the error message and the code? (2)} \\
+\emph{What code caused this error message to occur? (2)} \\
 
 \noindent\textbf{Observations}
 
