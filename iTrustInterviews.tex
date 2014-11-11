@@ -567,8 +567,14 @@ Categories have been places into four groups to facilitate discussion: Vulnerabi
 
 %%%%%%%%%%%% Understanding Alt. Fixes
 
-\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (11)}}\label{uafa}
+\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)}}\label{uafa}
 
+Sometimes participants looked elsewhere for information about their code or vulnerability. 
+Primarily, participants used web resources or searched for similar code elsewhere in the project.
+When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
+\\
+\\
 \noindent\emph{Why should I use this alternative method/approach to fix the vulnerability?} \\
 \emph{What are the alternatives for fixing this?} \\
 \emph{Does the alternative function the same as what I'm currently using?} \\
@@ -576,28 +582,25 @@ Categories have been places into four groups to facilitate discussion: Vulnerabi
 \emph{Is the alternative slower?} \\
 \emph{Are there other considerations to make when using the alternative(s)?} \\
 \emph{How does my code compare to the alternative code in the example I found?}
-
-\noindent\textbf{Data Overview}
-
-Sometimes participants looked elsewhere for information about their code or vulnerability. 
-Primarily, participants used web resources or searched for similar code elsewhere in the project.
-When presented with alternative approaches or solutions, participants compared the alternative with the current code and assessed the applicability of the alternative. 
-Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions.
 \\
 
 \noindent\textbf{Observations}
 
-The process of understanding the alternative options was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats. 
-%P8 OWASP
-%P1, P7, P8 StackOverflow
-Often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
-Many participants seemed to have a preference for StackOverflow as a means for understanding alternative approaches and fixes. 
+Eight participants had questions regarding alternative approaches suggested to address the vulnerability being assessed. Sometimes the notification communicating about the vulnerability suggested an alternative; sometimes participants had to go to outside sources to determine the alternatives.
+The process of understanding the alternative ways to implement functionality in a secure system was complicated by the variety of sources, such as StackOverflow, official documentation, and personal blogs, that all presented information in different formats. Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
+P7 preferred StackOverflow as a resource because it included real-world examples and elaborated what was wrong with the code as it was currently written.  
+While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP.~\footnote{\url{https://www.owasp.org/index.php/Main_Page}} 
+Because he recognized OWASP as ``the authority on security,'' he chose this link and used it to make is final decision regarding the vulnerability. 
+Despite the usefulness of the information participants may have been able to find, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
+For example, P9 found a suggestion on StackOverflow that he thought might work but it was not clear if it could be applied to the code in iTrust. 
+The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
 \\
 
 \noindent\textbf{Tool Implications}
 
 When elaborating a suggested fix, or alternatives to achieving the same functionality, developers may have difficulty determining at a glance the relevant details regarding the suggested approach (as the questions in this category suggest).
-One way a tool might help address this would be by noting other places in the code the alternative the developer is considering has been used, if they exist. 
+It seems especially important when dealing with potential security vulnerabilities that developers fully understand any changes they make to the code.
+One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
 If the developer, or other developers of the code, have not used the alternative before, the tool could borrow behavior or design principles from \textsc{Whyline} by allowing developers to ask questions about the code in relation to the suggested approach~\cite{ko2004designing}. 
 The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
 
