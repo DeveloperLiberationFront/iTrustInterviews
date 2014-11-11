@@ -112,7 +112,7 @@ From these interactions, we extracted 559 questions, which we reduced to 155 uni
 % no \IEEEPARstart
 
 When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions~\cite{livshits2005finding, ko2004designing}. 
-There exists research that attempts to categorize and catalog the questions developers ask when coding~\cite{latoza2010hard}. 
+Research on improving developer tool support has attempted to categorize and catalog the questions developers ask when coding~\cite{latoza2010hard}. 
 Research on tool design and developer productivity have used available catalogs to design tools that support developers when attempting to answer these questions~\cite{yoon2013visualization, servant2012history}.
 
  
@@ -846,7 +846,7 @@ P8 Where are the values going?
 
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
 The developer would have to retrieve this information, either from the documentation, by debugging the code, or some combination of both. 
-There exists tools that do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
+Tools have been developed to do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
 There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
 It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring a visual version of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 \\
@@ -1123,7 +1123,7 @@ For example, Find Security Bugs reports its confidence on the potential defect i
 
 \noindent\textbf{Tool Implications}
 
-There exists a large body of research that explores developers' ability to understand and effectively interact with tools, however, many of these questions remain unanswered~\cite{ko2004designing, khoo2008path, johnson2013don}. 
+Developers' ability to understand and effectively interact with tools has been the focus of many research studies, however, many of these questions remain unanswered~\cite{ko2004designing, khoo2008path, johnson2013don}. 
 Many of these questions may require the input of other developers to be answered effectively. 
 For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
 Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
@@ -1156,7 +1156,7 @@ Four of the 155 distinct questions extracted fall into this category.
 \noindent\textbf{Tool Implications}
 
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
-There exists techniques and tools for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
+Techniques and tools have been have been developed for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
 It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
 %over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
 Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity and/or ranking of a potential vulnerability.
