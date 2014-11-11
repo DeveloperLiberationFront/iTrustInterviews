@@ -60,7 +60,7 @@
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-\title{Security-Related Questions Developers Ask About Their Code}
+\title{What Questions Do Developers Ask When Reasoning about the Security of Their Code?}
 
 
 % author names and affiliations
@@ -320,8 +320,8 @@ Finally, each interview concluded with several demographic and open-ended discus
 
 Participants used Eclipse to explore vulnerabilities in iTrust, a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
-Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{http://h3xstream.github.io/find-sec-bugs/}} 
-We chose Find Security Bugs as a representative tool by comparing the available source code analysis tools listed by NIST, OWASP, and WASC.
+Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{h3xstream.github.io/find-sec-bugs/}} 
+We chose Find Security Bugs as a representative analysis tool by comparing the available source code analysis tools listed by NIST\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}}, OWASP\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}}, and WASC.\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}}
 Figure \ref{fig:environment} depicts the configuration of the IDE for one of the tasks.
 
 
@@ -362,10 +362,10 @@ Figure \ref{fig:environment} depicts the configuration of the IDE for one of the
 
 \subsubsection{Participants}
 
-We interviewed a total of 10 software developers, 6 students and 4 professionals. 
+We interviewed a total of 10 software developers, 6 students and 4 professionals. Participants ranged in experience from 4 to 10 years, averaging 6.3 years.
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that few new questions were emerging from each additional interview.
+Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that we had reached saturation and few new questions were emerging from each additional interview.
 
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. 
 All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
@@ -428,7 +428,6 @@ The interviewer was equipped with the following questions, but had the freedom t
 We analyzed interview data using a grounded theory approach~\cite{glaser2009discovery}. 
 First, we transcribed all the audio-video files using oTranscribe.\footnote{\url{otranscribe.com}}
 Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
-We also extracted demographic information, self-efficacy scores and whether or not the participant would modify the code. 
 The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
@@ -561,7 +560,7 @@ Given the high number of categories, these values are well within the acceptable
 \label{sec:results-vaf}
 We list each distinct question we extracted and the count for each in parentheses. For each category, we discuss the common thread that ties questions in that category together. 
 We also contextualize each category by discussing existing tool support and shortcomings.
-Categories have been places into four groups to facilitate discussion: Vulnerabilities, Attacks, and Fixes, Oh My!, Code and the Application, Individuals, and Problem Solving Support.
+Categories have been places into four groups to facilitate discussion: Vulnerabilities, Attacks, and Fixes, Oh My!; Code and the Application; Individuals; and Problem Solving Support.
 % next paragraph, go into description of first group 
 
 
