@@ -599,6 +599,7 @@ On the other hand, participants also sought specific attack-information regardin
 Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
 Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute an attack in the given context. For example, P10 determined that the Predictable Random vulnerability was ``real,'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 \\
+
 \noindent\textbf{Tool Implications}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions pertaining to potential attacks.
 Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks attacks.
@@ -714,7 +715,6 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 
 \noindent\textbf{Observations}
 
-% Goal --> is this really a vulnerability?
 All 10 participants found themselves in situations where they wanted to know where the code associated with the potential vulnerability is being used throughout the system. 
 This most often occurred while assessing the Predictable Random and Servlet Parameter vulnerability. 
 The goal of these questions seemed to involve determining if there is a real vulnerability in the code. 
@@ -735,17 +735,17 @@ Two participants had questions concerning the ability to track information while
 To better understand the SQL Injection vulnerability, P9 wanted to find a way to track all the possible inputs, with no success. 
 P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do so. 
 Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
-
-%Talk about in assessing the application of a fix, or discussion section
 \\
 
 \noindent\textbf{Tool Implications}
 
-The answers to most of these questions can be found inside the IDE, which makes it more feasible for a tool to attempt to answer it. 
+The answers to most of these questions can be found using existing tool support found inside the IDE. 
 For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. 
-A few of these questions, however, would require more effort on the developer's part to answer, therefore could benefit from tool support. 
-For instance, it is not obvious how a tool would answer the question \emph{how do I track this information in the code}; the answer could vary depending on what information the developer is trying to track.
+A few of these questions, however, requires significantly more effort on the developer's part to answer, therefore could benefit from tool support. 
+For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
 Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
+Developers could also benefit from tool support when attempting to find other parts of the code written similarly to the potentially vulnerable code; a tool that supports this process might include references to other parts of the code using similar code elements as part of the vulnerability description.
+
 
 
 %%%%%%%%%%%% Control Flow/Call Information
@@ -770,29 +770,34 @@ Thirteen of the 155 distinct questions extracted dealt with acquiring control fl
 
 
 \noindent\textbf{Observations}
+% All asked "where is method being called?" at some point --> all bugs at least once but mainly B1
+All 10 participants wanted control flow or call information for a method in the code at some point; the question \textit{where is this method being called?} was asked at least once for each vulnerability, but showed up the most while participants attempted to interpret the Potential Path Traversal vulnerability.
+Eclipse includes a call hierarchy tool that allows users to easily traverse the calls made to a given method, answering questions such as \textit{where is this being called}. 
+While most participants located and employed the call hierarchy tool, some used other more error-prone approaches, such as the 'find references' tool or manual visual inspection. 
+For example, P1 and P6 chose to use more light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool; P1 was unaware of what the call hierarchy tool was. 
+P5 and P9, who also did not seem to be aware of the existence of a call hierarchy tool, considered using find references to get the information they needed.
 
-%EXPAND ON CALL HIERARCHY TOOL
-Eclipse includes a call hierarchy tool that, given a method, displays its callers and all its callees. 
-The tool allows users to easily traverse the call hierarchy. 
-While some participants located and employed the call hierarchy tool, others gravitated toward other more error-prone approaches, such as the 'find references' tool or manual visual inspection. 
-%find references / visual inspection
-In some cases, participants were unaware of the call hierarchy tool or how to use it. 
-Others were predisposed to favor light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool.
-%P4 here
-It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
+Along the same lines, when assessing the Potential Path Traversal vulnerability, 5 participants wanted to know who can call that code. 
+Tools like the call hierarchy tool can inform developers of who \textit{is} calling the code, however, they do not answer the question who \textit{can} call the code. 
+To determine how vulnerable this part of the code was, participants wanted to know if the code in question could be called outside the containing class as well as the system. 
+Most of the participants who asked this question concerning the containing class answered the question by checking the visibility of the method (\texttt{public} vs. \texttt{private}). 
+Determining if the code can be accessed outside the system, was not something participants interested could easily determine so they did not attempt to.
+% name exactly who did what?
 
-P1 -- Yeah, I don't know what this is, call hierarchy.
+% Tools available for this but 7 still had question "how can I get calling information?"
+Despite the availability of tools to help retrieve call information, some participants still had difficulty finding answers to their questions; seven even asked the question \textit{how can I get calling information}.
+For example, P4 did not have any ideas on how he might find call information for the method containing the Potential Path Traversal vulnerability; after struggling with answering his questions for a while, he finally stumbled upon the call hierarchy tool. 
+Even after finding and using the tool, P4 still needed other tools, such as the search tool, to come to the conclusion that it was not a vulnerability he needed to be concerned about.
 \\
-%P4 Rode the struggle bus, last stop call hierarchy
-%P1, P6 Looked at highlights
-%P9 Considered using find references
+
 
 \noindent\textbf{Tool Implications}
-
-Even with tools like 'find references' and the call hierarchy view tool, it may be difficult to easily/quickly answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate the information gathered from each tool. 
-Further, even tools like call hierarchy do not provide information on how parameters are modified between method calls. 
-A tool that addresses these types of needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they desire. 
+Even with tools like 'find references' and the call hierarchy view tool, it may be difficult to answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate information gathered from different tools. 
+Further, even a combination of these tools are ineffective for someone who is unaware of their existence.
+A tool that addresses these types of needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they require. 
 To increase visibility of the desired information, the tool might also highlight the relevant method as it appears in the call hierarchy or augment each method with the methods that can call it.
+
+%It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
 
 %%%%%%%%%%%% Data Storage 
