@@ -54,6 +54,10 @@
 \usepackage{url}
 \usepackage[table, svgnames]{xcolor} 
 \usepackage{color}
+\usepackage{siunitx}
+
+\usepackage{dcolumn}
+\newcolumntype{Y}{D..{6.4}}
 
 \begin{document}
 %
@@ -111,112 +115,44 @@ From these interactions, we extracted 559 questions, which we reduced to 155 uni
 \section{Introduction}
 % no \IEEEPARstart
 
-When analyzing source code, especially defective code, research suggests that during this knowledge acquisition process, developers hypothesize about the code, specifically by asking questions~\cite{livshits2005finding, ko2004designing}. 
-There exists research that attempts to categorize and catalog the questions developers ask when coding~\cite{latoza2010hard}. 
-Research on tool design and developer productivity have used available catalogs to design tools that support developers when attempting to answer these questions~\cite{yoon2013visualization, servant2012history}.
 
- 
-Professionals working on security-critical applications also could benefit from improved tool support in their work environments. 
-There exist tools that help developers detect potential security flaws in their code. 
-However, research suggests they may not be using them because of difficulty interpreting the output~\cite{johnson2013don}. 
-Part of this difficulty for security developers may stem from the fact that some of the hard to answer questions developers have pertain to the security of their code~\cite{latoza2010hard}.
+Software developers are a critical part of making software secure. 
+When there is a security fault in a software system, it is up to the developers to determine the best way to remove the vulnerability and ensure proper function of the system in the future.
 
-%This is a bit redundant but it's all here
-Despite the importance of security, to our knowledge, no research exists that catalogs the specific security-related questions developers ask. 
-Therefore, we lack a framework for assessing whether existing tools fully address the knowledge requirements of developers.
+Static analysis tools are made available to help developers detect potential security flaws in their code. One of example of such a tool is FindBugs, a static analysis tool for finding potential defects in software code.~\footnote{findbugs.sourceforge.net} FindBugs is able to report various potential security defects, such as SQL injection and cross site scripting.  % more specific example? figure? 
+Other tools, such as CodeSonar~\footnote{\url{http://www.grammatech.com/codesonar}} and Coverity~\footnote{\url{http://www.coverity.com/}}, can also be used to detect and remove potential security vulnerabilities.
 
-Research that determines the questions developers ask about their code has informed and motivated toolsmiths in other domains to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
-Our work extends these promising results to security by informing toolsmiths of the security-related questions that developers ask.
-In this paper, we report a study conducted with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
-We observed each developer as they assessed potential security vulnerabilities in the code and report the kinds of questions they asked while doing so. Using a card sort methodology, we sorted the 559 questions into 17 categories. 
+% maybe connect back to example.
+Unfortunately, however, research suggests that many developers may not be using these tools; part of this reason for this is that they have difficulty interpreting the output~\cite{johnson2013don}. 
+Part of this difficulty for developers building secure systems stems from the hard to answer questions developers have about the security of their code~\cite{latoza2010hard}.
 
+In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
+We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
+We observed each developer as they assessed potential security vulnerabilities reported by Find Security Bugs, a version of FindBugs specifically for security, and report the kinds of questions they asked while doing so.
+Using a card sort methodology, we sorted the 559 questions into 17 categories. 
+
+% this research based on rich literature of existing Q's devs ask studies. to our knowledge, this is the first about security.
+When analyzing source code, especially defective code, research suggests that developers hypothesize about the code, specifically by asking questions~\cite{livshits2005finding, ko2004designing}.
+To our knowledge, no studies have investigated the questions pertaining to the security of the code. 
+Research that determines the questions developers ask about their code has informed and motivated toolsmiths to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
+Our work extends these promising results to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
+
+% contributions (the ones you have are good)
 Our work makes three contributions. 
 First, we present a list of questions that software developers ask when examining the security of their code.
 Second, based on our observations, we discuss the strategies that developers use to answer some of their questions.
 Finally, we evaluate the existing tool support for answering security-related questions.
 
+
 The remainder of the paper is organized as follows. 
 In Section~\ref{sec:rw}, we discuss previous work related to our own. 
 Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. 
-Next, we discuss the findings of our study in Section~\ref{sec:results} and implications of our findings in Section~\ref{sec:disc}. 
+Next, we discuss the findings of our study in Sections~\ref{sec:results-vaf},~\ref{sec:results-ca},~\ref{sec:results-i}, and~\ref{sec:results-pss} and implications of our findings in Section~\ref{sec:disc}.
 Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
 
 
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation Results.}
-%\label{fig_sim}
-%\end{figure}
 
-% Note that IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-
-
-% An example of a floating table. Note that, for IEEE style tables, the 
-% \caption command should come BEFORE the table. Table text will default to
-% \footnotesize as IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
 
 
 %Figure, high res, png or vector (pdf)
@@ -250,7 +186,7 @@ Unlike existing studies, our study explores the questions developers ask when at
 
 \subsection{Developer Understanding}
 \label{understanding}
-In other, non-security domains, research has shifted focus from the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
+In non-security domains, research has shifted focus from the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
 These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. 
 Such studies examine proposed and existing approaches using various qualitative methods such as interviews and surveys. 
 
@@ -264,9 +200,11 @@ Khoo and colleagues focused their efforts on improving the user interface of exi
 Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. 
 Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
 
-Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. Based on their findings, they discuss design implications for automated fault detection tools.
+Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. 
+They found that, among other criteria considered, developers consider the description of the fault critical to assessing its importance. 
+Based on their findings, they discuss design implications for automated fault detection tools.
 
-These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, they do not pay due diligence to how developers interpret the reporting of security vulnerabilities. 
+These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, these studies do not focus on the information needs of developers when using static analysis tools in their code.
 It is particularly important to consider security tools and vulnerabilities, because security vulnerabilities are more likely to cause incidents that affect company budgets as well as the end users~\cite{chen2002mops}. 
 Research also suggests that some of the harder questions to answer when analyzing code revolve around security and the implications of changes made to the code on security~\cite{latoza2010hard}.  
 The goal of our study is to identify the security-related questions developers ask when approaching security vulnerabilities so that tool designers understand the information requirements of security-minded developers.
@@ -286,7 +224,7 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 %we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
 
 These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. 
-In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have pertain to the implications of code changes on the security of their code. 
+In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have surround the implications of code changes on the security of their code. 
 Our study discovers the questions developers have about potential code vulnerabilities and discusses the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
@@ -334,7 +272,7 @@ Figure \ref{fig:environment} depicts the configuration of the IDE for one of the
 \begin{table*} 
 \centering
 \caption{Demographics of study participants}
-\begin{tabular}{|l|l|c|c|}
+\begin{tabular}{|l|l|c|S|}
 \rowcolor{gray!50}
 \hline
     Participant			& Job Title 						& Security Vulnerability Familiarity 					& Programming Experience (years) \\
@@ -694,7 +632,7 @@ One way tools can help is by providing easy access to the top web resources and 
 \noindent\textbf{Data Overview}
 
 Another kind of question we extracted pertained to the process resolving vulnerabilities. 
-These questions pertain to understanding the application and implications of a potential fix. 
+Questions in this category can be attributed to difficulty understanding the application and implications of a potential fix. 
 We categorized 9 of the 155 distinct questions into this category.
 \\
 
@@ -875,7 +813,7 @@ P8 Where are the values going?
 
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
 The developer would have to retrieve this information, either from the documentation, by debugging the code, or some combination of both. 
-There exists tools that do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
+Tools have been developed to do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
 There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
 It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring a visual version of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 \\
@@ -1152,7 +1090,7 @@ For example, Find Security Bugs reports its confidence on the potential defect i
 
 \noindent\textbf{Tool Implications}
 
-There exists a large body of research that explores developers' ability to understand and effectively interact with tools, however, many of these questions remain unanswered~\cite{ko2004designing, khoo2008path, johnson2013don}. 
+Developers' ability to understand and effectively interact with tools has been the focus of many research studies, however, many of these questions remain unanswered~\cite{ko2004designing, khoo2008path, johnson2013don}. 
 Many of these questions may require the input of other developers to be answered effectively. 
 For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
 Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
@@ -1185,7 +1123,7 @@ Four of the 155 distinct questions extracted fall into this category.
 \noindent\textbf{Tool Implications}
 
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
-There exists techniques and tools for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
+Techniques and tools have been have been developed for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
 It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
 %over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
 Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity and/or ranking of a potential vulnerability.
