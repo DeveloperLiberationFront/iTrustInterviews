@@ -751,7 +751,6 @@ Others mentioned wanting to know where the parameter was used, but did not take 
 For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
 However, strategies relying on existing tools fell short when participants sought context-dependent information. 
 The code highlighting tool displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
-Participants didn't just seek location information, they searched for places where information was used within a given context.
 For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
 
 %Where is similar code?
@@ -772,9 +771,9 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 %Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
 
 \noindent\textbf{Tool Implications.}
-The answers to some of these questions can be found using existing tool support found inside the IDE. 
+The answers to some of these questions can be found using existing tool support available within the IDE. 
 For example, Eclipse has an `open declaration' tool that can be used to find a method's definition. 
-However, in the case of context-dependent questions, developer's could benefit from increased tool support. 
+However, in the case of context-dependent questions, developers could benefit from increased tool support. 
 For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results that occurred within or interacted with critical components.
 Currently developers must manually prioritize search results and determine whether each is security-relevant.
 
