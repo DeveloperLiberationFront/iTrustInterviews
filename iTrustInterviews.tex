@@ -913,7 +913,7 @@ Nine of the 155 distinct questions revolved around how the code works in the con
 
 
 
-\noindent\textbf{Observations}
+\noindent\textbf{Observations.}
 Four participants wanted to know the context in which the code being assessed was used or the context of the bug being assessed.
 Similarly, three participants found themselves trying to determine what a specific method or variable is used for in the application.
 Both of these questions came up for three of the four vulnerabilities.
@@ -935,7 +935,7 @@ Compared to the tool support provided for determining general context, participa
 \\
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
-\noindent\textbf{Tool Implications}
+\noindent\textbf{Tool Implications.}
 It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
 For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
 However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
@@ -959,32 +959,34 @@ Three of the 155 distinct questions we found fall into this category.
 \emph{Does user input get validated/sanitized? (4)} \\
 
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 % seemed mostly a concern for B3, but also B1 and B4 for some
-
-% input from user and validation of that input
+Eight participants had questions regarding the level of interaction end-user have with the code of interest. 
+Though none of these questions got asked more than others, some questions co-occurred for a given vulnerability.
+For example, when assessing the Potential Path Traversal vulnerability, P1 and P6 wanted to know if the input was coming from the user along with whether the input is being validated in the event that the input does come from the user.
+For these participants, finding the answer required manual inspection of surrounding and relevant code. 
+For instance, when P6 manually inspected code and found a \texttt{Validator} method that he also manually inspected to determine if it was doing input validation.
 % B1, 3, 4 -- mostly 3
-% 
 
 % user access
 % B1
 % P1, P6: all these test data generator so no user access (how did he get to this?)
 % P2: vulnerability only exists if user can access this code (used call hierarchy)
-
-
-%Many participants spent time and effort exploring the call hierarchy for code associated with the Potential Path Traversal vulnerability only to discover that the code was entirely contained in test classes. 
-%As noted in Section \ref{acu}, the context of the code factors into how developer approach vulnerabilities. 
+When assessing the Potential Path Traversal vulnerability, four participants had questions regarding whether end-users had access to the part of the code being analyzed.
+P2 used the called hierarchy to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability only existed if the user had access to the code.
+P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \texttt{testDataGenerator()}, the code should be fine as it is written.
+Though participants found the answers to their questions, it took time for them to get the answer using tools meant to answer other questions.
 \\
-% P2: Suspected that random pass word was in test code, but went on to discover that it was not (how?) -- interesting but not sure if it goes here
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system.
 The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
 However, developers may lack tool support for navigating through and reasoning about attack surfaces.
 Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
+% Not sure what tool implications look like for validation question...
 
+
+% P2: Suspected that random pass word was in test code, but went on to discover that it was not (how?) -- interesting but not sure if it goes here
 
 
 \section{Results: Individuals}
