@@ -223,14 +223,12 @@ Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of deb
 They found that developers were able to complete more debugging tasks when using their tool than they could without it.
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
-%we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
-
 Our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have surround the implications of code changes on the security of their code. 
 Our study discovers the questions developers have about potential code vulnerabilities and discusses the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
 \label{sec:meth}
-We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. 
+We conducted a laboratory experiment with 10 software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
 Section \ref{rqs} outlines the research questions we sought to answer. 
 Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we performed data analysis.
 
@@ -246,9 +244,9 @@ We want to answer the following research questions:
 
 \subsection{Study Design}
 \label{studyDesign}
-Each interview started with a five-minute briefing section, followed by encounters with four vulnerabilities.
+Each session started with a five-minute briefing section, followed by encounters with four vulnerabilities.
 All participants consented to have their session recorded using screen and audio capture software.
-Finally, each interview concluded with several demographic and open-ended discussion questions.
+Finally, each session concluded with several demographic and open-ended discussion questions.
 
 
 \subsubsection{Materials}
@@ -305,7 +303,7 @@ Figure \ref{fig:environment} depicts the configuration of the integrated develop
 
 \subsubsection{Participants}
 
-We interviewed a total of 10 software developers, 6 students and 4 professionals. Participants ranged in experience from 4 to 10 years, averaging 6.3 years.
+For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in experience from 4 to 10 years, averaging 6.3 years.
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that we had reached saturation and few new questions were emerging from each additional interview.
@@ -318,7 +316,7 @@ Since the focus of our study was to identify the questions developers ask indepe
 
 \subsubsection{Tasks}
 Each participant approached four vulnerabilities. 
-We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
+We presented each participant with this number of vulnerabilities, because in preliminary pilot sessions, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
 When selecting tasks, we gave preference to existing iTrust vulnerabilities and sought a broad set of question topics.  
 Find Security Bugs groups similar error messages using a system of topic tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
@@ -351,7 +349,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
 Additionally, we asked them to use a think-aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 
-The interviewer was equipped with the following questions, but had the freedom to omit questions and ask follow-up questions based on the participant's responses.
+The session moderator was equipped with the following questions, but had the freedom to omit questions and ask follow-up questions based on the participant's responses.
 \begin{itemize}
 \item What are you exploring/trying to figure out right now?
 \item What information do you need to proceed?
@@ -368,10 +366,10 @@ The interviewer was equipped with the following questions, but had the freedom t
 
 \subsection{Data Analysis}
 \label{dataAnalysis}
-We analyzed interview data using a grounded theory approach~\cite{glaser2009discovery}. 
+We analyzed session data using a grounded theory approach~\cite{glaser2009discovery}. 
 First, we transcribed all the audio-video files using oTranscribe.\footnote{\url{otranscribe.com}}
 Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
-The two question sets for each interview were then iteratively compared against each other until the authors reached agreement on the question sets. 
+The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
 Participants ask both explicit and implicit questions. 
@@ -393,19 +391,19 @@ A statement was coded as a question only if it met one of the following criteria
 \end{itemize}
 
 \subsubsection{Question Extraction}
-Using the criteria outlined in the previous section, two of the authors independently coded each interview. 
+Using the criteria outlined in the previous section, two of the authors independently coded each session. 
 When we identified a statement that satisfied one or more of the criteria, we marked the transcript, highlighting the participant's original statement, and clarified the question being asked.
-From the 10 interviews, the first coder extracted 421 question statements; the other coder extracted 389. 
+From the 10 sessions, the first coder extracted 421 question statements; the other coder extracted 389. 
 
-Since participants used a think-aloud protocol, the interviews contained many statements that were difficult to classify as questions. 
+Since participants used a think-aloud protocol, the transcripts contained many statements that were difficult to classify as questions. 
 The criteria help ensure that only the statements that reflected actual questions were classified as such. 
-The interviews were coded by two independent reviewers to help identify more of the questions being asked, especially the difficult to interpret questions.
+Two independent reviewers coded the transcripts to help identify more of the questions being asked, especially the difficult to interpret questions.
 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
 \subsubsection{Question Review}
-To remove duplicates and ensure the validity of all the questions, each interview was reviewed jointly by the two authors that initially coded it.
+To remove duplicates and ensure the validity of all the questions, each transcript was reviewed jointly by the two authors that initially coded it.
 During the second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
-The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the interview artifacts.
+The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the experiment artifacts.
 
 Each question that was only identified by one author required verification.
 If the other author did not agree that such a question met at least one of the criteria, the question was removed from the question set and counted as a disagreement.
