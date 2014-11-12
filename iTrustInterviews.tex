@@ -676,7 +676,7 @@ Security tools that include quick fixes should also encourage developers to asse
 \noindent\subsection{\textbf{Relationship Between Bugs (4)}}\label{rbb}
 
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
-For instance...
+For example, when participants reached the third and fourth vulnerabilities, they began noticing and speculating about the similarities between the vulnerabilities they inspected.
 Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
 \\
 
@@ -686,16 +686,25 @@ Three of the 155 distinct questions we found target the relationships between th
 
 
 \noindent\textbf{Observations}
-P1 2 8 10 asked
-Are all of the bugs related in my code?
-\\
+%P1 2 8 10 asked
+%Are all of the bugs related in my code?
+
+When inspecting the Servlet Parameter vulnerability, P8 wondered if other parts of the code contained similar vulnerabilities.
+NOT MUCH TO SAY HERE?
 
 \noindent\textbf{Tool Implications}
 
-We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
-Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
-Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
-A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
+%Make more clear, This is the implication, but doesn't jump off the page yet...
+Though only four of the ten participants asked questions about the relationship between bugs, these questions highlight information requirements that tools could support.
+When inquiring about the relationships between bugs, participants noted connections between bugs that related to similar topics.
+Find Security Bugs organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
+Grouping vulnerabilities based on abstract concepts might enable developers to focus on areas in which they have expertise, or identify and resolve similar bugs more quickly.
+
+HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
+%We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
+%Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
+%Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
+%A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
 
 %Alert prioritization. Particpants ask if notifications in the same area are the same. Research suggests that homogenous errors occur close to one another. Tools should help synthesize these similar notifications to present information to developers more effectively.
 
