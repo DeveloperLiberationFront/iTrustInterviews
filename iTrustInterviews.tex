@@ -115,26 +115,25 @@ Results of our study have several implications for program analysis tools aiming
 
 Software developers are a critical part of making software secure. 
 When there is a security fault in a software system, it is up to the developers to determine the best way to remove the vulnerability and ensure proper function of the system in the future.
+There are a variety of ways developers can learn about, assess, and fix insecure code, such as peer interactions or usage of tools.
 
-Static analysis tools are made available to help developers detect potential security flaws in their code. One of example of such a tool is FindBugs, a static analysis tool for finding potential defects in software code.~\footnote{findbugs.sourceforge.net} FindBugs is able to report various potential security defects, such as SQL injection and cross site scripting.  % more specific example? figure? 
+Static analysis tools are made available to help developers detect potential security flaws in their code. 
+One of example of such a tool is FindBugs, a static analysis tool for finding potential defects in software code.~\footnote{findbugs.sourceforge.net} 
+FindBugs is able to report various potential security defects, such as SQL injection and cross site scripting.  % more specific example? figure? 
+There is also an extension for FindBugs, called Find Security Bugs (FSB), that focuses its reporting efforts specifically on security vulnerabilities~\footnote{\url{h3xstream.github.io/find-sec-bugs/}}.
 Other tools, such as CodeSonar~\footnote{\url{http://www.grammatech.com/codesonar}} and Coverity~\footnote{\url{http://www.coverity.com/}}, can also be used to detect and remove potential security vulnerabilities.
 
 % maybe connect back to example.
 Unfortunately, however, research suggests that many developers may not be using these tools; part of this reason for this is that they have difficulty interpreting the output~\cite{johnson2013don}. 
 Part of this difficulty for developers building secure systems stems from the hard to answer questions developers have about the security of their code~\cite{latoza2010hard}.
+Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+Because LaToza's work only addresses security questions in passing and does not focus on the process of assessing potential security vulnerabilities, we do not have such a collection of questions to use to build better, more usable tools for security.
+Our work extends existing work to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
 
 In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
 We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
-We observed each developer as they assessed potential security vulnerabilities reported by Find Security Bugs (FSB)~\footnote{\url{h3xstream.github.io/find-sec-bugs/}} , a plug-in of FindBugs specifically for security, and report the kinds of questions they asked while doing so.
+We observed each developer as they assessed potential security vulnerabilities reported by FSB and report the kinds of questions they asked while doing so along with the strategies they used, if any, to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
-
-% this research based on rich literature of existing Q's devs ask studies. to our knowledge, this is the first about security.
-When analyzing source code, especially defective code, research suggests that developers hypothesize about the code, specifically by asking questions~\cite{livshits2005finding, ko2004designing}.
-To our knowledge, no studies have investigated the questions pertaining to the security of the code. 
-Research that determines the questions developers ask about their code has informed and motivated toolsmiths to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
-Our work extends these results to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
-
-% contributions (the ones you have are good)
 
 Our work makes three contributions. 
 First, we present a list of questions that software developers ask when examining the security of their code.
