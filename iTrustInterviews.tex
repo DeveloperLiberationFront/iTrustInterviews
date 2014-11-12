@@ -65,22 +65,21 @@
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
 
-\title{What Questions Do Developers Ask When Reasoning about the Security of Their Code?}
-% Tool Support for Questions Developers Ask About Security Vulnerabilities? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
-
+\title{Tool Support for Questions Developers Ask About Security Vulnerabilities}
+% What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
 \author{\IEEEauthorblockN{Justin Smith, Brittany Johnson, and Emerson Murphy-Hill}
 \IEEEauthorblockA{North Carolina State University\\
-Raleigh, North Carolina}}
-
-
-% conference papers do not typically use \thanks and this command
-% is locked out in conference mode. If really needed, such as for
-% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
-% after \documentclass
+Raleigh, NC 27606}
+\and
+\IEEEauthorblockN{Bill Chu and Heather Richter Lipford}
+\IEEEauthorblockA{University of North Carolina at Charlotte\\
+Charlotte, NC 28223 \\
+\{billchu, heather.lipford\}@uncc.edu
+}}
 
 \maketitle
 
@@ -543,7 +542,7 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 Eight participants had questions that fit into this category. 
 The Find Security Bugs notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
 As noted, the message associated with the SQL Injection vulnerability suggests switching to use Prepared Statements. 
-The message associated with the Predictable Random vulnerability suggests switching to uses Java.Security.SecureRandom. 
+The message associated with the Predictable Random vulnerability suggests switching to use \textit{java.security.secureRandom}. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
@@ -616,16 +615,15 @@ Security tools should support this modality by separating information about all 
 %One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
 
 
-%%%%%%%%%%%% Assessing Application
+%%%%%%%%%%%% Assessing Application % % % % % % % % % % % % % % % % % % % % % % % %
 
 \noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
-
-Another kind of question we extracted pertained to the process resolving vulnerabilities. 
-Questions in this category can be attributed to difficulty understanding the application and implications of a potential fix.
-For example...
-We categorized 9 of the 155 distinct questions into this category.
+Once participants had identified a specific approach for fixing a security vulnerability, they asked questions about applying the fix to the code.
+For example, when considering the use of \textit{java.security.secureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
+The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}); 
+These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
+We placed 9 of the 155 distinct questions into this category.
 \\
-
 
 \noindent\emph{Will the error go away when I apply this fix? (5)} \\
 \emph{How do I use this fix in my code? (4)} \\
@@ -640,20 +638,37 @@ We categorized 9 of the 155 distinct questions into this category.
 
 \noindent\textbf{Observations}
 
-P1 -- is there a quick fix/automatic application?
-P2 -- Is there a way to automate the application of the fix
-P7 -- Test cases
-P1,P2,P6 how hard is it to apply
+When searching for approaches to resolve vulnerabilities, participants gravitated toward quick fixes.
+The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided quick fix suggestions.
+All participants proposed solutions that involved applying one or both of these quick fixes. 
+Additionally, two participants explicitly asked if quick fixes were available and P2 even commented that it would be nice if all the notifications contained quick fixes.
+However, unless prompted, none of the participants commented on the disadvantages of using proposed quick fixes, such as reduced performance or the possibility of introducing another defect.
+ 
+P9 had a noteworthy experience while exploring the Predictable Random vulnerability. Unlike the other participants, he missed the part of the error message that described the ``quick fix.'' 
+He went on to detail his plans for searching the web for standard random number generation techniques. 
+Then he recalled a technique that he had encountered before and explained that he might implement his own random hashing algorithm, but concluded that he would do more searching to find out the best way to apply that fix.
+Before proceeding to the next vulnerability, P9 reread the error message, noticed the quick fix and decided he would apply the quick fix instead.
 \\
 
+%How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
+%without tests or sufficient review to validate the correctness of the fix, such impulsive modifications could have unintended consequences.
+
 \noindent\textbf{Tool Implications}
+Assuring the security of complex software systems requires developers to reason critically about the code. 
+Quick fixes help developers dismiss vulnerabilities more quickly.
+However, especially in security, quicker might not always be better. 
+In the case of P9, without the quick fix he searched the web for best-practices and drew conclusions from a broader set of resources.
+In some sense, his experience lead him to a better understanding of the vulnerability than those who read the entire notification.
+Our observations suggest that the presence of quick fixes alone may discourage developers from fully considering the implications of their proposed changes.
 
-Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing Quick Fix Scout~\cite{mucslu2012speculative}. 
-Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
-None of our participants asked this question specifically, but to that effect, P1 and P2 asked \textit{Will the code work the same after I apply the fix?} 
-Further, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
-
-%Fix easy to fix vulnerabilities without researching the trade-offs. Random password vulnerability.
+%False positives
+Existing tools, such as Quick Fix Scout begin to address this problem by describing what might happen if a quick fix is implemented~\cite{mucslu2012speculative}. 
+Quick Fix Scout helps developers consider the implications of implementing a fix.
+Security tools that include quick fixes should also encourage developers to assess alternative fixes or whether they need to modify the code at all.
+%Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing 
+%Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
+%None of our participants asked this question specifically, but to that effect, P1 and P2 asked \textit{Will the code work the same after I apply the fix?} 
+%Further, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
 
 
 %%%%%%%%%%%% Relationship Between Bugs
