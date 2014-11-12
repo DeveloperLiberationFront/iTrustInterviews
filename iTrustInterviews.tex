@@ -713,8 +713,7 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 \emph{How do I navigate to other open files? (1)} \\
 
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 All 10 participants found themselves in situations where they wanted to know where the code associated with the potential vulnerability is being used throughout the system. 
 This most often occurred while assessing the Predictable Random and Servlet Parameter vulnerability. 
 The goal of these questions seemed to involve determining if there is a real vulnerability in the code. 
@@ -737,8 +736,7 @@ P6 wanted to be able to track all the variables that could be affected by this v
 Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
 \\
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 The answers to most of these questions can be found using existing tool support found inside the IDE. 
 For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. 
 A few of these questions, however, requires significantly more effort on the developer's part to answer, therefore could benefit from tool support. 
@@ -769,7 +767,7 @@ Thirteen of the 155 distinct questions extracted dealt with acquiring control fl
 \emph{How often is this code called? (1)} \\
 
 
-\noindent\textbf{Observations}
+\noindent\textbf{Observations.}
 % All asked "where is method being called?" at some point --> all bugs at least once but mainly B1
 All 10 participants wanted control flow or call information for a method in the code at some point; the question \textit{where is this method being called?} was asked at least once for each vulnerability, but showed up the most while participants attempted to interpret the Potential Path Traversal vulnerability.
 Eclipse includes a call hierarchy tool that allows users to easily traverse the calls made to a given method, answering questions such as \textit{where is this being called}. 
@@ -791,7 +789,7 @@ Even after finding and using the tool, P4 still needed other tools, such as the 
 \\
 
 
-\noindent\textbf{Tool Implications}
+\noindent\textbf{Tool Implications.}
 Even with tools like 'find references' and the call hierarchy view tool, it may be difficult to answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate information gathered from different tools. 
 Further, even a combination of these tools are ineffective for someone who is unaware of their existence.
 A tool that addresses these types of needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they require. 
@@ -819,7 +817,7 @@ Eleven of the 155 distinct questions fit into this category.
 \emph{Is any of the data malicious? (1)} \\
 
 
-\noindent\textbf{Observations}
+\noindent\textbf{Observations.}
 All 10 participants had questions regarding the data pipeline, or where data travels and how it changes as it travels.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities; most often these questions arose while assessing the Servlet Parameter vulnerability. 
 None of the tools available to participants allowed them to directly explore the flow and storage of data so participants either stated information they would want to acquire without attempting to or combined use of an available tool and manual searching through the code. 
@@ -833,8 +831,7 @@ Though both P1 and P6 knew the questions they needed answered, they did not atte
 Often, like P1 and P6, participants would describe what they would do but not attempt to do it
 \\
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
 The developer would have to retrieve this information, either from the documentation, by debugging the code, or some combination of both. 
 Tools have been developed to do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
@@ -872,8 +869,7 @@ The questions in this category inquire about the code at an abstract level, such
 
 
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 Nine of the 10 participants asked questions about the background of the code; most participants wanted to know what part or parts of the code did.
 \textit{What does this code do?} was a question that came up for all four vulnerabilities. 
 While assessing the Potential Path Traversal vulnerability, some participants came to the realization that they may need the person who wrote the code or others familiar with the code under investigation to answer their questions. 
@@ -888,11 +884,11 @@ For this question, if participants made an attempt to find the answer, they also
 It seems most, if not all, of the questions in this category require information that existing tools may not be able to provide.
 \\
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
 This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need.
-Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate. 
+Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate.
+It is particularly important that  
 A tool that wants to accommodate these needs might collects these sorts of measures and provide developers easy access to it.
 % P2 wanted to know effort put in to determine whether they trust the code was written securely -- not sure where this fits
 
@@ -918,25 +914,33 @@ Nine of the 155 distinct questions revolved around how the code works in the con
 
 
 \noindent\textbf{Observations}
+Four participants wanted to know the context in which the code being assessed was used or the context of the bug being assessed.
+Similarly, three participants found themselves trying to determine what a specific method or variable is used for in the application.
+Both of these questions came up for three of the four vulnerabilities.
 
-% what is context of bug/code (4)
+ 
+P7 had questions concerning the context of the code associated with the Potential Path Traversal and Predictable Random vulnerabilities.
+For the former vulnerability, he wanted to know the general context in which the code is used; for the latter, he wanted to know the legal context in which the code is being used.
+P7, like others, asked these questions but did not follow through to answer them. 
+P2, when thinking about how he might determine the context in which the code associated with the Predictable Random vulnerability is used, stated that the tool would have been more useful if it could tell him this information.
+He followed this statement with the notion that this sort of tool may be ``unrealistic.'' 
 % B1, 2, 3 -- mostly 1(?)
-% more general example than tests?
 
-% related to determining context is determining if used to test program (4)
+
 % B1, 2, 3 -- mostly 2(?)
-P2 P4 P9 and P10 asked whether the code they were examining occurred in classes that were only used to test the application. They asked this question to determine if applying a fix was worth their time.
-% more general --> what is method/variable used for in code?
-% B2, 3 -- mostly 3(?)
+Related to determining the general context is determining if the code associated with the vulnerability is used to test the system. 
+P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
+To answer this question, sometimes participants used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations the code of interest is being called.
+Compared to the tool support provided for determining general context, participants could answer this question relatively easily using existing tool support.
 \\
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
 \noindent\textbf{Tool Implications}
-
 It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
 For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
 However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
 Most of these questions can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make developer written documentation more easily available and searchable for information of interest.
+When specifically helping developers determine what code is test code, this could be augmented to the notification so the developer is aware of that seemingly relevant detail up front.
 
 
 %%%%%%%%%%%% End-User Interaction
