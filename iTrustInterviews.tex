@@ -134,7 +134,7 @@ Using a card sort methodology, we sorted the 559 questions into 17 categories.
 When analyzing source code, especially defective code, research suggests that developers hypothesize about the code, specifically by asking questions~\cite{livshits2005finding, ko2004designing}.
 To our knowledge, no studies have investigated the questions pertaining to the security of the code. 
 Research that determines the questions developers ask about their code has informed and motivated toolsmiths to develop better tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}.
-Our work extends these promising results to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
+Our work extends these results to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
 
 % contributions (the ones you have are good)
 
@@ -222,25 +222,23 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 
 %we know finding answers tedious; our study aims to find the questions and ways tool designers can help developers with this process.  
 
-These studies explore the questions developers ask when building and debugging software, however, they do not study the questions developers ask when they have a potential security vulnerability in their code. 
-In fact, our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have surround the implications of code changes on the security of their code. 
+Our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have surround the implications of code changes on the security of their code. 
 Our study discovers the questions developers have about potential code vulnerabilities and discusses the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
 \label{sec:meth}
 We conducted 10 semi-structured interviews with software developers. In our analysis, we extracted and categorized the questions developers asked during these interviews. 
 Section \ref{rqs} outlines the research questions we sought to answer. 
-Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we preformed data analysis.
+Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we performed data analysis.
 
 
-\subsection{Research Goals}
+\subsection{Research Questions}
 \label{rqs}
-We are motivated by the following research question:
+We want to answer the following research questions:
 \begin{itemize}
 \item \textbf{RQ1}: What types of security related questions do developers ask?
+\item \textbf{RQ2}: How do current tools and approaches support developers in answering these questions?
 \end{itemize}
-
-In our investigation, we also identified some of the strategies that developers use to answer such questions and assessed whether current tools support those strategies.
 
 
 \subsection{Study Design}
@@ -260,11 +258,11 @@ Finally, each interview concluded with several demographic and open-ended discus
 \end{figure}
 	
 
-Participants used Eclipse to explore vulnerabilities in iTrust, a Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
+Participants used Eclipse to explore vulnerabilities in iTrust, an opoen source Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with an extended version FindBugs, Find Security Bugs.\footnote{\url{h3xstream.github.io/find-sec-bugs/}} 
 We chose Find Security Bugs as a representative analysis tool by comparing the available source code analysis tools listed by NIST\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}}, OWASP\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}}, and WASC.\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}}
-Figure \ref{fig:environment} depicts the configuration of the IDE for one of the tasks.
+Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of the tasks.
 
 
 
@@ -313,18 +311,18 @@ To simulate a more realistic work environment, participants were required to hav
 All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 
 Table~\ref{table:participants} gives additional demographic information on each of the 10 participants. 
-Since the focus of our study was to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participant's responses.
+Since the focus of our study was to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participants' responses.
 
 \subsubsection{Tasks}
 Each participant approached four vulnerabilities. 
 We presented each participant with this number of vulnerabilities, because in preliminary pilot interviews, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
 When selecting tasks, we gave preference to existing iTrust vulnerabilities and sought a broad set of question topics.  
-FindBugs and Find Security Bugs group similar error messages using a system of topic tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
+Find Security Bugs groups similar error messages using a system of topic tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
 To cover a broader set of question topics, we selected vulnerabilities with four different topic tags.
 Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
-We inserted a SQL injection vulnerability by making minimal modifications to one of the database access objects.
-Our modifications preserved the functionality of the original code and were based on examples of SQL injection presented by OWASP.
+We inserted an SQL injection vulnerability by making minimal alterations to one of the database access objects.
+Our modification preserved the functionality of the original code and were based on examples of SQL injection presented by OWASP.
 Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
 
 \begin{table*} 
@@ -350,7 +348,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 During the briefing section, participants were told that they were in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
 Additionally, we asked them to use a think-aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 
-The interviewer was equipped with the following questions, but had the freedom to omit questions or ask follow-up questions based on the participant's responses.
+The interviewer was equipped with the following questions, but had the freedom to omit questions and ask follow-up questions based on the participant's responses.
 \begin{itemize}
 \item What are you exploring/trying to figure out right now?
 \item What information do you need to proceed?
@@ -422,7 +420,7 @@ Figure \ref{fig:merging} depicts a section of the questions extracted by both au
 \end{figure*}
 
 \subsubsection{Question Sorting}
-To organize our questions and facilitate discussion, we preformed an \textit{open} card sort~\cite{hudson2013sorting}. 
+To organize our questions and facilitate discussion, we performed an \textit{open} card sort~\cite{hudson2013sorting}. 
 Card sorting is typically used to help structure data by grouping related information into categories. 
 In an \textit{open} sort, the process begins with no notion of predefined categories. 
 Rather, sorters derive categories from emergent themes in the cards. 
@@ -434,7 +432,7 @@ Rather, sorters derive categories from emergent themes in the cards.
 \label{fig:stageOne} 
 \end{figure}
 
-We preformed our card sort in three distinct stages: clustering, categorization, and validation.
+We performed our card sort in three distinct stages: clustering, categorization, and validation.
  
 In the first stage, we formed question clusters by grouping questions that identified the same information requirements (Figure~\ref{fig:stageOne}). 
 In this phase we focused on phrasing similar questions consistently and grouping duplicates.
@@ -500,7 +498,7 @@ At this stage, we discarded 5 unclear or non pertinent questions and organized t
 
 
 In the second stage, we identified emergent themes and grouped the clusters into categories based on the themes. 
-For example, we placed the question \textit{Where can I get more information?} into a category called \emph{\textbf{Resources/Documentation}}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation}. 
+For example, we placed the question \textit{Where can I get more information?} into a category called \emph{\textbf{Resources/Documentation}}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation?} 
 Table~\ref{table:categories} contains the 17 categories along with the number of distinct clusters each contains. 
 
 To validate the categories that we identified, we asked two independent researchers to sort the question clusters into our categories. 
