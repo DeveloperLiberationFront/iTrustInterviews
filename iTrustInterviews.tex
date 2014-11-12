@@ -261,8 +261,8 @@ Finally, each session concluded with several demographic and open-ended discussi
 
 Participants used Eclipse to explore vulnerabilities in iTrust, an opoen source Java medical records application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
-Participants were equipped with a version of FindBugs extended with Find Security Bugs.
-We chose Find Security Bugs as a representative analysis tool by comparing the available source code analysis tools listed by NIST\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}}, OWASP\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}}, and WASC.\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}}
+Participants were equipped with a version of FindBugs extended with FSB.
+We chose FSB as a representative analysis tool by comparing the available source code analysis tools listed by NIST\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}}, OWASP\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}}, and WASC.\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}}
 Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of the tasks.
 
 
@@ -319,9 +319,9 @@ Each participant was asked to assess four vulnerabilities.
 We presented each participant with this number of vulnerabilities, because in preliminary pilot sessions, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
 When selecting tasks, we gave preference to existing iTrust vulnerabilities and sought a broad set of question topics.  
-Find Security Bugs groups similar error messages using a system of topic tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
+FSB groups similar error messages using a system of topic tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
 To cover a broader set of question topics, we selected vulnerabilities with four different topic tags.
-Find Security Bugs identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
+FSB identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
 We inserted an SQL injection vulnerability by making minimal alterations to one of the database access objects.
 Our modification preserved the functionality of the original code and was based on simple, toy examples of SQL injection presented by OWASP.
 Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
@@ -347,7 +347,8 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \end{table*}
 
 During the briefing section, we asked participants to pretend they are in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
-Additionally, we asked them to use a think-aloud protocol. Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
+Additionally, we asked them to use a think-aloud protocol, which encourages the participant to verbally announce their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
+Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 
 The session moderator was equipped with the following questions, but had the freedom to omit questions and ask follow-up questions based on the participant's responses.
 \begin{itemize}
@@ -539,7 +540,7 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 %The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
 %SAVE THIS CONNECTION FOR LATER
 Eight participants had questions that fit into this category. 
-The Find Security Bugs notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
+The FSB notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
 As noted, the message associated with the SQL Injection vulnerability suggests switching to use Prepared Statements. 
 The message associated with the Predictable Random vulnerability suggests switching to use \textit{java.security.secureRandom}. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
@@ -696,7 +697,7 @@ NOT MUCH TO SAY HERE?
 %Make more clear, This is the implication, but doesn't jump off the page yet...
 Though only four of the ten participants asked questions about the relationship between bugs, these questions highlight information requirements that tools could support.
 When inquiring about the relationships between bugs, participants noted connections between bugs that related to similar topics.
-Find Security Bugs organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
+FSB organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
 Grouping vulnerabilities based on abstract concepts might enable developers to focus on areas in which they have expertise, or identify and resolve similar bugs more quickly.
 
 HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
@@ -719,12 +720,10 @@ HELP: I know about CWE are there other canonical taxonomies? More importantly, d
 
 \noindent\subsection{\textbf{Locating Information (10)}}\label{li}
 
-Participants asked questions about locating information in their coding environments. 
-Eleven of the 155 extracted questions fit into this category.
-In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
-For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method was being called and where the path parameter was set.
-%The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts, or code fragments. 
-%On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
+Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
+Eleven questions of the 155 extracted fit into this category.
+The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
+On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
 \\
 
 \noindent\emph{Where is this used in the code? (10)} \\
@@ -1111,7 +1110,7 @@ We only collected general security vulnerability knowledge as a pre-study demogr
 \noindent\textbf{Tool Implications}
 
 In general, if a developer does not have experience with a particular feature or concept, they may have more difficulty understanding a problem in their code pertaining to that concept~\cite{wiedenbeck1993mental}.
-Sometimes, Find Security Bugs provide links to information regarding the concepts involved, however, some of our participants did not use them because they did not know they existed until the first author pointed them out. 
+Sometimes, FSB provides links to information regarding the concepts involved, however, some of our participants did not use them because they did not know they existed until the first author pointed them out. 
 A simple solution to providing easier access to the desired information is by places the links in a  more visible area (perhaps nested in the text of the error message next to the concept it has information about). 
 One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
 Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code, tools could make an attempt at only adapting notifications if the developer's model suggests there is a need the answer to these types of conceptual questions.
@@ -1162,7 +1161,7 @@ maybe talk about participants clicking links, sometimes missing them, sometimes 
 \noindent\textbf{Tool Implications}
 
 %Fix Sentence
-Some tools link to external documentation that developers can use to attempt to answer some of these questions, Find Security Bugs being one of them. 
+Some tools link to external documentation that developers can use to attempt to answer some of these questions, FSB being one of them. 
 Though links to external documentation and resources can provide answers to some of these questions, they do not help answer questions concerning the reliability of the resource nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code.
 %Information too complex, not sure how to apply 
 Lack of support for answering these questions may have contributed to participants not clicking the links in many situations.  
@@ -1174,7 +1173,7 @@ Fritz and colleagues developed a degree of knowledge model that predicts how fam
 
 \noindent\subsection{\textbf{Understanding and Interacting with Tools (8)}}\label{uit}
 
-Throughout the study participants interacted with a variety of tools including Find Security Bugs, the call hierarchy tool, and find references, for example. 
+Throughout the study participants interacted with a variety of tools including FSB, the call hierarchy tool, and find references, for example. 
 While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. 
 Nine of the 155 distinct questions we extracted fall into this category.
 \\
@@ -1198,7 +1197,7 @@ This seems to point to a tool awareness or education problem.
 %[Presentation of tool information]
 Other questions dealt with the presentation of information provided by the tool. 
 Participants wanted to be able to explore things about the tool's output, and typically had to manually determine the answers to their questions. 
-For example, Find Security Bugs reports its confidence on the potential defect in the notification, however, some participants found it difficult to process this information.
+For example, FSB reports its confidence on the potential defect in the notification, however, some participants found it difficult to process this information.
 \\
 
 
@@ -1265,7 +1264,7 @@ P1 -- It's called random password, so pretty big hit that I should probably chan
 
 \noindent\textbf{Tool Implications}
 
-Determining what the error message says is a relatively simple action for the developer to complete; most tools, Find Security Bugs included, provide functionality for developers to access the details of a given error message. 
+Determining what the error message says is a relatively simple action for the developer to complete; most tools, FSB included, provide functionality for developers to access the details of a given error message. 
 Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the buggy code. 
 However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not always the best indicator of the connection between the code and the error message. 
 Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code~\cite{barik14visual}.
