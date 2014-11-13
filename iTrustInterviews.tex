@@ -980,6 +980,7 @@ Perhaps tools could use this information to prioritize vulnerabilities or direct
 
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
 The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
+For example, often when assessing the vulnerabilities, participants wanted to know if the code was used for testing functionality or in production. 
 Nine of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
 \\
 
@@ -1016,11 +1017,11 @@ Compared to the tool support provided for determining general context, participa
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
 \noindent\textbf{Tool Implications.}
-It is not obvious what tool support for answering these kinds of questions would look like, especially when it is not obvious why participants wanted these bits of information. 
+Similar to questions asked about code background and functionality, it is not obvious what tool support for answering these kinds of questions would look like because it was not always obvious why participants wanted these bits of information. 
 For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
 However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
-Most of these questions can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make developer written documentation more easily available and searchable for information of interest.
-When specifically helping developers determine what code is test code, this could be augmented to the notification so the developer is aware of that seemingly relevant detail up front.
+Most of the questions in this category can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make any relevant developer written documentation more easily available and searchable for information of interest.
+When specifically helping developers determine when potentially vulnerable code is test code, this could be added to the notification so the developer is aware of that detail before expending the effort to fix something that will not affect the finished product.
 
 
 %%%%%%%%%%%% End-User Interaction
