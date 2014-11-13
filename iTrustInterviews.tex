@@ -65,7 +65,7 @@
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
 
-\title{Tool Support for Questions Developers Ask About Security Vulnerabilities}
+\title{Identifying Questions Developers Ask About Security Vulnerabilities and Assessing Tool Support}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
 % author names and affiliations
@@ -614,7 +614,7 @@ Seven participants asked the question, \textit{Is this a real vulnerability?} To
 
 \noindent\textbf{Tool Implications}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions pertaining to potential attacks.
-Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks attacks.
+Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks.
 
 However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
 At times they inquire about all the possible attacks that could occur.
@@ -698,12 +698,9 @@ Three of the 155 distinct questions we found target the relationships between th
 \emph{Are all of these notifications vulnerabilities? (1)} \\
 
 
-\noindent\textbf{Observations}
+%\noindent\textbf{Observations}
 %P1 2 8 10 asked
 %Are all of the bugs related in my code?
-
-When inspecting the Servlet Parameter vulnerability, P8 wondered if other parts of the code contained similar vulnerabilities.
-NOT MUCH TO SAY HERE?
 
 \noindent\textbf{Tool Implications}
 
@@ -713,7 +710,7 @@ When inquiring about the relationships between bugs, participants noted connecti
 FSB organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
 Grouping vulnerabilities based on abstract concepts might enable developers to focus on areas in which they have expertise, or identify and resolve similar bugs more quickly.
 
-HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
+%HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
 %We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
 %Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
 %Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
@@ -756,15 +753,15 @@ For example, when exploring the Path Traversal vulnerability, participants sough
 All 10 participants wanted to locate where defective code and tainted values were being used throughout the system. 
 Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerability.
 Specifically, participants wondered where the random number generator and the tainted values returned from the servlet were used.
-For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
-Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
+%For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
+%Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
 %perhaps other participants encountered a situation similar to P6 where they were uncertain of how to start locating the information.
 
 %Simple questions are easy to answer by existing tools
 For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
 However, strategies relying on existing tools fell short when participants sought context-dependent information. 
 The code highlighting tool displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
-Participants didn't just seek location information, they searched for places where information was used within a given context.
+%Participants didn't just seek location information, they searched for places where information was used within a given context.
 For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
 
 %Where is similar code?
