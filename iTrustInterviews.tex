@@ -1077,10 +1077,10 @@ Existing tools could extend their functionality to answer these questions by all
 
 \noindent\subsection{\textbf{Developer Planning and Self-Reflection (8)}} \label{dpr}
 
-One kind of question participants asked when assessing potential security vulnerabilities in the code concerned their current status or plans for next steps in terms of understanding or assessing the vulnerability. 
+Another kind of question participants asked when assessing potential security vulnerabilities concerned their current status or plans for next steps in terms of assessing or removing the vulnerability. 
+All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.
+For example, when some participants thought they had an idea of what the problem might be, they stopped and took different measures to re-assess the code or notification to make sure they understood.
 Fourteen of the 155 distinct questions extracted fit into this category. 
-All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.  
-The most common occurring question in this category was...
 \\
 
 \noindent\emph{Do I understand? (3)} \\
@@ -1112,10 +1112,12 @@ MORE TO COME
 
 \noindent\textbf{Tool Implications}
 
-Though these general questions may not be trivial to help developers answer, there may be ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
+Though, in general, there is no trivial solution that can help developers answer many of these questions, there are ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
 For example, one question participants asked was \textit{Have I seen this before?}
 A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
 The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
+Another question that a tool could potentially help answer is \textit{What was that again?} 
+A tool that would support answering this question could keep track of places in the code the developer visits, perhaps while they are using a tool like FSB, and make them easily accessible to the developer as they triage the code.
 
 
 %%%%%%%%%%%% Understanding Concepts
