@@ -539,7 +539,7 @@ We detail our observations of the participants and contextualize each category b
 \noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)}}\label{uafa}
 
 When resolving security vulnerabilities, participants encountered alternative approaches that appeared to achieve the desired functionality more securely.
-For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \textttt{PreparedStatement} Class instead of Java Statements. 
+For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \texttt{PreparedStatement} Class instead of Java Statements. 
 Participants found many sources for alternative fixes, including web resources and even code located in other parts of the project.
 When presented with alternative approaches, participants compared the alternative with the current code and assessed the applicability of the alternative. 
 Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
@@ -558,7 +558,7 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 %SAVE THIS CONNECTION FOR LATER
 Eight participants had questions that fit into this category. 
 The FSB notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
-As noted, the message associated with the SQL Injection vulnerability suggests switching to use \textttt{PreparedStatements}. 
+As noted, the message associated with the SQL Injection vulnerability suggests switching to use \texttt{PreparedStatements}. 
 The message associated with the Predictable Random vulnerability suggests switching to use \texttt{java.security.SecureRandom}. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
@@ -658,14 +658,10 @@ We placed 9 of the 155 distinct questions into this category.
 When searching for approaches to resolve vulnerabilities, participants gravitated toward fix suggestions provided by the notification.
 The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided fix suggestions.
 All participants proposed solutions that involved applying one or both of these suggestions. 
-Additionally, two participants explicitly asked if more fix suggestions were available and P2 even commented that it would be nice if all the notifications contained fix suggestions.
-However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions, even though the use of \textit{java.security.SecureRandom} introduces a performance reduction.
- 
- %Many participants including 1, 2 and 6
-P9 had a noteworthy experience while exploring the Predictable Random vulnerability. Unlike the other participants, he missed the part of the error message that described the ``quick fix.'' 
-He went on to detail his plans for searching the web for standard random number generation techniques. 
-Then he recalled a technique that he had encountered before and explained that he might implement his own random hashing algorithm, but concluded that he would do more searching to find out the best way to apply that fix.
-Before proceeding to the next vulnerability, P9 reread the error message, noticed the quick fix and decided he would apply the quick fix instead.
+Additionally, P2 commented that it would be nice if all the notifications contained fix suggestions.
+
+However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
+While exploring the Predictable Random vulnerability, many participants, including 1, 2 and 6 decided to use \textit{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 \\
 
 %How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
@@ -674,11 +670,7 @@ Before proceeding to the next vulnerability, P9 reread the error message, notice
 \noindent\textbf{Tool Implications}
 Assuring the security of complex software systems requires developers to reason critically about the code. 
 Fix suggestions help developers dismiss vulnerabilities more quickly.
-However, especially in security, quicker might not always be better. 
-
-In the case of P9, without the quick fix he searched the web for best-practices and drew conclusions from a broader set of resources.
-In some sense, his experience lead him to a better understanding of the vulnerability than those who read the entire notification.
-
+However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
 Our observations suggest that the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
 
 %False positives
