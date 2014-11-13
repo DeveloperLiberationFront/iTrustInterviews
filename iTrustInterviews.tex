@@ -521,9 +521,11 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
 \label{sec:results-vaf}
-We list each distinct question we extracted and the count for each in parentheses. For each category, we discuss the common thread that ties questions in that category together. 
-We also contextualize each category by discussing existing tool support and shortcomings.
-Categories have been places into four groups to facilitate discussion: Vulnerabilities, Attacks, and Fixes, Oh My!; Code and the Application; Individuals; and Problem Solving Support.
+In the next 4 sections, we discuss the results of our experiment using the categories we described in the previous section.
+Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings; groups are listed in column 1 of Table~\ref{table:categories}.
+For each category, we list distinct questions and the number of participants that asked a variation of that question in parentheses. 
+We discuss the common thread that ties questions in that category together and contextualize each category by discussing existing tool support and shortcomings.
+Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings; groups are listed in column 1 of Table~\ref{table:categories}. Vulnerabilities, Attacks, and Fixes, Oh My!; Code and the Application; Individuals; and Problem Solving Support.
 % next paragraph, go into description of first group 
 
 
@@ -1239,8 +1241,8 @@ Based on our observations, another way to answer or prevent these questions is b
 
 \noindent\subsection{\textbf{Error Messages (6)}}\label{em}
 
-As expected, participants asked questions concerning the content of the error messages. 
-Mostly, this happened when participants needed to look at the bug information to get a better understanding of the potential vulnerability. 
+As expected, participants asked questions concerning the content of the error messages attached to the notifications. 
+Mostly, this happened when participants referenced the bug information view offered by FindBugs to get a better understanding of the potential vulnerability.
 Three of the 155 distinct questions we extracted fall into this category.
 \\
 
@@ -1261,10 +1263,10 @@ P1 -- It's called random password, so pretty big hit that I should probably chan
 \noindent\textbf{Tool Implications}
 
 Determining what the error message says is a relatively simple action for the developer to complete; most tools, FSB included, provide functionality for developers to access the details of a given error message. 
-Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the buggy code. 
-However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not always the best indicator of the connection between the code and the error message. 
-Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code~\cite{barik14visual}.
-Answering the other two questions as easily may require additional tool support. For example, 
+Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the vulnerable code. 
+However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not the best indicator of the connection between the code and the error message. 
+Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code editor~\cite{barik14visual}.
+These type of visual overlays may also be useful for answering the questions in this category.
 
 
 \section{Future Work}
