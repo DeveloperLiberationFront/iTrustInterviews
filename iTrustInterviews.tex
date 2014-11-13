@@ -521,10 +521,12 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
 \label{sec:results-vaf}
+In the next 4 sections, we discuss the results of our experiment using the categories we described in the previous section.
+Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings; groups are listed in column 1 of Table~\ref{table:categories}.
+For each category, we list distinct questions and the number of participants that asked a variation of that question in parentheses. 
 For each category, we discuss the common thread that ties questions in that category together.
 We list each distinct question we extracted with the number of participants that asked that question in parentheses.  
 We detail our observations of the participants and  contextualize each category by discussing existing tool support and shortcomings.
-Categories have been places into four groups to facilitate discussion: Vulnerabilities, Attacks, and Fixes, Oh My!; Code and the Application; Individuals; and Problem Solving Support.
 % next paragraph, go into description of first group 
 
 
@@ -855,6 +857,11 @@ Our findings suggest that developers could benefit from tools that reduce the co
 In particular developers could benefit from tools that apprise them of other useful tools like find references and call hierarchy.
 A tool that addresses these needs might detect when the developer is looking for call information (for example, using the `find' tool) and suggest the appropriate tool for finding the information they require. 
 
+\noindent\textbf{Tool Implications.}
+Even with tools like 'find references' and the call hierarchy view tool, it may be difficult to answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate information gathered from different tools. 
+Further, even a combination of these tools are ineffective for someone who is unaware of their existence.
+A tool that addresses these types of needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they require. 
+To increase visibility of the desired information, the tool might also highlight the relevant method as it appears in the call hierarchy or augment each method with the methods that can call it.
 
 %It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
@@ -1173,9 +1180,9 @@ We only identified one distinct question, however, there are many ways to interp
 
 \noindent\subsection{\textbf{Resources and Documentation (10)}}\label{rd}
 
-
+Many participants found themselves in situations where they would use outside resources and documentation to decide how to proceed regarding a given vulnerability.
+For example, when assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information regarding the vulnerability. 
 Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. 
-Many participants found themselves in situations where they would use outside resources to decide how to proceed. 
 Ten of the 155 distinct questions fall into this category. 
 \\
 
@@ -1199,8 +1206,12 @@ maybe talk about participants clicking links, sometimes missing them, sometimes 
 %Fix Sentence
 Some tools link to external documentation that developers can use to attempt to answer some of these questions, FSB being one of them. 
 Though links to external documentation and resources can provide answers to some of these questions, they do not help answer questions concerning the reliability of the resource nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code.
+It seems reliability of the resource would be especially important for making changes based on the resource in a secure system.
 %Information too complex, not sure how to apply 
-Lack of support for answering these questions may have contributed to participants not clicking the links in many situations.  
+
+Lack of support for answering these questions, especially questions concerning reliability, may have contributed to participants not clicking the links in many situations.  
+Tools might consider including information regarding the reliability of the resources provided; one way to do this is to associate the link with peers who have visited it.
+Also, to help answer questions about other team members' knowledge of the code, tools may be able to borrow ideas from previous research.
 Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements, however, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
 
 
@@ -1209,8 +1220,8 @@ Fritz and colleagues developed a degree of knowledge model that predicts how fam
 
 \noindent\subsection{\textbf{Understanding and Interacting with Tools (8)}}\label{uit}
 
-Throughout the study participants interacted with a variety of tools including FSB, the call hierarchy tool, and find references, for example. 
-While interacting with these tools, participants asked questions about how to access specific tools and how to interpret their output. 
+Throughout the study participants interacted with a variety of tools including FSB, the call hierarchy tool, and find references. 
+While interacting with these tools, participants asked questions about how to access specific tools, how to properly use the tool, and how to interpret tool output. 
 Nine of the 155 distinct questions we extracted fall into this category.
 \\
 
@@ -1239,11 +1250,12 @@ For example, FSB reports its confidence on the potential defect in the notificat
 
 \noindent\textbf{Tool Implications}
 
-Developers' ability to understand and effectively interact with tools has been the focus of many research studies, however, many of these questions remain unanswered~\cite{ko2004designing, khoo2008path, johnson2013don}. 
+Developers' ability to understand and effectively interact with tools has been the focus of many research studies, however, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
 Many of these questions may require the input of other developers to be answered effectively. 
 For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
 Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
-A tool that could model this concise interaction could potentially provide answers to many of these questions.
+A tool that supports answering these questions might allow developers to easily access information regarding peer interactions with the tools being used; the tool might also include advice based on mistakes the developer's peers have made. 
+ 
 
 % whyline - why did, why didn't this happen but not why tool complaining (still question not answered as well as what is tool telling me and how information presented, cite)
 
@@ -1254,7 +1266,7 @@ A tool that could model this concise interaction could potentially provide answe
 \noindent\subsection{\textbf{Bug Severity and Ranking (5)}}\label{bsr}
 
 Some participants had questions regarding the severity or ranking of the bug being reported by FSB. 
-These questions dealt with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 
+These questions dealt with general bug severity questions and questions pertaining specifically to how the tool communicates severity and ranking. 
 Four of the 155 distinct questions extracted fall into this category. 
 \\
 
@@ -1269,18 +1281,18 @@ Four of the 155 distinct questions extracted fall into this category.
 \noindent\textbf{Tool Implications}
 
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
-Techniques and tools have been have been developed for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
+Techniques and tools have been developed for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
 It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
 %over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
-Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity and/or ranking of a potential vulnerability.
-
+Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity or ranking of a potential vulnerability.
+For example, instead of FSB using phrases and numbers to represent severity, priority, and rank, perhaps FSB could use one scale where one value can tell you how important the vulnerability is in comparison to the space of other vulnerabilities.
 
 %%%%%%%%%%%% Error Messages
 
 \noindent\subsection{\textbf{Error Messages (6)}}\label{em}
 
-As expected, participants asked questions concerning the content of the error messages. 
-Mostly, this happened when participants needed to look at the bug information to get a better understanding of the potential vulnerability. 
+As expected, participants asked questions concerning the content of the error messages attached to the notifications. 
+Mostly, this happened when participants referenced the bug information view offered by FSB to get a better understanding of the potential vulnerability.
 Three of the 155 distinct questions we extracted fall into this category.
 \\
 
@@ -1301,10 +1313,10 @@ P1 -- It's called random password, so pretty big hit that I should probably chan
 \noindent\textbf{Tool Implications}
 
 Determining what the error message says is a relatively simple action for the developer to complete; most tools, FSB included, provide functionality for developers to access the details of a given error message. 
-Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the buggy code. 
-However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not always the best indicator of the connection between the code and the error message. 
-Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code~\cite{barik14visual}.
-Answering the other two questions as easily may require additional tool support. For example, 
+Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the vulnerable code. 
+However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not the best indicator of the connection between the code and the error message. 
+Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code editor~\cite{barik14visual}.
+These type of visual overlays may also be useful for answering the questions in this category.
 
 
 \section{Future Work}
