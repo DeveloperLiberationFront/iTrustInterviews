@@ -661,7 +661,7 @@ All participants proposed solutions that involved applying one or both of these 
 Additionally, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
-While exploring the Predictable Random vulnerability, many participants, including 1, 2 and 6 decided to use \textit{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
+While exploring the Predictable Random vulnerability, many participants, including 1, 2, and 6 decided to use \texttt{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 \\
 
 %How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
@@ -673,10 +673,12 @@ Fix suggestions help developers dismiss vulnerabilities more quickly.
 However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
 Our observations suggest that the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
 
-%False positives
-Existing tools, such as Quick Fix Scout begin to address this problem by describing what might happen if a quick fix is implemented~\cite{mucslu2012speculative}. 
-Quick Fix Scout helps developers consider the implications of implementing a fix.
-Security tools that include quick fixes should also encourage developers to assess alternative fixes or whether they need to modify the code at all.
+%False positives 
+Accordingly, developer could benefit from tool support in assessing the implications of suggested fixes.
+Existing tools, such as Quick Fix Scout begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
+Quick Fix Scout helps developers consider the implications of implementing a fix based on a single dimension, defect count.
+Security tools that include fix suggestions should encourage developers to consider the various tradeoffs associated with alternative fixes, for example performance reductions.
+Such a tool might inform developers of the time it takes the code to execute after applying the fix compared with before the fix was applied.
 %Tool looks at runtime
 %Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing 
 %Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
