@@ -55,6 +55,7 @@
 \usepackage[table, svgnames]{xcolor} 
 \usepackage{color}
 \usepackage{siunitx}
+\usepackage{multirow}
 
 \usepackage{dcolumn}
 \newcolumntype{Y}{D..{6.4}}
@@ -65,7 +66,7 @@
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
 
-\title{Tool Support for Questions Developers Ask About Security Vulnerabilities}
+\title{Identifying Questions Developers Ask About Security Vulnerabilities and Assessing Tool Support}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
 % author names and affiliations
@@ -87,9 +88,10 @@ Charlotte, NC 28223 \\
 % in the abstract
 \begin{abstract}
 
-Program analysis tools should help developers answer the security-relevant questions; to design tools that help developers answer their questions, we must first understand what questions they ask.
-However, we lack a catalog and categorization of such questions in relation to security. 
-We attempted to build this categorized catalog by conducting a laboratory experiment with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
+Program analysis tools should help developers answer the questions they ask while assessing the security of their code. 
+To design tools that help developers answer these questions, we must first understand what questions they ask.
+However, we lack a catalog and categorization of such questions. 
+We built this categorized catalog by conducting a laboratory experiment with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
 Results of our study have several implications for program analysis tools aiming to help developers assess security vulnerabilities in their code, such as providing support for reasoning about the different possible attacks that could stem from a given security vulnerability.
 
 
@@ -112,33 +114,36 @@ Results of our study have several implications for program analysis tools aiming
 \section{Introduction}
 % no \IEEEPARstart
 
-
 Software developers are a critical part of making software secure. 
 When there is a security fault in a software system, it is up to the developers to determine the best way to remove the vulnerability and ensure proper function of the system in the future.
-There are a variety of ways developers can learn about, assess, and fix insecure code, such as peer interactions or usage of tools.
-It is particularly important that effectives tools exist for secure systems, as security vulnerabilities are more likely to cause incidents that affect company budgets as well as end users~\cite{chen2002mops}. 
+There are a variety of ways developers can learn about, assess, and fix insecure code.
+It is particularly important to provide effective tools for secure systems, as security vulnerabilities are more likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}. 
 
-Static analysis tools are made available to help developers detect potential security flaws in their code. 
-One of example of such a tool is FindBugs, a static analysis tool for finding potential defects in software code.~\footnote{findbugs.sourceforge.net} 
-FindBugs is able to report various potential security defects, such as SQL injection and cross site scripting.  % more specific example? figure? 
-There is also an extension for FindBugs, called Find Security Bugs (FSB), that focuses its reporting efforts specifically on security vulnerabilities~\footnote{\url{h3xstream.github.io/find-sec-bugs/}}.
-Other tools, such as CodeSonar~\footnote{\url{http://www.grammatech.com/codesonar}} and Coverity~\footnote{\url{http://www.coverity.com/}}, can also be used to detect and remove potential security vulnerabilities.
+Toolsmiths produce static analysis tools to help developers detect potential security flaws in their code. 
+One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{findbugs.sourceforge.net} 
+FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross site scripting.  
+Other tools, such as CodeSonar\footnote{\url{grammatech.com/codesonar}} and Coverity,\footnote{\url{coverity.com/}} can also be used to detect and remove potential security vulnerabilities.
+Unfortunately, however, research suggests that many developers may not be using such static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
 
 % maybe connect back to example.
-Unfortunately, however, research suggests that many developers may not be using these tools; part of this reason for this is that they have difficulty interpreting the output~\cite{johnson2013don}. 
-Part of this difficulty for developers building secure systems stems from the hard to answer questions developers have about the security of their code~\cite{latoza2010hard}.
-Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
-Because LaToza's work only addresses security questions in passing and does not focus on the process of assessing potential security vulnerabilities, we do not have such a collection of questions to use to build better, more usable tools for security.
-Our work extends existing work to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
+
+Although existing work has cataloged developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities~\cite{latoza2010hard}. 
+As we show later in this paper, many questions are unique to using security tools.
+Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art from program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+
+
+%Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+
+
 
 In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
-We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.~\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
-We observed each developer as they assessed potential security vulnerabilities reported by FSB and report the kinds of questions they asked while doing so along with the strategies they used, if any, to answer them.
+We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
+We observed each developer as they assessed potential security vulnerabilities reported by FSB and report the kinds of questions they asked while doing so along with the strategies they used to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
 Our work makes three contributions. 
 First, we present a list of questions that software developers ask when examining the security of their code.
-Second, based on our observations, we discuss the strategies that developers use to answer some of their questions.
+Second, based on our observations, we discuss the strategies that developers use to answer their questions.
 Finally, we evaluate the existing tool support for answering security-related questions.
 
 The remainder of the paper is organized as follows. 
@@ -262,18 +267,20 @@ Finally, each session concluded with several demographic and open-ended discussi
 Participants used Eclipse to explore vulnerabilities in iTrust, an open source Java medical records web application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with a version of FindBugs extended with FSB.
-We chose FSB because it is open source, lightweight, and similar to other static analysis tools for detecting security vulnerabilities in web applications, such as those listed by NIST\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}}, OWASP\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}}, and WASC.\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}}
+We chose FSB because it is open source, lightweight, and similar to other static analysis tools for detecting security vulnerabilities in web applications, such as those listed by NIST,\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}} OWASP,\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}} and WASC\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}}.
 Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of the tasks.
 
 
 
-\begin{table*}
+\begin{table}
 \centering
 \caption{Demographics of study participants}
 \begin{tabular}{|l|l|c|S|}
 \rowcolor{gray!50}
 \hline
-    Participant		& Job Title 						& Security Vulnerability Familiarity 						& Programming Experience (years) \\
+    Participant		& Job Title 						& Vulnerability 			&\multicolumn{1}{c|}{Experience (yrs)} \\
+    \rowcolor{gray!50}
+    				&									& Familiarity				&    \\
     \hline
     P1			    & Student     						& \raisebox{-0.9ex}{\includegraphics[height=9px]{images/two-half-stars.pdf}} 	&  4.5    \\
     \hline
@@ -287,7 +294,7 @@ Figure \ref{fig:environment} depicts the configuration of the integrated develop
     \hline
     P6				& Student		    				& \raisebox{-0.9ex}{\includegraphics[height=8.5px]{images/one-star.pdf}}				& 4		\\
     \hline
-    P7				& Front-end Software Developer    	& \raisebox{-0.9ex}{\includegraphics[height=9px]{images/four-stars.pdf}}		& 4.5         \\
+    P7				& Software Developer    	& \raisebox{-0.9ex}{\includegraphics[height=9px]{images/four-stars.pdf}}		& 4.5         \\
     \hline
     P8				& Student	    					& \raisebox{-0.9ex}{\includegraphics[height=9px]{images/three-stars.pdf}}		& 7   \\
     \hline
@@ -297,7 +304,7 @@ Figure \ref{fig:environment} depicts the configuration of the integrated develop
     \hline
 \end{tabular}
 \label{table:participants}
-\end{table*}
+\end{table}
 
 
 
@@ -306,7 +313,7 @@ Figure \ref{fig:environment} depicts the configuration of the integrated develop
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. 
 All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 
-For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in experience from 4 to 10 years, averaging 6.3 years.
+For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in programming experience from 4 to 10 years, averaging 6.3 years.
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that we had reached saturation and few new questions were emerging from each additional interview.
@@ -454,52 +461,49 @@ At this stage, we discarded 5 unclear or non pertinent questions and organized t
 
 \begin{table*} 
 \centering
-\caption{Emergent categories from card sort}
-\begin{tabular}{|l|l|c|c|}
+\caption{Organizational Groups and Emergent Categories}
+\begin{tabular}{|l|l|r|c|}
 \rowcolor{gray!50}
 \hline
     Group											& Category										& Clusters		& Location in Paper	  	\\
     \hline			
-    Vulnerabilities, Attacks, and Fixes, Oh My!	&  				&     		& 		\\
-    \hline
+    \multirow{4}{*}{Vulnerabilities, Attacks, and Fixes, Oh My!}
         											& Understanding Alternative Fixes and Approaches	& 11     		& Section~\ref{uafa}	\\
-    \hline
+
     												& Preventing and Understanding Potential Attacks	& 11     		& Section~\ref{pupa}		\\
-    \hline
+
     												& Assessing the Application of the Fix				& 9     		& Section~\ref{aaf}				\\
-    \hline
+
     												& Relationship Between Bugs							& 3     		& Section~\ref{rbb}			\\
     \hline
-    Code and the Application		&  				&     		& 		\\
-    \hline
+    \multirow{4}{*}{Code and the Application}	
     												& Locating Information 								& 11      		& Section~\ref{li}		\\
-    \hline
+
     												& Control Flow and Call Information					& 13     		& Section~\ref{cf}	\\
-    \hline
+
     												& Data Storage and Flow								& 11     		& Section~\ref{dsf}  	\\
-    \hline
+
     												& Code Background and Functionality	 				& 17     		& Section~\ref{cbf}			\\
-    \hline
+
     									& Application Context/Usage										& 9     		& Section~\ref{acu}			\\
-    \hline
+
     									& End-User Interaction											& 3     		& Section~\ref{eui}		\\
     \hline	
-    Individuals			&  				&     		& 		\\
-    \hline
+    \multirow{4}{*}{Individuals}	
     									& Developer Planning and Self-Reflection						& 14    		& Section~\ref{dpr}		\\
-    \hline
+
     									& Understanding Concepts										& 6 			& Section~\ref{uc}			\\
-    \hline
+
     									& Confirming Expectations					 					& 1				& Section~\ref{ce}  \\
     \hline
-	Problem Solving Support			&  				&     		& 		\\
-    \hline
+	\multirow{4}{*}{Problem Solving Support}
+
     									& Bug Severity and Rank											& 4     		& Section~\ref{bsr}		\\
-    \hline
+
     									& Understanding and Interacting with Tools						& 9     		& Section~\ref{uit}			\\
-    \hline
+
    	 									& Resources and Documentation									& 10     		& Section~\ref{rd}		\\
-    \hline    
+
     									& Error Messages												& 3     		& Section~\ref{em}		\\
     \hline	
        									& Uncategorized													& 10    		&			 \\
@@ -522,11 +526,11 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
 \label{sec:results-vaf}
 In the next 4 sections, we discuss the results of our experiment using the categories we described in the previous section.
-Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings; groups are listed in column 1 of Table~\ref{table:categories}.
-For each category, we list some more frequent or interesting distinct questions asked and the number of participants that asked a variation of that question in parentheses; a full list of distinct questions can be found online.~\footnote{\url{http://www4.ncsu.edu/~bijohnso/questions.pdf}} 
-For each category, we discuss the common thread that ties questions in that category together.
-We list each distinct question we extracted with the number of participants that asked that question in parentheses.  
-We detail our observations of the participants and  contextualize each category by discussing existing tool support and shortcomings.
+Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings. Table~\ref{table:categories} provides an overview of this structure.
+For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}
+In each category, we discuss the common properties of questions in that category.
+We list the selected questions with the number of participants that asked each question in parentheses.  
+We detail our observations of the participants and contextualize each category by discussing existing tool support and shortcomings.
 % next paragraph, go into description of first group 
 
 
@@ -535,7 +539,7 @@ We detail our observations of the participants and  contextualize each category 
 \noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)}}\label{uafa}
 
 When resolving security vulnerabilities, participants encountered alternative approaches that appeared to achieve the desired functionality more securely.
-For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the Prepared Statement Class instead of Java Statements. 
+For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \texttt{PreparedStatement} Class instead of Java Statements. 
 Participants found many sources for alternative fixes, including web resources and even code located in other parts of the project.
 When presented with alternative approaches, participants compared the alternative with the current code and assessed the applicability of the alternative. 
 Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
@@ -554,12 +558,12 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 %SAVE THIS CONNECTION FOR LATER
 Eight participants had questions that fit into this category. 
 The FSB notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
-As noted, the message associated with the SQL Injection vulnerability suggests switching to use Prepared Statements. 
-The message associated with the Predictable Random vulnerability suggests switching to use \textit{java.security.secureRandom}. 
+As noted, the message associated with the SQL Injection vulnerability suggests switching to use \texttt{PreparedStatements}. 
+The message associated with the Predictable Random vulnerability suggests switching to use \texttt{java.security.SecureRandom}. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
-While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP.~\footnote{\url{https://www.owasp.org/index.php/Main_Page}} 
+While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP\footnote{\url{owasp.org/index.php/Main_Page}}. 
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make is final decision regarding the vulnerability. 
 Despite the useful information that some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
@@ -614,7 +618,7 @@ Seven participants asked the question, \textit{Is this a real vulnerability?} To
 
 \noindent\textbf{Tool Implications}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions pertaining to potential attacks.
-Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks attacks.
+Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks.
 
 However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
 At times they inquire about all the possible attacks that could occur.
@@ -632,7 +636,7 @@ Security tools should support this modality by separating information about all 
 
 \noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
 Once participants had identified a specific approach for fixing a security vulnerability, they asked questions about applying the fix to the code.
-For example, when considering the use of \textit{java.security.secureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
+For example, when considering the use of \texttt{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 We placed 9 of the 155 distinct questions into this category.
@@ -651,16 +655,13 @@ We placed 9 of the 155 distinct questions into this category.
 
 \noindent\textbf{Observations}
 
-When searching for approaches to resolve vulnerabilities, participants gravitated toward quick fixes.
-The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided quick fix suggestions.
-All participants proposed solutions that involved applying one or both of these quick fixes. 
-Additionally, two participants explicitly asked if quick fixes were available and P2 even commented that it would be nice if all the notifications contained quick fixes.
-However, unless prompted, none of the participants commented on the disadvantages of using proposed quick fixes, such as reduced performance or the possibility of introducing another defect.
- 
-P9 had a noteworthy experience while exploring the Predictable Random vulnerability. Unlike the other participants, he missed the part of the error message that described the ``quick fix.'' 
-He went on to detail his plans for searching the web for standard random number generation techniques. 
-Then he recalled a technique that he had encountered before and explained that he might implement his own random hashing algorithm, but concluded that he would do more searching to find out the best way to apply that fix.
-Before proceeding to the next vulnerability, P9 reread the error message, noticed the quick fix and decided he would apply the quick fix instead.
+When searching for approaches to resolve vulnerabilities, participants gravitated toward fix suggestions provided by the notification.
+The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided fix suggestions.
+All participants proposed solutions that involved applying one or both of these suggestions. 
+Additionally, P2 commented that it would be nice if all the notifications contained fix suggestions.
+
+However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
+While exploring the Predictable Random vulnerability, many participants, including 1, 2, and 6 decided to use \texttt{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 \\
 
 %How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
@@ -668,16 +669,17 @@ Before proceeding to the next vulnerability, P9 reread the error message, notice
 
 \noindent\textbf{Tool Implications}
 Assuring the security of complex software systems requires developers to reason critically about the code. 
-Quick fixes help developers dismiss vulnerabilities more quickly.
-However, especially in security, quicker might not always be better. 
-In the case of P9, without the quick fix he searched the web for best-practices and drew conclusions from a broader set of resources.
-In some sense, his experience lead him to a better understanding of the vulnerability than those who read the entire notification.
-Our observations suggest that the presence of quick fixes alone may discourage developers from fully considering the implications of their proposed changes.
+Fix suggestions help developers dismiss vulnerabilities more quickly.
+However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
+Our observations suggest that the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
 
-%False positives
-Existing tools, such as Quick Fix Scout begin to address this problem by describing what might happen if a quick fix is implemented~\cite{mucslu2012speculative}. 
-Quick Fix Scout helps developers consider the implications of implementing a fix.
-Security tools that include quick fixes should also encourage developers to assess alternative fixes or whether they need to modify the code at all.
+%False positives 
+Accordingly, developer could benefit from tool support in assessing the implications of suggested fixes.
+Existing tools, such as Quick Fix Scout begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
+Quick Fix Scout helps developers consider the implications of implementing a fix based on a single dimension, defect count.
+Security tools that include fix suggestions should encourage developers to consider the various tradeoffs associated with alternative fixes, for example performance reductions.
+Such a tool might inform developers of the time it takes the code to execute after applying the fix compared with before the fix was applied.
+%Tool looks at runtime
 %Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing 
 %Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
 %None of our participants asked this question specifically, but to that effect, P1 and P2 asked \textit{Will the code work the same after I apply the fix?} 
@@ -698,12 +700,9 @@ Three of the 155 distinct questions we found target the relationships between th
 \emph{Are all of these notifications vulnerabilities? (1)} \\
 
 
-\noindent\textbf{Observations}
+%\noindent\textbf{Observations}
 %P1 2 8 10 asked
 %Are all of the bugs related in my code?
-
-When inspecting the Servlet Parameter vulnerability, P8 wondered if other parts of the code contained similar vulnerabilities.
-NOT MUCH TO SAY HERE?
 
 \noindent\textbf{Tool Implications}
 
@@ -713,7 +712,7 @@ When inquiring about the relationships between bugs, participants noted connecti
 FSB organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
 Grouping vulnerabilities based on abstract concepts might enable developers to focus on areas in which they have expertise, or identify and resolve similar bugs more quickly.
 
-HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
+%HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
 %We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
 %Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
 %Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
@@ -756,15 +755,15 @@ For example, when exploring the Path Traversal vulnerability, participants sough
 All 10 participants wanted to locate where defective code and tainted values were being used throughout the system. 
 Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerability.
 Specifically, participants wondered where the random number generator and the tainted values returned from the servlet were used.
-For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
-Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
+%For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
+%Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
 %perhaps other participants encountered a situation similar to P6 where they were uncertain of how to start locating the information.
 
 %Simple questions are easy to answer by existing tools
 For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
 However, strategies relying on existing tools fell short when participants sought context-dependent information. 
 The code highlighting tool displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
-Participants didn't just seek location information, they searched for places where information was used within a given context.
+%Participants didn't just seek location information, they searched for places where information was used within a given context.
 For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
 
 %Where is similar code?
@@ -1348,7 +1347,7 @@ Our findings have several implications for the design of tools that can be used 
 \section*{Acknowledgment}
 
 We would like to thank our study participants. 
-Special thanks to Xi Ge, Anthony Elliott, and the Developer Liberation Front~\footnote{\url{http://research.csc.ncsu.edu/dlf/}} for their assistance. 
+Special thanks to Xi Ge, Anthony Elliott, and the Developer Liberation Front\footnote{\url{research.csc.ncsu.edu/dlf/}} for their assistance. 
 This material is based upon work supported by XXX and a National Science Foundation Graduate Research Fellowship under Grant No. DGE--0946818.
 
 \bibliographystyle{IEEEtran}
