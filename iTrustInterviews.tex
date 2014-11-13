@@ -521,8 +521,9 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
 \label{sec:results-vaf}
-We list each distinct question we extracted and the count for each in parentheses. For each category, we discuss the common thread that ties questions in that category together. 
-We also contextualize each category by discussing existing tool support and shortcomings.
+For each category, we discuss the common thread that ties questions in that category together.
+We list each distinct question we extracted with the number of participants that asked that question in parentheses.  
+We detail our observations of the participants and  contextualize each category by discussing existing tool support and shortcomings.
 Categories have been places into four groups to facilitate discussion: Vulnerabilities, Attacks, and Fixes, Oh My!; Code and the Application; Individuals; and Problem Solving Support.
 % next paragraph, go into description of first group 
 
@@ -630,7 +631,7 @@ Security tools should support this modality by separating information about all 
 \noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
 Once participants had identified a specific approach for fixing a security vulnerability, they asked questions about applying the fix to the code.
 For example, when considering the use of \textit{java.security.secureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
-The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}); 
+The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 We placed 9 of the 155 distinct questions into this category.
 \\
@@ -730,11 +731,12 @@ HELP: I know about CWE are there other canonical taxonomies? More importantly, d
 
 \noindent\subsection{\textbf{Locating Information (10)}}\label{li}
 
-Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
-Eleven questions of the 155 extracted fit into this category.
-The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
-On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
-\\
+Participants asked questions about locating information in their coding environments. 
+Eleven of the 155 extracted questions fit into this category.
+In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
+For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method was being called and where the path parameter was set.
+%The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts, or code fragments. 
+%On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.\\
 
 \noindent\emph{Where is this used in the code? (10)} \\
 \emph{Where are other similar pieces of code? (4)} \\
@@ -748,42 +750,56 @@ On the other hand, \emph{\textbf{Code Background and Function}} pertains to unde
 
 
 \noindent\textbf{Observations.}
-All 10 participants found themselves in situations where they wanted to know where the code associated with the potential vulnerability is being used throughout the system. 
-This most often occurred while assessing the Predictable Random and Servlet Parameter vulnerability. 
-The goal of these questions seemed to involve determining if there is a real vulnerability in the code. 
-While assessing the Predictable Random vulnerability, P2 and P10 wanted to know if the code the notification was attached to was only run in test code. 
-They were able to use existing tools to find where the code was being used, however, P2 was still could not confirm 100\% that the code is only used in tests. % more detailed strategies?
+%What location info did people look for
+All 10 participants wanted to locate where defective code and tainted values were being used throughout the system. 
+Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerability.
+Specifically, participants wondered where the random number generator and the tainted values returned from the servlet were used.
+For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
+Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
+%perhaps other participants encountered a situation similar to P6 where they were uncertain of how to start locating the information.
 
-When attempting to understand the Servlet Parameter vulnerability, participants often wanted to determine where the parameter of interest is being used within the system. 
-Some participants, like P1, attempted to gather information using existing tools, such as the code element highlighting offered by Eclipse which shows where a code element is being used locally. 
-Others mentioned wanting to know where the parameter is used but did not take steps to actually find out; perhaps other participants encountered a situation similar to P6 where they were uncertain of how to start locating the information.
+%Simple questions are easy to answer by existing tools
+For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
+However, strategies relying on existing tools fell short when participants sought context-dependent information. 
+The code highlighting tool displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
+Participants didn't just seek location information, they searched for places where information was used within a given context.
+For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
 
-Four participants wanted to find other parts of the code that used similar code to implement system functionality.
-For all of them, this was a manual process involving mostly scrolling through and exploring the code. 
-For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to know more about how the functionality under investigation is implemented in other parts of the code. 
+%Where is similar code?
+In other cases, four participants wanted to find parts of the code that implemented similar functionality to what they were inspecting.
+For all of them, this was a manual process involving mostly scrolling through and exploring the code based on their knowledge of the application.
+For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to know more about how the functionality under investigation was implemented in other parts of the code. 
 P2 wanted to know, more specifically, what other parts of the code use Database Access Objects.
-
-% question with no tool support for answering
-Two participants had questions concerning the ability to track information while interpreting some of the vulnerabilities. 
-To better understand the SQL Injection vulnerability, P9 wanted to find a way to track all the possible inputs, with no success. 
-P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do so. 
-Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
 \\
 
-\noindent\textbf{Tool Implications.}
-The answers to most of these questions can be found using existing tool support found inside the IDE. 
-For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. 
-A few of these questions, however, requires significantly more effort on the developer's part to answer, therefore could benefit from tool support. 
-For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
-Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
-Developers could also benefit from tool support when attempting to find other parts of the code written similarly to the potentially vulnerable code; a tool that supports this process might include references to other parts of the code using similar code elements as part of the vulnerability description.
+%While assessing the Predictable Random vulnerability, P2 and P10 wanted to know if the code the notification was attached to was only run in test code. 
+%They were able to use existing tools to find where the code was being used, however, P2 was still could not confirm 100\% that the code is only used in tests. % more detailed strategies?
 
+%Might be worth adding back in...
+
+% question with no tool support for answering
+%Two participants had questions concerning the ability to track information while interpreting some of the vulnerabilities. 
+%To better understand the SQL Injection vulnerability, P9 wanted to find a way to track all the possible inputs, with no success. 
+%P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do %so. 
+%Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
+
+\noindent\textbf{Tool Implications.}
+The answers to some of these questions can be found using existing tool support found inside the IDE. 
+For example, Eclipse has an `open declaration' tool that can be used to find a method's definition. 
+However, in the case of context-dependent questions, developer's could benefit from increased tool support. 
+For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results that occurred within or interacted with critical components.
+Currently developers must manually prioritize search results and determine whether each is security-relevant.
+
+Developers could also benefit from tool support in searching their applications for code written similarly to the potentially vulnerable code. 
+A tool that supports this process might include references to other parts of the project with similarly structured code, or code that calls a similar set of methods. 
+Such a tool would help developers identify parts of the project that may also contain vulnerabilities, or conversely, strategies for resolving the vulnerability.
+%For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
+%Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
 
 
 %%%%%%%%%%%% Control Flow/Call Information
 
 \noindent\subsection{\textbf{Control Flow and Call Information (10)}}\label{cf}
-
 We also extracted questions relating to control flow and calling information. 
 Developers seek information pertaining to the methods that get called, and whether they may get called with dirty parameters.
 Participants searched up the call chain, especially while evaluating the Potential Path Traversal vulnerability, trying to understand the possible files that could get opened. 
@@ -837,7 +853,7 @@ Our findings suggest that tools that reason about, and notify developers of, cal
 Despite the existence of tools like `find references' and the call hierarchy tool, based on our observations, developers face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
 Our findings suggest that developers could benefit from tools that reduce the cost of using a new tool.
 In particular developers could benefit from tools that apprise them of other useful tools like find references and call hierarchy.
-A tool that addresses these needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they require. 
+A tool that addresses these needs might detect when the developer is looking for call information (for example, using the `find' tool) and suggest the appropriate tool for finding the information they require. 
 
 
 %It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
@@ -846,9 +862,9 @@ A tool that addresses these needs might detect when the developer is looking for
 %%%%%%%%%%%% Data Storage 
 
 \noindent\subsection{\textbf{Data Storage and Flow (10)}}\label{dsf}
-
-Some of the questions we found pertained to the data being stored and carried throughout the program. 
-Often participants wanted to understand  the type of data being collected and stored, where the data came from, and where it was going. 
+Much like the questions related to \emph{\textbf{Control Flow and Call Information}}, participants also asked questions that pertained to the data being stored and carried throughout the program. 
+Often participants wanted to understand the type of data being collected and stored, where the data came from, and where it was going. 
+For example, participants wanted to determine where data was coming from, whether it was generated by the application or passed in by the user, and where it was going, i.e., whether it was being stored in the database.
 Eleven of the 155 distinct questions fit into this category.
 \\
 
@@ -865,23 +881,24 @@ Eleven of the 155 distinct questions fit into this category.
 \noindent\textbf{Observations.}
 All 10 participants had questions regarding the data pipeline, or where data travels and how it changes as it travels.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities; most often these questions arose while assessing the Servlet Parameter vulnerability. 
-None of the tools available to participants allowed them to directly explore the flow and storage of data so participants either stated information they would want to acquire without attempting to or combined use of an available tool and manual searching through the code. 
-For example, when P7 was determining the details of the potential vulnerability, he used method calls to determine if the data would reach the database.
+While exploring this vulnerability, none of the participants invoked tools specifically designed for exploring data flow. 
+Instead, participants either stated their information needs without following up, or used the call hierarchy tool in combination with manual searching.
+For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
 
-The most popular questions in this category participants asked are \textit{Where does this information go?} and  \textit{Where is the data coming from?}. 
-Often when assessing the Servlet Parameter vulnerability, both two questions occurred. 
-P6, for instance, wanted to know where the data being used to populate the form is coming from to see if the code is vulnerable as written and where the data is going to see if the input is every validated.  
-Similarly, while deciding what to do about the Potential Path Traversal vulnerability, P1 wanted to know where the path was coming from; this would determine how likely it is that the code is not secure as it is.
-Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. 
+The most popular questions in this category are \textit{Where does this information go?} and \textit{Where is the data coming from?}. 
+Often when assessing the Servlet Parameter vulnerability, both these questions occurred. 
+For instance, P6 wanted to know where the form data was set and where the data where going to see if the input is every validated.  
+Similarly, while evaluating the Potential Path Traversal vulnerability, P1 wanted to know where the path originated to determine if it was coming from a secure source.
+Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. % Why didn't they uses, could be they just didn't feel like going along with the experiment
 Often, like P1 and P6, participants would describe what they would do but not attempt to do it
 \\
 
 \noindent\textbf{Tool Implications.}
-The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give an idea of how data travels when the program is run. 
-The developer would have to retrieve this information, either from the documentation, by debugging the code, or some combination of both. 
-Tools have been developed to do data flow analysis and report defects to programmers based on said analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
+The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give the full picture of how data travels through the program. 
+The developer would have to retrieve this information, either from the documentation, by debugging the code, or by using a combination of search tools and manual inspection. 
+Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
 There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
-It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring a visual version of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
+It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring visualizations of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 
 
 % B1, 3, 4 (mainly 3)
@@ -895,11 +912,10 @@ It may be that some of the existing tools for data flow analysis could be augmen
 
 \noindent\subsection{\textbf{Code Background and Functionality (9)}}
 \label{cbf}
-
-
 Participants also asked questions concerning the background and intended function of the code being analyzed. 
 Seventeen of the 155 distinct questions extracted fit into this category. 
-The questions in this category inquire about the code at an abstract level, such as determining the role a component or piece of code plays in the entire system or program.
+The questions in this category focus on the code, such as determining the role a component or piece of code plays in the entire system or program.
+They ask about the history of the code and the context in which the code resides.
 \\
 
 \noindent\emph{What does this code do? (9)} \\
@@ -915,27 +931,39 @@ The questions in this category inquire about the code at an abstract level, such
 
 
 \noindent\textbf{Observations.}
-Nine of the 10 participants asked questions about the background of the code; most participants wanted to know what part or parts of the code did.
-\textit{What does this code do?} was a question that came up for all four vulnerabilities. 
-While assessing the Potential Path Traversal vulnerability, some participants came to the realization that they may need the person who wrote the code or others familiar with the code under investigation to answer their questions. 
-For example, as P7 began assessing the vulnerability, he explored the code involved in the vulnerability with the goal of understanding what the code does. 
-He was hoping he could there would be library documentation (\textit{Is this library code?}) he could find and use to answer his question, however, upon further investigation realized the code was written by someone writing the software, a resource he would not be able to easily access.
-Along the same lines, P10 stated he would ask other developers about the code to learn what it does.
-% P1 -- B3
+Nine of the 10 participants asked questions about the background of the code; most participants wanted to know what parts of the code did.
+Participants asked \textit{What does this code do?} about all four vulnerabilities.
 
-Five participants wanted to know why the code was written the way it was written; this question also came up in all four vulnerabilities.
-As P2, P7, and P8 explored the code pertaining to the SQL Injection vulnerability, they became curious as to why developers of the code would use Java's \texttt{Statement} instead of the presumably more secure \texttt{PreparedStatement} for sending queries to a Database Access Object.
-For this question, if participants made an attempt to find the answer, they also focused their attention on outside resources they could use to find the answer. 
-It seems most, if not all, of the questions in this category require information that existing tools may not be able to provide.
+Participants were interested in the history of the code.
+For example, they asked why it was written a specific way, who wrote the code, or how much effort had been put into the code.
+P2 asked how much effort had been put into the code to determine whether he trusted that the code was written securely.
+While assessing the Potential Path Traversal vulnerability, some participants came to the realization that the authors of the code could help answer some questions. 
+For example, P10 stated that he would normally ask his team members for background on how the code worked.
+Further, five participants wanted to know why the code was written the way it was written; this question occurred in all four vulnerabilities.
 \\
 
+%Brings unwanted attention to our inserted vulnerability
+%As P2, P7, and P8 explored the code pertaining to the SQL Injection vulnerability, they became curious as to why developers of the code would use Java's \texttt{Statement} instead of the presumably more secure \texttt{PreparedStatement} for sending queries to a Database Access Object.
+%For this question, if participants made an attempt to find the answer, they also focused their attention on outside resources they could use to find the answer. 
+%It seems most, if not all, of the questions in this category require information that existing tools may not be able to provide.
+
+%For example, as P7 began assessing the vulnerability, he explored the code involved in the vulnerability with the goal of understanding what the code does. 
+%He was hoping he could there would be library documentation (\textit{Is this library code?}) he could find and use to answer his question, however, upon further investigation realized the code was written by someone writing the software, a resource he would not be able to easily access.
+%Along the same lines, P10 stated he would ask other developers about the code to learn what it does.
+% P1 -- B3
+
+% 
+
 \noindent\textbf{Tool Implications.}
-Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
-This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need.
-Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate.
-It is particularly important that  
-A tool that wants to accommodate these needs might collects these sorts of measures and provide developers easy access to it.
-% P2 wanted to know effort put in to determine whether they trust the code was written securely -- not sure where this fits
+Based on our observations, it seems that understanding the history and status of the code helps developers assess its security.
+If the code shows signs of neglect, uses deprecated libraries, or has not been tested and reviewed, some developers might be less likely to trust the security of the code.
+Developers seem interested in investigating the specific areas of code that exhibit these properties. 
+
+Version control systems already track some information about the authors and history of the code.
+Perhaps tools could use this information to prioritize vulnerabilities or direct developers to problematic areas.
+%Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
+%This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need.
+%Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate.
 
 
 %%%%%%%%%%%% Application Context
@@ -1064,6 +1092,7 @@ The most common occurring question in this category was...
 
 \noindent\textbf{Observations}
 
+MORE TO COME
 % kinds of questions asked about bugs in general, so not surprised asked about all four security vulnerabilities in our study
 % 
 
@@ -1224,7 +1253,7 @@ A tool that could model this concise interaction could potentially provide answe
 
 \noindent\subsection{\textbf{Bug Severity and Ranking (5)}}\label{bsr}
 
-Some participants had questions regarding the severity or ranking of the bug being reported by FindBugs. 
+Some participants had questions regarding the severity or ranking of the bug being reported by FSB. 
 These questions dealt with general bug severity questions or severity and ranking questions pertaining specifically to the tool and how it categorizes/groups bugs. 
 Four of the 155 distinct questions extracted fall into this category. 
 \\
