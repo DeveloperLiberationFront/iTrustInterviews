@@ -785,8 +785,9 @@ Developers could also benefit from tool support when attempting to find other pa
 \noindent\subsection{\textbf{Control Flow and Call Information (10)}}\label{cf}
 
 We also extracted questions relating to control flow and calling information. 
-Developers seek information information pertaining to the methods that get called, or do not get called, in the code. 
-As the name of this category suggests, these questions can generally be answered using a tool for viewing the call hierarchy, when available. 
+Developers seek information pertaining to the methods that get called, and whether they may get called with dirty parameters.
+Participants searched up the call chain, especially while evaluating the Potential Path Traversal vulnerability, trying to understand the possible files that could get opened. 
+Many determined that since all the calls originated in test classes, they could dismiss the vulnerability.
 Thirteen of the 155 distinct questions extracted dealt with acquiring control flow and call information.
 \\
 
@@ -802,32 +803,42 @@ Thirteen of the 155 distinct questions extracted dealt with acquiring control fl
 
 
 \noindent\textbf{Observations.}
-% All asked "where is method being called?" at some point --> all bugs at least once but mainly B1
-All 10 participants wanted control flow or call information for a method in the code at some point; the question \textit{where is this method being called?} was asked at least once for each vulnerability, but showed up the most while participants attempted to interpret the Potential Path Traversal vulnerability.
-Eclipse includes a call hierarchy tool that allows users to easily traverse the calls made to a given method, answering questions such as \textit{where is this being called}. 
-While most participants located and employed the call hierarchy tool, some used other more error-prone approaches, such as the 'find references' tool or manual visual inspection. 
-For example, P1 and P6 chose to use more light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool; P1 was unaware of what the call hierarchy tool was. 
-P5 and P9, who also did not seem to be aware of the existence of a call hierarchy tool, considered using find references to get the information they needed.
+While exploring the Path Traversal vulnerability, participants sought information about the methods being called. 
+The private method containing this vulnerability was only called by one method, \textit{parseAndCache}, which was defined directly above it. \textit{ParseAndCache}, which was also private, got called by a public method. Tracing up the chain, the method containing the vulnerability was eventually called from multiple classes that were all contained within a test package.
 
-Along the same lines, when assessing the Potential Path Traversal vulnerability, 5 participants wanted to know who can call that code. 
-Tools like the call hierarchy tool can inform developers of who \textit{is} calling the code, however, they do not answer the question who \textit{can} call the code. 
-To determine how vulnerable this part of the code was, participants wanted to know if the code in question could be called outside the containing class as well as the system. 
-Most of the participants who asked this question concerning the containing class answered the question by checking the visibility of the method (\texttt{public} vs. \texttt{private}). 
-Determining if the code can be accessed outside the system, was not something participants interested could easily determine so they did not attempt to.
-% name exactly who did what?
+All 10 participants wanted call information for this vulnerability, often asking the question \textit{where is this method being called?} 
+However, participants used a mix of several different strategies to obtain the same information.
+The most basic strategy was simply skimming the file for method calls, which was error prone because participants could easily miss some calls.
+Other participants used the Eclipse's automatic code highlighting, which, to a lesser extent, was error prone for the same reason. Further, it only found calls within the current file.
+Another strategy participants employed was the use of a global textual search, which found all occurrences of a method name, but there was no guarantee that two names referred to the same method and also returned references that occurred in dead code or comments.
+Alternatively, Eclipse's Find References tool identifies proper references to a single method.
+Unlike the previous strategies, Eclipse's call hierarchy tool enables users to traverse a project's entire call structure; however, it does not identify calls made from framework hooks or APIs.
+Additionally, some participants were unaware of how to access and how to use the call hierarchy tool.
+
+Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
+%For example, P1 and P6 chose to use more light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool; P1 was unaware of what the call hierarchy tool was. 
+%P5 and P9, who also did not seem to be aware of the existence of a call hierarchy tool, considered using find references to get the information they needed.
+
+%Along the same lines, when assessing the Potential Path Traversal vulnerability, 5 participants wanted to know who can call that code. 
+%Tools like the call hierarchy tool can inform developers of who \textit{is} calling the code, however, they do not answer the question who \textit{can} call the code. 
+%To determine how vulnerable this part of the code was, participants wanted to know if the code in question could be called outside the containing class as well as the system. 
+%Most of the participants who asked this question concerning the containing class answered the question by checking the visibility of the method (\texttt{public} vs. \texttt{private}). 
 
 % Tools available for this but 7 still had question "how can I get calling information?"
-Despite the availability of tools to help retrieve call information, some participants still had difficulty finding answers to their questions; seven even asked the question \textit{how can I get calling information}.
-For example, P4 did not have any ideas on how he might find call information for the method containing the Potential Path Traversal vulnerability; after struggling with answering his questions for a while, he finally stumbled upon the call hierarchy tool. 
-Even after finding and using the tool, P4 still needed other tools, such as the search tool, to come to the conclusion that it was not a vulnerability he needed to be concerned about.
-\\
-
+%Despite the availability of tools to help retrieve call information, some participants still had difficulty finding answers to their questions; seven even asked the question \textit{how can I get calling information}.
+%For example, P4 did not have any ideas on how he might find call information for the method containing the Potential Path Traversal vulnerability; after struggling with answering his questions for a while, he finally stumbled upon the call hierarchy tool. 
+%Even after finding and using the tool, P4 still needed other tools, such as the search tool, to come to the conclusion that it was not a vulnerability he needed to be concerned about.
 
 \noindent\textbf{Tool Implications.}
-Even with tools like 'find references' and the call hierarchy view tool, it may be difficult to answer questions like \emph{how can I get calling information} and \emph{who can call this} without having to manually, and mentally, aggregate information gathered from different tools. 
-Further, even a combination of these tools are ineffective for someone who is unaware of their existence.
-A tool that addresses these types of needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they require. 
-To increase visibility of the desired information, the tool might also highlight the relevant method as it appears in the call hierarchy or augment each method with the methods that can call it.
+Particularly when resolving security vulnerabilities, developers are concerned with \textit{all} of a method's potential call sites.
+Tools like find references and call hierarchy provide support for locating call information, yet the leave room for extension.
+Our findings suggest that tools that reason about, and notify developers of, calls that originate from outside the local code could help them answer the questions in this category.
+
+Despite the existence of tools like `find references' and the call hierarchy tool, based on our observations, developers face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
+Our findings suggest that developers could benefit from tools that reduce the cost of using a new tool.
+In particular developers could benefit from tools that apprise them of other useful tools like find references and call hierarchy.
+A tool that addresses these needs might detect when the developer is looking for call information (for example, using the 'find' tool) and suggest the appropriate tool for finding the information they require. 
+
 
 %It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
