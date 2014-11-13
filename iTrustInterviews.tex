@@ -122,14 +122,18 @@ Toolsmiths produce static analysis tools to help developers detect potential sec
 One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{findbugs.sourceforge.net} 
 FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross site scripting.  
 Other tools, such as CodeSonar\footnote{\url{grammatech.com/codesonar}} and Coverity,\footnote{\url{coverity.com/}} can also be used to detect and remove potential security vulnerabilities.
+Unfortunately, however, research suggests that many developers may not be using such static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
 
 % maybe connect back to example.
-Unfortunately, however, research suggests that many developers may not be using such static analysis tools, in part because they have difficulty interpreting the output~\cite{johnson2013don}. 
-Part of this difficulty for developers building secure systems stems from the hard to answer questions developers have about the security of their code~\cite{latoza2010hard}.
 
-Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
-Because LaToza's work only addresses security questions in passing and does not focus on the process of assessing potential security vulnerabilities, we do not have such a collection of questions to use to build better, more usable tools for security.
-Our work extends existing work to security by providing a similar catalog of the questions that developers ask when assessing potential security vulnerabilities.
+Although existing work has cataloged developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities~\cite{latoza2010hard}. 
+As we show later in this paper, many questions are unique to using security tools.
+Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art from program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+
+
+%Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+
+
 
 In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
 We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
