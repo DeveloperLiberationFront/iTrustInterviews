@@ -1029,8 +1029,9 @@ When specifically helping developers determine what code is test code, this coul
 \label{eui}
 
 
-Questions in this category deal with how the end user might interact with the system. 
-Participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potential malicious activity. 
+Questions in this category deal with how end users might interact with the system or a particular part of the system. 
+Some participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potentially malicious activity. 
+For example, while assessing the Potential Path Traversal vulnerability, participants wanted to know whether the path is sanitized somewhere in the code before it is used.
 Three of the 155 distinct questions we found fall into this category.
 \\
 
@@ -1060,9 +1061,9 @@ Though participants found the answers to their questions, it took time for them 
 
 \noindent\textbf{Tool Implications.}
 Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system.
-The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. 
-However, developers may lack tool support for navigating through and reasoning about attack surfaces.
+The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. These types of tools can help answer \textit{Is there input coming from the user?}, however, developers may lack tool support for navigating through and reasoning about attack surfaces to answer the others.
 Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
+Answering \textit{Does the user input get validated/sanitized?} may also require providing an explicit, perhaps visual, connection between the attack surface and the code the input touches.
 % Not sure what tool implications look like for validation question...
 
 
