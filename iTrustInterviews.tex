@@ -322,7 +322,7 @@ When selecting tasks, we gave preference to existing iTrust vulnerabilities and 
 FSB groups similar error messages using a system of topic tags. For example the Null Pointer tag (NP) applies to notifications that warn about the misuse of null. 
 To cover a broader set of question topics, we selected vulnerabilities with four different topic tags.
 FSB identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
-We inserted an SQL injection vulnerability by making minimal alterations to one of the database access objects.
+We inserted a SQL injection vulnerability by making minimal alterations to one of the database access objects.
 Our modification preserved the functionality of the original code and was based on simple, toy examples of SQL injection presented by OWASP.
 Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
 
@@ -720,12 +720,11 @@ HELP: I know about CWE are there other canonical taxonomies? More importantly, d
 %%%%%%%%%%%% Locating Information
 
 \noindent\subsection{\textbf{Locating Information (10)}}\label{li}
-Participants asked questions about locating information in their coding environments. 
-Eleven of the 155 extracted questions fit into this category.
-In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
-For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method was being called and where the path parameter was set.
-%The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts, or code fragments. 
-%On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code. level that would not be answered by triaging the code.
+
+Some participants asked questions regarding locating, or the ability to locate, information in their coding environment. 
+Eleven questions of the 155 extracted fit into this category.
+The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts or code fragments. 
+On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.
 \\
 
 \noindent\emph{Where is this used in the code? (10)} \\
@@ -740,50 +739,36 @@ For example, when exploring the Path Traversal vulnerability, participants sough
 
 
 \noindent\textbf{Observations.}
-%What location info did people look for
-All 10 participants wanted to locate where defective code and tainted values were being used throughout the system. 
-Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerability.
-Specifically, participants wondered where the random number generator and the tainted values returned from the servlet were used.
-For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
-Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
-%perhaps other participants encountered a situation similar to P6 where they were uncertain of how to start locating the information.
+All 10 participants found themselves in situations where they wanted to know where the code associated with the potential vulnerability is being used throughout the system. 
+This most often occurred while assessing the Predictable Random and Servlet Parameter vulnerability. 
+The goal of these questions seemed to involve determining if there is a real vulnerability in the code. 
+While assessing the Predictable Random vulnerability, P2 and P10 wanted to know if the code the notification was attached to was only run in test code. 
+They were able to use existing tools to find where the code was being used, however, P2 was still could not confirm 100\% that the code is only used in tests. % more detailed strategies?
 
-%Simple questions are easy to answer by existing tools
-For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
-However, strategies relying on existing tools fell short when participants sought context-dependent information. 
-The code highlighting tool displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
-For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
+When attempting to understand the Servlet Parameter vulnerability, participants often wanted to determine where the parameter of interest is being used within the system. 
+Some participants, like P1, attempted to gather information using existing tools, such as the code element highlighting offered by Eclipse which shows where a code element is being used locally. 
+Others mentioned wanting to know where the parameter is used but did not take steps to actually find out; perhaps other participants encountered a situation similar to P6 where they were uncertain of how to start locating the information.
 
-%Where is similar code?
-In other cases, four participants wanted to find parts of the code that implemented similar functionality to what they were inspecting.
-For all of them, this was a manual process involving mostly scrolling through and exploring the code based on their knowledge of the application.
-For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to know more about how the functionality under investigation was implemented in other parts of the code. 
+Four participants wanted to find other parts of the code that used similar code to implement system functionality.
+For all of them, this was a manual process involving mostly scrolling through and exploring the code. 
+For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to know more about how the functionality under investigation is implemented in other parts of the code. 
 P2 wanted to know, more specifically, what other parts of the code use Database Access Objects.
 
-%While assessing the Predictable Random vulnerability, P2 and P10 wanted to know if the code the notification was attached to was only run in test code. 
-%They were able to use existing tools to find where the code was being used, however, P2 was still could not confirm 100\% that the code is only used in tests. % more detailed strategies?
-
-%Might be worth adding back in...
-
 % question with no tool support for answering
-%Two participants had questions concerning the ability to track information while interpreting some of the vulnerabilities. 
-%To better understand the SQL Injection vulnerability, P9 wanted to find a way to track all the possible inputs, with no success. 
-%P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do %so. 
-%Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
+Two participants had questions concerning the ability to track information while interpreting some of the vulnerabilities. 
+To better understand the SQL Injection vulnerability, P9 wanted to find a way to track all the possible inputs, with no success. 
+P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do so. 
+Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
+\\
 
 \noindent\textbf{Tool Implications.}
-The answers to some of these questions can be found using existing tool support available within the IDE. 
-For example, Eclipse has an `open declaration' tool that can be used to find a method's definition. 
-However, in the case of context-dependent questions, developers could benefit from increased tool support. 
-For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results that occurred within or interacted with critical components.
-Currently developers must manually prioritize search results and determine whether each is security-relevant.
+The answers to most of these questions can be found using existing tool support found inside the IDE. 
+For example, Eclipse has an 'open declaration' tool that can be used to find a method's definition. 
+A few of these questions, however, requires significantly more effort on the developer's part to answer, therefore could benefit from tool support. 
+For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
+Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
+Developers could also benefit from tool support when attempting to find other parts of the code written similarly to the potentially vulnerable code; a tool that supports this process might include references to other parts of the code using similar code elements as part of the vulnerability description.
 
-%For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
-%Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
-
-Developers could also benefit from tool support in searching their applications for code written similarly to the potentially vulnerable code. 
-A tool that supports this process might include references to other parts of the project with similarly structured code, or code that calls a similar set of methods. 
-Such a tool would help developers identify parts of the project that may also contain vulnerabilities, or conversely, strategies for resolving the vulnerability.
 
 
 %%%%%%%%%%%% Control Flow/Call Information
