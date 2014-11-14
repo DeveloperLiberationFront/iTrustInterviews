@@ -1288,8 +1288,9 @@ For example, instead of FSB using phrases and numbers to represent severity, pri
 
 \noindent\subsection{\textbf{Error Messages (6)}}\label{em}
 
-As expected, participants asked questions concerning the content of the error messages attached to the notifications. 
-Mostly, this happened when participants referenced the bug information view offered by FSB to get a better understanding of the potential vulnerability.
+Participants asked questions concerning the content of the error messages attached to the notifications. 
+FSB provided long and short descriptions of each vulnerability. 
+Participants read and reasoned about these notifications to guide their analysis.
 Three of the 155 distinct questions we extracted fall into this category.
 \\
 
@@ -1298,18 +1299,19 @@ Three of the 155 distinct questions we extracted fall into this category.
 \emph{What code caused this error message to occur? (2)} \\
 
 \noindent\textbf{Observations.}
-Six participants had questions about the error message used in the notifications; five of these participants asked \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
-More interesting is that they also asked questions about how to relate information contained in the error message back to the code. 
-For example, the Predictable Random vulnerability notes that a predicable random value is bad when being used in a secure context. 
-Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. 
-In this situation, the fact that the method the vulnerability was found in was called \CodeIn{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+Six participants had questions about the vulnerability notifications; five of these participants asked \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
+More interestingly, they also asked questions about how to relate information contained in the error message back to the code. 
+For example, the Predictable Random vulnerability notes that a predicable random value could lead to an attack when being used in a secure context. 
+Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
+In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 \\
 
 \noindent\textbf{Tool Implications.}
-Determining what the error message says is a relatively simple action for the developer to complete; most tools, FSB included, provide functionality for developers to access the details of a given error message. 
-Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the vulnerable code. 
-However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not the best indicator of the connection between the code and the error message. 
-Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code editor~\cite{barik14visual}.
+Determining what an error message says is a relatively simple action for the developer to complete.
+However, developers also asked about the connections between the error message and the code.
+FSB attempts to answer this type of question by placing an icon in the gutter of the editor on the line containing vulnerable code. 
+However, if the error message relates to multiple lines of code, the icon's location does not entirely indicate the connection between the code and the error message. 
+Research has attempted to help developers make stronger connections between the error message they receive and the relevant code using visual overlays in the code editor~\cite{barik14visual}.
 These type of visual overlays may also be useful for answering the questions in this category.
 
 \section{Design Guidelines}
