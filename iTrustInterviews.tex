@@ -603,28 +603,28 @@ Eleven of the 155 distinct questions we gathered belong in this category.
 \emph{How can I replicate an attack to exploit this vulnerability? (2)} \\
 \emph{What is the problem (potential attack)? (2)} \\
 \emph{How can this vulnerability lead to an attack? (1)} \\
-\emph{How should I address this problem? (1)} \\
 \emph{How do I find out if this is a real vulnerability?(1)} \\
 
 \noindent\textbf{Observations}
-Participants sought general information relating to the attacks in a given context.
+Participants sought information about the variety of attacks that could occur in a given context.
 To that end, five participants asked \textit{What are the possible attacks that could occur?}
-For example, within the first minute of his analysis, P2 stated that he was thinking about the different types of attacks that could target web applications, like iTrust.
+For example, within the first minute of his analysis, P2 stated that he was thinking about the different types of attacks that could target web applications, like iTrust. He asked what types of attacks were possible while beginning to think about which attacks he might need to prevent.
 
-On the other hand, participants also sought specific attack-information regarding the vulnerability at hand.
+On the other hand, participants also more specific attack-information about particular attacks as they were being considered.
 Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
-Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute an attack in the given context. For example, P10 determined that the Predictable Random vulnerability was ``real,'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
+Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. For example, P10 determined that the Predictable Random vulnerability was ``real,'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 \\
 
 \noindent\textbf{Tool Implications}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions about potential attacks.
-Trivially, the existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks.
+The existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
+Based on our observations, we recommend that vulnerability notifications should include the name of the attack as well as an overview of how the attack could be executed.
 
 However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
 At times they inquire about all the possible attacks that could occur.
 At other times, they explore the feasibility of a specific attack.
-Security tools should support this modality by separating information about all the possible attacks from more detailed information about specific attacks.
-
+Security tools could support this modality by providing checklists to help developers systematically reason about all the potential attacks. 
+Additionally, the tool could toggle between displaying checklists and desplaying detailed information about a particular attack, depending the developer's current mode.
 %Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
 %Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
 %Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
