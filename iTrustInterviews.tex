@@ -56,7 +56,7 @@
 \usepackage{color}
 \usepackage{siunitx}
 \usepackage{multirow}
-\input{macros}
+
 \usepackage{dcolumn}
 \newcolumntype{Y}{D..{6.4}}
 
@@ -261,7 +261,7 @@ Finally, each session concluded with several demographic and open-ended discussi
 
 \begin{figure}
 \centering
-\includegraphics[width=3.5in]{Images/environment.png}
+\includegraphics[width=3.5in]{Images/Environment.png}
 \caption{The environment participants were presented with.}
 \label{fig:environment} 
 \end{figure}
@@ -391,7 +391,7 @@ A statement was coded as a question only if it met one of the following criteria
 
 \begin{itemize}
 \item \textbf{The participant explicitly asks a question.}
-\\ Example: \textit{Why aren't they using \CodeIn{PreparedStatements}?}
+\\ Example: \textit{Why aren't they using Prepared Statements?}
 \item \textbf{The participant makes a statement and explores the validity of that statement.}
 \\ Example: \textit{It doesn't seem to have shown what I was looking for. Oh, wait! It's right above it...}
 \item \textbf{The participant uses key words such as, ``I assume,'' ``I guess,'' or ``I don't know.''}
@@ -420,8 +420,8 @@ The two reviewers merged duplicate questions, favoring the wording that was most
 
 Each question that was only identified by one author required verification.
 If the other author did not agree that such a question met at least one of the criteria, the question was removed from the question set and counted as a disagreement.
-The reviewers were said to agree when they merged a duplicate or verified a question. Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
-High agreement score indicates that the two reviewers consistently held similar interpretations of the question criteria.
+The reviewers were said to agree when they merged a duplicate or verified a question.Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
+The agreement scores suggest that the two reviewers consistently held similar interpretations of the question criteria.
 
 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
@@ -450,7 +450,7 @@ We performed our card sort in three distinct stages: clustering, categorization,
  
 In the first stage, we formed question clusters by grouping questions that identified the same information requirements (Figure~\ref{fig:stageOne}). 
 In this phase we focused on phrasing similar questions consistently and grouping duplicates.
-For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using \CodeIn{PreparedStatements}?} and P2 asked, \textit{Where can I get more information on path traversal?} 
+For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using prepared statements?} and P2 asked, \textit{Where can I get more information on path traversal?} 
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
 At this stage, we discarded 5 unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
 
@@ -542,7 +542,7 @@ We detail our observations of the participants and contextualize each category b
 \noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)}}\label{uafa}
 
 When resolving security vulnerabilities, participants encountered alternative approaches that appeared to achieve the desired functionality more securely.
-For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement}. 
+For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \texttt{PreparedStatement} Class instead of Java Statements. 
 Participants found many sources for alternative fixes, including web resources and even code located in other parts of the project.
 When presented with alternative approaches, participants compared the alternative with the current code and assessed the applicability of the alternative. 
 Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
@@ -561,8 +561,8 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 %SAVE THIS CONNECTION FOR LATER
 Eight participants had questions that fit into this category. 
 The FSB notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
-As noted, the message associated with the SQL Injection vulnerability suggests switching to use \CodeIn{PreparedStatements}. 
-The message associated with the Predictable Random vulnerability suggests switching to use \CodeIn{java.security.SecureRandom}. 
+As noted, the message associated with the SQL Injection vulnerability suggests switching to use \texttt{PreparedStatements}. 
+The message associated with the Predictable Random vulnerability suggests switching to use \texttt{java.security.SecureRandom}. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
@@ -639,7 +639,7 @@ Additionally, the tool could toggle between displaying checklists and displaying
 
 \noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
 Once participants had identified a specific approach for fixing a security vulnerability, they asked questions about applying the fix to the code.
-For example, when considering the use of \CodeIn{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
+For example, when considering the use of \texttt{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 We placed 9 of the 155 distinct questions into this category.
@@ -663,7 +663,7 @@ All participants proposed solutions that involved applying one or both of these 
 Additionally, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
-While exploring the Predictable Random vulnerability, many participants, including 1, 2, and 6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
+While exploring the Predictable Random vulnerability, many participants, including 1, 2, and 6 decided to use \texttt{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 \\
 
 %How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
