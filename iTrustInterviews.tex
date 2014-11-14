@@ -735,7 +735,7 @@ Grouping vulnerabilities based on abstract concepts might enable developers to f
 Participants asked questions about locating information in their coding environments. 
 Eleven of the 155 extracted questions fit into this category.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
-For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method was being called and where the path parameter was set.
+For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method containing the vulnerability was being called and where the path parameter was set.
 %The distinction between this category and \emph{\textbf{Code Background and Function}} is that this category includes questions pertaining to searches made in the coding environment for information, artifacts, or code fragments. 
 %On the other hand, \emph{\textbf{Code Background and Function}} pertains to understanding the code at a higher level that would not be answered by triaging the code.\\
 
@@ -753,7 +753,7 @@ For example, when exploring the Path Traversal vulnerability, participants sough
 \noindent\textbf{Observations.}
 %What location info did people look for
 All 10 participants wanted to locate where defective code and tainted values were being used throughout the system. 
-Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerability.
+Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerabilities.
 Specifically, participants wondered where the random number generator and the tainted values returned from the servlet were used.
 %For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
 %Others mentioned wanting to know where the parameter was used, but did not take steps to actually find out. 
@@ -885,7 +885,7 @@ Eleven of the 155 distinct questions fit into this category.
 
 
 \noindent\textbf{Observations.}
-All 10 participants had questions regarding the data pipeline, or where data travels and how it changes as it travels.
+All 10 participants had questions regarding the data pipeline.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities; most often these questions arose while assessing the Servlet Parameter vulnerability. 
 While exploring this vulnerability, none of the participants invoked tools specifically designed for exploring data flow. 
 Instead, participants either stated their information needs without following up, or used the call hierarchy tool in combination with manual searching.
