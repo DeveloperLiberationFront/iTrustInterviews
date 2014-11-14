@@ -1363,15 +1363,20 @@ This material is based upon work supported by a National Science Foundation Grad
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\clearpage
-\appendix
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=3.5in]{Images/environment.png}
+\appendices
+\renewcommand\thefigure{\thesection.\arabic{figure}} 
+\section
+\setcounter{figure}{0}
+\begin{figure*}
+\centering\rule{1cm}{1cm}
+\includegraphics[width=5in]{Images/environment.png}
 \caption{The environment participants were presented with.}
 \label{fig:environment} 
-\end{figure}
+\end{figure*}
+
+\clearpage
+\section
 \begin{figure}[h]
 \centering
 \includegraphics[width=3in]{Images/notecards.pdf}
