@@ -1337,32 +1337,27 @@ However, if the error message is connected to multiple parts of the code, or a d
 Research has attempted to help developers make stronger connections between the error message they receive and the code relevant to it using visual overlays in the code editor~\cite{barik14visual}.
 These type of visual overlays may also be useful for answering the questions in this category.
 
+\section{Design Guidelines}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+In this section we summarize the tool implications that we discussed throughout the results sections.
+
 \section{Threats to Validity}
 \label{limits}
+The developers we recruited may not be representative of all developers.
+We conducted an exploratory study with a small number of developers, including some students and participants that had limited familiarity with security vulnerabilities.
+Developers with more expertise and experience might ask different questions and require different types of tool support.
 
-\subsection{External}
-One threat to the generalizability of the findings from our experiment is that the developers we recruited may not be representative of all developers.
-The developers we conducted the experiment with span from undergraduate student to software developer, increasing the representativeness of our sample. We also realize that we only used a subset of the different security vulnerabilities that can exist in source code. We attempt to mitigate this threat by having one of each type of vulnerability found by the tool we selected. 
+Further, participants were equipped with FSB, an open source static analysis tool. 
+Developers using other more sophisticated tools might ask slightly different questions.
+We cannot and do not claim that the that we have identified a comprehensive list of questions.
 
-Another threat is that many of the developers that participated in our experiment had fairly low familiarity with security vulnerabilities. Though we may have gotten some different questions if all participants had high familiarity with security vulnerabilities, no one begins as a security expert. It is an acquired skill that gets built through experiences, such as our experiment.
-
-% 4 vulnerabilities out of larger number of security vulnerabilities; wanted to make it realistic and make sure time for getting through developer's process without them getting tired or restless?
-
-\subsection{Internal}
-
-I don't think you have any of these...
-
-\subsection{Construct}
-
-One potential threat is that some participants had not worked in the code of interest for some time by the time they participated in the experiment. This may have led them to ask questions that a developer working in their every day coding environment might not ask. 
-Along the same lines, another threat is that we did not have developers who are responsible for the security of their code in real life; we asked participants to pretend they are in charge of security for the code.  
+We also only examined developers' interactions with four specific vulnerabilities in one Java project. 
+It remains to be seen whether our design guidelines apply to a broader set of projects.
 
 
+%One potential threat is that some participants had not worked in the code of interest for some time by the time they participated in the experiment. This may have led them to ask questions that a developer working in their every day coding environment might not ask. 
+%Along the same lines, another threat is that we did not have developers who are responsible for the security of their code in real life; we asked participants to pretend they are in charge of security for the code.  
 
-
-
-\section{Future Work}
-\label{sec:fw}
 
 \section{Conclusion}
 \label{sec:concl}
