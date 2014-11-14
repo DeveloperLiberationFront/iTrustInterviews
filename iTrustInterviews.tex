@@ -822,7 +822,7 @@ Thirteen of the 155 distinct questions extracted dealt with acquiring control fl
 
 \noindent\textbf{Observations.}
 While exploring the Path Traversal vulnerability, participants sought information about the methods being called. 
-The private method containing this vulnerability was only called by one method, \textit{parseAndCache}, which was defined directly above it. \textit{ParseAndCache}, which was also private, got called by a public method. Tracing up the chain, the method containing the vulnerability was eventually called from multiple classes that were all contained within a test package.
+The private method containing this vulnerability was only called by one method, \CodeIn{parseAndCache()}, which was defined directly above it. \CodeIn{parseAndCache()}, which was also private, got called by a public method. Tracing up the chain, the method containing the vulnerability was eventually called from multiple classes that were all contained within a test package.
 
 All 10 participants wanted call information for this vulnerability, often asking the question \textit{where is this method being called?} 
 However, participants used a mix of several different strategies to obtain the same information.
@@ -1030,7 +1030,7 @@ Eight participants had questions regarding the level of interaction end-user hav
 Though none of these questions got asked more than others, some questions co-occurred for a given vulnerability.
 For example, when assessing the Potential Path Traversal vulnerability, P1 and P6 wanted to know if the input was coming from the user along with whether the input is being validated in the event that the input does come from the user.
 For these participants, finding the answer required manual inspection of surrounding and relevant code. 
-For instance, when P6 manually inspected code and found a \texttt{Validator} method that he also manually inspected to determine if it was doing input validation.
+For instance, when P6 manually inspected code and found a \CodeIn{Validator} method that he also manually inspected to determine if it was doing input validation.
 % B1, 3, 4 -- mostly 3
 
 % user access
@@ -1039,7 +1039,7 @@ For instance, when P6 manually inspected code and found a \texttt{Validator} met
 % P2: vulnerability only exists if user can access this code (used call hierarchy)
 When assessing the Potential Path Traversal vulnerability, four participants had questions regarding whether end-users had access to the part of the code being analyzed.
 P2 used the called hierarchy to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability only existed if the user had access to the code.
-P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \texttt{testDataGenerator()}, the code should be fine as it is written.
+P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code should be fine as it is written.
 Though participants found the answers to their questions, it took time for them to get the answer using tools meant to answer other questions.
 \\
 
@@ -1323,7 +1323,7 @@ Six participants had questions about the error message used in the notifications
 More interesting is that they also asked questions about how to relate information contained in the error message back to the code. 
 For example, the Predictable Random vulnerability notes that a predicable random value is bad when being used in a secure context. 
 Many participants attempted to related this piece of information back to the code by looking to see if anything about the code where the potential vulnerability was found suggests it is in a secure context. 
-In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+In this situation, the fact that the method the vulnerability was found in was called \CodeIn{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 \\
 
 \noindent\textbf{Tool Implications.}
