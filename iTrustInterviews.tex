@@ -1139,19 +1139,22 @@ We categorized 6 of the 155 distinct questions into this category.
 
 \noindent\textbf{Observations}
 
-% though question most participants had occurred while assessing 3 of the 4 vulnerabilities, questions in this category appeared at least once for each vulnerability -- especially true for "what is this concept" question, which spanned all 4
+% questions in this category appeared at least once for each vulnerability -- especially true for "what is this concept" question, which spanned all 4
+Seven participants had questions regarding the concepts and terms relevant to the potential vulnerability being communicated. 
+Questions in this category appeared at least once for each vulnerability; this was especially true for know what a given concept or feature was, which spanned all four vulnerabilities. 
+Six of the seven participants that had questions in this category asked the question \textit{What is this concept?} for at least one of the potential vulnerabilities.
 
 % what is this concept (6) -- P2, 5, 8, 10
-% B1-4
+% P2: what is path traversal --> clicked first link in FB
+% P7/P8: what is CSRF token --> no link, wikipedia
+% P4: what is servlet and how relates to client control --> no link (said would have linked some info on that)
 
-% how does concept work (4) -- 
-% B1, 2, 3 -- mostly 2(?)
-
-
-
-
-Sometimes, the difficulty participants encountered was with the terminology used; others were not familiar with some of the general concepts being discussed. For example...
-We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
+When a link was available for more information, and participants saw it, they used the link to get more information about the concept of interest.
+For example, while assessing the Potential Path Traversal vulnerability, P2 was unsure of what path traversal was so he clicked the link provided by FSB that said ``path traversal attack'' to get more information.
+If a link was not available, they went to the web to get more information or noted that the notification could have included more information on those concepts.
+While parsing the information provided for the Predictable Random vulnerability, P7 and P8 did not know what CSRF token was.
+The notification for this vulnerability did not include links so they searched the web for more information. 
+When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he wold have liked the notification to include what a servlet is and how it related to client control.
 \\
 
 \noindent\textbf{Tool Implications}
@@ -1165,18 +1168,34 @@ A simple solution to providing easier access to the desired information is by pl
 One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
 Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code~\cite{fritz2010degree}, tools could make an attempt at only adapting notifications if the developer's model suggests there is a need to answer these types of conceptual questions.
 % Very obvious trying to plug direction of my research but still a possible direction for this :)
-
+%We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
 
 %%%%%%%%%%%% Confirming Expectations
 
 \noindent\subsection{\textbf{Confirming Expectations (1)}}\label{ce}
 % possibly could be put with developer planning/self-reflection OR code background and function?
 
+A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect it to be doing. 
+The expectations they built 
+
+% Secure random -- does solution do what I (an others) expect
+
+% 
+
 \noindent\emph{Is this doing what I expect it to?} \\
+
 %Swap categories?
-Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
+\noindent\textbf{Tool Implications.} Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
 As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. 
-We only identified one distinct question, however, there are many ways to interpret the questions and may require different pieces of information to answer it.
+We only identified one distinct question, however, based on our observations, there are at least two ways this question can be interpreted and each require different tool support to answer it.
+%automatic resolution
+One participant wanted to know if applying the suggested solution would do what he expected it to do. 
+Tool support for answering this question might allow the developer to easily apply, explore and potentially remove the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix does.
+%easy access to code documentation 
+The other 
+% is validator formatted how I expect --> hovered for javadoc, didn't work had to open declaration --> 
+% using patterns and element names in code to generate documentation for methods written (not methods from imported packages)
+% example --> a method called validate() that takes a String as input and has a condition with an error message, documentation could be generated to communicate what that method does without the developer having to do so.
 
 
 
