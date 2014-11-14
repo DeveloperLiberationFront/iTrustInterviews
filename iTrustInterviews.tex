@@ -258,13 +258,6 @@ Finally, each session concluded with several demographic and open-ended discussi
 
 
 \subsubsection{Materials}
-
-\begin{figure}
-\centering
-\includegraphics[width=3.5in]{Images/environment.png}
-\caption{The environment participants were presented with.}
-\label{fig:environment} 
-\end{figure}
 	
 
 Participants used Eclipse to explore vulnerabilities in iTrust, an open source Java medical records web application that ensures the privacy and security of patient records according to the HIPAA statue.\footnote{\url{hhs.gov/ocr/privacy/}} 
@@ -426,40 +419,19 @@ High agreement score indicates that the two reviewers consistently held similar 
 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
 
-\begin{figure*}
-\centering
-\includegraphics[width=7.5in]{Images/QuestionMerging}
-\caption{Question merging process}
-\label{fig:merging} 
-\end{figure*}
-
 \subsubsection{Question Sorting}
 To organize our questions and facilitate discussion, we performed an \textit{open} card sort~\cite{hudson2013sorting}. 
 Card sorting is typically used to help structure data by grouping related information into categories. 
 In an \textit{open} sort, the process begins with no notion of predefined categories. 
 Rather, sorters derive categories from emergent themes in the cards. 
 
-\begin{figure}
-\centering
-\includegraphics[width=3in]{Images/notecards.pdf}
-\caption{Result of phase one of card sorting.}
-\label{fig:stageOne} 
-\end{figure}
 
 We performed our card sort in three distinct stages: clustering, categorization, and validation.
- 
 In the first stage, we formed question clusters by grouping questions that identified the same information requirements (Figure~\ref{fig:stageOne}). 
 In this phase we focused on phrasing similar questions consistently and grouping duplicates.
 For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using \CodeIn{PreparedStatements}?} and P2 asked, \textit{Where can I get more information on path traversal?} 
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
 At this stage, we discarded 5 unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
-
-\begin{figure}
-\centering
-\includegraphics[width=3in]{Images/categories.pdf}
-\caption{Sorting cards into categories based on emergent themes.}
-\label{fig:cardsort} 
-\end{figure}
 
 
 \begin{table*} 
@@ -1160,13 +1132,9 @@ Perhaps if tools had access to models that represent a developer's conceptual kn
 % possibly could be put with developer planning/self-reflection OR code background and function?
 
 A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect it to be doing. 
-The expectations they built 
-
-% Secure random -- does solution do what I (an others) expect
-
-% 
-
-\noindent\emph{Is this doing what I expect it to?} \\
+Though only four participants asked questions in this category, we believe there are implications for tools that worth communicating and exploring further. 
+The distinct questions asked in this category was \textit{Is this doing what I expect it to?} 
+\\
 
 %Swap categories?
 \noindent\textbf{Tool Implications.} Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
@@ -1175,8 +1143,15 @@ We only identified one distinct question, however, based on our observations, th
 %automatic resolution
 One participant wanted to know if applying the suggested solution would do what he expected it to do. 
 Tool support for answering this question might allow the developer to easily apply, explore and potentially remove the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix does.
+
 %easy access to code documentation 
-The other 
+The other participants wanted to know information pertaining to how they believed the code does or should work, typically from documentation when available. 
+Answering this question in this context is relatively simple when documentation is available, however, if the code is not imported code, the change of documentation being included and easily accessible is reduced.
+One participant wanted to know if some code written by the project's developers works as he expects; he hovered over the method to view the javadoc, but because one did not exist he had to use \textsc{open declaration} to find the answer.
+Perhaps a tool that uses patterns and elements names in the code to generate documentation for methods not imported from a package with java documentation could help developers in these kinds of situations.
+For example, if the method in question is called validate() and takes a String as input and has a condition with an error message or thrown exception, documentation could be generated to communicate that the method is used to validate string input without the developer having to figure it out.
+
+
 % is validator formatted how I expect --> hovered for javadoc, didn't work had to open declaration --> 
 % using patterns and element names in code to generate documentation for methods written (not methods from imported packages)
 % example --> a method called validate() that takes a String as input and has a condition with an error message, documentation could be generated to communicate what that method does without the developer having to do so.
@@ -1391,8 +1366,27 @@ This material is based upon work supported by a National Science Foundation Grad
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
+\clearpage
+\appendix
 
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=3.5in]{Images/environment.png}
+\caption{The environment participants were presented with.}
+\label{fig:environment} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=3in]{Images/notecards.pdf}
+\caption{Result of phase one of card sorting.}
+\label{fig:stageOne} 
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=3in]{Images/categories.pdf}
+\caption{Sorting cards into categories based on emergent themes.}
+\label{fig:cardsort} 
+\end{figure}
 
 
 % that's all folks
