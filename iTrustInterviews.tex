@@ -60,6 +60,8 @@
 \usepackage{dcolumn}
 \newcolumntype{Y}{D..{6.4}}
 
+\newcommand{\blind}[1]{{\color{white}\{#1\}}}
+
 \begin{document}
 %
 % paper title
@@ -72,14 +74,14 @@
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Justin Smith, Brittany Johnson, and Emerson Murphy-Hill}
-\IEEEauthorblockA{North Carolina State University\\
-Raleigh, NC 27606}
+\author{\IEEEauthorblockN{\blind{Justin Smith, Brittany Johnson, and Emerson Murphy-Hill}}
+\IEEEauthorblockA{\blind{North Carolina State University}\\
+\blind{Raleigh, NC 27606}}
 \and
-\IEEEauthorblockN{Bill Chu and Heather Richter Lipford}
-\IEEEauthorblockA{University of North Carolina at Charlotte\\
-Charlotte, NC 28223 \\
-\{billchu, heather.lipford\}@uncc.edu
+\IEEEauthorblockN{\blind{Bill Chu and Heather Richter Lipford}}
+\IEEEauthorblockA{\blind{University of North Carolina at Charlotte}\\
+\blind{Charlotte, NC 28223} \\
+\blind{\{billchu, heather.lipford\}@uncc.edu}
 }}
 
 \maketitle
@@ -137,7 +139,7 @@ Furthermore, in non-security domains, work that identifies questions has helped 
 
 
 In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
-We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}} 
+We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\blind{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}}} 
 We observed each developer as they assessed potential security vulnerabilities reported by FSB and report the kinds of questions they asked while doing so along with the strategies they used to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
@@ -527,7 +529,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \label{sec:results-vaf}
 In the next 4 sections, we discuss the results of our experiment using the categories we described in the previous section.
 Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings. Table~\ref{table:categories} provides an overview of this structure.
-For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}
+For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
 In each category, we discuss the common properties of questions in that category.
 We list the selected questions with the number of participants that asked each question in parentheses.  
 We detail our observations of the participants and contextualize each category by discussing existing tool support and shortcomings.
@@ -1374,8 +1376,8 @@ Our findings have several implications for the design of tools that can be used 
 \section*{Acknowledgment}
 
 We would like to thank our study participants. 
-Special thanks to Xi Ge, Anthony Elliott, and the Developer Liberation Front\footnote{\url{research.csc.ncsu.edu/dlf/}} for their assistance. 
-This material is based upon work supported by XXX and a National Science Foundation Graduate Research Fellowship under Grant No. DGE--0946818.
+Special thanks to \blind{Xi Ge}, \blind{Anthony Elliott}, and the \blind{Developer Liberation Front}\footnote{\blind{\url{research.csc.ncsu.edu/dlf/}}} for their assistance. 
+This material is based upon work supported by a National Science Foundation Graduate Research Fellowship under Grant No. DGE--0946818.
 
 \bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
