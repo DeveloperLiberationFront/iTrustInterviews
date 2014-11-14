@@ -1098,28 +1098,26 @@ Fourteen of the 155 distinct questions extracted fit into this category.
 
 
 
-\noindent\textbf{Observations}
-
-MORE TO COME
+\noindent\textbf{Observations.}
 % kinds of questions asked about bugs in general, so not surprised asked about all four security vulnerabilities in our study
-% 
-
-% do I understand most often (3) - asking this question typically followed by looking back at error message details
 % P6, P8, P9
 % no one asked about B2 (overall the simplest to assess, but why?) -- look these and see if anything interesting
+Eight participants asked questions that are meant to be plan-oriented or reflective.
+The questions asked in this category are questions that developers ask themselves about any potential defect in their code, so it is not surprising that participants asked these kind of questions about all four vulnerabilities used in our experiment.
+The question participants asked most often was if they understood the entirety of the situation; asking this question was typically followed by looking back at the error message details. 
+For example, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he got into it, so he went back to read the error message one more time before exploring.
+\\
 
-%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with --> this sounds awesome but not sure where to find it :(
-
-
-\noindent\textbf{Tool Implications}
-
-Though, in general, there is no trivial solution that can help developers answer many of these questions, there are ways to provide information or instructions developers can follow to more easily determine the answers for themselves. 
+\noindent\textbf{Tool Implications.}
+Though, in general, there is no obvious solution that can help developers answer many of these questions, including \textit{Do I understand?}, there are ways to provide information or instructions developers can follow to more easily determine the answer to some of them for themselves. 
 For example, one question participants asked was \textit{Have I seen this before?}
 A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
 The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 Another question that a tool could potentially help answer is \textit{What was that again?} 
 A tool that would support answering this question could keep track of places in the code the developer visits, perhaps while they are using a tool like FSB, and make them easily accessible to the developer as they triage the code.
 
+
+%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with --> this sounds awesome but not sure where to find it :(
 
 %%%%%%%%%%%% Understanding Concepts
 
