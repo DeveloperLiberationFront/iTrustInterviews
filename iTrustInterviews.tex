@@ -879,26 +879,36 @@ Eleven of the 155 distinct questions fit into this category.
 
 
 \noindent\textbf{Observations.}
-All 10 participants had questions regarding the data pipeline.
-Participants asked questions about the data pipeline when assessing three of the four vulnerabilities; most often these questions arose while assessing the Servlet Parameter vulnerability. 
-While exploring this vulnerability, none of the participants invoked tools specifically designed for exploring data flow. 
-Instead, participants either stated their information needs without following up, or used the call hierarchy tool in combination with manual searching.
-For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
 
-The most popular questions in this category are \textit{Where does this information go?} and \textit{Where is the data coming from?} 
-Often when assessing the Servlet Parameter vulnerability, both these questions occurred. 
-For instance, P6 wanted to know where the form data was set and where the data where going to see if the input is every validated.  
-Similarly, while evaluating the Potential Path Traversal vulnerability, P1 wanted to know where the path originated to determine if it was coming from a secure source.
-Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. % Why didn't they uses, could be they just didn't feel like going along with the experiment
-Often, like P1 and P6, participants would describe what they would do but not attempt to do it
+All 10 participants had questions regarding the data pipeline.
+Participants asked questions about the data pipeline when assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
+
+While exploring this vulnerability, participants adapted tools like the call hierarchy tool to also explore the program's data flow. 
+Specifically, participants used the call hierarchy tool in combination with manual searching. 
+As we discussed in \emph{\textbf{Control Flow and Call Information}}, the call hierarchy tool helped participants locate callers to the methods containing vulnerable code. For example, once participants like P6 located the caller, they manually searched for the locations where the actual parameters were set.
 \\
 
+%For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
+
+%The most popular questions in this category are \textit{Where does this information go?} and \textit{Where is the data coming from?} 
+%Often when assessing the Servlet Parameter vulnerability, both these questions occurred. 
+%For instance, P6 wanted to know where the form data was set and where the data where going to see if the input is every validated.  
+%Similarly, while evaluating the Potential Path Traversal vulnerability, P1 wanted to know where the path originated to determine if it was coming from a secure source.
+%Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. % Why didn't they uses, could be they just didn't feel like going along with the experiment
+%Often, like P1 and P6, participants would describe what they would do but not attempt to do it
+
 \noindent\textbf{Tool Implications.}
-The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give the full picture of how data travels through the program. 
-The developer would have to retrieve this information, either from the documentation, by debugging the code, or by using a combination of search tools and manual inspection. 
-Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
-There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
-It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring visualizations of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
+The call hierarchy tool in Eclipse presents control flow information, but does not give the full picture of how data travels through the program. 
+Developers  have to retrieve this information, either from the documentation, by running the debugger, or by manually inspecting the code.
+As we observed, developers frequently switch between seeking control flow information and data flow information while reasoning about security vulnerabilities.
+Such switching between tools and strategies might induce disorientation~\cite{deAlwis2006disorient}.
+
+Tools that aim to prevent such disorientation should focus on presenting call flow and data flow information simultaneously.
+Such a tool might behave similarly to the call hierarchy tool by allowing developers to traverse the call graph, but would also allow the developer to specify a parameter to track. Stepping up the call hierarchy would present information about how that parameter was set in the callee's context.
+
+%There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
+%Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
+%It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring visualizations of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 
 
 % B1, 3, 4 (mainly 3)
