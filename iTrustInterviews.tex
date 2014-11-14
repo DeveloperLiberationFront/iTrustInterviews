@@ -68,7 +68,7 @@
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
 
-\title{Identifying Questions Developers Ask About Security Vulnerabilities and Assessing Tool Support}
+\title{Assessing Tool Support for Questions Developers Ask About Security Vulnerabilities}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
 % author names and affiliations
@@ -166,7 +166,7 @@ Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
 \label{sec:rw}
 
 We have organized the related work into three sections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. 
-Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
+Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and Section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
 
 \subsection{Evaluation of Techniques}
 \label{evaluation}
@@ -233,7 +233,7 @@ Our study discovers the questions developers have about potential code vulnerabi
 \label{sec:meth}
 We conducted a laboratory experiment with 10 software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
 Section \ref{rqs} outlines the research questions we sought to answer. 
-Section \ref{studyDesign} details how the study was designed and section \ref{dataAnalysis} describes how we performed data analysis.
+Section \ref{studyDesign} details how the study was designed and Section \ref{dataAnalysis} describes how we performed data analysis.
 Experimental materials can be found online.~\footnote{\blind{\url{http://www4.ncsu.edu/~bijohnso/security-questions.html}}}
 
 
@@ -1304,8 +1304,45 @@ These type of visual overlays may also be useful for answering the questions in 
 
 \section{Overview of Tool Design Implications}
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-In this section we summarize the tool implications that we discussed throughout the results sections.
+In this section we summarize select tool implications that we discussed throughout the results sections.
+Based on our observations, tools should consider:
 
+\begin{itemize}
+%Understanding Alternative Fixes and Approaches
+\item presenting real-world examples from trusted security authorities,
+%present
+\item supporting systematic reasoning about potential attacks,
+%application of fix
+\item presenting the trade-offs associated with alternative solutions,
+%Relationship between bugs
+\item supporting reasoning about related vulnerabilities,
+%newGroup
+%locating info
+\item helping developers locate security-critical components,
+%control flow
+\item increasing tool awareness by recommending more effective strategies,
+%data storage and flow
+\item supporting the simultaneous exploration of control flow and data flow,
+%app context and usage
+\item helping developers assess how code is used within the context of an application
+%End User Interaction
+\item helping developers reason about attack surfaces
+%Planning and Self-Reflection
+\item presenting information about developers' previous vulnerability encounters
+%Understanding concepts
+\item providing links to relevant information within the notification
+% Resources and Docs
+\item providing access to knowledgeable resources
+% Interacting with tools
+%\item 
+%Severity and ranking
+\item use simple one-dimensional metrics for prioritizing vulnerabilities
+%
+\item use visual overlays to make connections between the notification and the code
+
+
+\end{itemize}
+%
 
 \section{Threats to Validity}
 \label{limits}
