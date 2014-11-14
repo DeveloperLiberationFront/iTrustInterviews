@@ -682,8 +682,8 @@ Our observations suggest that the presence of fix suggestions alone may discoura
 
 %False positives 
 Accordingly, developer could benefit from tool support in assessing the implications of suggested fixes.
-Existing tools, such as Quick Fix Scout begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
-Quick Fix Scout helps developers consider the implications of implementing a fix based on a single dimension, defect count.
+Existing tools, such as \textsc{Quick Fix Scout} begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
+\textsc{Quick Fix Scout} helps developers consider the implications of implementing a fix based on a single dimension, defect count.
 Security tools that include fix suggestions should encourage developers to consider the various tradeoffs associated with alternative fixes, for example performance reductions.
 Such a tool might inform developers of the time it takes the code to execute after applying the fix compared with before the fix was applied.
 %Tool looks at runtime
@@ -767,7 +767,7 @@ Specifically, participants wondered where the random number generator and the ta
 %Simple questions are easy to answer by existing tools
 For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
 However, strategies relying on existing tools fell short when participants sought context-dependent information. 
-The code highlighting tool displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
+The \textsc{Code Usage Highlighter} displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
 %Participants didn't just seek location information, they searched for places where information was used within a given context.
 For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
 
@@ -791,7 +791,7 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 
 \noindent\textbf{Tool Implications.}
 The answers to some of these questions can be found using existing tool support found inside the IDE. 
-For example, Eclipse has an `open declaration' tool that can be used to find a method's definition. 
+For example, Eclipse has an \textsc{open declaration} tool that can be used to find a method's definition. 
 However, in the case of context-dependent questions, developer's could benefit from increased tool support. 
 For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results that occurred within or interacted with critical components.
 Currently developers must manually prioritize search results and determine whether each is security-relevant.
@@ -831,23 +831,23 @@ The private method containing this vulnerability was only called by one method, 
 All 10 participants wanted call information for this vulnerability, often asking the question \textit{where is this method being called?} 
 However, participants used a mix of several different strategies to obtain the same information.
 The most basic strategy was simply skimming the file for method calls, which was error prone because participants could easily miss some calls.
-Other participants used the Eclipse's automatic code highlighting, which, to a lesser extent, was error prone for the same reason. Further, it only found calls within the current file.
-Another strategy participants employed was the use of a global textual search, which found all occurrences of a method name, but there was no guarantee that two names referred to the same method and also returned references that occurred in dead code or comments.
-Alternatively, Eclipse's Find References tool identifies proper references to a single method.
-Unlike the previous strategies, Eclipse's call hierarchy tool enables users to traverse a project's entire call structure; however, it does not identify calls made from framework hooks or APIs.
-Additionally, some participants were unaware of how to access and how to use the call hierarchy tool.
+Other participants used the Eclipse's \textsc{code usage highlighter} tool, which, to a lesser extent, was error prone for the same reason. Further, it only found calls within the current file.
+Another strategy participants employed was the use of Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that two names referred to the same method and also returned references that occurred in dead code or comments.
+Alternatively, Eclipse's \textsc{find references} tool identifies proper references to a single method.
+Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enables users to traverse a project's entire call structure; however, it does not identify calls made from framework hooks or APIs.
+Additionally, some participants were unaware of how to access and how to use \textsc{call hierarchy}.
 
 Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
 \\
 
 \noindent\textbf{Tool Implications.}
 Particularly when resolving security vulnerabilities, developers are concerned with \textit{all} of a method's potential call sites.
-Tools like find references and call hierarchy provide support for locating call information, yet the leave room for extension.
+Tools like \textsc{find references} and \textsc{call hierarchy} provide support for locating call information, yet the leave room for extension.
 Our findings suggest that tools that reason about, and notify developers of, calls that originate from outside the local code could help them answer the questions in this category.
 
-Despite the existence of tools like `find references' and the call hierarchy tool, based on our observations, developers face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
+Despite the existence of tools like \textsc{find references} and \textsc{call hierarchy}, based on our observations, developers face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
 Our findings suggest that developers could benefit from tools that reduce the cost of using a new tool.
-In particular developers could benefit from tools that apprise them of other useful tools like find references and call hierarchy.
+In particular developers could benefit from tools that apprise them of other useful tools like \textsc{find references} and \textsc{call hierarchy}.
 A tool that addresses these needs might detect when the developer is looking for call information (for example, using the `find' tool) and suggest the appropriate tool for finding the information they require. 
 
 %It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
@@ -876,7 +876,7 @@ Eleven of the 155 distinct questions fit into this category.
 All 10 participants had questions regarding the data pipeline.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities; most often these questions arose while assessing the Servlet Parameter vulnerability. 
 While exploring this vulnerability, none of the participants invoked tools specifically designed for exploring data flow. 
-Instead, participants either stated their information needs without following up, or used the call hierarchy tool, a tool meant for determining control flow, in combination with manual searching.
+Instead, participants either stated their information needs without following up, or used \textsc{call hierarchy}, a tool meant for determining control flow, in combination with manual searching.
 For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
 
 The most popular questions in this category are \textit{Where does this information go?} and \textit{Where is the data coming from?} 
@@ -888,7 +888,7 @@ Often, like P1 and P6, participants would describe what they would do but not at
 \\
 
 \noindent\textbf{Tool Implications.}
-The call hierarchy tool in Eclipse provides a way of understanding control flow, but this static information does not give the full picture of how data travels through the program. 
+\textsc{Call hierarchy} provides a way of understanding control flow, but this static information does not give the full picture of how data travels through the program. 
 The developer would have to retrieve this information, either from the documentation, by debugging the code, or by using a combination of search tools and manual inspection. 
 Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
 There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
@@ -1238,7 +1238,7 @@ Fritz and colleagues developed a degree of knowledge model that predicts how fam
 
 \noindent\subsection{\textbf{Understanding and Interacting with Tools (8)}}\label{uit}
 
-Throughout the study participants interacted with a variety of tools including FSB, the call hierarchy tool, and find references. 
+Throughout the study participants interacted with a variety of tools including FSB, \textsc{call hierarchy}, and \textsc{find references}. 
 While interacting with these tools, participants asked questions about how to access specific tools, how to properly use the tool, and how to interpret tool output. 
 Nine of the 155 distinct questions we extracted fall into this category.
 \\
