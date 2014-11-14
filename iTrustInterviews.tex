@@ -553,7 +553,7 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 \emph{When should I use the alternative? (1)} \\
 \emph{Is the alternative slower? (1)} \\
 
-\noindent\textbf{Observations}
+\noindent\textbf{Observations.}
 %The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
 %SAVE THIS CONNECTION FOR LATER
 Eight participants had questions that fit into this category. 
@@ -569,7 +569,7 @@ Despite the useful information that some participants found, often the candidate
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
 \\
 
-\noindent\textbf{Tool Implications} 
+\noindent\textbf{Tool Implications.} 
 It seems especially important when dealing with potential security vulnerabilities that developers fully understand any changes they make to the code. 
 However, based on our observations, developers lack easy-access to security-relevant information on potential alternatives. 
 Rather, participants used ad-hoc strategies to seek different pieces of information from a variety of sources. 
@@ -605,7 +605,7 @@ Eleven of the 155 distinct questions we gathered belong in this category.
 \emph{How can this vulnerability lead to an attack? (1)} \\
 \emph{How do I find out if this is a real vulnerability?(1)} \\
 
-\noindent\textbf{Observations}
+\noindent\textbf{Observations.}
 Participants sought information about the variety of attacks that could occur in a given context.
 To that end, five participants asked \textit{What are the possible attacks that could occur?}
 For example, within the first minute of his analysis, P2 stated that he was thinking about the different types of attacks that could target web applications, like iTrust. He asked what types of attacks were possible while beginning to think about which attacks he might need to prevent.
@@ -615,7 +615,7 @@ Participants hypothesized about specific attack vectors, how to execute those at
 Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. For example, P10 determined that the Predictable Random vulnerability was ``real,'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 \\
 
-\noindent\textbf{Tool Implications}
+\noindent\textbf{Tool Implications.}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions about potential attacks.
 The existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
 Based on our observations, we recommend that vulnerability notifications should include the name of the attack as well as an overview of how the attack could be executed.
@@ -653,8 +653,7 @@ We placed 9 of the 155 distinct questions into this category.
 \emph{Does the code stand up to additional tests prior to/after applying the fix? (1)} \\
 
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 When searching for approaches to resolve vulnerabilities, participants gravitated toward fix suggestions provided by the notification.
 The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided fix suggestions.
 All participants proposed solutions that involved applying one or both of these suggestions. 
@@ -667,7 +666,7 @@ While exploring the Predictable Random vulnerability, many participants, includi
 %How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
 %without tests or sufficient review to validate the correctness of the fix, such impulsive modifications could have unintended consequences.
 
-\noindent\textbf{Tool Implications}
+\noindent\textbf{Tool Implications.}
 Assuring the security of complex software systems requires developers to reason critically about the code. 
 Fix suggestions help developers dismiss vulnerabilities more quickly.
 However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
@@ -704,8 +703,7 @@ Three of the 155 distinct questions we found target the relationships between th
 %P1 2 8 10 asked
 %Are all of the bugs related in my code?
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 %Make more clear, This is the implication, but doesn't jump off the page yet...
 Though only four of the ten participants asked questions about the relationship between bugs, these questions highlight information requirements that tools could support.
 When inquiring about the relationships between bugs, participants noted connections between bugs that related to similar topics.
@@ -833,18 +831,7 @@ Unlike the previous strategies, Eclipse's call hierarchy tool enables users to t
 Additionally, some participants were unaware of how to access and how to use the call hierarchy tool.
 
 Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
-%For example, P1 and P6 chose to use more light-weight tools, such as inspecting code highlights, rather than navigate to and invoke the call hierarchy tool; P1 was unaware of what the call hierarchy tool was. 
-%P5 and P9, who also did not seem to be aware of the existence of a call hierarchy tool, considered using find references to get the information they needed.
-
-%Along the same lines, when assessing the Potential Path Traversal vulnerability, 5 participants wanted to know who can call that code. 
-%Tools like the call hierarchy tool can inform developers of who \textit{is} calling the code, however, they do not answer the question who \textit{can} call the code. 
-%To determine how vulnerable this part of the code was, participants wanted to know if the code in question could be called outside the containing class as well as the system. 
-%Most of the participants who asked this question concerning the containing class answered the question by checking the visibility of the method (\texttt{public} vs. \texttt{private}). 
-
-% Tools available for this but 7 still had question "how can I get calling information?"
-%Despite the availability of tools to help retrieve call information, some participants still had difficulty finding answers to their questions; seven even asked the question \textit{how can I get calling information}.
-%For example, P4 did not have any ideas on how he might find call information for the method containing the Potential Path Traversal vulnerability; after struggling with answering his questions for a while, he finally stumbled upon the call hierarchy tool. 
-%Even after finding and using the tool, P4 still needed other tools, such as the search tool, to come to the conclusion that it was not a vulnerability he needed to be concerned about.
+\\
 
 \noindent\textbf{Tool Implications.}
 Particularly when resolving security vulnerabilities, developers are concerned with \textit{all} of a method's potential call sites.
@@ -1258,8 +1245,7 @@ Nine of the 155 distinct questions we extracted fall into this category.
 \emph{How is the information presented by the tool organized? (1)} \\
 
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 %[ACCESSIBILITY (4 letter word)]
 Some of the questions we extracted seemed to deal with having access to or knowing how to use the tools needed to complete a certain task. 
 Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. 
@@ -1272,8 +1258,7 @@ For example, FSB reports its confidence on the potential defect in the notificat
 \\
 
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 Developers' ability to understand and effectively interact with tools has been the focus of many research studies, however, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
 Many of these questions may require the input of other developers to be answered effectively. 
 For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
@@ -1299,8 +1284,7 @@ Four of the 155 distinct questions extracted fall into this category.
 \emph{What do the bug rankings mean? (2)} \\
 \emph{Are all these bugs the same severity? (1)} \\
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 Five participants had questions related to the seriousness of the vulnerability being assessed, and sometimes those surrounding it. 
 Most of these questions came from participants wanting to know more about the tool's way of ranking the vulnerabilities in the code.
 Participants that attempted to interpret the tool's severity and ranking metrics often had difficulty understanding what they meant. 
@@ -1308,10 +1292,9 @@ For example, when assessing the Potential Path Traversal vulnerability, P1 disco
 He noted that it would be helpful and added it to his assessment process for the following vulnerabilities.
 As he began working through the final vulnerability (SQL Injection), he realized he may not have as good of an understanding of the tool's metrics as he thought and did a web search for clarification. 
 P6, among others, did not notice the ranking and severity information provided by the tool. 
- 
+\\
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
 Techniques and tools have been developed for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
 It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
@@ -1332,8 +1315,7 @@ Three of the 155 distinct questions we extracted fall into this category.
 \emph{What is the relationship between the error message and the code? (2)} \\
 \emph{What code caused this error message to occur? (2)} \\
 
-\noindent\textbf{Observations}
-
+\noindent\textbf{Observations.}
 Six participants had questions about the error message used in the notifications; five of these participants asked \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
 More interesting is that they also asked questions about how to relate information contained in the error message back to the code. 
 For example, the Predictable Random vulnerability notes that a predicable random value is bad when being used in a secure context. 
@@ -1341,8 +1323,7 @@ Many participants attempted to related this piece of information back to the cod
 In this situation, the fact that the method the vulnerability was found in was called \texttt{randomPassword()} suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 \\
 
-\noindent\textbf{Tool Implications}
-
+\noindent\textbf{Tool Implications.}
 Determining what the error message says is a relatively simple action for the developer to complete; most tools, FSB included, provide functionality for developers to access the details of a given error message. 
 Tools also attempt to answer the question \emph{what code caused the error message} by placing an icon in the gutter of the coding editor at presumably the location of the vulnerable code. 
 However, if the error message is connected to multiple parts of the code, or a different part of the code all together, the icon location is not the best indicator of the connection between the code and the error message. 
