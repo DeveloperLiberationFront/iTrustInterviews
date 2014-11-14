@@ -28,24 +28,6 @@
   % \DeclareGraphicsExtensions{.eps}
 \fi
 % graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation
-% can be obtained at: 
-% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found at:
-% http://www.ctan.org/tex-archive/info/epslatex/
-%
-% latex, and pdflatex in dvi mode, support graphics in encapsulated
-% postscript (.eps) format. pdflatex in pdf mode supports graphics
-% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
-% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
-% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
-% which can result in "jaggedy"/blurry rendering of lines and letters as
-% well as large increases in file sizes.
-%
-% You can find documentation about the pdfTeX application at:
-% http://www.tug.org/applications/pdftex
 
 
 % correct bad hyphenation here
@@ -157,7 +139,8 @@ Section~\ref{sec:results-ca} discusses questions about the code and the applicat
 Section~\ref{sec:results-i} reports findings pertaining the individuals and their thought processes.
 Section~\ref{sec:results-pss} reports questions surrounding resources for solving the problem.
 Each section of findings includes observations made and implications for tool design that can be drawn based on these observations. 
-Finally, we conclude the paper with a discussion of future work~\ref{sec:fw}.
+We summarize the implications from our findings in Section~\ref{sec:disc} and note the threats to the validity of our findings in \ref{limits}.
+
 
 
 %Figure, high res, png or vector (pdf)
@@ -1304,6 +1287,7 @@ These type of visual overlays may also be useful for answering the questions in 
 
 \section{Overview of Tool Design Implications}
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\label{sec:disc}
 In this section we summarize select tool implications that we discussed throughout the results sections.
 Based on our observations, tools should consider:
 
@@ -1324,21 +1308,21 @@ Based on our observations, tools should consider:
 %data storage and flow
 \item supporting the simultaneous exploration of control flow and data flow,
 %app context and usage
-\item helping developers assess how code is used within the context of an application
+\item helping developers assess how code is used within the context of an application,
 %End User Interaction
-\item helping developers reason about attack surfaces
+\item helping developers reason about attack surfaces,
 %Planning and Self-Reflection
-\item presenting information about developers' previous vulnerability encounters
+\item presenting information about developers' previous vulnerability encounters,
 %Understanding concepts
-\item providing links to relevant information within the notification
+\item providing links to relevant information within the notification,
 % Resources and Docs
-\item providing access to knowledgeable resources
+\item providing access to knowledgeable resources,
 % Interacting with tools
 %\item 
 %Severity and ranking
-\item use simple one-dimensional metrics for prioritizing vulnerabilities
+\item using simple one-dimensional metrics for prioritizing vulnerabilities, and
 %
-\item use visual overlays to make connections between the notification and the code
+\item using visual overlays to make connections between the notification and the code.
 
 
 \end{itemize}
