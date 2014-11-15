@@ -591,10 +591,10 @@ Seven participants asked the question, \textit{Is this a real vulnerability?} To
 
 \noindent\textbf{Tool Implications.}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions about potential attacks.
-The existence of this category suggests security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
+The existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
 Based on our observations, we recommend that vulnerability notifications should include the name of the attack as well as an overview of how the attack could be executed.
 
-However, the questions in this category also suggest developers operate in two distinct modes when reasoning about potential attacks.
+However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
 At times they inquire about all the possible attacks that could occur.
 At other times, they explore the feasibility of a specific attack.
 Security tools could support this modality by providing checklists to help developers systematically reason about all the potential attacks. 
@@ -1049,9 +1049,11 @@ Fourteen of the 155 distinct questions extracted fit into this category.
 % P6, P8, P9
 % no one asked about B2 (overall the simplest to assess, but why?) -- look these and see if anything interesting
 Eight participants asked questions that are meant to be plan-oriented or reflective.
-The questions asked in this category are questions that developers ask themselves about any potential defect in their code, so it is not surprising that participants asked these kind of questions about all four vulnerabilities used in our experiment.
-The question participants asked most often was if they understood the entirety of the situation; asking this question was typically followed by looking back at the error message details. 
-For example, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he got into it, so he went back to read the error message one more time before exploring.
+The questions asked in this category are questions developers ask themselves about any potential defect in their code. 
+These questions occurred in all four vulnerabilities.
+Participants most frequently asked if they understood the entirety of the situation. 
+This question was typically followed by looking back at the error message details. 
+For example, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he started exploring, so he went back to reread the error message before investigating further.
 \\
 
 \noindent\textbf{Tool Implications.}
@@ -1105,9 +1107,10 @@ Not all developers have the same experiences, so it seems important that develop
 Sometimes, FSB provides links to information regarding the concepts involved. 
 However, some participants did not use them because they did not know they existed until the first author pointed them out; because of this, they usually did a web search themselves to find more information.
 
-A simple solution to providing easier access to the desired information is by placing links, when available, in a  more visible area; one suggestion for placement is nested in the text of the error message next to the concept it has information about. 
+Tools could provide the desired information by placing links in more visible areas.
+For example, tools could nest definitions and explanations inside collapsible windows within the error message text, next to the concept it relates to. 
 One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
-Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code~\cite{fritz2010degree}, tools could make an attempt at only adapting notifications if the developer's model suggests there is a need to answer these types of conceptual questions.
+Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code~\cite{fritz2010degree}, tools could present additional information only to developers that needed it.
 % Very obvious trying to plug direction of my research but still a possible direction for this :)
 %We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
 
@@ -1118,23 +1121,25 @@ Perhaps if tools had access to models that represent a developer's conceptual kn
 
 A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect it to be doing. 
 Though only four participants asked questions in this category, we believe there are implications for tools that worth communicating and exploring further. 
-The distinct questions asked in this category was \textit{Is this doing what I expect it to?} 
+The distinct question asked in this category was \textit{Is this doing what I expect it to?} 
 \\
 
 %Swap categories?
 \noindent\textbf{Tool Implications.} Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
 As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. 
-We only identified one distinct question, however, based on our observations, there are at least two ways this question can be interpreted and each require different tool support to answer it.
+We only identified one distinct question, however, based on our observations, there are at least two ways this question can be interpreted and each requires tool support to answer.
 %automatic resolution
-One participant wanted to know if applying the suggested solution would do what he expected it to do. 
-Tool support for answering this question might allow the developer to easily apply, explore and potentially remove the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix does.
+One participant located a possible solution from a web resource. 
+He wanted to know if applying the suggested solution would do what he expected it to do. 
+Tool support for answering this question might allow the developer to experiment with the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix does.
 
 %easy access to code documentation 
 The other participants wanted to know information pertaining to how they believed the code does or should work, typically from documentation when available. 
 Answering this question in this context is relatively simple when documentation is available, however, if the code is not imported code, the change of documentation being included and easily accessible is reduced.
-One participant wanted to know if some code written by the project's developers works as he expects; he hovered over the method to view the javadoc, but because one did not exist he had to use \textsc{open declaration} to find the answer.
-Perhaps a tool that uses patterns and elements names in the code to generate documentation for methods not imported from a package with java documentation could help developers in these kinds of situations.
-For example, if the method in question is called validate() and takes a String as input and has a condition with an error message or thrown exception, documentation could be generated to communicate that the method is used to validate string input without the developer having to figure it out.
+One participant wanted to know if some code written by the project's developers worked as he expected.
+While investigating this, he hovered over the method to view the javadoc, but because one did not exist he had to use \textsc{open declaration} to find the answer.
+Perhaps a tool that uses patterns and elements names in the code to automatically generate documentation could help developers in these  situations.
+For example, if the method in question is called \CodeIn{validate()} and takes a String as input and has a condition with an error message or thrown exception, documentation could be generated to communicate that the method is used to validate string input without the developer having to figure it out.
 
 
 % is validator formatted how I expect --> hovered for javadoc, didn't work had to open declaration --> 
@@ -1189,7 +1194,7 @@ It seems reliability of the resource would be especially important for making ch
 Lack of support for answering these questions, especially questions concerning reliability, may have contributed to participants not clicking the links in many situations.  
 Tools might consider including information regarding the reliability of the resources provided; one way to do this is to associate the link with peers who have visited it.
 Also, to help answer questions about other team members' knowledge of the code, tools may be able to borrow ideas from previous research.
-Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements, however, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
+Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements. However, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
 
 
 
@@ -1218,12 +1223,14 @@ This seems to point to a tool awareness or education problem.
 %[Presentation of tool information]
 Other questions dealt with the presentation of information provided by the tool. 
 Participants wanted to be able to explore things about the tool's output, and typically had to manually determine the answers to their questions. 
-For example, FSB reports its confidence on the potential defect in the notification, however, some participants found it difficult to process this information.
+For example, FSB reports its confidence on the potential defect in the notification. 
+However, some participants found it difficult to process this information.
 \\
 
 
 \noindent\textbf{Tool Implications.}
-Developers' ability to understand and effectively interact with tools has been the focus of many research studies, however, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
+Developers' ability to understand and effectively interact with tools has been the focus of many research studies. 
+However, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
 Many of these questions may require the input of other developers to be answered effectively. 
 For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
 Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
@@ -1346,7 +1353,7 @@ Developers with more expertise and experience might ask different questions and 
 
 Further, participants were equipped with FSB, an open source static analysis tool. 
 Developers using other more sophisticated tools might ask slightly different questions.
-We cannot and do not claim that the that we have identified a comprehensive list of questions.
+We cannot and do not claim that we have identified a comprehensive list of questions.
 
 We also only examined developers' interactions with four specific vulnerabilities in one Java project. 
 It remains to be seen whether our design guidelines apply to a broader set of projects.
@@ -1370,7 +1377,7 @@ Our findings have several implications for the design of tools that can be used 
 
 
 % use section* for acknowledgement
-%\section*{Acknowledgment}
+%\section*{Acknowledgments}
 
 %We would like to thank our study participants. 
 %Special thanks to Xi Ge, Anthony Elliott, and the Developer Liberation Front\footnote{\blind{\url{research.csc.ncsu.edu/dlf/}}} for their assistance. 
