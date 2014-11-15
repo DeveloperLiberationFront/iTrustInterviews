@@ -105,7 +105,7 @@ It is particularly important to provide effective tools for secure systems, as s
 
 Toolsmiths produce static analysis tools to help developers detect potential security flaws in their code. 
 One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{findbugs.sourceforge.net} 
-FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross site scripting.  
+FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar\footnote{\url{grammatech.com/codesonar}} and Coverity,\footnote{\url{coverity.com/}} can also be used to detect and remove potential security vulnerabilities.
 Unfortunately, however, research suggests that many developers may not be using such static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
 
@@ -122,21 +122,22 @@ Furthermore, in non-security domains, work that identifies questions has helped 
 
 In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
 We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\blind{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}}} 
-We observed each developer as they assessed potential security vulnerabilities reported by FSB and report the kinds of questions they asked while doing so along with the strategies they used to answer them.
+We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
+We report the kinds of questions they asked while doing so, along with the strategies they used to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
 Our work makes three contributions. 
-First, we present a list of questions that software developers ask when examining the security of their code.
-Second, based on our observations, we discuss the strategies that developers use to answer their questions.
+First, we present a list of questions software developers ask when examining the security of their code.
+Second, based on our observations, we discuss the strategies developers use to answer their questions.
 Finally, we evaluate the existing tool support for answering security-related questions.
 
 The remainder of the paper is organized as follows. 
 In Section~\ref{sec:rw}, we discuss previous work related to our own. 
 Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. 
-Next, we discuss the findings of our study in four parts. 
+We organize divide the findings of our study into four sections. 
 Section~\ref{sec:results-vaf} reports findings related to vulnerabilities, attacks and fixes. 
 Section~\ref{sec:results-ca} discusses questions about the code and the application in which the code resides.
-Section~\ref{sec:results-i} reports findings pertaining the individuals and their thought processes.
+Section~\ref{sec:results-i} reports findings about individuals and their thought processes.
 Section~\ref{sec:results-pss} reports questions surrounding resources for solving the problem.
 Each section of findings includes observations made and implications for tool design that can be drawn based on these observations. 
 We summarize the implications from our findings in Section~\ref{sec:disc} and note the threats to the validity of our findings in \ref{limits}.
@@ -148,7 +149,7 @@ We summarize the implications from our findings in Section~\ref{sec:disc} and no
 \section{Related Work}
 \label{sec:rw}
 
-We have organized the related work into three sections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. 
+We have organized the related work into three subsections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. 
 Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and Section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
 
 \subsection{Evaluation of Techniques}
@@ -165,34 +166,31 @@ They also found their tool to be effective because it had a low false positive r
 Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
 Comparing the four approaches based on number of vulnerabilities found, false positive rate, and efficiency, they reported that no one technique was capable of discovering every type of vulnerability. 
 Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. 
-They found that the combination of manual testing and static analysis was most effective, because it found the most vulnerabilities.
+They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
 
 
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
-Further, they do not evaluate whether the tools under study answer questions that developer have about the code or vulnerabilities. 
+Further, they do not evaluate whether the tools under study answer questions developers have about the code or vulnerabilities. 
 Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
 
 \subsection{Developer Understanding}
 \label{understanding}
-In non-security domains, research has shifted focus from the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
+In non-security domains, research has transitions from focusing on the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
 These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. 
-Such studies examine proposed and existing approaches using various qualitative methods such as interviews and surveys. 
-
-Some research surrounding tool effectiveness shifted focus from technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
-The goal of these studies was to evaluate how tool designers can help developers cope with existing or proposed approaches, through comparison of proposed and existing approaches and various qualitative methods, such as interviews and surveys.
+Such studies examine proposed and existing approaches using various qualitative methods like interviews and surveys. 
 
 Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
 
 Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
 
-Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reason developers have for using, and possibly not using, static analysis tools to find defects in their codes~\cite{johnson2013don}. 
-Their findings suggest that one of the biggest reasons developers may have for not using tools to analyze their code is difficulty understanding the output provided. 
+Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reasons developers use or, do not use, static analysis tools to find defects in their codes~\cite{johnson2013don}. 
+Their findings suggest developers do not use tools to analyze their code, because they have difficulty understanding the output provided. 
 
 Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. 
 They found that, among other criteria considered, developers consider the description of the fault critical to assessing its importance. 
 Based on their findings, they discuss design implications for automated fault detection tools.
 
-These studies discuss the ability of developers to effectively use existing tools and ways to improve them, however, these studies do not focus on the information needs of developers when using static analysis tools in their code. 
+These studies discuss the ability of developers to effectively use existing tools and ways to improve them. However, these studies do not focus on the information needs of developers when using static analysis tools in their code. 
 The goal of our study is to identify the security-related questions developers ask when approaching security vulnerabilities so that tool designers understand the information requirements of security-minded developers.
 
 \subsection{Answering Developer Questions}
@@ -205,7 +203,7 @@ In contrast, our study focuses specifically on the knowledge requirements of dev
 Much of the work on answering developer questions has occurred in the last decade. 
 LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
 Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements, or reachability questions~\cite{latoza2010developers}. 
-Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions developers have~\cite{ko2004designing}. 
+Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions. ~\cite{ko2004designing}. 
 They found that developers were able to complete more debugging tasks when using their tool than they could without it.
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
@@ -293,13 +291,14 @@ Figure \ref{fig:environment} depicts the configuration of the integrated develop
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. 
 All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 
-For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in programming experience from 4 to 10 years, averaging 6.3 years.
+For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in programming experience from 4 years to 10 years, averaging 6.3 years.
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when we felt that we had reached saturation and few new questions were emerging from each additional interview.
+Since extracting data from each interview required intensive analysis, we ceased recruitment when we that we had reached saturation and few new questions were emerging from each additional interview.
 
-Table~\ref{table:participants} gives additional demographic information on each of the 10 participants; in the remainder of this paper, we will refer to participants as the numbers found in the participant column of the table.  
-Since the focus of our study was to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participants' responses.
+Table~\ref{table:participants} gives additional demographic information on each of the 10 participants. 
+In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.  
+Since the focus of our study is to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participants' responses.
 
 \subsubsection{Tasks}
 Each participant was asked to assess four vulnerabilities. 
@@ -308,10 +307,11 @@ We presented each participant with this number of vulnerabilities, because in pr
 When selecting tasks, we gave preference to existing iTrust vulnerabilities and sought a broad set of question topics.  
 FSB uses topic abbreviations to group similar error messages. 
 For example the abbreviation for the topic Path Traversal is PT and applies to notifications that warn about potential path traversal. 
-FSB reports four types of vulnerabilities so, to cover a broad set of question topics, we wanted to make sure we included one of each type in our experiment.
-FSB identified three types of naturally occurring vulnerabilities: cross site scripting, path traversal, and predictable random vulnerabilities.
+FSB reports on several types of vulnerabilities. 
+To cover a broader set of question topics, we ensured each vulnerability pertained to a different topic.
+FSB identified three types of naturally occurring vulnerabilities: cross-site scripting, path traversal, and predictable random vulnerabilities.
 We inserted a SQL injection vulnerability by making minimal alterations to one of the database access objects.
-Our modification preserved the functionality of the original code and was based on simple, toy examples of SQL injection presented by OWASP.
+Our modification preserved the functionality of the original code and was based on examples of SQL injection found on OWASP and in open-source projects.
 Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
 
 \begin{table*} 
@@ -344,7 +344,7 @@ The session moderator was equipped with the following questions, but had the fre
 \item What are you exploring/trying to figure out right now?
 \item What information do you need to proceed?
 \item Can you explain what this warning is trying to tell you?
-\item Based on your understanding of this error message, what is the percentage likelihood you would modify this section of he code?
+\item Based on your understanding of this error message, what is the percentage likelihood you would modify this section of the code?
 \item How would you fix the problem? Where would you start?
 \item On a scale of 1-5, how confident are you in your understanding of the error message?
 \item On a scale of 1-5, how confident are you that you are making the correct judgments?
@@ -387,7 +387,7 @@ Question clarification typically entailed rewording the question to best reflect
 From the 10 sessions, the first coder extracted 421 question statements; the other coder extracted 389. 
 
 To make sure our list of questions was exhaustive, two independent reviewers coded the transcripts using the criteria.
-It was sometimes difficult to determine what statements should be extracted as questions; the criteria helped ensure that both reviewers only highlighted the statements that reflected actual questions.
+It was sometimes difficult to determine what statements should be extracted as questions; the criteria helped ensure both reviewers only highlighted the statements that reflected actual questions. 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
 
 \begin{figure*}
@@ -401,19 +401,19 @@ Figure \ref{fig:merging} depicts a section of the questions extracted by both au
 To remove duplicates and ensure the validity of all the questions, each transcript was reviewed jointly by the two authors that initially coded it.
 During the second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
 The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the experiment artifacts.
+This process resulted in a total of 559 questions.
 
 Each question that was only identified by one author required verification.
 If the other author did not agree that such a question met at least one of the criteria, the question was removed from the question set and counted as a disagreement.
 The reviewers were said to agree when they merged a duplicate or verified a question. Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
-High agreement score indicates that the two reviewers consistently held similar interpretations of the question criteria.
-
+The agreement scores suggest that the two reviewers consistently held similar interpretations of the question criteria.
 
 Figure \ref{fig:merging} depicts a section of the questions extracted by both authors from P8 prior to review.
 
 \subsubsection{Question Sorting}
 To organize our questions and facilitate discussion, we performed an \textit{open} card sort~\cite{hudson2013sorting}. 
 Card sorting is typically used to help structure data by grouping related information into categories. 
-In an \textit{open} sort, the process begins with no notion of predefined categories. 
+In an \textit{open} sort, the sorting process begins with no notion of predefined categories. 
 Rather, sorters derive categories from emergent themes in the cards. 
 
 \begin{figure}
@@ -425,7 +425,7 @@ Rather, sorters derive categories from emergent themes in the cards.
 
 We performed our card sort in three distinct stages: clustering, categorization, and validation.
 In the first stage, we formed question clusters by grouping questions that identified the same information requirements (Figure~\ref{fig:stageOne}). 
-In this phase we focused on phrasing similar questions consistently and grouping duplicates.
+In this phase we focused on rephrasing similar questions and grouping duplicates.
 For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using \CodeIn{PreparedStatements}?} and P2 asked, \textit{Where can I get more information on path traversal?} 
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
 At this stage, we discarded 5 unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
@@ -489,9 +489,9 @@ For example, we placed the question \textit{Where can I get more information?} i
 Table~\ref{table:categories} contains the 17 categories along with the number of distinct clusters each contains. 
 
 To validate the categories that we identified, we asked two independent researchers to sort the question clusters into our categories. 
-Rather than sort the entire set of questions, we randomly selected 43 questions for each rater to sort.
-The first rater agreed with our categorization with a Cohen's Kappa of $\kappa = .63$. 
-Between the first and second rater we reworded and clarified some ambiguous questions. The second rater exhibited greater agreement ($\kappa = .70$). 
+Rather than sort the entire set of questions, we randomly selected 43 questions for each researcher to sort.
+The first agreed with our categorization with a Cohen's Kappa of $\kappa = .63$. 
+Between the first and second researcher we reworded and clarified some ambiguous questions. The second researcher exhibited greater agreement ($\kappa = .70$). 
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \section{Interpreting the Results}
@@ -526,7 +526,7 @@ Eleven of the 155 questions we extracted pertained to understanding the various 
 \noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
 \emph{What are the alternatives for fixing this? (4)} \\
 \emph{Are there other considerations to make when using the alternative(s)? (3)} \\
-\emph{How does my code compare to the alternative code in the example I found? (2)}
+\emph{How does my code compare to the alternative code in the example I found? (2)} \\
 \emph{Why should I use this alternative method/approach to fix the vulnerability? (2)} \\
 
 \noindent\textbf{Observations.}
@@ -541,7 +541,7 @@ Three participants specifically mentioned StackOverflow as a source for better u
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
 While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP\footnote{\url{owasp.org/index.php/Main_Page}}. 
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make is final decision regarding the vulnerability. 
-Despite the useful information that some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
+Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
 \\
 
@@ -591,10 +591,10 @@ Seven participants asked the question, \textit{Is this a real vulnerability?} To
 
 \noindent\textbf{Tool Implications.}
 Unlike other contexts, when analyzing security vulnerabilities, developers ask questions about potential attacks.
-The existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
+The existence of this category suggests security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
 Based on our observations, we recommend that vulnerability notifications should include the name of the attack as well as an overview of how the attack could be executed.
 
-However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
+However, the questions in this category also suggest developers operate in two distinct modes when reasoning about potential attacks.
 At times they inquire about all the possible attacks that could occur.
 At other times, they explore the feasibility of a specific attack.
 Security tools could support this modality by providing checklists to help developers systematically reason about all the potential attacks. 
@@ -642,7 +642,7 @@ While exploring the Predictable Random vulnerability, many participants, includi
 Assuring the security of complex software systems requires developers to reason critically about the code. 
 Fix suggestions help developers dismiss vulnerabilities more quickly.
 However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
-Our observations suggest that the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
+Our observations suggest the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
 
 %False positives 
 Accordingly, developer could benefit from tool support in assessing the implications of suggested fixes.
@@ -676,7 +676,7 @@ Three of the 155 distinct questions we found target the relationships between th
 
 \noindent\textbf{Tool Implications.}
 %Make more clear, This is the implication, but doesn't jump off the page yet...
-Though only four of the ten participants asked questions about the relationship between bugs, these questions highlight information requirements that tools could support.
+Though only four of the ten participants asked questions about the relationship between bugs, these questions highlight information requirements tools could support.
 When inquiring about the relationships between bugs, participants noted connections between bugs that related to similar topics.
 FSB organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
 Grouping vulnerabilities based on abstract concepts might enable developers to leverage their knowledge of a vulnerability to fix other related vulnerabilities.
@@ -749,7 +749,7 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 
 \noindent\textbf{Tool Implications.}
 The answers to some of these questions can be found using existing tool support found inside the IDE. 
-For example, Eclipse has an \textsc{open declaration} tool that can be used to find a method's definition. 
+For example, Eclipse's \textsc{open declaration} can find a method's definition. 
 However, in the case of context-dependent questions, developer's could benefit from increased tool support. 
 For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results that occurred within or interacted with critical components.
 Currently developers must manually prioritize search results and determine whether each is security-relevant.
@@ -788,7 +788,7 @@ All 10 participants wanted call information for this vulnerability, often asking
 However, participants used a mix of several different strategies to obtain the same information.
 The most basic strategy was simply skimming the file for method calls, which was error prone because participants could easily miss some calls.
 Other participants used the Eclipse's \textsc{code usage highlighter} tool, which, to a lesser extent, was error prone for the same reason. Further, it only found calls within the current file.
-Another strategy participants employed was the use of Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that two names referred to the same method and also returned references that occurred in dead code or comments.
+Another strategy participants employed was the use of Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method. Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identifies proper references to a single method.
 Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enables users to traverse a project's entire call structure; however, it does not identify calls made from framework hooks or APIs.
 Additionally, some participants were unaware of how to access and how to use \textsc{call hierarchy}.
@@ -799,10 +799,10 @@ Eventually, many participants hypothesized that all the calls might originate fr
 \noindent\textbf{Tool Implications.}
 Particularly when resolving security vulnerabilities, developers are concerned with \textit{all} of a method's potential call sites.
 Tools like \textsc{find references} and \textsc{call hierarchy} provide support for locating call information, yet the leave room for extension.
-Our findings suggest that tools that reason about, and notify developers of, calls that originate from outside the local code could help them answer the questions in this category.
+Our findings suggest that tools that reason about, and notify developers of, calls originating outside the local code could help them answer the questions in this category.
 
 Despite the existence of tools like \textsc{find references} and \textsc{call hierarchy}, based on our observations, developers face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
-Our findings suggest that developers could benefit from tools that reduce the cost of using a new tool.
+Our findings suggest that developers could benefit from tools that reduce the barriers to discover new tools.
 In particular developers could benefit from tools that apprise them of other useful tools like \textsc{find references} and \textsc{call hierarchy}.
 A tool that addresses these needs might detect when the developer is looking for call information (for example, using the `find' tool) and suggest the appropriate tool for finding the information they require. 
 
@@ -827,27 +827,37 @@ Eleven of the 155 distinct questions fit into this category.
 
 
 \noindent\textbf{Observations.}
-All 10 participants had questions regarding the data pipeline.
-Participants asked questions about the data pipeline when assessing three of the four vulnerabilities; most often these questions arose while assessing the Servlet Parameter vulnerability. 
-While exploring this vulnerability, none of the participants invoked tools specifically designed for exploring data flow. 
-Instead, participants either stated their information needs without following up, or used \textsc{call hierarchy}, a tool meant for determining control flow, in combination with manual searching.
-For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
 
-The most popular questions in this category are \textit{Where does this information go?} and \textit{Where is the data coming from?} 
-Often when assessing the Servlet Parameter vulnerability, both these questions occurred. 
-For instance, P6 wanted to know where the form data was set and where the data where going to see if the input is every validated.  
-Similarly, while evaluating the Potential Path Traversal vulnerability, P1 wanted to know where the path originated to determine if it was coming from a secure source.
-Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. % Why didn't they uses, could be they just didn't feel like going along with the experiment
-Often, like P1 and P6, participants would describe what they would do but not attempt to do it
+All 10 participants had questions regarding the data pipeline.
+Participants asked questions about the data pipeline when assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
+
+While exploring this vulnerability, participants adapted tools like the call hierarchy tool to also explore the program's data flow. 
+Specifically, participants used the call hierarchy tool in combination with manual searching. 
+As we discussed in \emph{\textbf{Control Flow and Call Information}}, the call hierarchy tool helped participants locate callers to the methods containing vulnerable code. For example, once participants like P6 located the caller, they manually searched for the locations where the actual parameters were set.
 \\
 
-\noindent\textbf{Tool Implications.}
-\textsc{Call hierarchy} provides a way of understanding control flow, but this static information does not give the full picture of how data travels through the program. 
-The developer would have to retrieve this information, either from the documentation, by debugging the code, or by using a combination of search tools and manual inspection. 
-Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
-There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
-It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring visualizations of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
+%For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
 
+%The most popular questions in this category are \textit{Where does this information go?} and \textit{Where is the data coming from?} 
+%Often when assessing the Servlet Parameter vulnerability, both these questions occurred. 
+%For instance, P6 wanted to know where the form data was set and where the data where going to see if the input is every validated.  
+%Similarly, while evaluating the Potential Path Traversal vulnerability, P1 wanted to know where the path originated to determine if it was coming from a secure source.
+%Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. % Why didn't they uses, could be they just didn't feel like going along with the experiment
+%Often, like P1 and P6, participants would describe what they would do but not attempt to do it
+
+
+\noindent\textbf{Tool Implications.}
+The \textsc{Call Hierarchy} tool presents control flow information, but does not give the full picture of how data travels through the program. 
+Developers  have to retrieve this information, either from the documentation, by running the debugger, or by manually inspecting the code.
+As we observed, developers frequently switch between seeking control flow information and data flow information while reasoning about security vulnerabilities.
+Such switching between tools and strategies might induce disorientation~\cite{deAlwis2006disorient}.
+
+Tools that aim to prevent such disorientation should focus on presenting call flow and data flow information simultaneously.
+Such a tool might behave similarly to the \textsc{Call Hierarchy} tool by allowing developers to traverse the call graph, but would also allow the developer to specify a parameter to track. Stepping up the call hierarchy would present information about how that parameter was set in the callee's context.
+
+%There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
+%Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
+%It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring visualizations of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
 
 % B1, 3, 4 (mainly 3)
 % P1, P3, P8
