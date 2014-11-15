@@ -74,9 +74,9 @@
 
 Program analysis tools should help developers answer the questions they ask while assessing the security of their code. 
 To design tools that help developers answer these questions, we must first understand what questions they ask.
-However, we lack a catalog and categorization of such questions. 
+However, we lack a categorized catalog of such questions. 
 We built this categorized catalog by conducting a laboratory experiment with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
-Results of our study suggest that developers may lack support in reasoning about attack surfaces, systematically assessing potential attacks, and locating security-critical components in the code.
+Results of our study suggest that developers may lack support for reasoning about attack surfaces, systematically assessing potential attacks, and locating security-critical components in the code.
 
 
 
@@ -120,21 +120,21 @@ Furthermore, in non-security domains, work that identifies questions has helped 
 
 
 
-In this paper, we report a study conducted to create a better understanding of the information developers seek with using static analysis tools to identify and assess security vulnerabilities in code.
+In this paper, we report a study conducted to create a better understanding of the information developers seek when using static analysis tools to identify and assess security vulnerabilities in code.
 We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\blind{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}}} 
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We report the kinds of questions they asked while doing so, along with the strategies they used to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
 Our work makes three contributions. 
-First, we present a list of questions software developers ask when examining the security of their code.
+First, we present a list of questions software developers ask when security vulnerabilities.
 Second, based on our observations, we discuss the strategies developers use to answer their questions.
 Finally, we evaluate the existing tool support for answering security-related questions.
 
 The remainder of the paper is organized as follows. 
 In Section~\ref{sec:rw}, we discuss previous work related to our own. 
 Section~\ref{sec:meth} outlines the methodology we used to conduct our study and analyze our data. 
-We organize divide the findings of our study into four sections. 
+We divide the findings of our study into four sections. 
 Section~\ref{sec:results-vaf} reports findings related to vulnerabilities, attacks and fixes. 
 Section~\ref{sec:results-ca} discusses questions about the code and the application in which the code resides.
 Section~\ref{sec:results-i} reports findings about individuals and their thought processes.
@@ -294,7 +294,7 @@ All participants either completed or served as teaching assistants for a semeste
 For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in programming experience from 4 years to 10 years, averaging 6.3 years.
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
-Since extracting data from each interview required intensive analysis, we ceased recruitment when we that we had reached saturation and few new questions were emerging from each additional interview.
+Since extracting data from each interview required intensive analysis, we ceased recruitment when we determined that we had reached saturation and few new questions were emerging from each additional interview.
 
 Table~\ref{table:participants} gives additional demographic information on each of the 10 participants. 
 In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.  
@@ -502,10 +502,10 @@ Due to their large number, grouped the categories organize and facilitate discus
 Table~\ref{table:categories} provides an overview of this structure.
 For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
 
-For each each category, we denote the overall number of participants who asked questions in parentheses and list the selected questions with the number of participants that asked each question in parentheses. 
+For each each category, we denote the overall number of participants who asked questions in parentheses and list the selected questions with the number of participants who asked each question in parentheses. 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{x} participants asked \emph{Y}.''
 Note that this work considers a relatively small sample and is exploratory and qualitative in nature.
-Though we present information about the number of participants that ask specific questions, the reader should not infer any qualitative generalizations.
+Though we present information about the number of participants who ask specific questions, the reader should not infer any qualitative generalizations.
 We detail the observations we made and contextualize each category by discussing existing tool support and shortcomings.
 
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
@@ -751,13 +751,13 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 \noindent\textbf{Tool Implications.}
 The answers to some of these questions can be found using existing tool support found inside the IDE. 
 For example, Eclipse's \textsc{open declaration} can find a method's definition. 
-However, in the case of context-dependent questions, developer's could benefit from increased tool support. 
-For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results that occurred within or interacted with critical components.
-Currently developers must manually prioritize search results and determine whether each is security-relevant.
+However, in the case of context-dependent questions, developers could benefit from increased tool support. 
+For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results which occurred within or interacted with critical components.
+Currently, developers must manually prioritize search results and determine whether each is security-relevant.
 
 Developers could also benefit from tool support in searching their applications for code written similarly to the potentially vulnerable code. 
 A tool that supports this process might include references to other parts of the project with similarly structured code, or code that calls a similar set of methods. 
-Such a tool would help developers identify parts of the project that may also contain vulnerabilities, or conversely, strategies for resolving the vulnerability.
+Such a tool would help developers identify other parts of the project that may contain vulnerabilities or, conversely, strategies for resolving the vulnerability.
 %For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
 %Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
 
@@ -768,8 +768,8 @@ Such a tool would help developers identify parts of the project that may also co
 We also extracted questions relating to control flow and calling information. 
 Developers seek information about the methods that get called, and whether they may get called with dirty parameters.
 Participants searched up the call chain, especially while evaluating the Potential Path Traversal vulnerability, trying to understand the possible files that could get opened. 
-Many determined that since all the calls originated in test classes, they could dismiss the vulnerability.
-Thirteen of the 155 distinct questions extracted dealt with acquiring control flow and call information.
+Many determined that because all the calls originated in test classes, they could dismiss the vulnerability.
+Thirteen of the 155 distinct questions dealt with acquiring control flow and call information.
 \\
 
 
@@ -783,29 +783,30 @@ Thirteen of the 155 distinct questions extracted dealt with acquiring control fl
 
 \noindent\textbf{Observations.}
 While exploring the Path Traversal vulnerability, participants sought information about the methods being called. 
-The private method containing this vulnerability was only called by one method, \CodeIn{parseAndCache()}, which was defined directly above it. \CodeIn{parseAndCache()}, which was also private, got called by a public method. Tracing up the chain, the method containing the vulnerability was eventually called from multiple classes that were all contained within a test package.
+The private method containing this vulnerability was only called by one method, \CodeIn{parseAndCache()}, which was defined directly above it. \CodeIn{parseAndCache()}, which was also private, was called by a public method. Tracing up the chain, the method containing the vulnerability was eventually called from multiple classes that were all contained within a test package.
 
-All 10 participants wanted call information for this vulnerability, often asking the question \textit{Where is this method being called?} 
-However, participants used a mix of several different strategies to obtain the same information.
-The most basic strategy was simply skimming the file for method calls, which was error prone because participants could easily miss some calls.
-Other participants used the Eclipse's \textsc{code usage highlighter} tool, which, to a lesser extent, was error prone for the same reason. Further, it only found calls within the current file.
-Another strategy participants employed was the use of Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method. Also, it returned references that occurred in dead code or comments.
+All ten participants wanted call information for this vulnerability, often asking the question, \textit{Where is this method being called?} 
+However, participants used various strategies to obtain the same information.
+The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss some calls.
+Other participants used the Eclipse's \textsc{code usage highlighter} tool, which, to a lesser extent, was error-prone for the same reason. Further, it only found calls within the current file.
+Participants additionally employed Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method. Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identifies proper references to a single method.
-Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enables users to traverse a project's entire call structure; however, it does not identify calls made from framework hooks or APIs.
-Additionally, some participants were unaware of how to access and how to use \textsc{call hierarchy}.
+Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enables users to traverse a project's entire call structure.
+That said, it does not identify calls made from framework hooks or APIs.
+Participants were additionally unaware of how to access and how to use \textsc{call hierarchy}.
 
-Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
+Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked, \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
 \\
 
 \noindent\textbf{Tool Implications.}
 Particularly when resolving security vulnerabilities, developers are concerned with \textit{all} of a method's potential call sites.
-Tools like \textsc{find references} and \textsc{call hierarchy} provide support for locating call information, yet the leave room for extension.
-Our findings suggest that tools that reason about, and notify developers of, calls originating outside the local code could help them answer the questions in this category.
+Tools like \textsc{find references} and \textsc{call hierarchy} provide support for locating call information, yet leave room for extension.
+Our findings suggest that tools that reason about and notify developers of calls originating outside the local code could help them answer the questions in this category.
 
-Despite the existence of tools like \textsc{find references} and \textsc{call hierarchy}, based on our observations, developers face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
+Despite the existence of tools like \textsc{find references} and \textsc{call hierarchy}, developers seem to face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
 Our findings suggest that developers could benefit from tools that reduce the barriers to discover new tools.
-In particular developers could benefit from tools that apprise them of other useful tools like \textsc{find references} and \textsc{call hierarchy}.
-A tool that addresses these needs might detect when the developer is looking for call information (for example, using the `find' tool) and suggest the appropriate tool for finding the information they require. 
+In particular, developers could benefit from tools that apprise them of other useful tools like \textsc{find references} and \textsc{call hierarchy}.
+A tool that addresses these needs might detect when the developer is looking for call information (e.g., using the \textsc{text search} tool) and suggest the appropriate tool for finding the information they require. 
 
 %It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
@@ -813,9 +814,9 @@ A tool that addresses these needs might detect when the developer is looking for
 %%%%%%%%%%%% Data Storage 
 
 \noindent\subsection{\textbf{Data Storage and Flow (10)}}\label{dsf}
-Much like the questions related to \emph{\textbf{Control Flow and Call Information}}, participants also asked questions about to the data being stored and carried throughout the program. 
-Often participants wanted to understand the type of data being collected and stored, where the data came from, and where it was going. 
-For example, participants wanted to determine where data was coming from, whether it was generated by the application or passed in by the user, and where it was going, i.e., whether it was being stored in the database.
+Much like the questions related to \emph{\textbf{Control Flow and Call Information}}, participants also asked questions about the data being stored in and carried throughout the program. 
+Participants often wanted to understand the type of data being collected and stored, where the data came from, and where it was going. 
+For example, participants wanted to determine whether it was generated by the application or passed in by the user, as well as where it was going (i.e., whether it was being stored in the database).
 Eleven of the 155 distinct questions fit into this category.
 \\
 
@@ -832,9 +833,10 @@ Eleven of the 155 distinct questions fit into this category.
 All 10 participants had questions regarding the data pipeline.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
-While exploring this vulnerability, participants adapted tools like the call hierarchy tool to also explore the program's data flow. 
+While exploring this vulnerability, participants adapted tools such as the call hierarchy tool to also explore the program's data flow. 
 Specifically, participants used the call hierarchy tool in combination with manual searching. 
-As we discussed in \emph{\textbf{Control Flow and Call Information}}, the call hierarchy tool helped participants locate callers to the methods containing vulnerable code. For example, once participants like P6 located the caller, they manually searched for the locations where the actual parameters were set.
+As we discussed in \emph{\textbf{Control Flow and Call Information}}, the call hierarchy tool helped participants locate callers to the methods containing vulnerable code.
+For instance, once participants like P6 located the caller, they manually searched for the locations where the actual parameters were set.
 \\
 
 %For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
