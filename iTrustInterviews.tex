@@ -121,7 +121,7 @@ Furthermore, in non-security domains, work that identifies questions has helped 
 
 
 In this paper, we report a study conducted to create a better understanding of the information developers seek when using static analysis tools to identify and assess security vulnerabilities in code.
-We conducted a laboratory experiment with 10 developers familiar with the iTrust software system.\footnote{\blind{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}}} 
+We conducted a laboratory experiment with ten developers familiar with the iTrust software system.\footnote{\blind{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}}} 
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We report the kinds of questions they asked while doing so, along with the strategies they used to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
@@ -212,7 +212,7 @@ Our study discovers the questions developers have about potential code vulnerabi
 
 \section{Methodology}
 \label{sec:meth}
-We conducted a laboratory experiment with 10 software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
+We conducted a laboratory experiment with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
 Section \ref{rqs} outlines the research questions we sought to answer. 
 Section \ref{studyDesign} details how the study was designed and Section \ref{dataAnalysis} describes how we performed data analysis.
 Experimental materials can be found online.~\footnote{\blind{\url{http://www4.ncsu.edu/~bijohnso/security-questions.html}}}
@@ -291,12 +291,12 @@ Figure \ref{fig:environment} depicts the configuration of the integrated develop
 To simulate a more realistic work environment, participants were required to have significant experience working on the iTrust code base. 
 All participants either completed or served as teaching assistants for a semester-long software engineering course that focused on developing iTrust.
 
-For our experiment, we recruited 10 software developers, 6 students and 4 professionals. Participants ranged in programming experience from 4 years to 10 years, averaging 6.3 years.
+For our experiment, we recruited ten software developers, six students and four professionals. Participants ranged in programming experience from 4 years to 10 years, averaging 6.3 years.
 All interviews were conducted in-person.
 We recruited participants from personal contacts and class rosters, using snowball sampling to find additional qualified participants.
 Since extracting data from each interview required intensive analysis, we ceased recruitment when we determined that we had reached saturation and few new questions were emerging from each additional interview.
 
-Table~\ref{table:participants} gives additional demographic information on each of the 10 participants. 
+Table~\ref{table:participants} gives additional demographic information on each of the ten participants. 
 In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.  
 Since the focus of our study is to identify the questions developers ask independent of their background, we report on demographic information to ensure a degree of diversity in our sample and contextualize participants' responses.
 
@@ -363,7 +363,7 @@ The two question sets for each session were then iteratively compared against ea
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
 Participants ask both explicit and implicit questions. 
-Drawing from previous work on utterance interpretation, we developed 5 criteria to assist in the uniform classification of participant statements~\cite{letovsky1987cognitive}. 
+Drawing from previous work on utterance interpretation, we developed five criteria to assist in the uniform classification of participant statements~\cite{letovsky1987cognitive}. 
 A statement was coded as a question only if it met one of the following criteria:
 
 \begin{itemize}
@@ -384,7 +384,7 @@ A statement was coded as a question only if it met one of the following criteria
 Using the criteria outlined in the previous section, two of the authors independently coded each session. 
 When we identified an explicit question or implicit question, which is a statement that satisfies one or more of the criteria, we marked the transcript, highlighted the participant's original statement, and clarified the question being asked.
 Question clarification typically entailed rewording the question to best reflect the information the participant is trying to acquire.
-From the 10 sessions, the first coder extracted 421 question statements; the other coder extracted 389. 
+From the ten sessions, the first coder extracted 421 question statements; the other coder extracted 389. 
 
 To make sure our list of questions was exhaustive, two independent reviewers coded the transcripts using the criteria.
 It was sometimes difficult to determine what statements should be extracted as questions; the criteria helped ensure both reviewers only highlighted the statements that reflected actual questions. 
@@ -428,7 +428,7 @@ In the first stage, we formed question clusters by grouping questions that ident
 In this phase we focused on rephrasing similar questions and grouping duplicates.
 For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using \CodeIn{PreparedStatements}?} and P2 asked, \textit{Where can I get more information on path traversal?} 
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
-At this stage, we discarded 5 unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
+At this stage, we discarded five unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
 
 \begin{table*} 
 \centering
@@ -497,7 +497,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \section{Interpreting the Results}
 \label{sec:results}
 
-In the next 4 sections, we discuss our experiment's results using the categories we described in the previous section.
+In the next four sections, we discuss our experiment's results using the categories we described in the previous section.
 Due to their large number, grouped the categories organize and facilitate discussion about our findings. 
 Table~\ref{table:categories} provides an overview of this structure.
 For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
@@ -633,7 +633,7 @@ All participants proposed solutions that involved applying one or both of these 
 Specifically, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
-While exploring the Predictable Random vulnerability, many participants, including 1, 2, and 6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
+While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 \\
 
 %How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
@@ -830,7 +830,7 @@ Eleven of the 155 distinct questions fit into this category.
 
 \noindent\textbf{Observations.}
 
-All 10 participants had questions regarding the data pipeline.
+All ten participants had questions regarding the data pipeline.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
 While exploring this vulnerability, participants adapted tools such as the call hierarchy tool to also explore the program's data flow. 
@@ -889,7 +889,7 @@ They ask about the history of the code and the context in which the code resides
 
 
 \noindent\textbf{Observations.}
-Nine of the 10 participants asked questions about the background of the code; most participants wanted to know what parts of the code did.
+Nine of the ten participants asked questions about the background of the code; most participants wanted to know what parts of the code did.
 Participants asked \textit{What does this code do?} about all four vulnerabilities.
 
 Participants were interested in the history of the code.
@@ -1159,8 +1159,8 @@ For example, if the method in question is called \CodeIn{validate()} and takes a
 
 \noindent\subsection{\textbf{Resources and Documentation (10)}}\label{rd}
 
-Many participants found themselves in situations where they would use outside resources and documentation to decide how to proceed regarding a given vulnerability.
-For example, when assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information regarding the vulnerability. 
+Many participants indicated they would use outside resources and documentation to decide how to proceed with a given vulnerability.
+For example, when assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
 Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. 
 Ten of the 155 distinct questions fall into this category. 
 \\
@@ -1175,7 +1175,7 @@ Ten of the 155 distinct questions fall into this category.
 
 
 \noindent\textbf{Observations.}
-All 10 participants had questions regarding the resources and documentation available to help them assess a given vulnerability. 
+All ten participants had questions regarding the resources and documentation available to help them assess a given vulnerability. 
 Even with the links to external resources provided by two of the vulnerabilities, participants still had questions about those resources and resources they could potentially use. 
 Some participants used the links provided by FSB to get more information about the vulnerability.
 Participants who did not click the links in the notification had a few reasons for not doing so.
@@ -1369,7 +1369,7 @@ It remains to be seen whether our design guidelines apply to a broader set of pr
 \section{Conclusion}
 \label{sec:concl}
 This paper reported on an experiment conducted to discover the questions developers ask when identifying and assessing security vulnerabilities in software code.
-During the experiment, we asked 10 software developers to walk us through their thoughts as they assessed potential security vulnerability found in iTrust, a medical records web application.
+During the experiment, we asked ten software developers to walk us through their thoughts as they assessed potential security vulnerability found in iTrust, a medical records web application.
 We presented the results of our experiment as a catalog of categorized questions developers ask when assessing security vulnerabilities.
 Our findings have several implications for the design of tools that can be used when attempting to answer the questions developers have, such as providing support for reason about possible system attacks.
 
