@@ -73,7 +73,7 @@
 \begin{abstract}
 
 Program analysis tools should help developers answer the questions they ask while assessing the security of their code. 
-To design tools that help developers answer these questions, we must first understand what questions they ask.
+To design effective tools, we must first understand which questions they ask.
 However, we lack a categorized catalog of such questions. 
 We built this categorized catalog by conducting a laboratory experiment with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
 Results of our study suggest that developers may lack support for reasoning about attack surfaces, systematically assessing potential attacks, and locating security-critical components in the code.
@@ -498,7 +498,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \label{sec:results}
 
 In the next four sections, we discuss our experiment's results using the categories we described in the previous section.
-Due to their large number, grouped the categories organize and facilitate discussion about our findings. 
+Due to their large number, grouped the categories to organize and facilitate discussion about our findings. 
 Table~\ref{table:categories} provides an overview of this structure.
 For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
 
@@ -569,7 +569,7 @@ Finally, the tool should present information about the trade-offs associated wit
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
 \noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (10)}}\label{pupa}
-Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the servlet parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
+Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
 Eleven of the 155 distinct questions we gathered belong in this category.
 \\
 
@@ -646,7 +646,7 @@ However, we imagine that applying suggested fixes with performance trade-offs th
 Our observations suggest the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
 
 %False positives 
-Accordingly, developers could benefit from tool support in assessing the implications of suggested fixes.
+Accordingly, developers could benefit from tool support for assessing the implications of suggested fixes.
 Existing tools, such as \textsc{Quick Fix Scout} begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
 \textsc{Quick Fix Scout} helps developers consider the implications of implementing a fix based on a single dimension, defect count.
 Security tools that include fix suggestions should encourage developers to consider the various tradeoffs associated with alternative fixes, for example performance reductions.
@@ -755,7 +755,7 @@ However, in the case of context-dependent questions, developers could benefit fr
 For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results which occurred within or interacted with critical components.
 Currently, developers must manually prioritize search results and determine whether each is security-relevant.
 
-Developers could also benefit from tool support in searching their applications for code written similarly to the potentially vulnerable code. 
+Developers could also benefit from tool support for searching their applications for code written similarly to the potentially vulnerable code. 
 A tool that supports this process might include references to other parts of the project with similarly structured code, or code that calls a similar set of methods. 
 Such a tool would help developers identify other parts of the project that may contain vulnerabilities or, conversely, strategies for resolving the vulnerability.
 %For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
@@ -787,7 +787,7 @@ The private method containing this vulnerability was only called by one method, 
 
 All ten participants wanted call information for this vulnerability, often asking the question, \textit{Where is this method being called?} 
 However, participants used various strategies to obtain the same information.
-The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss some calls.
+The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
 Other participants used the Eclipse's \textsc{code usage highlighter} tool, which, to a lesser extent, was error-prone for the same reason. Further, it only found calls within the current file.
 Participants additionally employed Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method. Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identifies proper references to a single method.
@@ -874,8 +874,8 @@ Such a tool might behave similarly to the \textsc{Call Hierarchy} tool by allowi
 \noindent\subsection{\textbf{Code Background and Functionality (9)}}
 \label{cbf}
 Participants also asked questions concerning the background and intended function of the code being analyzed. 
-Seventeen of the 155 distinct questions extracted fit into this category. 
-The questions in this category focus on the code, such as determining the role a component or piece of code plays in the entire system or program.
+Seventeen of the 155 distinct questions we extracted fit into this category. 
+The questions in this category focus on the code, such as determining the role a component plays in the entire system or program.
 They ask about the history of the code and the context in which the code resides.
 \\
 
@@ -889,13 +889,13 @@ They ask about the history of the code and the context in which the code resides
 
 
 \noindent\textbf{Observations.}
-Nine of the ten participants asked questions about the background of the code; most participants wanted to know what parts of the code did.
-Participants asked \textit{What does this code do?} about all four vulnerabilities.
+Nine of the ten participants asked questions about the background of the code; most participants wanted to know how the code functioned.
+Participants asked, \textit{What does this code do?} about all four vulnerabilities.
 
 Participants were interested in the history of the code.
 For example, they asked why it was written a specific way, who wrote the code, or how much effort had been put into the code.
 P2 asked how much effort had been put into the code to determine whether he trusted that the code was written securely.
-While assessing the Potential Path Traversal vulnerability, some participants came to the realization that the authors of the code could help answer some questions. 
+While assessing the Potential Path Traversal vulnerability, some participants came to the realization that the code's authors could help answer some questions. 
 For example, P10 stated that he would normally ask his team members for background on how the code worked.
 Further, five participants wanted to know why the code was written the way it was written; this question occurred in all four vulnerabilities.
 \\
@@ -931,8 +931,8 @@ Perhaps tools could use this information to prioritize vulnerabilities or direct
 
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
 The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
-For example, often when assessing the vulnerabilities, participants wanted to know if the code was used for testing functionality or in production. 
-Nine of the 155 distinct questions revolved around how the code works in the context of a portion of or the entire system.
+For instance, often when assessing the vulnerabilities, participants wanted to know if the code was used for testing functionality or in production. 
+Nine of the 155 distinct questions addressed how the code works with respect to a part of or the whole system.
 \\
 
 \noindent\emph{What is the context of this bug/code? (4)} \\
@@ -953,25 +953,23 @@ Both of these questions came up for three of the four vulnerabilities.
  
 P7 had questions concerning the context of the code associated with the Potential Path Traversal and Predictable Random vulnerabilities.
 For the former vulnerability, he wanted to know the general context in which the code is used; for the latter, he wanted to know the legal context in which the code is being used.
-P7, like others, asked these questions but did not follow through to answer them. 
 P2, when thinking about how he might determine the context in which the code associated with the Predictable Random vulnerability is used, stated that the tool would have been more useful if it could tell him this information.
 He followed this statement with the notion that this sort of tool may be ``unrealistic.'' 
 % B1, 2, 3 -- mostly 1(?)
 
-
 % B1, 2, 3 -- mostly 2(?)
-Related to determining the general context is determining if the code associated with the vulnerability is used to test the system. 
+Participants also tried to determine if the code associated with the vulnerability was used to test the system. 
 P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
-To answer this question, sometimes participants used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations the code of interest is being called.
+To answer this question, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations the code of interest is being called.
 Compared to the tool support provided for determining general context, participants could answer this question relatively easily using existing tool support.
 \\
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
 \noindent\textbf{Tool Implications.}
-Similar to questions asked about code background and functionality, it is not obvious what tool support for answering these kinds of questions would look like because it was not always obvious why participants wanted these bits of information. 
+Similar to questions asked about code background and functionality, it is unclear what tool support for answering these kinds of questions would look like, because it was not always obvious why participants wanted these bits of information. 
 For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
-However, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
-Most of the questions in this category can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make any relevant developer written documentation more easily available and searchable for information of interest.
+Yet, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
+Most of the questions in this category can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make any relevant developer-written documentation more easily available and searchable for information of interest.
 When specifically helping developers determine when potentially vulnerable code is test code, this could be added to the notification so the developer is aware of that detail before expending the effort to fix something that will not affect the finished product.
 
 
@@ -994,26 +992,26 @@ Three of the 155 distinct questions we found fall into this category.
 
 \noindent\textbf{Observations.}
 % seemed mostly a concern for B3, but also B1 and B4 for some
-Eight participants had questions regarding the level of interaction end-user have with the code of interest. 
-Though none of these questions got asked more than others, some questions co-occurred for a given vulnerability.
+Eight participants asked questions regarding the level of interaction end-users have with the code of interest. 
+Though none of these questions were asked more than others, some questions co-occurred for a given vulnerability.
 For example, when assessing the Potential Path Traversal vulnerability, P1 and P6 wanted to know if the input was coming from the user along with whether the input is being validated in the event that the input does come from the user.
 For these participants, finding the answer required manual inspection of surrounding and relevant code. 
-For instance, when P6 manually inspected code and found a \CodeIn{Validator} method that he also manually inspected to determine if it was doing input validation.
+For instance, P6 found a \CodeIn{Validator} method, which he manually inspected, to determine if it was doing input validation.
 % B1, 3, 4 -- mostly 3
 
 % user access
 % B1
 % P1, P6: all these test data generator so no user access (how did he get to this?)
 % P2: vulnerability only exists if user can access this code (used call hierarchy)
-When assessing the Potential Path Traversal vulnerability, four participants had questions regarding whether end-users had access to the part of the code being analyzed.
+When assessing the Potential Path Traversal vulnerability, four participants asked whether end-users had access to the part of the code being analyzed.
 P2 used the called hierarchy to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability only existed if the user had access to the code.
 P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code should be fine as it is written.
 Though participants found the answers to their questions, it took time for them to get the answer using tools meant to answer other questions.
 \\
 
 \noindent\textbf{Tool Implications.}
-Research exists that studies attack surfaces, or vectors that predict where an unauthorized user may be able to gain access to the system.
-The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. These types of tools can help answer \textit{Is there input coming from the user?} 
+Research exists that studies attack surfaces, or the sum of the vectors that an unauthorized user may use to gain access to the system.
+The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. These types of tools can help answer, \textit{Is there input coming from the user?} 
 However, developers may lack tool support for navigating through and reasoning about attack surfaces to answer the others.
 Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
 Answering \textit{Does the user input get validated/sanitized?} may also require providing an explicit, perhaps visual, connection between the attack surface and the code the input touches.
@@ -1031,10 +1029,10 @@ Answering \textit{Does the user input get validated/sanitized?} may also require
 
 \noindent\subsection{\textbf{Developer Planning and Self-Reflection (8)}} \label{dpr}
 
-Another kind of question participants asked when assessing potential security vulnerabilities concerned their current status or plans for next steps in terms of assessing or removing the vulnerability. 
+Another kind of question participants asked when assessing potential security vulnerabilities regarded their current status or plans for next steps in terms of assessing or removing the vulnerability. 
 All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.
 For example, when some participants thought they had an idea of what the problem might be, they stopped and took different measures to re-assess the code or notification to make sure they understood.
-Fourteen of the 155 distinct questions extracted fit into this category. 
+Fourteen of the 155 distinct questions fit into this category. 
 \\
 
 \noindent\emph{Do I understand? (3)} \\
@@ -1056,12 +1054,12 @@ The questions asked in this category are questions developers ask themselves abo
 These questions occurred in all four vulnerabilities.
 Participants most frequently asked if they understood the entirety of the situation. 
 This question was typically followed by looking back at the error message details. 
-For example, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he started exploring, so he went back to reread the error message before investigating further.
+For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he started exploring, so he went back to reread the error message before investigating further.
 \\
 
 \noindent\textbf{Tool Implications.}
-Though, in general, there is no obvious solution that can help developers answer many of these questions, including \textit{Do I understand?}, there are ways to provide information or instructions developers can follow to more easily determine the answer to some of them for themselves. 
-For example, one question participants asked was \textit{Have I seen this before?}
+Though there is no one solution to help developers answer these questions, tools that track developers' previous vulnerability encounters may begin to guide to the answers. 
+For example, one question participants asked was, \textit{Have I seen this before?}
 A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
 The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
 Another question that a tool could potentially help answer is \textit{What was that again?} 
@@ -1087,8 +1085,8 @@ We categorized six of the 155 distinct questions into this category.
 
 \noindent\textbf{Observations.}
 % questions in this category appeared at least once for each vulnerability -- especially true for "what is this concept" question, which spanned all 4
-Seven participants had questions regarding the concepts and terms relevant to the potential vulnerability being communicated. 
-Questions in this category appeared at least once for each vulnerability; this was especially true for know what a given concept or feature was, which spanned all four vulnerabilities. 
+Seven participants had questions regarding the concepts and terms relevant to the potential vulnerability under consideration. 
+Questions in this category appeared at least once for each vulnerability.
 Six of the seven participants who had questions in this category asked the question \textit{What is this concept?} for at least one of the potential vulnerabilities.
 
 % what is this concept (6) -- P2, 5, 8, 10
@@ -1096,8 +1094,8 @@ Six of the seven participants who had questions in this category asked the quest
 % P7/P8: what is CSRF token --> no link, wikipedia
 % P4: what is servlet and how relates to client control --> no link (said would have linked some info on that)
 
-When a link was available for more information, and participants saw it, they used the link to get more information about the concept of interest.
-For example, while assessing the Potential Path Traversal vulnerability, P2 was unsure of what path traversal was so he clicked the link provided by FSB that said ``path traversal attack'' to get more information.
+Participants often clicked links leading to more information.
+For example, while assessing the Potential Path Traversal vulnerability, P2, unsure of what path traversal was, clicked the link labeled ``path traversal attack'' provided by FSB to get more information.
 If a link was not available, they went to the web to get more information or noted that the notification could have included more information on those concepts.
 While parsing the information provided for the Predictable Random vulnerability, P7 and P8 did not know what CSRF token was.
 The notification for this vulnerability did not include links so they searched the web for more information. 
@@ -1108,12 +1106,12 @@ When asked what information he would like to see added to the notification for t
 In general, if a developer does not have experience with a particular feature or concept, they may have more difficulty understanding a problem in their code pertaining to that concept~\cite{wiedenbeck1993mental}.
 Not all developers have the same experiences, so it seems important that developers who do not understand the concepts involved in potential security vulnerabilities are able to easily find the means to gain that understanding.
 Sometimes, FSB provides links to information regarding the concepts involved. 
-However, some participants did not use them because they did not know they existed until the first author pointed them out; because of this, they usually did a web search themselves to find more information.
+However, some participants did not use them because they did not know they existed until the first author pointed them out; as a result, they usually did a web search to find more information.
 
 Tools could provide the desired information by placing links in more visible areas.
-For example, tools could nest definitions and explanations inside collapsible windows within the error message text, next to the concept it relates to. 
-One potential downfall to this solution is that developers that understand the concepts will likely not use the links, and maybe even find them distracting.   
-Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code~\cite{fritz2010degree}, tools could present additional information only to developers that needed it.
+For instance, tools could nest definitions and explanations inside collapsible windows within the error message text, next to the concept it relates to. 
+One potential downfall to this solution is that developers who understand the concepts will likely not use the links, and maybe even find them distracting.   
+Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code~\cite{fritz2010degree}, tools could present additional information only to developers who needed it.
 % Very obvious trying to plug direction of my research but still a possible direction for this :)
 %We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
 
@@ -1122,25 +1120,26 @@ Perhaps if tools had access to models that represent a developer's conceptual kn
 \noindent\subsection{\textbf{Confirming Expectations (1)}}\label{ce}
 % possibly could be put with developer planning/self-reflection OR code background and function?
 
-A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect it to be doing. 
+A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect. 
 Though only four participants asked questions in this category, we believe there are implications for tools that worth communicating and exploring further. 
-The distinct question asked in this category was \textit{Is this doing what I expect it to?} 
+The distinct question asked in this category was, \textit{Is this doing what I expect it to?} 
 \\
 
 %Swap categories?
 \noindent\textbf{Tool Implications.} Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
-As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function; for a subset of our participants, this was the case. 
+As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function. 
+For a subset of our participants, this was the case. 
 We only identified one distinct question, however, based on our observations, there are at least two ways this question can be interpreted and each requires tool support to answer.
 %automatic resolution
 One participant located a possible solution from a web resource. 
-He wanted to know if applying the suggested solution would do what he expected it to do. 
-Tool support for answering this question might allow the developer to experiment with the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix does.
+He wanted to know if applying the suggested solution would do what he expected. 
+Tool support for answering this question might allow the developer to experiment with the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix accomplishes.
 
 %easy access to code documentation 
-The other participants wanted to know information pertaining to how they believed the code does or should work, typically from documentation when available. 
-Answering this question in this context is relatively simple when documentation is available, however, if the code is not imported code, the change of documentation being included and easily accessible is reduced.
-One participant wanted to know if some code written by the project's developers worked as he expected.
-While investigating this, he hovered over the method to view the javadoc, but because one did not exist he had to use \textsc{open declaration} to find the answer.
+The other participants sought documentation on how they the code works. 
+Answering this question in this context is relatively simple when documentation is available.
+One participant wanted to know if some code written by the project's developers worked as he anticipated.
+While investigating this, he hovered over the method to view the javadoc, but because one did not exist, he had to use \textsc{open declaration} to find the answer.
 Perhaps a tool that uses patterns and elements names in the code to automatically generate documentation could help developers in these  situations.
 For example, if the method in question is called \CodeIn{validate()} and takes a String as input and has a condition with an error message or thrown exception, documentation could be generated to communicate that the method is used to validate string input without the developer having to figure it out.
 
@@ -1176,7 +1175,7 @@ Ten of the 155 distinct questions fall into this category.
 
 \noindent\textbf{Observations.}
 All ten participants had questions regarding the resources and documentation available to help them assess a given vulnerability. 
-Even with the links to external resources provided by two of the vulnerabilities, participants still had questions about those resources and resources they could potentially use. 
+Even with the links to external resources provided by two of the vulnerabilities, participants still had questions about available resources. 
 Some participants used the links provided by FSB to get more information about the vulnerability.
 Participants who did not click the links in the notification had a few reasons for not doing so.
 For some participants, the hyperlinked text was not descriptive enough to know what information the tool was offering; others did not know if they could trust the information they found.
@@ -1184,19 +1183,19 @@ For some participants, the hyperlinked text was not descriptive enough to know w
 Some participants found themselves clicking the links provided by FSB thinking they would find what they are looking for, to find that they actually had not. 
 For example, P2 clicked the first link on path traversal while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
 When he did not see that information, he had to go back and attempt another web search for that information. 
-A few participants did not know the links existed so they typically either searched the web or noted other strategies they might use, such as asking other developers on the project.
+A few participants did not know the links existed, so they typically either searched the web or noted other strategies they might use, such as asking other developers on the project.
 \\
 
 \noindent\textbf{Tool Implications.}
 %Fix Sentence
 Some tools link to external documentation that developers can use to attempt to answer some of these questions, FSB being one of them. 
-Though links to external documentation and resources can provide answers to some of these questions, they do not help answer questions concerning the reliability of the resource nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code.
-It seems reliability of the resource would be especially important for making changes based on the resource in a secure system.
+Though links to external documentation and resources can provide answers to some of these questions, they do not help answer questions concerning the reliability of the resource, nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code.
+It seems the reliability of the resource would be especially important for making changes based on the resource in a secure system.
 %Information too complex, not sure how to apply 
 
 Lack of support for answering these questions, especially questions concerning reliability, may have contributed to participants not clicking the links in many situations.  
-Tools might consider including information regarding the reliability of the resources provided; one way to do this is to associate the link with peers who have visited it.
-Also, to help answer questions about other team members' knowledge of the code, tools may be able to borrow ideas from previous research.
+Tools might consider including information about the reliability of the resources provided; one way to do this is to associate the link with peers who have visited it.
+Moreover, to help answer questions about other team members' knowledge of the code, tools may be able to borrow ideas from previous research.
 Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements. However, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
 
 
@@ -1220,8 +1219,8 @@ Nine of the 155 distinct questions we extracted fall into this category.
 \noindent\textbf{Observations.}
 %[ACCESSIBILITY (4 letter word)]
 Some of the questions we extracted seemed to deal with having access to or knowing how to use the tools needed to complete a certain task. 
-Participants sometimes found themselves in situations where they needed information or to take action but could not determine how to invoke the tool or possibly did not know what tool they would use at all. 
-This seems to point to a tool awareness or education problem.
+Participants sometimes found themselves in situations where they needed information but could not determine how to invoke the tool or possibly did not know what tool they would use at all. 
+This seems to indicate a tool awareness or education problem.
 
 %[Presentation of tool information]
 Other questions dealt with the presentation of information provided by the tool. 
@@ -1233,7 +1232,7 @@ However, some participants found it difficult to process this information.
 
 \noindent\textbf{Tool Implications.}
 Developers' ability to understand and effectively interact with tools has been the focus of many research studies. 
-However, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
+Yet, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
 Many of these questions may require the input of other developers to be answered effectively. 
 For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
 Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
@@ -1248,9 +1247,9 @@ A tool that supports answering these questions might allow developers to easily 
 
 \noindent\subsection{\textbf{Bug Severity and Ranking (5)}}\label{bsr}
 
-Some participants had questions regarding the severity or ranking of the bug being reported by FSB. 
-These questions dealt with general bug severity questions and questions specifically about how the tool communicates severity and ranking. 
-Four of the 155 distinct questions extracted fall into this category. 
+Some participants asked questions regarding the severity or ranking of the bug being reported by FSB. 
+These included general bug severity questions and questions specifically about how the tool communicates severity and ranking. 
+Four of the 155 distinct questions fall into this category. 
 \\
 
 \noindent\emph{How serious is this bug? (2)} \\
@@ -1258,8 +1257,8 @@ Four of the 155 distinct questions extracted fall into this category.
 \emph{What do the bug rankings mean? (2)} \\
 
 \noindent\textbf{Observations.}
-Five participants had questions related to the seriousness of the vulnerability being assessed, and sometimes those surrounding it. 
-Most of these questions came from participants wanting to know more about the tool's way of ranking the vulnerabilities in the code.
+Five participants had questions concerning the seriousness of the vulnerability being assessed, and sometimes those surrounding it. 
+Most of these questions came from participants wanting to know more about the tool's method of ranking the vulnerabilities in the code.
 Participants who attempted to interpret the tool's severity and ranking metrics often had difficulty understanding what they meant. 
 For example, when assessing the Potential Path Traversal vulnerability, P1 discovered the rank, severity, and confidence information provided by the tool. 
 He noted that it would be helpful and added it to his assessment process for the following vulnerabilities.
@@ -1273,7 +1272,7 @@ Techniques and tools have been developed for static analysis alert prioritizatio
 It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
 %over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
 Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity or ranking of a potential vulnerability.
-For example, instead of FSB using phrases and numbers to represent severity, priority, and rank, perhaps FSB could use one scale where one value can tell you how important the vulnerability is in comparison to the space of other vulnerabilities.
+For example, instead of FSB using phrases and numbers to represent severity, priority, and rank, perhaps FSB could use one scale in which one value can tell you how important the vulnerability is in comparison to the space of other vulnerabilities.
 
 %%%%%%%%%%%% Error Messages
 
@@ -1281,7 +1280,7 @@ For example, instead of FSB using phrases and numbers to represent severity, pri
 
 Participants asked questions concerning the content of the error messages attached to the notifications. 
 FSB provided long and short descriptions of each vulnerability. 
-Participants read and reasoned about these notifications to guide their analysis.
+Participants read and contemplated these notifications to guide their analysis.
 Three of the 155 distinct questions we extracted fall into this category.
 \\
 
@@ -1290,7 +1289,7 @@ Three of the 155 distinct questions we extracted fall into this category.
 \emph{What code caused this error message to occur? (2)} \\
 
 \noindent\textbf{Observations.}
-Six participants had questions about the vulnerability notifications; five of these participants asked \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
+Six participants had questions about the vulnerability notifications; five of these participants asked, \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
 More interestingly, they also asked questions about how to relate information contained in the error message back to the code. 
 For example, the Predictable Random vulnerability notes that a predicable random value could lead to an attack when being used in a secure context. 
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
@@ -1298,8 +1297,7 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 \\
 
 \noindent\textbf{Tool Implications.}
-Determining what an error message says is a relatively simple action for the developer to complete.
-However, developers also asked about the connections between the error message and the code.
+Developers asked about the connections between the error message and the code.
 FSB attempts to answer this type of question by placing an icon in the gutter of the editor on the line containing vulnerable code. 
 However, if the error message relates to multiple lines of code, the icon's location does not entirely indicate the connection between the code and the error message. 
 Research has attempted to help developers make stronger connections between the error message they receive and the relevant code using visual overlays in the code editor~\cite{barik14visual}.
@@ -1313,37 +1311,36 @@ Based on our observations, tools should consider:
 
 \begin{itemize}
 %Understanding Alternative Fixes and Approaches
-\item presenting real-world examples from trusted security authorities,
+\item presenting real-world examples from trusted security authorities
 %present
-\item supporting systematic reasoning about potential attacks,
+\item supporting systematic reasoning about potential attack
 %application of fix
-\item presenting the trade-offs associated with alternative solutions,
+\item presenting the trade-offs associated with alternative solutions
 %Relationship between bugs
-\item supporting reasoning about related vulnerabilities,
+\item supporting reasoning about related vulnerabilities
 %newGroup
 %locating info
-\item helping developers locate security-critical components,
+\item helping developers locate security-critical components
 %control flow
-\item increasing tool awareness by recommending more effective strategies,
+\item increasing tool awareness by recommending more effective strategies
 %data storage and flow
-\item supporting the simultaneous exploration of control flow and data flow,
+\item supporting the simultaneous exploration of control flow and data flow
 %app context and usage
-\item helping developers assess how code is used within the context of an application,
+\item helping developers assess how code is used within the context of an application
 %End User Interaction
-\item helping developers reason about attack surfaces,
+\item helping developers reason about attack surfaces
 %Planning and Self-Reflection
-\item presenting information about developers' previous vulnerability encounters,
+\item presenting information about developers' previous vulnerability encounters
 %Understanding concepts
-\item providing links to relevant information within the notification,
+\item providing links to relevant information within the notification
 % Resources and Docs
-\item providing access to knowledgeable resources,
+\item providing access to knowledgeable resources
 % Interacting with tools
 %\item 
 %Severity and ranking
-\item using simple one-dimensional metrics for prioritizing vulnerabilities, and
+\item using simple one-dimensional metrics for prioritizing vulnerabilities
 %
 \item using visual overlays to make connections between the notification and the code.
-
 
 \end{itemize}
 %
@@ -1358,7 +1355,7 @@ Further, participants were equipped with FSB, an open source static analysis too
 Developers using other more sophisticated tools might ask slightly different questions.
 We cannot and do not claim that we have identified a comprehensive list of questions.
 
-We also only examined developers' interactions with four specific vulnerabilities in one Java project. 
+Finally, we only examined developers' interactions with four specific vulnerabilities in one Java project. 
 It remains to be seen whether our design guidelines apply to a broader set of projects.
 
 
@@ -1369,9 +1366,9 @@ It remains to be seen whether our design guidelines apply to a broader set of pr
 \section{Conclusion}
 \label{sec:concl}
 This paper reported on an experiment conducted to discover the questions developers ask when identifying and assessing security vulnerabilities in software code.
-During the experiment, we asked ten software developers to walk us through their thoughts as they assessed potential security vulnerability found in iTrust, a medical records web application.
-We presented the results of our experiment as a catalog of categorized questions developers ask when assessing security vulnerabilities.
-Our findings have several implications for the design of tools that can be used when attempting to answer the questions developers have, such as providing support for reason about possible system attacks.
+During the experiment, we asked ten software developers to describe their thoughts as they assessed potential security vulnerabilities in iTrust, a medical records web application.
+We presented the results of our experiment as a catalog of categorized questions.
+Our findings have several implications for the design of program analysis tools. Our results suggest that tools should help developers reason about attack surfaces, support more systematic assessment of potential attacks, and help developers locate security-critical components in the code.
 
 
 
