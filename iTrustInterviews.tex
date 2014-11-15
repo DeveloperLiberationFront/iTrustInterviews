@@ -497,14 +497,15 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \section{Interpreting the Results}
 \label{sec:results}
 
-In the next 4 sections, we discuss the results of our experiment using the categories we described in the previous section.
-Due to the large number of categories, we put the categories into groups to organize and facilitate discussion about our findings. Table~\ref{table:categories} provides an overview of this structure.
+In the next 4 sections, we discuss our experiment's results using the categories we described in the previous section.
+Due to their large number, grouped the categories organize and facilitate discussion about our findings. 
+Table~\ref{table:categories} provides an overview of this structure.
 For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
 
-For each each category, we denote the overall number of participants that asked questions in parentheses and list the selected questions with the number of participants that asked each question in parentheses. 
+For each each category, we denote the overall number of participants who asked questions in parentheses and list the selected questions with the number of participants that asked each question in parentheses. 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{x} participants asked \emph{Y}.''
-Note that this work considers of a relatively small sample and is exploratory and qualitative in nature.
-Though we present information about the number of participant that ask specific questions, the reader should not infer any qualitative generalizations.
+Note that this work considers a relatively small sample and is exploratory and qualitative in nature.
+Though we present information about the number of participants that ask specific questions, the reader should not infer any qualitative generalizations.
 We detail the observations we made and contextualize each category by discussing existing tool support and shortcomings.
 
 \section{Results: Vulnerabilities, Attacks, and Fixes, Oh My!}
@@ -518,8 +519,8 @@ We detail the observations we made and contextualize each category by discussing
 
 When resolving security vulnerabilities, participants encountered alternative approaches that appeared to achieve the desired functionality more securely.
 For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement}. 
-Participants found many sources for alternative fixes, including web resources and even code located in other parts of the project.
-When presented with alternative approaches, participants compared the alternative with the current code and assessed the applicability of the alternative. 
+Participants discovered many sources for alternative fixes, including web resources and even code located in other parts of the project.
+When presented with alternative approaches, they compared the alternative with the current code and assessed the applicability of the alternative. 
 Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
 \\
 \\
@@ -540,7 +541,7 @@ In other cases, participants turned to a variety of sources, such as StackOverfl
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
 While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP\footnote{\url{owasp.org/index.php/Main_Page}}. 
-Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make is final decision regarding the vulnerability. 
+Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
 \\
@@ -551,7 +552,7 @@ However, based on our observations, developers lack easy-access to security-rele
 Rather, participants used ad-hoc strategies to seek different pieces of information from a variety of sources. 
 
 The questions in this category suggest that developers could use a tool that aggregates information on alternative secure coding practices.
-Our observations also suggest that such a tool should include real world examples and draw from trusted authorities on security.
+Our observations also suggest that such a tool should include real-world examples and draw from trusted authorities on security.
 Finally, the tool should present information about the trade-offs associated with a particular alternative, such as decreased performance or the possibility of introducing additional vulnerabilities. 
 
 %One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
@@ -568,7 +569,7 @@ Finally, the tool should present information about the trade-offs associated wit
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
 \noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (10)}}\label{pupa}
-Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities open the code up to potential attacks. For example, the servlet parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
+Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the servlet parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
 Eleven of the 155 distinct questions we gathered belong in this category.
 \\
 
@@ -581,12 +582,12 @@ Eleven of the 155 distinct questions we gathered belong in this category.
 
 \noindent\textbf{Observations.}
 Participants sought information about the variety of attacks that could occur in a given context.
-To that end, five participants asked \textit{What are the possible attacks that could occur?}
-For example, within the first minute of his analysis, P2 stated that he was thinking about the different types of attacks that could target web applications, like iTrust. He asked what types of attacks were possible while beginning to think about which attacks he might need to prevent.
+To that end, five participants asked, \textit{What are the possible attacks that could occur?}
+For example, within the first minute of his analysis, P2 stated that he was thinking about the different types of attacks that could target web applications, such as iTrust. He simultaneously wondered which types of attacks were possible and which attacks he might need to prevent.
 
 On the other hand, participants also more specific attack-information about particular attacks as they were being considered.
 Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
-Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. For example, P10 determined that the Predictable Random vulnerability was ``real,'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
+Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 \\
 
 \noindent\textbf{Tool Implications.}
@@ -594,9 +595,9 @@ Unlike other contexts, when analyzing security vulnerabilities, developers ask q
 The existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
 Based on our observations, we recommend that vulnerability notifications should include the name of the attack as well as an overview of how the attack could be executed.
 
-However, the questions in this category also suggest that developers operate in two distinct modes when reasoning about potential attacks.
-At times they inquire about all the possible attacks that could occur.
-At other times, they explore the feasibility of a specific attack.
+However, the questions in this category also suggest that developers operate in two distinct modes while reasoning about potential attacks.
+At times, they inquire about all the possible attacks that could occur.
+Other times, they explore the feasibility of a specific attack.
 Security tools could support this modality by providing checklists to help developers systematically reason about all the potential attacks. 
 Additionally, the tool could toggle between displaying checklists and displaying detailed information about a particular attack, depending the developer's current mode.
 %Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
@@ -610,10 +611,10 @@ Additionally, the tool could toggle between displaying checklists and displaying
 
 \noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
 Once participants had identified a specific approach for fixing a security vulnerability, they asked questions about applying the fix to the code.
-For example, when considering the use of \CodeIn{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and consequences of making the change. 
+For example, when considering the use of \CodeIn{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
-We placed 9 of the 155 distinct questions into this category.
+We placed nine of the 155 distinct questions into this category.
 \\
 
 \noindent\emph{Will the error go away when I apply this fix? (5)} \\
@@ -629,7 +630,7 @@ We placed 9 of the 155 distinct questions into this category.
 When searching for approaches to resolve vulnerabilities, participants gravitated toward fix suggestions provided by the notification.
 The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided fix suggestions.
 All participants proposed solutions that involved applying one or both of these suggestions. 
-Additionally, P2 commented that it would be nice if all the notifications contained fix suggestions.
+Specifically, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
 While exploring the Predictable Random vulnerability, many participants, including 1, 2, and 6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
@@ -639,17 +640,17 @@ While exploring the Predictable Random vulnerability, many participants, includi
 %without tests or sufficient review to validate the correctness of the fix, such impulsive modifications could have unintended consequences.
 
 \noindent\textbf{Tool Implications.}
-Assuring the security of complex software systems requires developers to reason critically about the code. 
+To assure the security of complex software systems developers must reason critically about the code. 
 Fix suggestions help developers dismiss vulnerabilities more quickly.
 However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
 Our observations suggest the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
 
 %False positives 
-Accordingly, developer could benefit from tool support in assessing the implications of suggested fixes.
+Accordingly, developers could benefit from tool support in assessing the implications of suggested fixes.
 Existing tools, such as \textsc{Quick Fix Scout} begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
 \textsc{Quick Fix Scout} helps developers consider the implications of implementing a fix based on a single dimension, defect count.
 Security tools that include fix suggestions should encourage developers to consider the various tradeoffs associated with alternative fixes, for example performance reductions.
-Such a tool might inform developers of the time it takes the code to execute after applying the fix compared with before the fix was applied.
+Such a tool might compare the time it takes the code to execute before and after applying the fix.
 %Tool looks at runtime
 %Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing 
 %Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
@@ -661,7 +662,7 @@ Such a tool might inform developers of the time it takes the code to execute aft
 
 \noindent\subsection{\textbf{Relationship Between Bugs (4)}}\label{rbb}
 
-Some participants asked questions about the connections between co-occurring vulnerabilities and whether or not similar vulnerabilities exist elsewhere in the code. 
+Some participants asked questions about the connections between co-occurring vulnerabilities and whether similar vulnerabilities exist elsewhere in the code. 
 For example, when participants reached the third and fourth vulnerabilities, they began noticing and speculating about the similarities between the vulnerabilities they inspected.
 Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
 \\
@@ -715,7 +716,7 @@ For example, when exploring the Path Traversal vulnerability, participants sough
 
 \noindent\textbf{Observations.}
 %What location info did people look for
-All 10 participants wanted to locate where defective code and tainted values were being used throughout the system. 
+All ten participants wanted to locate where defective code and tainted values were being used throughout the system. 
 Most of these questions occurred in the context of assessing the Predictable Random and Servlet Parameter vulnerabilities.
 Specifically, participants wondered where the random number generator and the tainted values returned from the servlet were used.
 %For example, P1 attempted to gather such information using existing tools like the code element highlighting offered by Eclipse, which shows where a code element is being used locally. 
@@ -727,7 +728,7 @@ For the most part, participants successfully leaned on existing tools for answer
 However, strategies relying on existing tools fell short when participants sought context-dependent information. 
 The \textsc{Code Usage Highlighter} displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
 %Participants didn't just seek location information, they searched for places where information was used within a given context.
-For example, participants asked where the servlet parameters were being used, and more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
+For example, participants asked where the servlet parameters were being used and, more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
 
 %Where is similar code?
 In other cases, four participants wanted to find parts of the code that implemented similar functionality to what they were inspecting.
@@ -1074,7 +1075,7 @@ A tool that would support answering this question could keep track of places in 
 For some participants, the concepts or terms that the notification contained may not have been a part of their own mental model. 
 In these situations, participants had questions surrounding one or more of the concepts relevant to the problem.
 For instance, while parsing the potential attacks listed in the notification for the Servlet Parameter vulnerability, some participants did not know what a CSRF token was.
-We categorized 6 of the 155 distinct questions into this category. 
+We categorized six of the 155 distinct questions into this category. 
 \\
 
 \noindent\emph{What is this concept? (6)} \\
@@ -1086,7 +1087,7 @@ We categorized 6 of the 155 distinct questions into this category.
 % questions in this category appeared at least once for each vulnerability -- especially true for "what is this concept" question, which spanned all 4
 Seven participants had questions regarding the concepts and terms relevant to the potential vulnerability being communicated. 
 Questions in this category appeared at least once for each vulnerability; this was especially true for know what a given concept or feature was, which spanned all four vulnerabilities. 
-Six of the seven participants that had questions in this category asked the question \textit{What is this concept?} for at least one of the potential vulnerabilities.
+Six of the seven participants who had questions in this category asked the question \textit{What is this concept?} for at least one of the potential vulnerabilities.
 
 % what is this concept (6) -- P2, 5, 8, 10
 % P2: what is path traversal --> clicked first link in FB
@@ -1257,7 +1258,7 @@ Four of the 155 distinct questions extracted fall into this category.
 \noindent\textbf{Observations.}
 Five participants had questions related to the seriousness of the vulnerability being assessed, and sometimes those surrounding it. 
 Most of these questions came from participants wanting to know more about the tool's way of ranking the vulnerabilities in the code.
-Participants that attempted to interpret the tool's severity and ranking metrics often had difficulty understanding what they meant. 
+Participants who attempted to interpret the tool's severity and ranking metrics often had difficulty understanding what they meant. 
 For example, when assessing the Potential Path Traversal vulnerability, P1 discovered the rank, severity, and confidence information provided by the tool. 
 He noted that it would be helpful and added it to his assessment process for the following vulnerabilities.
 As he began working through the final vulnerability (SQL Injection), he realized he may not have as good of an understanding of the tool's metrics as he thought and did a web search for clarification. 
@@ -1348,7 +1349,7 @@ Based on our observations, tools should consider:
 \section{Threats to Validity}
 \label{limits}
 The developers we recruited may not be representative of all developers.
-We conducted an exploratory study with a small number of developers, including some students and participants that had limited familiarity with security vulnerabilities.
+We conducted an exploratory study with a small number of developers, including some students and participants who had limited familiarity with security vulnerabilities.
 Developers with more expertise and experience might ask different questions and require different types of tool support.
 
 Further, participants were equipped with FSB, an open source static analysis tool. 
