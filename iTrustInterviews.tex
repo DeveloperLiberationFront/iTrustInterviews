@@ -546,15 +546,6 @@ Despite the useful information some participants found, often the candidate alte
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
 \\
 
-\noindent\textbf{Tool Implications.} 
-It seems especially important when dealing with potential security vulnerabilities that developers fully understand any changes they make to the code. 
-However, based on our observations, developers lack easy-access to security-relevant information on potential alternatives. 
-Rather, participants used ad-hoc strategies to seek different pieces of information from a variety of sources. 
-
-The questions in this category suggest that developers could use a tool that aggregates information on alternative secure coding practices.
-Our observations also suggest that such a tool should include real-world examples and draw from trusted authorities on security.
-Finally, the tool should present information about the trade-offs associated with a particular alternative, such as decreased performance or the possibility of introducing additional vulnerabilities. 
-
 %One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
 
 %The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
@@ -590,16 +581,6 @@ Participants hypothesized about specific attack vectors, how to execute those at
 Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 \\
 
-\noindent\textbf{Tool Implications.}
-Unlike other contexts, when analyzing security vulnerabilities, developers ask questions about potential attacks.
-The existence of this category suggests that security tools should be designed differently from other code analysis tools; they should present pertinent information about potential attacks. 
-Based on our observations, we recommend that vulnerability notifications should include the name of the attack as well as an overview of how the attack could be executed.
-
-However, the questions in this category also suggest that developers operate in two distinct modes while reasoning about potential attacks.
-At times, they inquire about all the possible attacks that could occur.
-Other times, they explore the feasibility of a specific attack.
-Security tools could support this modality by providing checklists to help developers systematically reason about all the potential attacks. 
-Additionally, the tool could toggle between displaying checklists and displaying detailed information about a particular attack, depending the developer's current mode.
 %Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
 %Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
 %Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
@@ -636,27 +617,6 @@ However, unless prompted, none of the participants commented on the disadvantage
 While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 \\
 
-%How hard is it to fix, if fix is easy, then just apply the fix. Don't investegate the consequences. Validate the fix by seeing if the bug icon went away
-%without tests or sufficient review to validate the correctness of the fix, such impulsive modifications could have unintended consequences.
-
-\noindent\textbf{Tool Implications.}
-To assure the security of complex software systems developers must reason critically about the code. 
-Fix suggestions help developers dismiss vulnerabilities more quickly.
-However, we imagine that applying suggested fixes with performance trade-offs throughout an entire application could reduce the overall quality of the code.
-Our observations suggest the presence of fix suggestions alone may discourage developers from fully considering the implications of their proposed changes.
-
-%False positives 
-Accordingly, developers could benefit from tool support for assessing the implications of suggested fixes.
-Existing tools, such as \textsc{Quick Fix Scout} begin to address this problem by ordering quick fixes based on the number of defects they add and remove~\cite{mucslu2012speculative}.
-\textsc{Quick Fix Scout} helps developers consider the implications of implementing a fix based on a single dimension, defect count.
-Security tools that include fix suggestions should encourage developers to consider the various tradeoffs associated with alternative fixes, for example performance reductions.
-Such a tool might compare the time it takes the code to execute before and after applying the fix.
-%Tool looks at runtime
-%Though it is not clear how feasible it is to answer some of these questions, some can be answered by using a similar approach to that used by Mu{\c{s}}lu and colleagues when developing 
-%Their tool attempts to help developers answer the question \textit{Does this fix introduce other bugs?} 
-%None of our participants asked this question specifically, but to that effect, P1 and P2 asked \textit{Will the code work the same after I apply the fix?} 
-%Further, questions like \textit{How hard is it to apply?} and \textit{Does the code stand up to additional tests prior to/after applying the fix?} could possibly be answered using a similar process.
-
 
 %%%%%%%%%%%% Relationship Between Bugs
 
@@ -674,21 +634,6 @@ Three of the 155 distinct questions we found target the relationships between th
 %\noindent\textbf{Observations}
 %P1 2 8 10 asked
 %Are all of the bugs related in my code?
-
-\noindent\textbf{Tool Implications.}
-%Make more clear, This is the implication, but doesn't jump off the page yet...
-Though only four of the ten participants asked questions about the relationship between bugs, these questions highlight information requirements tools could support.
-When inquiring about the relationships between bugs, participants noted connections between bugs that related to similar topics.
-FSB organized the vulnerabilities it identified based on their locations in the code, or alternatively based on their seriousness.
-Grouping vulnerabilities based on abstract concepts might enable developers to leverage their knowledge of a vulnerability to fix other related vulnerabilities.
-
-%HELP: I know about CWE are there other canonical taxonomies? More importantly, do tools present bugs according to these taxonomies (group based on similar topic)?
-%We speculate that developers might have these kinds of questions because they want to know if a vulnerability like the one they are assessing exists in other similar code fragments.
-%Another reason for asking this kind of question is to determine the possibility of eliminating more than one vulnerability with one fix. 
-%Whatever the motivation may be, participants did not seem to have an intuitive or easy way of going about finding the answer to the questions asked in this category.
-%A tool that answers these questions might make visible the connections between the bugs reported, either visually or by augmenting notifications with information regarding this bug's relevance to others in the code.
-
-%Alert prioritization. Particpants ask if notifications in the same area are the same. Research suggests that homogenous errors occur close to one another. Tools should help synthesize these similar notifications to present information to developers more effectively.
 
 
 \section{Results: Code and the Application}
@@ -748,19 +693,6 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 %P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do %so. 
 %Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
 
-\noindent\textbf{Tool Implications.}
-The answers to some of these questions can be found using existing tool support found inside the IDE. 
-For example, Eclipse's \textsc{open declaration} can find a method's definition. 
-However, in the case of context-dependent questions, developers could benefit from increased tool support. 
-For example, if search tools had knowledge of the security-critical components in the code, they could prioritize results which occurred within or interacted with critical components.
-Currently, developers must manually prioritize search results and determine whether each is security-relevant.
-
-Developers could also benefit from tool support for searching their applications for code written similarly to the potentially vulnerable code. 
-A tool that supports this process might include references to other parts of the project with similarly structured code, or code that calls a similar set of methods. 
-Such a tool would help developers identify other parts of the project that may contain vulnerabilities or, conversely, strategies for resolving the vulnerability.
-%For instance, participants who asked \textit{how do I track this information in the code} did not have a tool-supported way to answer this question.
-%Similar to the suggestion made in Section~\ref{cf}, a tool that can automatically detect when a developer is attempting to track specific information could help by either helping the developer track the information of interest or pointing out a tool that can.
-
 
 %%%%%%%%%%%% Control Flow/Call Information
 
@@ -797,18 +729,6 @@ Participants were additionally unaware of how to access and how to use \textsc{c
 
 Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked, \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
 \\
-
-\noindent\textbf{Tool Implications.}
-Particularly when resolving security vulnerabilities, developers are concerned with \textit{all} of a method's potential call sites.
-Tools like \textsc{find references} and \textsc{call hierarchy} provide support for locating call information, yet leave room for extension.
-Our findings suggest that tools that reason about and notify developers of calls originating outside the local code could help them answer the questions in this category.
-
-Despite the existence of tools like \textsc{find references} and \textsc{call hierarchy}, developers seem to face barriers preventing them from invoking sophisticated tools, perhaps due to a lack of awareness.
-Our findings suggest that developers could benefit from tools that reduce the barriers to discover new tools.
-In particular, developers could benefit from tools that apprise them of other useful tools like \textsc{find references} and \textsc{call hierarchy}.
-A tool that addresses these needs might detect when the developer is looking for call information (e.g., using the \textsc{text search} tool) and suggest the appropriate tool for finding the information they require. 
-
-%It is unclear whether the call hierarchy tool is more efficient than tools like 'find references' for answering these kinds of questions, however participants who sought call information without the call hierarchy tool were more likely to make faulty assumptions or miss method calls. 
 
 
 %%%%%%%%%%%% Data Storage 
@@ -848,26 +768,6 @@ For instance, once participants like P6 located the caller, they manually search
 %Though both P1 and P6 knew the questions they needed answered, they did not attempt to use any of the tools, including manual search, to determine the answers. % Why didn't they uses, could be they just didn't feel like going along with the experiment
 %Often, like P1 and P6, participants would describe what they would do but not attempt to do it
 
-
-\noindent\textbf{Tool Implications.}
-The \textsc{Call Hierarchy} tool presents control flow information, but does not give the full picture of how data travels through the program. 
-Developers  have to retrieve this information, either from the documentation, by running the debugger, or by manually inspecting the code.
-As we observed, developers frequently switch between seeking control flow information and data flow information while reasoning about security vulnerabilities.
-Such switching between tools and strategies might induce disorientation~\cite{deAlwis2006disorient}.
-
-Tools that aim to prevent such disorientation should focus on presenting call flow and data flow information simultaneously.
-Such a tool might behave similarly to the \textsc{Call Hierarchy} tool by allowing developers to traverse the call graph, but would also allow the developer to specify a parameter to track. Stepping up the call hierarchy would present information about how that parameter was set in the callee's context.
-
-%There has been some research and development surrounding the creation of data flow graphs for visualizing data dependencies in a program, however, data dependency graphs become unwieldy as applications grow large~\cite{ghosh2001method, ferrante1987program}. 
-%Tools have been developed to do data flow analysis and report defects to programmers based on such analysis, however, they do not allow developers to explore the flow of data through their programs~\cite{jovanovic2006pixy}. 
-%It may be that some of the existing tools for data flow analysis could be augmented with functionality for exploring visualizations of the static data flow information already being gathered; this is one way tools could better support the answering of these types of data flow questions.
-
-% B1, 3, 4 (mainly 3)
-% P1, P3, P8
-%P1 -- I haven't verified that. You might be modifying the string as it goes through. But it's probably the same string.. 
-%P1 -- Where is the form data going?
-%P3 -- What parts of the code used this data?
-%P8 Where are the values going?
 
 %%%%%%%%%%%% Code Background
 
@@ -912,18 +812,6 @@ Further, five participants wanted to know why the code was written the way it wa
 
 % 
 
-\noindent\textbf{Tool Implications.}
-Based on our observations, it seems that understanding the history and status of the code helps developers assess its security.
-If the code shows signs of neglect, uses deprecated libraries, or has not been tested and reviewed, some developers might be less likely to trust the security of the code.
-Developers seem interested in investigating the specific areas of code that exhibit these properties. 
-
-Version control systems already track some information about the authors and history of the code.
-Perhaps tools could use this information to prioritize vulnerabilities or direct developers to problematic areas.
-%Answering many of these questions would require aggregated data, such as documentation that programmers contribute to as the code changes or measuring the amount of effort that has been put into the code thus far.
-%This means that without proper tool support, developers interested in this information would have to seek out resources that have the information they need.
-%Once they find the resource, they would have to find any and all information relevant to the program entity they are investigating, all while hoping the information is up to date and accurate.
-
-
 %%%%%%%%%%%% Application Context
 
 \noindent\subsection{\textbf{Application Context/Usage (9)}}\label{acu}
@@ -965,13 +853,6 @@ Compared to the tool support provided for determining general context, participa
 \\
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
-\noindent\textbf{Tool Implications.}
-Similar to questions asked about code background and functionality, it is unclear what tool support for answering these kinds of questions would look like, because it was not always obvious why participants wanted these bits of information. 
-For example, one reason for needing this type of information is to better understand the code and likelihood that a bug is a vulnerability. 
-Yet, it may be that participants merely wanted to know the answers to these questions with no high level goal in mind.
-Most of the questions in this category can be answered using documentation, if any exists, written by the developers of the code; perhaps a tool that supports answering these questions would make any relevant developer-written documentation more easily available and searchable for information of interest.
-When specifically helping developers determine when potentially vulnerable code is test code, this could be added to the notification so the developer is aware of that detail before expending the effort to fix something that will not affect the finished product.
-
 
 %%%%%%%%%%%% End-User Interaction
 
@@ -1008,17 +889,6 @@ P2 used the called hierarchy to answer this question by tracking where the metho
 P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code should be fine as it is written.
 Though participants found the answers to their questions, it took time for them to get the answer using tools meant to answer other questions.
 \\
-
-\noindent\textbf{Tool Implications.}
-Research exists that studies attack surfaces, or the sum of the vectors that an unauthorized user may use to gain access to the system.
-The goal of their research area was to identify, measure, and reduce the size of attack surfaces~\cite{manadhata2011attack, bartel2012automatically}. These types of tools can help answer, \textit{Is there input coming from the user?} 
-However, developers may lack tool support for navigating through and reasoning about attack surfaces to answer the others.
-Existing tools could extend their functionality to answer these questions by allowing developers to narrow in on points of interest in relation to the potential vulnerability being assessed.
-Answering \textit{Does the user input get validated/sanitized?} may also require providing an explicit, perhaps visual, connection between the attack surface and the code the input touches.
-% Not sure what tool implications look like for validation question...
-
-
-% P2: Suspected that random pass word was in test code, but went on to discover that it was not (how?) -- interesting but not sure if it goes here
 
 
 \section{Results: Individuals}
@@ -1057,17 +927,6 @@ This question was typically followed by looking back at the error message detail
 For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he started exploring, so he went back to reread the error message before investigating further.
 \\
 
-\noindent\textbf{Tool Implications.}
-Though there is no one solution to help developers answer these questions, tools that track developers' previous vulnerability encounters may begin to guide to the answers. 
-For example, one question participants asked was, \textit{Have I seen this before?}
-A tool that helps developers answer this question might keep track of previous times the developer has encountered, and perhaps fixed, this vulnerability. 
-The tool could also include a link to the code where the vulnerability was located as well as a diff showing the changes the developer made to fix the vulnerability.
-Another question that a tool could potentially help answer is \textit{What was that again?} 
-A tool that would support answering this question could keep track of places in the code the developer visits, perhaps while they are using a tool like FSB, and make them easily accessible to the developer as they triage the code.
-
-
-%Some participants described ad-hoc strategies for tracking the vulnerabilities they had encountered, such as keeping text files associated with --> this sounds awesome but not sure where to find it :(
-
 %%%%%%%%%%%% Understanding Concepts
 
 \noindent\subsection{\textbf{Understanding Concepts (7)}}\label{uc}
@@ -1102,19 +961,6 @@ The notification for this vulnerability did not include links so they searched t
 When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he wold have liked the notification to include what a servlet is and how it related to client control.
 \\
 
-\noindent\textbf{Tool Implications.}
-In general, if a developer does not have experience with a particular feature or concept, they may have more difficulty understanding a problem in their code pertaining to that concept~\cite{wiedenbeck1993mental}.
-Not all developers have the same experiences, so it seems important that developers who do not understand the concepts involved in potential security vulnerabilities are able to easily find the means to gain that understanding.
-Sometimes, FSB provides links to information regarding the concepts involved. 
-However, some participants did not use them because they did not know they existed until the first author pointed them out; as a result, they usually did a web search to find more information.
-
-Tools could provide the desired information by placing links in more visible areas.
-For instance, tools could nest definitions and explanations inside collapsible windows within the error message text, next to the concept it relates to. 
-One potential downfall to this solution is that developers who understand the concepts will likely not use the links, and maybe even find them distracting.   
-Perhaps if tools had access to models that represent a developer's conceptual knowledge, similar to work done by Fritz and his colleagues to model developer familiarity with source code~\cite{fritz2010degree}, tools could present additional information only to developers who needed it.
-% Very obvious trying to plug direction of my research but still a possible direction for this :)
-%We only collected general security vulnerability knowledge as a pre-study demographic so it is difficult to draw conclusions about the correlations between difficulty understanding the concepts being discussed and the participants' experience with that concept.
-
 %%%%%%%%%%%% Confirming Expectations
 
 \noindent\subsection{\textbf{Confirming Expectations (1)}}\label{ce}
@@ -1124,30 +970,6 @@ A few participants found themselves in situations where they wanted to be able t
 Though only four participants asked questions in this category, we believe there are implications for tools that worth communicating and exploring further. 
 The distinct question asked in this category was, \textit{Is this doing what I expect it to?} 
 \\
-
-%Swap categories?
-\noindent\textbf{Tool Implications.} Developers build and alter their mental models when exploring code~\cite{canas1994mental, burkhardt1997mental}. 
-As they build and alter mental models, developers may seek confirmation that they fully understand the code and its intended function. 
-For a subset of our participants, this was the case. 
-We only identified one distinct question, however, based on our observations, there are at least two ways this question can be interpreted and each requires tool support to answer.
-%automatic resolution
-One participant located a possible solution from a web resource. 
-He wanted to know if applying the suggested solution would do what he expected. 
-Tool support for answering this question might allow the developer to experiment with the fix; the tool could go a step further and run the tests for the code after application to show the developer what the fix accomplishes.
-
-%easy access to code documentation 
-The other participants sought documentation on how they the code works. 
-Answering this question in this context is relatively simple when documentation is available.
-One participant wanted to know if some code written by the project's developers worked as he anticipated.
-While investigating this, he hovered over the method to view the javadoc, but because one did not exist, he had to use \textsc{open declaration} to find the answer.
-Perhaps a tool that uses patterns and elements names in the code to automatically generate documentation could help developers in these  situations.
-For example, if the method in question is called \CodeIn{validate()} and takes a String as input and has a condition with an error message or thrown exception, documentation could be generated to communicate that the method is used to validate string input without the developer having to figure it out.
-
-
-% is validator formatted how I expect --> hovered for javadoc, didn't work had to open declaration --> 
-% using patterns and element names in code to generate documentation for methods written (not methods from imported packages)
-% example --> a method called validate() that takes a String as input and has a condition with an error message, documentation could be generated to communicate what that method does without the developer having to do so.
-
 
 
 \section{Results: Problem Solving Support}
@@ -1186,19 +1008,6 @@ When he did not see that information, he had to go back and attempt another web 
 A few participants did not know the links existed, so they typically either searched the web or noted other strategies they might use, such as asking other developers on the project.
 \\
 
-\noindent\textbf{Tool Implications.}
-%Fix Sentence
-Some tools link to external documentation that developers can use to attempt to answer some of these questions, FSB being one of them. 
-Though links to external documentation and resources can provide answers to some of these questions, they do not help answer questions concerning the reliability of the resource, nor do they provide developers with the ability to locate and use other external resources such as team members or others who have experience with the relevant code.
-It seems the reliability of the resource would be especially important for making changes based on the resource in a secure system.
-%Information too complex, not sure how to apply 
-
-Lack of support for answering these questions, especially questions concerning reliability, may have contributed to participants not clicking the links in many situations.  
-Tools might consider including information about the reliability of the resources provided; one way to do this is to associate the link with peers who have visited it.
-Moreover, to help answer questions about other team members' knowledge of the code, tools may be able to borrow ideas from previous research.
-Fritz and colleagues developed a degree of knowledge model that predicts how familiar a developer is with various source code elements. However, this model has not been operationalized in a tool that allows developers to have access to the degree of knowledge values for various developers on the code segment being analyzed~\cite{fritz2010degree}.
-
-
 
 %%%%%%%%%%%% Understanding Interacting Tools
 
@@ -1230,18 +1039,6 @@ However, some participants found it difficult to process this information.
 \\
 
 
-\noindent\textbf{Tool Implications.}
-Developers' ability to understand and effectively interact with tools has been the focus of many research studies. 
-Yet, developers may still have difficulty answering some of the questions they have when using existing tools~\cite{ko2004designing, khoo2008path, johnson2013don}. 
-Many of these questions may require the input of other developers to be answered effectively. 
-For example, research suggests that developers are more likely to trust and use a tool that has been recommended by one of their peers~\cite{murphy2010trust}.
-Research also suggests that through concise peer interaction, developers more effectively discover new tools~\cite{murphy2011peer}. 
-A tool that supports answering these questions might allow developers to easily access information regarding peer interactions with the tools being used; the tool might also include advice based on mistakes the developer's peers have made. 
- 
-
-% whyline - why did, why didn't this happen but not why tool complaining (still question not answered as well as what is tool telling me and how information presented, cite)
-
-
 
 %%%%%%%%%%%% Bug Severity/Ranking
 
@@ -1266,14 +1063,6 @@ As he began working through the final vulnerability (SQL Injection), he realized
 P6, among others, did not notice the ranking and severity information provided by the tool. 
 \\
 
-\noindent\textbf{Tool Implications.}
-Previous research on static analysis tools also found that developers may not always be able to understand the rankings or severity labels tools use, so it is not surprising this category emerged from our questions~\cite{johnson2013don}.
-Techniques and tools have been developed for static analysis alert prioritization that can be used to reason about the severity and ranking of tool notifications~\cite{kim2007prioritizing, boogerd2006prioritizing, kremenek2004correlation}.
-It seems these kinds of tools would be useful when attempting to answer, or even eliminate, these kinds of questions. 
-%over complicated severity/ranking structure -- example from observations (one participant - can't remember who - made some comments about how the severity/ranking is presented, what the numbers mean, etc.)
-Based on our observations, another way to answer or prevent these questions is by using simple, one-dimensional metrics for reporting the severity or ranking of a potential vulnerability.
-For example, instead of FSB using phrases and numbers to represent severity, priority, and rank, perhaps FSB could use one scale in which one value can tell you how important the vulnerability is in comparison to the space of other vulnerabilities.
-
 %%%%%%%%%%%% Error Messages
 
 \noindent\subsection{\textbf{Error Messages (6)}}\label{em}
@@ -1296,54 +1085,7 @@ Many participants attempted to relate this piece of information back to the code
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 \\
 
-\noindent\textbf{Tool Implications.}
-Developers asked about the connections between the error message and the code.
-FSB attempts to answer this type of question by placing an icon in the gutter of the editor on the line containing vulnerable code. 
-However, if the error message relates to multiple lines of code, the icon's location does not entirely indicate the connection between the code and the error message. 
-Research has attempted to help developers make stronger connections between the error message they receive and the relevant code using visual overlays in the code editor~\cite{barik14visual}.
-These type of visual overlays may also be useful for answering the questions in this category.
 
-\section{Overview of Tool Design Implications}
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\label{sec:disc}
-In this section we summarize select tool implications that we discussed throughout the results sections.
-Based on our observations, tools should consider:
-
-\begin{itemize}
-%Understanding Alternative Fixes and Approaches
-\item presenting real-world examples from trusted security authorities
-%present
-\item supporting systematic reasoning about potential attack
-%application of fix
-\item presenting the trade-offs associated with alternative solutions
-%Relationship between bugs
-\item supporting reasoning about related vulnerabilities
-%newGroup
-%locating info
-\item helping developers locate security-critical components
-%control flow
-\item increasing tool awareness by recommending more effective strategies
-%data storage and flow
-\item supporting the simultaneous exploration of control flow and data flow
-%app context and usage
-\item helping developers assess how code is used within the context of an application
-%End User Interaction
-\item helping developers reason about attack surfaces
-%Planning and Self-Reflection
-\item presenting information about developers' previous vulnerability encounters
-%Understanding concepts
-\item providing links to relevant information within the notification
-% Resources and Docs
-\item providing access to knowledgeable resources
-% Interacting with tools
-%\item 
-%Severity and ranking
-\item using simple one-dimensional metrics for prioritizing vulnerabilities
-%
-\item using visual overlays to make connections between the notification and the code.
-
-\end{itemize}
-%
 
 \section{Threats to Validity}
 \label{limits}
