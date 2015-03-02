@@ -486,13 +486,12 @@ When resolving security vulnerabilities, participants encountered alternative ap
 For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement}. 
 Participants discovered many sources for alternative fixes, including web resources and even code located in other parts of the project.
 When presented with alternative approaches, they compared the alternative with the current code and assessed the applicability of the alternative. 
-\\
-\\
+
 \noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
 \emph{What are the alternatives for fixing this? (4)} \\
 \emph{Are there other considerations to make when using the alternative(s)? (3)} \\
 \emph{How does my code compare to the alternative code in the example I found? (2)} \\
-\emph{Why should I use this alternative method/approach to fix the vulnerability? (2)} \\
+\emph{Why should I use this alternative method/approach to fix the vulnerability? (2)} 
 
 \noindent\textbf{Observations.}
 %The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
@@ -508,7 +507,7 @@ While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
-\\
+
 
 %One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
 
@@ -525,14 +524,14 @@ For example, P9 found a suggestion on StackOverflow that he thought might work, 
 
 \subsubsection{\textbf{Preventing and Understanding Potential Attacks (10)\{11\}}}\label{pupa}
 Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
-\\
+
 
 \noindent\emph{Is this a real vulnerability? (7)} \\
 \emph{What are the possible attacks that could occur? (5)} \\
 \emph{Why is this a vulnerability? (3)} \\
 \emph{How can I prevent this attack? (3)} \\
 \emph{How can I replicate an attack to exploit this vulnerability? (2)} \\
-\emph{What is the problem (potential attack)? (2)} \\
+\emph{What is the problem (potential attack)? (2)} 
 
 \noindent\textbf{Observations.}
 Participants sought information about the variety of attacks that could occur in a given context.
@@ -542,7 +541,7 @@ For example, within the first minute of his analysis, P2 stated that he was thin
 On the other hand, participants also more specific attack-information about particular attacks as they were being considered.
 Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
 Seven participants asked the question, \textit{Is this a real vulnerability?} To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
-\\
+
 
 %Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
 %Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
@@ -558,7 +557,7 @@ Once participants had identified a specific approach for fixing a security vulne
 For example, when considering the use of \CodeIn{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
-\\
+
 
 \noindent\emph{Will the error go away when I apply this fix? (5)} \\
 \emph{How do I use this fix in my code? (4)} \\
@@ -566,7 +565,7 @@ These questions focus on the process of applying  and reasoning about a given fi
 \emph{How hard is it to apply a fix to this code? (3)} \\
 \emph{Is there a quick fix for automatically applying a fix? (2)} \\
 \emph{Will the code work the same after I apply the fix? (2)} \\
-\emph{What other changes do I need to make to apply this fix? (2)} \\
+\emph{What other changes do I need to make to apply this fix? (2)} 
 
 
 \noindent\textbf{Observations.}
@@ -577,7 +576,7 @@ Specifically, P2 commented that it would be nice if all the notifications contai
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
 While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
-\\
+
 
 
 %%%%%%%%%%%% Relationship Between Bugs
@@ -586,10 +585,10 @@ While exploring the Predictable Random vulnerability, many participants, includi
 
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether similar vulnerabilities exist elsewhere in the code. 
 For example, when participants reached the third and fourth vulnerabilities, they began noticing and speculating about the similarities between the vulnerabilities they inspected.
-\\
+
 
 \noindent\emph{Are all the bugs related in my code? (3)} \\
-\emph{Does this other piece code have the same bug as the code I'm working with? (1)} \\
+\emph{Does this other piece code have the same bug as the code I'm working with? (1)} 
 
 
 %\noindent\textbf{Observations}
@@ -611,11 +610,11 @@ For example, when participants reached the third and fourth vulnerabilities, the
 Participants asked questions about locating information in their coding environments.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
 For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method containing the vulnerability was being called and where the path parameter was set.
-\\
+
 
 \noindent\emph{Where is this used in the code? (10)} \\
 \emph{Where are other similar pieces of code? (4)} \\
-\emph{How do I track this information in the code? (2)} \\
+\emph{How do I track this information in the code? (2)} 
 
 
 
@@ -640,7 +639,7 @@ In other cases, four participants wanted to find parts of the code that implemen
 For all of them, this was a manual process involving mostly scrolling through and exploring the code based on their knowledge of the application.
 For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to know more about how the functionality under investigation was implemented in other parts of the code. 
 P2 wanted to know, more specifically, what other parts of the code use Database Access Objects.
-\\
+
 
 %While assessing the Predictable Random vulnerability, P2 and P10 wanted to know if the code the notification was attached to was only run in test code. 
 %They were able to use existing tools to find where the code was being used, however, P2 was still could not confirm 100\% that the code is only used in tests. % more detailed strategies?
@@ -661,15 +660,13 @@ We also extracted questions relating to control flow and calling information.
 Developers seek information about the methods that get called, and whether they may get called with dirty parameters.
 Participants searched up the call chain, especially while evaluating the Potential Path Traversal vulnerability, trying to understand the possible files that could get opened. 
 Many determined that because all the calls originated in test classes, they could dismiss the vulnerability.
-\\
 
 
 \noindent\emph{Where is the method being called? (10)} \\
 \emph{How can I get calling information? (7)} \\
 \emph{Who can call this? (5)} \\
 \emph{Are all calls coming from the same class? (3)} \\
-\emph{What gets called when this method gets called? (2)} \\
-
+\emph{What gets called when this method gets called? (2)}
 
 
 \noindent\textbf{Observations.}
@@ -687,7 +684,6 @@ That said, it does not identify calls made from framework hooks or APIs.
 Participants were additionally unaware of how to access and how to use \textsc{call hierarchy}.
 
 Eventually, many participants hypothesized that all the calls might originate from the same (test) class. Three participants explicitly asked, \textit{Are all calls coming from the same class?} To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the test keyword. This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
-\\
 
 
 %%%%%%%%%%%% Data Storage 
@@ -696,18 +692,16 @@ Eventually, many participants hypothesized that all the calls might originate fr
 Much like the questions related to \emph{\textbf{Control Flow and Call Information}}, participants also asked questions about the data being stored in and carried throughout the program. 
 Participants often wanted to understand the type of data being collected and stored, where the data came from, and where it was going. 
 For example, participants wanted to determine whether it was generated by the application or passed in by the user, as well as where it was going (i.e., whether it was being stored in the database).
-\\
 
 \noindent\emph{Where does this information/data go? (9)} \\
 \emph{Where is the data coming from? (5)} \\
 \emph{How is data put into this variable? (3)} \\
 \emph{Does data from this method/code travel to the database? (2)} \\
 \emph{How do I find where the information travels? (2)} \\
-\emph{How does the information change as it travels through the programs? (2)} \\
+\emph{How does the information change as it travels through the programs? (2)} 
 
 
 \noindent\textbf{Observations.}
-
 All ten participants had questions regarding the data pipeline.
 Participants asked questions about the data pipeline when assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
@@ -715,7 +709,7 @@ While exploring this vulnerability, participants adapted tools such as the call 
 Specifically, participants used the call hierarchy tool in combination with manual searching. 
 As we discussed in \emph{\textbf{Control Flow and Call Information}}, the call hierarchy tool helped participants locate callers to the methods containing vulnerable code.
 For instance, once participants like P6 located the caller, they manually searched for the locations where the actual parameters were set.
-\\
+
 
 %For example, when P7 was determining the details of the potential vulnerability, he manually traced through method calls to determine if the data controlled by the client would reach the database.
 
@@ -734,15 +728,14 @@ For instance, once participants like P6 located the caller, they manually search
 Participants also asked questions concerning the background and intended function of the code being analyzed. 
 The questions in this category focus on the code, such as determining the role a component plays in the entire system or program.
 They ask about the history of the code and the context in which the code resides.
-\\
+
 
 \noindent\emph{What does this code do? (9)} \\
 \emph{Why was this code written this way? (5)} \\
 \emph{Why is this code needed? (3)} \\
 \emph{Who wrote this code? (2)} \\
 \emph{Is this library code? (2)} \\
-\emph{How much effort was put into this code? (1)} \\
-
+\emph{How much effort was put into this code? (1)}
 
 
 \noindent\textbf{Observations.}
@@ -755,7 +748,6 @@ P2 asked how much effort had been put into the code to determine whether he trus
 While assessing the Potential Path Traversal vulnerability, some participants came to the realization that the code's authors could help answer some questions. 
 For example, P10 stated that he would normally ask his team members for background on how the code worked.
 Further, five participants wanted to know why the code was written the way it was written; this question occurred in all four vulnerabilities.
-\\
 
 %Brings unwanted attention to our inserted vulnerability
 %As P2, P7, and P8 explored the code pertaining to the SQL Injection vulnerability, they became curious as to why developers of the code would use Java's \texttt{Statement} instead of the presumably more secure \texttt{PreparedStatement} for sending queries to a Database Access Object.
@@ -777,7 +769,7 @@ Further, five participants wanted to know why the code was written the way it wa
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
 The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
 For instance, often when assessing the vulnerabilities, participants wanted to know if the code was used for testing functionality or in production. 
-\\
+
 
 \noindent\emph{What is the context of this bug/code? (4)} \\
 \emph{Is this code used to test the program/functionality? (4)} \\
@@ -785,8 +777,7 @@ For instance, often when assessing the vulnerabilities, participants wanted to k
 \emph{Will usage of this method change? (2)} \\
 \emph{Is the method/variable ever being used? (2)} \\
 \emph{Are we handling secure data in this context? (1)} \\
-\emph{How does the system work? (1)} \\
-
+\emph{How does the system work? (1)} 
 
 
 \noindent\textbf{Observations.}
@@ -794,7 +785,7 @@ Four participants wanted to know the context in which the code being assessed wa
 Similarly, three participants found themselves trying to determine what a specific method or variable is used for in the application.
 Both of these questions came up for three of the four vulnerabilities.
 
- 
+
 P7 had questions concerning the context of the code associated with the Potential Path Traversal and Predictable Random vulnerabilities.
 For the former vulnerability, he wanted to know the general context in which the code is used; for the latter, he wanted to know the legal context in which the code is being used.
 P2, when thinking about how he might determine the context in which the code associated with the Predictable Random vulnerability is used, stated that the tool would have been more useful if it could tell him this information.
@@ -806,7 +797,7 @@ Participants also tried to determine if the code associated with the vulnerabili
 P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
 To answer this question, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations the code of interest is being called.
 Compared to the tool support provided for determining general context, participants could answer this question relatively easily using existing tool support.
-\\
+
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
 
@@ -815,15 +806,14 @@ Compared to the tool support provided for determining general context, participa
 \subsubsection{\textbf{End-User Interaction (8)\{3\}}}
 \label{eui}
 
-
 Questions in this category deal with how end users might interact with the system or a particular part of the system. 
 Some participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potentially malicious activity. 
 For example, while assessing the Potential Path Traversal vulnerability, participants wanted to know whether the path is sanitized somewhere in the code before it is used.
-\\
+
 
 \noindent\emph{Is there input coming from the user? (4)} \\
 \emph{Does the user have access to this code? (4)} \\
-\emph{Does user input get validated/sanitized? (4)} \\
+\emph{Does user input get validated/sanitized? (4)} 
 
 
 \noindent\textbf{Observations.}
@@ -843,7 +833,7 @@ When assessing the Potential Path Traversal vulnerability, four participants ask
 P2 used the called hierarchy to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability only existed if the user had access to the code.
 P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code should be fine as it is written.
 Though participants found the answers to their questions, it took time for them to get the answer using tools meant to answer other questions.
-\\
+
 
 
 \subsection{Individuals}
@@ -857,7 +847,7 @@ Though participants found the answers to their questions, it took time for them 
 Another kind of question participants asked when assessing potential security vulnerabilities regarded their current status or plans for next steps in terms of assessing or removing the vulnerability. 
 All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.
 For example, when some participants thought they had an idea of what the problem might be, they stopped and took different measures to re-assess the code or notification to make sure they understood. 
-\\
+
 
 \noindent\emph{Do I understand? (3)} \\
 \emph{What should I do first? (2)} \\
@@ -865,8 +855,7 @@ For example, when some participants thought they had an idea of what the problem
 \emph{Is this worth my time? (2)} \\
 \emph{Why do I care? (2)} \\
 \emph{Have I seen this before? (1)} \\
-\emph{Where am I in the code? (1)} \\
-
+\emph{Where am I in the code? (1)} 
 
 
 \noindent\textbf{Observations.}
@@ -879,7 +868,7 @@ These questions occurred in all four vulnerabilities.
 Participants most frequently asked if they understood the entirety of the situation. 
 This question was typically followed by looking back at the error message details. 
 For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he started exploring, so he went back to reread the error message before investigating further.
-\\
+
 
 %%%%%%%%%%%% Understanding Concepts
 
@@ -888,11 +877,11 @@ For instance, as P6 started exploring the validity of the SQL Injection vulnerab
 For some participants, the concepts or terms that the notification contained may not have been a part of their own mental model. 
 In these situations, participants had questions surrounding one or more of the concepts relevant to the problem.
 For instance, while parsing the potential attacks listed in the notification for the Servlet Parameter vulnerability, some participants did not know what a CSRF token was.
-\\
+
 
 \noindent\emph{What is this concept? (6)} \\
 \emph{How does this concept work? (4)} \\
-\emph{What is the term for this concept? (2)} \\
+\emph{What is the term for this concept? (2)}
 
 
 \noindent\textbf{Observations.}
@@ -912,7 +901,7 @@ If a link was not available, they went to the web to get more information or not
 While parsing the information provided for the Predictable Random vulnerability, P7 and P8 did not know what CSRF token was.
 The notification for this vulnerability did not include links so they searched the web for more information. 
 When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he wold have liked the notification to include what a servlet is and how it related to client control.
-\\
+
 
 %%%%%%%%%%%% Confirming Expectations
 
@@ -922,7 +911,7 @@ When asked what information he would like to see added to the notification for t
 A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect. 
 Though only four participants asked questions in this category, we believe there are implications for tools that worth communicating and exploring further. 
 The distinct question asked in this category was, \textit{Is this doing what I expect it to?} 
-\\
+
 
 
 \subsection{Problem Solving Support}
@@ -936,14 +925,14 @@ The distinct question asked in this category was, \textit{Is this doing what I e
 Many participants indicated they would use outside resources and documentation to decide how to proceed with a given vulnerability.
 For example, when assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
 Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. 
-\\
+
 
 \noindent\emph{Can my team members/resources provide me with more information? (5)} \\
 \emph{Where can I get more information? (5)} \\
 \emph{What information is in the documentation? (5)} \\
 \emph{How do resources do to prevent or resolve this? (5)} \\
 \emph{Is this a reliable/trusted resource? (3)} \\
-\emph{What type of information does this resource link me to? (2)} \\
+\emph{What type of information does this resource link me to? (2)}
 
 
 
@@ -958,7 +947,6 @@ Some participants found themselves clicking the links provided by FSB thinking t
 For example, P2 clicked the first link on path traversal while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
 When he did not see that information, he had to go back and attempt another web search for that information. 
 A few participants did not know the links existed, so they typically either searched the web or noted other strategies they might use, such as asking other developers on the project.
-\\
 
 
 %%%%%%%%%%%% Understanding Interacting Tools
@@ -967,13 +955,13 @@ A few participants did not know the links existed, so they typically either sear
 
 Throughout the study participants interacted with a variety of tools including FSB, \textsc{call hierarchy}, and \textsc{find references}. 
 While interacting with these tools, participants asked questions about how to access specific tools, how to properly use the tool, and how to interpret tool output. 
-\\
+
 
 \noindent\emph{Why is the tool complaining? (3)} \\
 \emph{Can I verify the information the tool provides? (3)} \\
 \emph{What is the tool's confidence? (2)} \\
 \emph{What is the tool output telling me? (1)} \\
-\emph{What tool do I need for this? (1)} \\
+\emph{What tool do I need for this? (1)} 
 
 
 \noindent\textbf{Observations.}
@@ -987,7 +975,6 @@ Other questions dealt with the presentation of information provided by the tool.
 Participants wanted to be able to explore things about the tool's output, and typically had to manually determine the answers to their questions. 
 For example, FSB reports its confidence on the potential defect in the notification. 
 However, some participants found it difficult to process this information.
-\\
 
 
 
@@ -998,11 +985,11 @@ However, some participants found it difficult to process this information.
 Some participants asked questions regarding the severity or ranking of the bug being reported by FSB. 
 These included general bug severity questions and questions specifically about how the tool communicates severity and ranking. 
 Four of the 155 distinct questions fall into this category. 
-\\
+
 
 \noindent\emph{How serious is this bug? (2)} \\
 \emph{How do the rankings compare? (2)} \\
-\emph{What do the bug rankings mean? (2)} \\
+\emph{What do the bug rankings mean? (2)}
 
 \noindent\textbf{Observations.}
 Most of these questions came from participants wanting to know more about the tool's method of ranking the vulnerabilities in the code.
@@ -1011,7 +998,7 @@ For example, when assessing the Potential Path Traversal vulnerability, P1 disco
 He noted that it would be helpful and added it to his assessment process for the following vulnerabilities.
 As he began working through the final vulnerability (SQL Injection), he realized he may not have as good of an understanding of the tool's metrics as he thought and did a web search for clarification. 
 P6, among others, did not notice the ranking and severity information provided by the tool. 
-\\
+
 
 %%%%%%%%%%%% Error Messages
 
@@ -1020,11 +1007,11 @@ P6, among others, did not notice the ranking and severity information provided b
 Participants asked questions concerning the content of the error messages attached to the notifications. 
 FSB provided long and short descriptions of each vulnerability. 
 Participants read and contemplated these notifications to guide their analysis.
-\\
+
 
 \noindent\emph{What does the error message say? (5)} \\
 \emph{What is the relationship between the error message and the code? (2)} \\
-\emph{What code caused this error message to occur? (2)} \\
+\emph{What code caused this error message to occur? (2)} 
 
 \noindent\textbf{Observations.}
 Six participants had questions about the vulnerability notifications; five of these participants asked, \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
@@ -1032,7 +1019,7 @@ More interestingly, they also asked questions about how to relate information co
 For example, the Predictable Random vulnerability notes that a predicable random value could lead to an attack when being used in a secure context. 
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
-\\
+
 
 
 
