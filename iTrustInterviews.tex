@@ -2,37 +2,16 @@
 % should be used if it is desired that the figures are to be displayed in
 % draft mode.
 %
-\documentclass[conference]{IEEEtran}
-% Add the compsoc option for Computer Society conferences.
 
-% Some very useful LaTeX packages include:
-% (uncomment the ones you want to load)
-
-\usepackage{cite}
-\ifCLASSINFOpdf
-   \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-   \graphicspath{{Images/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-
+%\documentclass[conference]{IEEEtran}
+\documentclass{acm_proc_article-sp}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+
+
+\usepackage{cite}
 \usepackage{url}
 \usepackage[table, svgnames]{xcolor} 
 \usepackage{color}
@@ -44,29 +23,30 @@
 
 \newcommand{\blind}[1]{{\color{white}\{#1\}}}
 
-\begin{document}
+
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
-
+\begin{document}
 \title{Assessing Tool Support for Questions Developers Ask About Security Vulnerabilities}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
-\author{\IEEEauthorblockN{\blind{Justin Smith, Brittany Johnson, and Emerson Murphy-Hill}}
-\IEEEauthorblockA{\blind{North Carolina State University}\\
-\blind{Raleigh, NC 27606}}
-\and
-\IEEEauthorblockN{\blind{Bill Chu and Heather Richter Lipford}}
-\IEEEauthorblockA{\blind{University of North Carolina at Charlotte}\\
-\blind{Charlotte, NC 28223} \\
-\blind{\{billchu, heather.lipford\}@uncc.edu}
-}}
+\numberofauthors{2}
+\author{
+\alignauthor Justin Smith, Brittany Johnson, and Emerson Murphy-Hill\\
+\affaddr{North Carolina State University}\\
+\affaddr{Raleigh, NC 27606} \\
+\email{}
+\alignauthor Bill Chu and Heather Richter Lipford\\
+\affaddr{University of North Carolina at Charlotte}\\
+\affaddr{Charlotte, NC 28223}\\
+\email{}
+%\blind{\{billchu, heather.lipford\}@uncc.edu}
+}
 
 \maketitle
+
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
@@ -82,17 +62,6 @@ Results of our study suggest that developers may lack support for reasoning abou
 
 \end{abstract}
 % no keywords
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-\IEEEpeerreviewmaketitle
-
 
 
 \section{Introduction}
