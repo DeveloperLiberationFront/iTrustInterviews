@@ -494,8 +494,8 @@ In the next four sections, we discuss our experiment's results using the categor
 Due to their large number, grouped the categories to organize and facilitate discussion about our findings. 
 Table~\ref{table:categories} provides an overview of this structure.
 For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
+The numbers next to the category titles denote the number of participants that asked questions in that category and the total number of questions in that category --- in parenthesis and brackets respectively. Similarly, the number in parenthesis next to each question marks the number of participants that asked that question.
 
-For each each category, we denote the overall number of participants who asked questions in parentheses and list the selected questions with the number of participants who asked each question in parentheses. 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{x} participants asked \emph{Y}.''
 Note that this work considers a relatively small sample and is exploratory and qualitative in nature.
 Though we present information about the number of participants who ask specific questions, the reader should not infer any qualitative generalizations.
@@ -508,13 +508,12 @@ We detail the observations we made and contextualize each category by discussing
 
 %%%%%%%%%%%% Understanding Alt. Fixes
 
-\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)}}\label{uafa}
+\noindent\subsection{\textbf{Understanding Alternative Fixes and Approaches (8)\{11\}}}\label{uafa}
 
 When resolving security vulnerabilities, participants encountered alternative approaches that appeared to achieve the desired functionality more securely.
 For example, when evaluating the SQL injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement}. 
 Participants discovered many sources for alternative fixes, including web resources and even code located in other parts of the project.
 When presented with alternative approaches, they compared the alternative with the current code and assessed the applicability of the alternative. 
-Eleven of the 155 questions we extracted pertained to understanding the various facets of alternative approaches or solutions, such as:
 \\
 \\
 \noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
@@ -552,9 +551,8 @@ For example, P9 found a suggestion on StackOverflow that he thought might work, 
 
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
-\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (10)}}\label{pupa}
+\noindent\subsection{\textbf{Preventing and Understanding Potential Attacks (10)\{11\}}}\label{pupa}
 Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
-Eleven of the 155 distinct questions we gathered belong in this category.
 \\
 
 \noindent\emph{Is this a real vulnerability? (7)} \\
@@ -583,12 +581,11 @@ Seven participants asked the question, \textit{Is this a real vulnerability?} To
 
 %%%%%%%%%%%% Assessing Application % % % % % % % % % % % % % % % % % % % % % % % %
 
-\noindent\subsection{\textbf{Assessing the Application of the Fix (9)}}\label{aaf}
+\noindent\subsection{\textbf{Assessing the Application of the Fix (9)\{9\}}}\label{aaf}
 Once participants had identified a specific approach for fixing a security vulnerability, they asked questions about applying the fix to the code.
 For example, when considering the use of \CodeIn{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
-We placed nine of the 155 distinct questions into this category.
 \\
 
 \noindent\emph{Will the error go away when I apply this fix? (5)} \\
@@ -613,11 +610,10 @@ While exploring the Predictable Random vulnerability, many participants, includi
 
 %%%%%%%%%%%% Relationship Between Bugs
 
-\noindent\subsection{\textbf{Relationship Between Bugs (4)}}\label{rbb}
+\noindent\subsection{\textbf{Relationship Between Bugs (4)\{3\}}}\label{rbb}
 
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether similar vulnerabilities exist elsewhere in the code. 
 For example, when participants reached the third and fourth vulnerabilities, they began noticing and speculating about the similarities between the vulnerabilities they inspected.
-Three of the 155 distinct questions we found target the relationships between the vulnerabilities in the code. 
 \\
 
 \noindent\emph{Are all the bugs related in my code? (3)} \\
@@ -638,10 +634,9 @@ Three of the 155 distinct questions we found target the relationships between th
 
 %%%%%%%%%%%% Locating Information
 
-\noindent\subsection{\textbf{Locating Information (10)}}\label{li}
+\noindent\subsection{\textbf{Locating Information (10)\{11\}}}\label{li}
 
-Participants asked questions about locating information in their coding environments. 
-Eleven of the 155 extracted questions fit into this category.
+Participants asked questions about locating information in their coding environments.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
 For example, when exploring the Path Traversal vulnerability, participants sought the locations in the code where the method containing the vulnerability was being called and where the path parameter was set.
 \\
@@ -689,12 +684,11 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 
 %%%%%%%%%%%% Control Flow/Call Information
 
-\noindent\subsection{\textbf{Control Flow and Call Information (10)}}\label{cf}
+\noindent\subsection{\textbf{Control Flow and Call Information (10)\{13\}}}\label{cf}
 We also extracted questions relating to control flow and calling information. 
 Developers seek information about the methods that get called, and whether they may get called with dirty parameters.
 Participants searched up the call chain, especially while evaluating the Potential Path Traversal vulnerability, trying to understand the possible files that could get opened. 
 Many determined that because all the calls originated in test classes, they could dismiss the vulnerability.
-Thirteen of the 155 distinct questions dealt with acquiring control flow and call information.
 \\
 
 
@@ -726,11 +720,10 @@ Eventually, many participants hypothesized that all the calls might originate fr
 
 %%%%%%%%%%%% Data Storage 
 
-\noindent\subsection{\textbf{Data Storage and Flow (10)}}\label{dsf}
+\noindent\subsection{\textbf{Data Storage and Flow (10)\{11\}}}\label{dsf}
 Much like the questions related to \emph{\textbf{Control Flow and Call Information}}, participants also asked questions about the data being stored in and carried throughout the program. 
 Participants often wanted to understand the type of data being collected and stored, where the data came from, and where it was going. 
 For example, participants wanted to determine whether it was generated by the application or passed in by the user, as well as where it was going (i.e., whether it was being stored in the database).
-Eleven of the 155 distinct questions fit into this category.
 \\
 
 \noindent\emph{Where does this information/data go? (9)} \\
@@ -764,10 +757,9 @@ For instance, once participants like P6 located the caller, they manually search
 
 %%%%%%%%%%%% Code Background
 
-\noindent\subsection{\textbf{Code Background and Functionality (9)}}
+\noindent\subsection{\textbf{Code Background and Functionality (9)\{17\}}}
 \label{cbf}
 Participants also asked questions concerning the background and intended function of the code being analyzed. 
-Seventeen of the 155 distinct questions we extracted fit into this category. 
 The questions in this category focus on the code, such as determining the role a component plays in the entire system or program.
 They ask about the history of the code and the context in which the code resides.
 \\
@@ -807,13 +799,12 @@ Further, five participants wanted to know why the code was written the way it wa
 
 %%%%%%%%%%%% Application Context
 
-\noindent\subsection{\textbf{Application Context/Usage (9)}}\label{acu}
+\noindent\subsection{\textbf{Application Context/Usage (9)\{9\}}}\label{acu}
 
 
 Some participants wanted to know how code entities or pieces of code fit into the overall context of the application or system under analysis. 
 The questions ranged from specific questions about a method or variable to general questions regarding the usage of the entire system. 
 For instance, often when assessing the vulnerabilities, participants wanted to know if the code was used for testing functionality or in production. 
-Nine of the 155 distinct questions addressed how the code works with respect to a part of or the whole system.
 \\
 
 \noindent\emph{What is the context of this bug/code? (4)} \\
@@ -849,14 +840,13 @@ Compared to the tool support provided for determining general context, participa
 
 %%%%%%%%%%%% End-User Interaction
 
-\noindent\subsection{\textbf{End-User Interaction (8)}}
+\noindent\subsection{\textbf{End-User Interaction (8)\{3\}}}
 \label{eui}
 
 
 Questions in this category deal with how end users might interact with the system or a particular part of the system. 
 Some participants wanted to know whether users could access critical parts of the code and if measures are being taken to mitigate potentially malicious activity. 
 For example, while assessing the Potential Path Traversal vulnerability, participants wanted to know whether the path is sanitized somewhere in the code before it is used.
-Three of the 155 distinct questions we found fall into this category.
 \\
 
 \noindent\emph{Is there input coming from the user? (4)} \\
@@ -890,12 +880,11 @@ Though participants found the answers to their questions, it took time for them 
 
 %%%%%%%%%%%% Developer Planning
 
-\noindent\subsection{\textbf{Developer Planning and Self-Reflection (8)}} \label{dpr}
+\noindent\subsection{\textbf{Developer Planning and Self-Reflection (8)\{14\}}} \label{dpr}
 
 Another kind of question participants asked when assessing potential security vulnerabilities regarded their current status or plans for next steps in terms of assessing or removing the vulnerability. 
 All of the questions in this category involve the developer's thoughts or the individual's relationship to the problem, rather than specifics of the code or the error notification.
-For example, when some participants thought they had an idea of what the problem might be, they stopped and took different measures to re-assess the code or notification to make sure they understood.
-Fourteen of the 155 distinct questions fit into this category. 
+For example, when some participants thought they had an idea of what the problem might be, they stopped and took different measures to re-assess the code or notification to make sure they understood. 
 \\
 
 \noindent\emph{Do I understand? (3)} \\
@@ -922,12 +911,11 @@ For instance, as P6 started exploring the validity of the SQL Injection vulnerab
 
 %%%%%%%%%%%% Understanding Concepts
 
-\noindent\subsection{\textbf{Understanding Concepts (7)}}\label{uc}
+\noindent\subsection{\textbf{Understanding Concepts (7)\{6\}}}\label{uc}
 
 For some participants, the concepts or terms that the notification contained may not have been a part of their own mental model. 
 In these situations, participants had questions surrounding one or more of the concepts relevant to the problem.
 For instance, while parsing the potential attacks listed in the notification for the Servlet Parameter vulnerability, some participants did not know what a CSRF token was.
-We categorized six of the 155 distinct questions into this category. 
 \\
 
 \noindent\emph{What is this concept? (6)} \\
@@ -956,7 +944,7 @@ When asked what information he would like to see added to the notification for t
 
 %%%%%%%%%%%% Confirming Expectations
 
-\noindent\subsection{\textbf{Confirming Expectations (1)}}\label{ce}
+\noindent\subsection{\textbf{Confirming Expectations (4)\{1\}}}\label{ce}
 % possibly could be put with developer planning/self-reflection OR code background and function?
 
 A few participants found themselves in situations where they wanted to be able to confirm whether the code is doing what they expect. 
@@ -971,12 +959,11 @@ The distinct question asked in this category was, \textit{Is this doing what I e
 
 %%%%%%%%%%%% Resources
 
-\noindent\subsection{\textbf{Resources and Documentation (10)}}\label{rd}
+\noindent\subsection{\textbf{Resources and Documentation (10)\{10\}}}\label{rd}
 
 Many participants indicated they would use outside resources and documentation to decide how to proceed with a given vulnerability.
 For example, when assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
 Another kind of question we extracted pertained to the resources and documentation available regarding the vulnerability or source code. 
-Ten of the 155 distinct questions fall into this category. 
 \\
 
 \noindent\emph{Can my team members/resources provide me with more information? (5)} \\
@@ -1004,11 +991,10 @@ A few participants did not know the links existed, so they typically either sear
 
 %%%%%%%%%%%% Understanding Interacting Tools
 
-\noindent\subsection{\textbf{Understanding and Interacting with Tools (8)}}\label{uit}
+\noindent\subsection{\textbf{Understanding and Interacting with Tools (8)\{9\}}}\label{uit}
 
 Throughout the study participants interacted with a variety of tools including FSB, \textsc{call hierarchy}, and \textsc{find references}. 
 While interacting with these tools, participants asked questions about how to access specific tools, how to properly use the tool, and how to interpret tool output. 
-Nine of the 155 distinct questions we extracted fall into this category.
 \\
 
 \noindent\emph{Why is the tool complaining? (3)} \\
@@ -1035,7 +1021,7 @@ However, some participants found it difficult to process this information.
 
 %%%%%%%%%%%% Bug Severity/Ranking
 
-\noindent\subsection{\textbf{Bug Severity and Ranking (5)}}\label{bsr}
+\noindent\subsection{\textbf{Bug Severity and Ranking (5)\{5\}}}\label{bsr}
 
 Some participants asked questions regarding the severity or ranking of the bug being reported by FSB. 
 These included general bug severity questions and questions specifically about how the tool communicates severity and ranking. 
@@ -1047,7 +1033,6 @@ Four of the 155 distinct questions fall into this category.
 \emph{What do the bug rankings mean? (2)} \\
 
 \noindent\textbf{Observations.}
-Five participants had questions concerning the seriousness of the vulnerability being assessed, and sometimes those surrounding it. 
 Most of these questions came from participants wanting to know more about the tool's method of ranking the vulnerabilities in the code.
 Participants who attempted to interpret the tool's severity and ranking metrics often had difficulty understanding what they meant. 
 For example, when assessing the Potential Path Traversal vulnerability, P1 discovered the rank, severity, and confidence information provided by the tool. 
@@ -1058,12 +1043,11 @@ P6, among others, did not notice the ranking and severity information provided b
 
 %%%%%%%%%%%% Error Messages
 
-\noindent\subsection{\textbf{Error Messages (6)}}\label{em}
+\noindent\subsection{\textbf{Error Messages (6)\{3\}}}\label{em}
 
 Participants asked questions concerning the content of the error messages attached to the notifications. 
 FSB provided long and short descriptions of each vulnerability. 
 Participants read and contemplated these notifications to guide their analysis.
-Three of the 155 distinct questions we extracted fall into this category.
 \\
 
 \noindent\emph{What does the error message say? (5)} \\
