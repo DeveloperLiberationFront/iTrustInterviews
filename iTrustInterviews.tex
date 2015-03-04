@@ -57,6 +57,8 @@ Program analysis tools should help developers answer the questions they ask whil
 To design effective tools, we must first understand which questions they ask.
 However, we lack a categorized catalog of such questions. 
 We built this categorized catalog by conducting a laboratory experiment with novice and experienced software developers, observing their interactions with security vulnerabilities in iTrust, a Java medical records software system.
+
+
 Results of our study suggest that developers may lack support for reasoning about attack surfaces, systematically assessing potential attacks, and locating security-critical components in the code.
 
 
@@ -66,7 +68,6 @@ Results of our study suggest that developers may lack support for reasoning abou
 
 
 \section{Introduction}
-% no \IEEEPARstart
 
 Software developers are a critical part of making software secure. 
 When there is a security fault in a software system, it is up to the developers to determine the best way to remove the vulnerability and ensure proper function of the system in the future.
@@ -74,14 +75,14 @@ There are a variety of ways developers can learn about, assess, and fix insecure
 It is particularly important to provide effective tools for secure systems, as security vulnerabilities are more likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}. 
 
 Toolsmiths produce static analysis tools to help developers detect potential security flaws in their code. 
-One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{findbugs.sourceforge.net} 
+One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{\url{findbugs.sourceforge.net}} 
 FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar\footnote{\url{grammatech.com/codesonar}} and Coverity,\footnote{\url{coverity.com/}} can also be used to detect and remove potential security vulnerabilities.
 Unfortunately, however, research suggests that many developers may not be using such static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
 
 % maybe connect back to example.
 
-Although existing work has cataloged developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities~\cite{latoza2010hard}. 
+Although existing work has cataloged developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities. 
 As we show later in this paper, many questions are unique to using security tools.
 Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
 
