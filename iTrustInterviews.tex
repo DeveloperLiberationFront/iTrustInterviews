@@ -643,7 +643,7 @@ P2 wanted to know, more specifically, what other parts of the code use Database 
 
 \subsubsection{\textbf{Control Flow and Call Information (10)\{13\}}}\label{cf}
 We also extracted questions relating to control flow and calling information. 
-Developers seek information about the methods that get called, and whether they may get called with dirty parameters.
+Developers seek information about the methods that get called, and whether they may get called with tainted values.
 Participants searched up the call chain, especially while evaluating the Potential Path Traversal vulnerability, trying to understand the possible files that could get opened. 
 Many determined that because all the calls originated in test classes, they could dismiss the vulnerability.
 
