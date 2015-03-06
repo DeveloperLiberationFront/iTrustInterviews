@@ -9,6 +9,13 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+% Optionally save space in lists (place this command after a list environment (e.g., itemize, enumerate, description)
+\newcommand{\compresslist}{
+	\vspace{-1em}
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
 
 
 \usepackage{cite}
@@ -178,6 +185,7 @@ Experimental materials can be found online.~\footnote{\blind{\url{http://www4.nc
 \label{rqs}
 We want to answer the following research questions:
 \begin{itemize}
+\compresslist
 \item \textbf{RQ1}: What types of security related questions do developers ask?
 \item \textbf{RQ2}: How do current tools and approaches support developers in answering these questions?
 \end{itemize}
@@ -310,6 +318,7 @@ Drawing from previous work on utterance interpretation, we developed five criter
 A statement was coded as a question only if it met one of the following criteria:
 
 \begin{itemize}
+\compresslist	
 \item \textbf{The participant explicitly asks a question.}
 \\ Example: \textit{Why aren't they using \CodeIn{PreparedStatements}?}
 \item \textbf{The participant makes a statement and explores the validity of that statement.}
