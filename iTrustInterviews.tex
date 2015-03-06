@@ -1011,9 +1011,32 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 Many of the questions participants asked related specifically to software security. 
 In particular, questions in Sections \ref{pupa}, \ref{eui}, and \ref{bsr} are most directly connected to security activities. 
 However, participants also asked questions that relate to more general bug finding tools.
-In fact, some such questions have been identified in other research contexts \cite{latoza2010hard}. In this section we will contextualize both these types of question, focusing on the failure points of certain question-answering strategies and how tools can support more successful strategies.
+In fact, some such questions have been identified in other research contexts~\cite{latoza2010hard}. In this section we will contextualize both these types of question, focusing on the failure points of certain question-answering strategies and how tools can support more successful strategies.
 
+\subsection{Flow Navigation}
+When performing sensitive operations, developers want to trace incoming data to determine if it originated from a malicious source. 
+Similarly, given data from the user, developers are interested in determining how it gets used in an application and trace whether it passes through the correct sanitization steps before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
 
+We observed developers using several strategies to answer questions related to these tasks, including: tracing up and down method calls to determine if the source is user-facing or if data is being used in sensitive operations; looking at class names for known user-facing or non user-facing classes; using existing knowledge of sensitive operations and data sources to reason about the code without searching. A mix of existing lightweight (i.e. text search and code highlighting) and heavyweight tools (i.e. \textsc{call hierarchy} and \textsc{find references}) partially support some of these strategies. 
+
+However, even with some degree of tool support, the strategies we observed exhibit several limitations. 
+First, lightweight tools that help developers navigate the flow of a program often require multiple invocations and may return partial or irrelevant information. 
+Existing heavyweight tools provide more complete and precise analysis, but are undermined by barriers to invocation~\cite{johnson2013don}. 
+Even still, existing sophisticated tools still may return incomplete information. 
+For example, \textsc{call hierarchy} does not alert developers when methods are being called from outside the system (i.e. framework hooks and api calls), and does not allow developers to trace the call structure while also tracking where specific parameters are set.
+Finally, strategies that rely on developers' prior knowledge of the code base are vulnerable to several failures. 
+For example, if developers are unaware that they are working with unstable recently-changed code they may make incorrect assumptions based on a false sense of knowledge~\cite{fritz2014degree}. 
+Additionally, when a developer is only responsible for a portion of the system, as is often the case CITE HERE, he may be unable to reason about the system-wide implications of a change. 
+
+We are not the first to suggest that developers could benefit from increased support in navigating program flow. 
+Researchers have advanced promising tools that help developers visualize call graphs~\cite{latoza2011visualizing} and trace control flow to its origin~\cite{barnett2014getMeHere}.
+However, in a security context, developers are particularly interested in how data propagates throughout a program and ask questions about data flow while navigating the call hierarchy (Sections \ref{dsf} and \ref{cf}).
+Perhaps a new tool could help developers reason about control flow and data flow simultaneously by leveraging the strengths of existing tools.
+Such a tool could adapt a precise, yet heavyweight, control flow navigation tool by reducing its barriers to invocation, a technique successfully demonstrated by \textsc{Spyglass}~\cite{viriyakattiyaporn2010spyglass}.
+Further, the tool could allow developers to specify specific parameters to trace and display information about where those values are modified.
+Finally, the tool could alert developers to the possibility that some calls might originate from outside the system and that tainted user data may enter the system through other channels.
+
+\subsection{Vulnerability Assistant}
 
 
 \section{Threats to Validity}
