@@ -274,18 +274,18 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \begin{table*} 
 \centering
 \caption{Four vulnerability exploration tasks}
-\begin{tabular}{|l|l|l|l|}
+\begin{tabular}{|l|l|l|}
 \rowcolor{gray!50}
 \hline
-    Vulnerability				& Short Description													& Tool's Rank 						& Tool's Confidence\\
+    Vulnerability				& Short Description													& Severity Rank 	\\
     \hline	
-    Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& ``Scary''							 	&  Normal\\
+    Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& ``Scary''	    \\
     \hline
-    Predictable Random			& Use of java.util.Random is predictable. 								& ``Scary''								&  Normal\\
+    Predictable Random			& Use of java.util.Random is predictable. 								& ``Scary''		\\
     \hline
-    Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& ``Troubling''		&  Low\\
+    Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& ``Troubling''	\\
     \hline
-    SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& ``Of Concern''		&  Low\\
+    SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& ``Of Concern'' \\
     \hline
 \end{tabular}
 \label{table:vulnerabilities}
