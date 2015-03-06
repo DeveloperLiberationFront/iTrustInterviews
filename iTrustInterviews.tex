@@ -112,8 +112,7 @@ Finally, we evaluate the existing tool support for answering security-related qu
 \section{Related Work}
 \label{sec:rw}
 
-We have organized the related work into three subsections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools. 
-Section \ref{understanding} surveys the work done to facilitate developers' understanding of code, and Section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
+We have organized the related work into two subsections. Section \ref{evaluation} outlines the predominant approaches researchers use to evaluate security tools and Section \ref{questions} references similar studies that have explored the questions developers ask when modifying, understanding, or debugging their code.
 
 \subsection{Evaluation of Techniques}
 \label{evaluation}
@@ -134,27 +133,6 @@ They found combining manual testing and static analysis was most effective, beca
 
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
 Further, they do not evaluate whether the tools under study answer questions developers have about the code or vulnerabilities. 
-Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
-
-\subsection{Developer Understanding}
-\label{understanding}
-In non-security domains, research has transitioned from focusing on the technical effectiveness of program analysis tools to usability~\cite{johnson2013don, ayewah2008using, khoo2008path}. 
-These studies sought to evaluate how tools communicate information to developers and how a tool can enhance a developer's understanding of the code. 
-Such studies examine proposed and existing approaches using various qualitative methods like interviews and surveys. 
-
-Ayewah, Pugh, and colleagues conducted a series of interviews and surveys, along with a controlled user study, in an attempt to better understand the practices and needs of developers when using the static analysis tool FindBugs~\cite{ayewah2008report, ayewah2008using}.
-
-Khoo and colleagues focused their efforts on improving the user interface of existing tools by developing and evaluating \textsc{Path Projection}, a user interface toolkit to help developers navigate through and understand the errors in their code~\cite{khoo2008path}.
-
-Johnson and colleagues conducted semi-structured interviews with professional developers to determine the reasons developers use or, do not use, static analysis tools to find defects in their codes~\cite{johnson2013don}. 
-Their findings suggest developers do not use tools to analyze their code, because they have difficulty understanding the output provided. 
-
-Layman and colleagues conducted a study with developers to explore the factors developers consider when deciding whether they will fix a defect or not~\cite{layman2007toward}. 
-They found that, among other criteria considered, developers consider the description of the fault critical to assessing its importance. 
-Based on their findings, they discuss design implications for automated fault detection tools.
-
-These studies discuss the ability of developers to effectively use existing tools and ways to improve them. However, these studies do not focus on the information needs of developers when using static analysis tools in their code. 
-The goal of our study is to identify the security-related questions developers ask when approaching security vulnerabilities so that tool designers understand the information requirements of security-minded developers.
 
 \subsection{Answering Developer Questions}
 \label{questions}
@@ -171,7 +149,6 @@ They found that developers were able to complete more debugging tasks when using
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
 Our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have surround the implications of code changes on the security of their code. 
-Our study discovers the questions developers have about potential code vulnerabilities and discusses the implications of the changes they may make when attempting to resolve them. 
 
 \section{Methodology}
 \label{sec:meth}
