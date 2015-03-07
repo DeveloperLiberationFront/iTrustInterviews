@@ -559,35 +559,15 @@ Unlike Sections \ref{cf} and \ref{dsf}, questions in this category refer more ge
 
 
 \noindent\textbf{Observations.}
-%What location info did people look for
 All ten participants wanted to locate where defective code and tainted values were being used throughout the system. 
 Most of these questions occurred in the context of assessing the Predictable Random vulnerability.
-Specifically, participants wondered where the random number generator was being used.
-
-%Simple questions are easy to answer by existing tools
-For the most part, participants successfully leaned on existing tools for answering simple questions about locating information like finding occurrences of a variable or references to a specific class name. 
-However, strategies relying on existing tools fell short when participants sought context-dependent information. 
-The \textsc{Code Usage Highlighter} displayed locations where variables were referenced and set locally, but did not explicitly inform developers of where the variables were put into a database or used in other security-critical contexts.
-%Participants didn't just seek location information, they searched for places where information was used within a given context.
-For example, participants asked where the servlet parameters were being used and, more specifically, they asked where the servlet parameters were being re-displayed on a web page or where they were stored in a database.
+Specifically, participants wondered where the potentially insecure random number generator was being used.
 
 %Where is similar code?
-In other cases, four participants wanted to find parts of the code that implemented similar functionality to what they were inspecting.
-For all of them, this was a manual process involving mostly scrolling through and exploring the code based on their knowledge of the application.
-For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to know more about how the functionality under investigation was implemented in other parts of the code. 
-P2 wanted to know, more specifically, what other parts of the code use Database Access Objects.
-
-
-%While assessing the Predictable Random vulnerability, P2 and P10 wanted to know if the code the notification was attached to was only run in test code. 
-%They were able to use existing tools to find where the code was being used, however, P2 was still could not confirm 100\% that the code is only used in tests. % more detailed strategies?
-
-%Might be worth adding back in...
-
-% question with no tool support for answering
-%Two participants had questions concerning the ability to track information while interpreting some of the vulnerabilities. 
-%To better understand the SQL Injection vulnerability, P9 wanted to find a way to track all the possible inputs, with no success. 
-%P6 wanted to be able to track all the variables that could be affected by this vulnerability; because no tool support to his knowledge existed to help retrieve the information, he noted he would use pencil and paper to do %so. 
-%Because this is a process that could take some time, P6 explained how he would do it rather than doing it, as many participants did when they had tool support.
+In other cases, four participants wanted to find parts of the code that implemented similar functionality to the code they were inspecting.
+They hypothesized that other parts of the code implemented the same functionality using more secure patterns. 
+For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to find other modules that created SQL statements.
+All participants completed this task manually by scrolling through the package explorer and searching for code using their knowledge of the application.
 
 
 %%%%%%%%%%%% Control Flow/Call Information
