@@ -938,7 +938,24 @@ Further, the tool could allow developers to specify specific parameters to trace
 Finally, the tool could alert developers to the possibility that some calls might originate from outside the system and that tainted user data may enter the system through other channels.
 
 \subsection{Vulnerability Assistant}
+Static analysis tools help developers locate potential vulnerabilities and also provide explanatory notifications.
+To completely resolve potential vulnerabilities, developers must perform many cognitively demanding tasks beyond simply locating the vulnerability and understanding the notification, as is evidenced by the breadth of categories we identified. 
+To determine whether a vulnerability is a true positive and if so how to fix it, we observed developers deploying a mix of several high-level strategies including: inspecting the code;
+navigating to other relevant areas of the code; 
+comparing the vulnerability to previous vulnerabilities; 
+consulting teammates, documentation, and other resources; 
+weighing existing knowledge against information in the notification; 
+and reasoning about the feasibility of all the possible attacks. 
 
+However, static analysis tools that help developers locate vulnerabilities often provide inadequate support for these strategies that developers use to resolve vulnerabilities. 
+Some of the failures that we observed include not supporting navigating the code base and not comparing the current vulnerability to other similar vulnerabilities, specifically those the developer has already fixed. 
+Despite these limitations, some experts successfully employ procedures and existing tools to correctly resolve potential vulnerabilities
+Even so, those that know how to reason about the most complex vulnerabilities are still susceptible interruption~\cite{parnin2012programmer} and disorientation~\cite{deAlwis2006disorient}.
+
+Perhaps vulnerability-specific checklists~\cite{phang2009triaging} based on successful strategies could benefit both novice and expert users.
+The checklists could be structured hierarchically containing high-level tasks, such as 	``Determine which attacks are feasible'', and subsequently more actionable nested subtasks such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible''.
+Checklists allow users to save the state of their interaction with a vulnerability --- for example by eliminating attack vectors they have ruled out --- diminishing the consequences of an interruption and context loss.
+Additionally, each task could include links to resources that relate specifically to that task and tools that could help developers complete the task.
 
 \section{Threats to Validity}
 \label{limits}
