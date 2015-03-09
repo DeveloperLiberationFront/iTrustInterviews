@@ -247,13 +247,10 @@ Since the focus of our study is to identify the questions developers ask indepen
 Each participant was asked to assess four vulnerabilities. 
 We presented each participant with this number of vulnerabilities, because in preliminary pilot sessions, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
-When selecting tasks, we gave preference to existing iTrust vulnerabilities and sought a broad set of question topics.  
-FSB uses topic abbreviations to group similar notifications. 
-For example the abbreviation for the topic Path Traversal is PT and applies to notifications that warn about potential path traversal. 
-FSB reports on several types of vulnerabilities. 
-To cover a broader set of question topics, we ensured each vulnerability pertained to a different topic.
-FSB identified three types of naturally occurring vulnerabilities: cross-site scripting, path traversal, and predictable random vulnerabilities.
-We inserted a SQL injection vulnerability by making minimal alterations to one of the database access objects.
+When selecting tasks, we gave preference to existing iTrust vulnerabilities.
+To give participants the opportunity to ask as many different types of questions as possible, we ensured each vulnerability was categorized differently by FSB.
+Without modifying iTrust, FSB identified vulnerabilities from three different topics: cross-site scripting, path traversal, and predictable random vulnerabilities.
+To include a fourth topic, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
 Our modification preserved the functionality of the original code and was based on examples of SQL injection found on OWASP and in open-source projects.
 Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
 
