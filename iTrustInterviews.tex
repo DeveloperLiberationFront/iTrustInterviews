@@ -249,7 +249,7 @@ Each participant was asked to assess four vulnerabilities.
 We presented each participant with this number of vulnerabilities, because in preliminary pilot sessions, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
 
 When selecting tasks, we gave preference to existing iTrust vulnerabilities and sought a broad set of question topics.  
-FSB uses topic abbreviations to group similar error messages. 
+FSB uses topic abbreviations to group similar notifications. 
 For example the abbreviation for the topic Path Traversal is PT and applies to notifications that warn about potential path traversal. 
 FSB reports on several types of vulnerabilities. 
 To cover a broader set of question topics, we ensured each vulnerability pertained to a different topic.
@@ -390,7 +390,7 @@ At this stage, we discarded five unclear or non pertinent questions and organize
 
    	 									& Resources and Documentation									& 10     		& Section~\ref{rd}		\\
 
-    									& Error Messages												& 3     		& Section~\ref{em}		\\
+    									& Notification Text												& 3     		& Section~\ref{em}		\\
     \hline	
        									& Uncategorized													& 10    		&			 \\
     \hline
@@ -508,7 +508,7 @@ The questions in this category differ from those in \emph{\textbf{Understanding 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 
 
-\noindent\emph{Will the error go away when I apply this fix? (5)} \\
+\noindent\emph{Will the notification go away when I apply this fix? (5)} \\
 \emph{How do I use this fix in my code? (4)} \\
 \emph{How do I fix this vulnerability? (4)} \\
 \emph{How hard is it to apply a fix to this code? (3)} \\
@@ -765,8 +765,8 @@ All of the questions in this category involve the developer's thoughts or the in
 Eight participants asked questions that were meant to be plan-oriented or reflective.
 These questions occurred in all four vulnerabilities.
 Participants most frequently asked if they understood the entirety of the situation. 
-This question was typically followed by looking back at the error message details. 
-For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the error message before he started exploring, so he went back to reread the error message before investigating further.
+This question was typically followed by looking back at the notification details. 
+For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the notification before he started exploring, so he went back to reread the notification before investigating further.
 
 
 %%%%%%%%%%%% Understanding Concepts
@@ -894,21 +894,21 @@ As he began working through the final vulnerability (SQL Injection), he realized
 P6, among others, did not notice the ranking and severity information provided by the tool. 
 
 
-%%%%%%%%%%%% Error Messages
+%%%%%%%%%%%% Notification Text
 
-\subsubsection{\textbf{Error Messages (6)\{3\}}}\label{em}
+\subsubsection{\textbf{Notification Text(6)\{3\}}}\label{em}
 
 FSB provided long and short descriptions of each vulnerability (Figure \ref{fig:environment}). 
 Participants read and contemplated these notifications to guide their analysis.
 
 
-\noindent\emph{What does the error message say? (5)} \\
-\emph{What is the relationship between the error message and the code? (2)} \\
-\emph{What code caused this error message to occur? (2)} 
+\noindent\emph{What does the notification text say? (5)} \\
+\emph{What is the relationship between the notification text and the code? (2)} \\
+\emph{What code caused this notification to appear (2)} 
 
  
-Six participants had questions about the vulnerability notifications; five of these participants asked, \textit{What does the error message say?}, a typical question for someone to ask when using tools to analyze source code.
-More interestingly, they also asked questions about how to relate information contained in the error message back to the code. 
+Six participants had questions about the vulnerability notifications; five of these participants asked, \textit{What does the notification text say?}, a typical question for someone to ask when using tools to analyze source code.
+More interestingly, they also asked questions about how to relate information contained in the notification back to the code. 
 For example, the Predictable Random vulnerability notes that a predicable random value could lead to an attack when being used in a secure context. 
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
