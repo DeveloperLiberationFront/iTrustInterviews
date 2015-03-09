@@ -448,7 +448,7 @@ For example, when evaluating the SQL Injection vulnerability, participants found
 Eight participants had questions that fit into this category. 
 The FSB notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
 As noted, the notification associated with the SQL Injection vulnerability suggests switching to use \CodeIn{PreparedStatements}. 
-The notification associated with the Predictable Random vulnerability suggests switching to use \CodeIn{java.security.SecureRandom}. 
+The notification associated with the Predictable Random vulnerability suggests switching to use \CodeIn{SecureRandom}. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
@@ -503,7 +503,7 @@ Seven participants asked the question, \textit{Is this a real vulnerability?} To
 
 \subsubsection{\textbf{Assessing the Application of the Fix (9)\{9\}}}\label{aaf}
 Once participants had identified a specific approach for fixing a security vulnerability (Section \ref{uafa}), they asked questions about applying the fix to the code.
-For example, when considering the use of \CodeIn{java.security.SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
+For example, when considering the use of \CodeIn{SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 
@@ -524,7 +524,7 @@ All participants proposed solutions that involved applying one or both of these 
 Specifically, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
-While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6 decided to use \CodeIn{java.security.SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
+While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6 decided to use \CodeIn{SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 
 
 
