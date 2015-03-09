@@ -73,22 +73,21 @@ In particular, participants employed error-prone strategies while navigating fro
 
 \section{Introduction}
 
-Software developers are a critical part of making software secure. 
-When there is a security fault in a software system, it is up to the developers to determine the best way to remove the vulnerability and ensure proper function of the system in the future.
-There are a variety of ways developers can learn about, assess, and fix insecure code.
-It is particularly important to provide effective tools for secure systems, as security vulnerabilities are more likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}. 
+Software developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
+When software systems contain security defects, often developers must determine the best ways to remove them. 
 
-Toolsmiths produce static analysis tools to help developers detect potential security flaws in their code. 
+To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
 One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{\url{findbugs.sourceforge.net}} 
 FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar\footnote{\url{grammatech.com/codesonar}} and Coverity,\footnote{\url{coverity.com/}} can also be used to detect and remove potential security vulnerabilities.
-Unfortunately, however, research suggests that many developers may not be using such static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
+Unfortunately, however, research suggests that developers are not using static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
 
 % maybe connect back to example.
 
 Although existing work has cataloged developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities. 
 As we show later in this paper, many questions are unique to using security tools.
-Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+
+Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. Similarly, we expect that categorizing the questions developers ask when using security-focused static analysis tools will help improve those tools and yield better adoption. 
 
 
 %Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
