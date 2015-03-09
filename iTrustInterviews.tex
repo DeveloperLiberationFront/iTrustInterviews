@@ -84,7 +84,7 @@ Unfortunately, however, research suggests that developers are not using static a
 
 % maybe connect back to example.
 
-Although existing work has cataloged developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities. 
+Although existing work has categorized developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities. 
 As we show later in this paper, many questions are unique to using security tools.
 
 Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. Similarly, we expect that categorizing the questions developers ask when using security-focused static analysis tools will help improve those tools and yield better adoption. 
@@ -101,7 +101,7 @@ We report the kinds of questions they asked while doing so, along with the strat
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
 
 Our work makes three contributions. 
-First, we present a list of questions software developers ask when fixing security vulnerabilities.
+First, we present a categorization of questions software developers ask when fixing security vulnerabilities.
 Second, based on our observations, we discuss the strategies developers use to answer their questions.
 Finally, we evaluate the existing tool support for answering security-related questions.
 
@@ -316,7 +316,7 @@ When we identified an explicit question or implicit question, which is a stateme
 Question clarification typically entailed rewording the question to best reflect the information the participant is trying to acquire.
 From the ten sessions, the first coder extracted 421 question statements; the other coder extracted 389. 
 
-To make sure our list of questions was exhaustive, two independent reviewers coded the transcripts using the criteria.
+To make sure our categorization of questions was exhaustive, two independent reviewers coded the transcripts using the criteria.
 It was sometimes difficult to determine what statements should be extracted as questions; the criteria helped ensure both reviewers only highlighted the statements that reflected actual questions. 
 
 
@@ -416,7 +416,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 In the next four sections, we discuss our experiment's results using the categories we described in the previous section.
 Due to their large number, we grouped the categories to organize and facilitate discussion about our findings. 
 Table~\ref{table:categories} provides an overview of this structure.
-For each category, we selected several questions to discuss. A full list of distinct questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
+For each category, we selected several questions to discuss. A full categorization of questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
 The numbers next to the category titles denote the number of participants that asked questions in that category and the total number of questions in that category --- in parenthesis and brackets respectively. Similarly, the number in parenthesis next to each question marks the number of participants that asked that question.
 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{X} participants asked \emph{Y}.''
@@ -969,7 +969,7 @@ Developers with more expertise and experience might ask different questions and 
 
 Further, participants were equipped with FSB, an open source static analysis tool. 
 Developers using other more sophisticated tools might ask slightly different questions.
-We cannot and do not claim that we have identified a comprehensive list of questions.
+We cannot and do not claim that we have identified a comprehensive categorization of questions.
 
 One potential threat is that some participants had not worked in the code of interest for some time by the time they participated in the experiment. This may have led them to ask questions that a developer working in their every day coding environment might not ask. 
 Along the same lines, another threat is that we did not have developers who are responsible for the security of their code in real life; we asked participants to pretend they are in charge of security for the code.  
@@ -983,7 +983,7 @@ It remains to be seen what questions developers ask about other types of project
 \label{sec:concl}
 This paper reported on an experiment conducted to discover the questions developers ask when identifying and assessing security vulnerabilities in software code.
 During the experiment, we asked ten software developers to describe their thoughts as they assessed potential security vulnerabilities in iTrust, a medical records web application.
-We presented the results of our experiment as a catalog of categorized questions.
+We presented the results of our experiment as a categorization of questions.
 Our findings have several implications for the design of program analysis tools. Our results suggest that tools should help developers, among other things, navigate from malicious data sources to sensitive data sinks within an application and manage the all the tasks required to reason about a vulnerability.
 
 
