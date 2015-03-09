@@ -129,13 +129,13 @@ Comparing the four approaches based on number of vulnerabilities found, false po
 Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. 
 They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
 
-
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
 Further, they do not evaluate whether the tools under study answer questions developers have about the code or vulnerabilities. 
+Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
 
 \subsection{Answering Developer Questions}
 \label{questions}
-Several studies have explored the knowledge requirements of developers when coding.
+Several studies have explored the knowledge requirements of developers.
 Similar to our work, some existing studies focus on the questions developers ask to determine these knowledge requirements~\cite{latoza2010hard, latoza2010developers}.
 In contrast, our study focuses specifically on the knowledge requirements of developers when assessing security vulnerabilities.
 
@@ -147,7 +147,6 @@ Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of deb
 They found that developers were able to complete more debugging tasks when using their tool than they could without it.
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
-Our work builds on the work of LaToza and Myers, which found that some of the hard-to-answer questions developers have surround the implications of code changes on the security of their code. 
 
 \section{Methodology}
 \label{sec:meth}
