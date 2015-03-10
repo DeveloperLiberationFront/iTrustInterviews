@@ -928,7 +928,7 @@ However, even with some degree of tool support, the strategies we observed exhib
 First, lightweight tools that help developers navigate the flow of a program often require multiple invocations and may return partial or irrelevant information. 
 Existing heavyweight tools provide more complete and precise analysis, but are undermined by barriers to invocation~\cite{johnson2013don}. 
 Even still, existing sophisticated tools still may return incomplete information. 
-For example, \textsc{call hierarchy} does not alert developers when methods are being called from outside the system (i.e. framework hooks and api calls), and does not allow developers to trace the call structure while also tracking where specific parameters are set.
+For example, \textsc{call hierarchy} does not alert developers when methods are being called from outside the system (i.e. framework hooks), and does not allow developers to trace the call structure while also tracking where specific parameters are set.
 Finally, strategies that rely on developers' prior knowledge of the code base are vulnerable to several failures. 
 For example, if developers are unaware that they are working with unstable recently-changed code they may make incorrect assumptions based on a false sense of knowledge~\cite{fritz2014degree}. 
 Additionally, when a developer is only responsible for a portion of the system, as is often the case CITE HERE, he may be unable to reason about the system-wide implications of a change. 
