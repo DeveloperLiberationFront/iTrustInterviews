@@ -450,18 +450,17 @@ For example, when evaluating the SQL Injection vulnerability (Table~\ref{table:v
  
 %The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
 %SAVE THIS CONNECTION FOR LATER
-Eight participants had questions that fit into this category. 
-The FSB notifications for the SQL Injection and Predictable Random vulnerabilities explicitly offer alternative fixes. 
-As noted, the notification associated with the SQL Injection vulnerability suggests switching to use \CodeIn{PreparedStatements}. 
-The notification associated with the Predictable Random vulnerability suggests switching to use \CodeIn{SecureRandom}. 
-In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
+Some notifications, including those for the SQL Injection and Predictable Random vulnerabilities, explicitly offered alternative fixes. 
+In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches.
+ 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
-P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
+P7 preferred StackOverflow as a resource, because it included real-world examples of broken code elaborated on why the example was broken.
+Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about the process of applying suggestions. 
+For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust.
+
 While attempting to assess the Servlet Parameter vulnerability, P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP~\cite{OWASP}. 
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
-Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
-For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
-
+It seemed important to P8 that recommended approaches came from trustworthy sources.
 
 %One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
 
