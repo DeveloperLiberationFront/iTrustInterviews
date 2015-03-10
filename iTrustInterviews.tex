@@ -565,16 +565,13 @@ Unlike Sections \ref{cf} and \ref{dsf}, questions in this category refer more ge
 \emph{Where are other similar pieces of code? (4)} \\
 \emph{Where is this method defined? (1)} 
 
-
-
- 
 All ten participants wanted to locate where defective code and tainted values were being used throughout the system. 
 Most of these questions occurred in the context of assessing the Predictable Random vulnerability.
-Specifically, participants wondered where the potentially insecure random number generator was being used.
+Specifically, participants wondered where the potentially insecure random number generator was being used and whether it was being used to generate sensitive data like passwords.
 
 %Where is similar code?
-In other cases, four participants wanted to find parts of the code that implemented similar functionality to the code they were inspecting.
-They hypothesized that other parts of the code implemented the same functionality using more secure patterns. 
+In other cases, while fixing one method, four participants wanted to find other methods that implemented similar functionality.
+They hypothesized that other code modules implemented the same functionality using more secure patterns. 
 For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to find other modules that created SQL statements.
 All participants completed this task manually by scrolling through the package explorer and searching for code using their knowledge of the application.
 
