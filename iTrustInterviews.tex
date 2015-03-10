@@ -78,9 +78,9 @@ Software developers are a critical part of making software secure, a particularl
 When software systems contain security defects, often developers must determine the best ways to remove them. 
 
 To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
-One of example of such a tool is Find Security Bugs (FSB),\footnote{\url{h3xstream.github.io/find-sec-bugs/}} an extension of FindBugs.\footnote{\url{findbugs.sourceforge.net}} 
+One of example of such a tool is Find Security Bugs (FSB),~\cite{FindSecurityBugs} an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential security vulnerabilities in software, such as SQL injection and cross-site scripting.  
-Other tools, such as CodeSonar\footnote{\url{grammatech.com/codesonar}} and Coverity,\footnote{\url{coverity.com/}} can also be used to detect and remove potential security vulnerabilities.
+Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity,~\cite{Coverity} can also be used to detect and remove potential security vulnerabilities.
 Unfortunately, however, research suggests that developers are not using static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
 
 % maybe connect back to example.
@@ -96,7 +96,7 @@ Furthermore, in non-security domains, work that identifies questions has helped 
 
 
 This work aims to help us understand the information developers seek when using static analysis tools to identify and assess security vulnerabilities in code.
-To reach that goal, we conducted a laboratory experiment with ten developers familiar with the iTrust software system.\footnote{\blind{\url{http://agile.csc.ncsu.edu/iTrust/wiki/doku.php?id=start}}} 
+To reach that goal, we conducted a laboratory experiment with ten developers familiar with the iTrust software system~\cite{iTrust}.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We report the kinds of questions they asked while doing so, along with the strategies they used to answer them.
 Using a card sort methodology, we sorted the 559 questions into 17 categories. 
@@ -154,8 +154,7 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 We conducted a laboratory experiment with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
 Section \ref{rqs} outlines the research questions we sought to answer. 
 Section \ref{studyDesign} details how the study was designed and Section \ref{dataAnalysis} describes how we performed data analysis.
-Experimental materials can be found online.\footnote{\blind{\url{http://www4.ncsu.edu/~bijohnso/security-questions.html}}}
-
+Experimental materials can be found online~\cite{ExperimentalMaterials}.
 
 \subsection{Research Questions}
 \label{rqs}
@@ -185,10 +184,10 @@ Finally, each session concluded with several demographic and open-ended discussi
 
 
 \subsubsection{Materials}
-Participants used Eclipse to explore vulnerabilities in iTrust, an open source Java medical records web application that ensures the privacy and security of patient records according to the HIPAA statute.\footnote{\url{hhs.gov/ocr/privacy/}} 
+Participants used Eclipse to explore vulnerabilities in iTrust, an open source Java medical records web application that ensures the privacy and security of patient records according to the HIPAA statute~\cite{HIPAA}. 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with a version of FindBugs extended with FSB.
-We chose FSB because of its low barriers to adoption; it is free, open source, easy to install and configure, and contained within the integrated development environment (IDE). FSB is also similar to other more sophisticated static analysis tools --- such as those listed by NIST,\footnote{\url{samate.nist.gov/index.php/Source_Code_Security_Analyzers.html}} OWASP,\footnote{\url{owasp.org/index.php/Source_Code_Analysis_Tools}} and WASC\footnote{\url{projects.webappsec.org/w/page/61622133/StaticCodeAnalysisList}} --- in terms of the types of security vulnerabilities it detects.
+We chose FSB because of its low barriers to adoption; it is free, open source, easy to install and configure, and contained within the integrated development environment (IDE). FSB is also similar to other more sophisticated static analysis tools --- such as those listed by NIST,~\cite{SecurityAnalyzers} OWASP,~\cite{OWASPSCA} and WASC~\cite{CodeAnalysis} --- in terms of the types of security vulnerabilities it detects.
 
 
 
@@ -283,7 +282,7 @@ We recorded both audio and the screen as experimental artifacts for data analysi
 \subsection{Data Analysis}
 \label{dataAnalysis}
 We analyzed session data using an approach inspired by grounded theory~\cite{glaser2009discovery}. 
-First, we transcribed all the audio-video files using oTranscribe.\footnote{\url{otranscribe.com}}
+First, we transcribed all the audio-video files using oTranscribe~\cite{OTranscribe}.
 Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
 The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
@@ -413,7 +412,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 In the next four sections, we discuss our experiment's results using the categories we described in the previous section.
 Due to their large number, we grouped the categories to organize and facilitate discussion about our findings. 
 Table~\ref{table:categories} provides an overview of this structure.
-For each category, we selected several questions to discuss. A full categorization of questions can be found online.\footnote{\blind{\url{www4.ncsu.edu/~bijohnso/questions.pdf}}}
+For each category, we selected several questions to discuss. A full categorization of questions can be found online~\cite{ExperimentalMaterials}.
 The numbers next to the category titles denote the number of participants that asked questions in that category and the total number of questions in that category --- in parenthesis and brackets respectively. Similarly, the number in parenthesis next to each question marks the number of participants that asked that question.
 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{X} participants asked \emph{Y}.''
@@ -448,7 +447,7 @@ The notification associated with the Predictable Random vulnerability suggests s
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches. 
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples and elaborated on what was wrong with the code as it was currently written.  
-While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP\footnote{\url{owasp.org/index.php/Main_Page}}. 
+While attempting to assess the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}), P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP~\cite{OWASP}. 
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about trade-offs or the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust. 
