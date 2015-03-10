@@ -186,8 +186,12 @@ Finally, each session concluded with several demographic and open-ended discussi
 Participants used Eclipse to explore vulnerabilities in iTrust, an open source Java medical records web application that ensures the privacy and security of patient records according to the HIPAA statute~\cite{HIPAA}. 
 During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with a version of FindBugs extended with FSB.
-We chose FSB because of its low barriers to adoption; it is free, open source, easy to install and configure, and contained within the integrated development environment (IDE). FSB is also similar to other more sophisticated static analysis tools --- such as those listed by NIST,~\cite{SecurityAnalyzers} OWASP,~\cite{OWASPSCA} and WASC~\cite{CodeAnalysis} --- in terms of the types of security vulnerabilities it detects.
 
+We chose FSB because it detects security defects and compares to other program analysis tools, such as those listed by NIST,~\cite{SecurityAnalyzers} OWASP,~\cite{OWASPSCA} and WASC~\cite{CodeAnalysis}. 
+Whereas some tools may include more advanced bug detection features, FSB is representative of static analysis security tools with respect to its user interface, specifically in how it communicates with its users.
+FSB provides visual code annotations and textual notifications that contain vulnerability-specific information.
+It summarizes all the vulnerabilities it detects in a project and allows users to prioritize potential vulnerabilities based on several metrics such as bug type or severity.
+FSB can be configured to only report certain types of vulnerabilities and extended to provide more detailed reports on custom vulnerabilities.
 
 
 \begin{table}
