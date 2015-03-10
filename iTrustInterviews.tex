@@ -326,6 +326,13 @@ If the other author did not agree that such a question met at least one of the c
 The reviewers were said to agree when they merged a duplicate or verified a question. Depending on the participant, inter-reviewer agreement ranged from 91\% to 100\%. Across all participants, agreement averaged to 95\%.
 The agreement scores suggest that the two reviewers consistently held similar interpretations of the question criteria.
 
+It is also important to note that participants' questions related to several topics in addition to security. 
+We discuss the questions that are most closely connected to security in Sections \ref{pupa}, \ref{eui}, and \ref{bsr}.
+Although our primary focus is security, we are also interested in the other questions that participants posed, as those questions often have security implications.
+For example, researchers have observed that developers ask questions about data flow, like \emph{What is the original source of this data}, even outside security~\cite{latoza2010hard}.
+However, in a security context, this question is particularly important, because potentially insecure data sources often require special handling to prevent attacks.
+
+
 \subsubsection{Question Sorting}
 To organize our questions and facilitate discussion, we performed an \textit{open} card sort~\cite{hudson2013sorting}. 
 Card sorting is typically used to help structure data by grouping related information into categories. 
@@ -906,10 +913,7 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 
 
 \section{Discussion}
-Many of the questions participants asked related specifically to software security. 
-In particular, questions in Sections \ref{pupa}, \ref{eui}, and \ref{bsr} are most directly connected to security activities. 
-However, participants also asked questions that relate to more general bug finding tools.
-In fact, some such questions have been identified in other research contexts~\cite{latoza2010hard}. In this section we will contextualize both these types of question, focusing on the failure points of certain question-answering strategies and how tools can support more successful strategies.
+In this section we will contextualize both these types of question, focusing on the failure points of certain question-answering strategies and how tools can support more successful strategies.
 
 \subsection{Flow Navigation}
 When performing sensitive operations, developers want to trace incoming data to determine if it originated from a malicious source. 
