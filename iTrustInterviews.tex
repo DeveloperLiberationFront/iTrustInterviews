@@ -687,23 +687,12 @@ For instance, often when assessing the vulnerabilities, participants wanted to k
 \emph{How does the system work? (1)} 
 
 
- 
-Four participants wanted to know the context in which the code being assessed was used or the context of the bug being assessed.
-Similarly, three participants tried to determine what a specific method or variable is used for in the application.
-Both of these questions came up for three of the four vulnerabilities.
-
-
-P7 had questions concerning the context of the code associated with the Potential Path Traversal and Predictable Random vulnerabilities.
-For the former vulnerability, he wanted to know the general context in which the code is used; for the latter, he wanted to know the legal context in which the code is being used.
-P2, when thinking about how he might determine the context in which the code associated with the Predictable Random vulnerability is used, stated that the tool would have been more useful if it could tell him this information.
-He followed this statement with the notion that this sort of tool may be ``unrealistic.'' 
 % B1, 2, 3 -- mostly 1(?)
 
 % B1, 2, 3 -- mostly 2(?)
-Participants also tried to determine if the code associated with the vulnerability was used to test the system. 
+Participants tried to determine if the code in the Potential Path Traversal vulnerability was used to test the system. 
 P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
 To answer this question, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations the code of interest is being called.
-Compared to the tool support provided for determining general context, participants could answer this question relatively easily using existing tool support.
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
