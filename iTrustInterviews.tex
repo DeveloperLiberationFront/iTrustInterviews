@@ -650,13 +650,16 @@ The questions in this category differ from those in Section \ref{acu}, because t
 \emph{Is this library code? (2)} \\
 \emph{How much effort was put into this code? (1)}
 
+Participants were interested in what the code did as well as the history of the code.
+For example, P2 asked about the amount of effort put into the code to determine whether he trusted that the code was written securely.
+He explained, ``People were rushed and crunched for time, so I'm not surprised to see an issue in the servlets.'' 
+Knowing whether the code was thrown together haphazardly versus reviewed and edited carefully might help developers determine if searching for vulnerabilities will likely yield true positives.
 
- 
-Participants were interested in how the code was written as well as the history of the code.
-For example, they asked why it was written a specific way, who wrote the code, or how much effort had been put into the code.
-P2 asked about the effort put into the code to determine whether he trusted that the code was written securely.
-While assessing the Potential Path Traversal vulnerability, some participants expressed interest in consulting the code's author for help.
-For example, P10 stated that he would normally ask his team members for background on how the code worked.
+Understanding what the potentially vulnerable code did seemed important to most participants, with nine participants asking this question explicitly.
+When some participants had difficulty answering this question, as was the case with P10 for the Potential Path Traversal vulnerability, they sometimes expressed interest in consulting the code's author.
+For example, P10 stated that he would normally ask his team members to explain how the code worked.
+Presumably, the author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
+
 
 %Brings unwanted attention to our inserted vulnerability
 %As P2, P7, and P8 explored the code pertaining to the SQL Injection vulnerability, they became curious as to why developers of the code would use Java's \texttt{Statement} instead of the presumably more secure \texttt{PreparedStatement} for sending queries to a Database Access Object.
