@@ -926,14 +926,25 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 
 
 \section{Discussion}
-In this section we will contextualize both these types of question, focusing on the failure points of certain question-answering strategies and how tools can support more successful strategies.
+In this section we discuss two main implications of our work.
 
 \subsection{Flow Navigation}
-When performing sensitive operations, participants wanted to trace incoming data to determine if it originated from a malicious source. 
+When performing sensitive operations, participants wanted to determine if data originated from a malicious source
+by tracing its path through the program.
 Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it passed through the correct sanitization steps before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
 
-We observed participants using several strategies to answer questions related to these tasks, including: tracing up and down method calls to determine if the source is user-facing or if data is being used in sensitive operations; looking at class names for known user-facing or non user-facing classes; using existing knowledge of sensitive operations and data sources to reason about the code without searching. A mix of existing lightweight (i.e. text search and code highlighting) and heavyweight tools (i.e. \textsc{call hierarchy} and \textsc{find references}) partially support some of these strategies. 
+We observed participants using several strategies to answer program flow questions.
+First, when the participant's goal was to determine if data comes from the user (\emph{a user-facing source}), 
+and thus cannot be trusted, or if untrusted data is being used in a sensitive operation,
+participants would navigate through chains of method calls.
+Second, when the participant's goal was to evaluate whether a particular data source was user-facing,
+participants would make inferences based on class names.
+For instance, any class that started with \texttt{Test}, many users assumed was as JUnit test case,
+and thus was not user-facing, and therefore not a potential source of compromised data.
+Finally, when the participant's goal was to reason about the code without searching,
+participants would rely on their existing knowledge of sensitive operations and data sources in the application.
 
+A mix of existing lightweight (i.e. text search and code highlighting) and heavyweight tools (i.e. \textsc{call hierarchy} and \textsc{find references}) partially support some of these strategies. 
 However, even with some degree of tool support, the strategies we observed exhibit several limitations. 
 First, lightweight tools that help developers navigate the flow of a program often require multiple invocations and may return partial or irrelevant information. 
 Existing heavyweight tools provide more complete and precise analysis, but are undermined by barriers to invocation~\cite{johnson2013don}. 
