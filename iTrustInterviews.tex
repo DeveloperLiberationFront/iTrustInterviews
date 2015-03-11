@@ -20,6 +20,7 @@
 
 \usepackage{cite}
 \usepackage{url}
+\usepackage{tabularx}
 \usepackage[table, svgnames]{xcolor} 
 \usepackage{color}
 \usepackage{siunitx}
@@ -259,7 +260,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
 \begin{table*} 
 \centering
 \caption{Four vulnerability exploration tasks}
-\begin{tabular}{|l|l|l|}
+\begin{tabularx}{\textwidth}{|l|X|l|}
 \rowcolor{gray!50}
 \hline
     Vulnerability				& Short Description													& Severity Rank 	\\
@@ -272,7 +273,7 @@ Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities.
     \hline
     SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& ``Of Concern'' \\
     \hline
-\end{tabular}
+\end{tabularx}
 \label{table:vulnerabilities}
 \end{table*}
 
@@ -350,10 +351,11 @@ For example, P1 asked, \textit{Where can I find information related to this vuln
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
 At this stage, we discarded five unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
 
+
 \begin{table*} 
 \centering
 \caption{Organizational Groups and Emergent Categories}
-\begin{tabular}{|l|l|r|c|}
+\begin{tabularx}{\textwidth}{|l|X|r|c|}
 \rowcolor{gray!50}
 \hline
     Group											& Category										& Clusters		& Location in Paper	  	\\
@@ -399,7 +401,7 @@ At this stage, we discarded five unclear or non pertinent questions and organize
     \hline	
        									& Uncategorized													& 10    		&			 \\
     \hline
-\end{tabular}
+\end{tabularx}
 \label{table:categories}
 \end{table*}
 
