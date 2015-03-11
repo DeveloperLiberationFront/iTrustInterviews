@@ -168,7 +168,8 @@ Where possible, we also try to link questions to the tools and strategies that d
 
 \subsection{Study Design}
 \label{studyDesign}
-Each session started with a five-minute briefing section, which included time for participants to familiarize themselves with the study environment and Find Security Bugs (FSB).
+To ensure all participants were familiar with the study environment and Find Security Bugs (FSB),
+each in-person session started with a five-minute briefing section, which included a demonstration of FSB and time for questions.
 Following the briefing period, participants progressed through encounters with four vulnerabilities. 
 Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of these encounters.
 All participants consented to participate in our study, which had institutional review board approval, and to have their session recorded using screen and audio capture software.
@@ -236,18 +237,14 @@ For our experiment, we recruited ten software developers, five students and five
 Table~\ref{table:participants} gives additional demographic information on each of the ten participants. 
 Participants ranged in programming experience from 4 years to 10 years, averaging 6.3 years.
 Participants also self-reported their familiarity with security vulnerabilities on a 5 point Likert scale, with a median of 3.
+Although we report on experiential and demographic information, the focus of this work is to identify questions that span experience levels.
 In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.
 
 We faced the potential confound of measuring participants learning of a new code base rather than measuring their ability to fix vulnerabilities.
 To mitigate this confound, we chose participants who were familiar with iTrust;
 all participants either served as teaching assistants for, or completed a semester-long software engineering course that focused on developing iTrust.
-To identify eligible participants, we recruited using personal contacts and class rosters and asked participants at the end of the experiment to recommend other qualified participants.
+To identify eligible participants, we recruited using personal contacts, class rosters, and asked participants at the end of the experiment to recommend other qualified participants.
 
-
-
-
-%Move to design
-All sessions were conducted in-person.
 
 %ideographic, nomethethic, or typical size, grounded theory
 %Typical grounded theory analysis involves X, Y, Z. Other work has reached saturation at X Participants. 
@@ -255,29 +252,16 @@ All sessions were conducted in-person.
 Since extracting data from each session required intensive analysis, we ceased recruitment when we determined that we had reached saturation~\cite{glaser2009discovery} and few new questions were emerging from each additional session.
 
   
-
-%Although we report on experential and demographic information, the focus of this work is to identify questions that span experience levels.
-Since the focus of our study is to identify the questions developers ask independent of their background, we report on experience to ensure a degree of diversity in our sample and contextualize participants' responses.
-
 \subsubsection{Tasks}
-% a preliminary pilot session n=Z identified that participants spent 15
-%to constrain the study to X we presented 
-%we asked each p to assess 4 vuln 
-Each participant was asked to assess four vulnerabilities. 
+First we conducted a preliminary pilot study ($n = 4$), in which  participants spent approximately 10-15 minutes with each task and showed signs of fatigue after 60 minutes.
+To constrain our study to approximately 60 minutes, we asked each participant to assess four vulnerabilities. 
 
-%
-We presented each participant with this number of vulnerabilities, because in preliminary pilot sessions, participants spent approximately 10-15 minutes with each vulnerability and showed signs of fatigue after 60 minutes.
-
-When selecting tasks, we gave preference to existing iTrust vulnerabilities.
-
-%To increase the diversity of responses, we selected 4 mutually exclusive categories, asd categorized by
-To give participants the opportunity to ask as many different types of questions as possible, we ensured each vulnerability was categorized differently by FSB.
-
-Without modifying iTrust, FSB identified vulnerabilities from three different topics: cross-site scripting, path traversal, and predictable random vulnerabilities.
-
-%Top 10 vulnerability
-To include a fourth topic, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
+When selecting tasks, we ran FSB on iTrust and identified X vulnerabilities across 3 topics.
+To increase the diversity of responses, we selected tasks from mutually exclusive topics, as categorized by FSB.
+For the fourth task, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
 Our modification preserved the functionality of the original code and was based on examples of SQL injection found on OWASP and in open-source projects.
+We chose to add a SQL injection vulnerability, because injection threats rank highest on OWASP's 10 list of security concerns.
+
 Table \ref{table:vulnerabilities} summarizes each of the four vulnerabilities. 
 
 \begin{table*} 
