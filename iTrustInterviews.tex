@@ -615,8 +615,6 @@ That said, it does not identify calls made from framework hooks or APIs.
 Eventually, many participants hypothesized that all the calls might originate from the same (test) class. 
 Three participants explicitly asked, \textit{Are all calls coming from the same class?} 
 To verify this assumption, participants primarily used the heuristic of visually examining the list of calling methods and their package names, scanning for the ``test'' keyword.
-This strategy does not scale particularly well and would fail if the methods were named incorrectly, or if they accidentally missed one.
-Howver, in this case, these participants hypothesized correctly that the vulnerability was a false positive in the sense that the code was only called from test classes.
 
 
 %%%%%%%%%%%% Data Storage 
@@ -913,38 +911,78 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 In this section we discuss two main implications of our work.
 
 \subsection{Flow Navigation}
-When performing sensitive operations, participants wanted to determine if data originated from a malicious source
-by tracing its path through the program.
-Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it passed through the correct sanitization steps before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
+When iTrust performed security-sensitive operations, participants wanted to determine if data originated from a malicious source
+by tracing program flow.
+Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it was sanitized before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
+We observed participants using three strategies to answer program flow questions,
+strategies that were useful yet potentially error prone.
 
-We observed participants using several strategies to answer program flow questions.
-First, when the participant's goal was to determine if data comes from the user (\emph{a user-facing source}), 
+First, when participants asked whether data comes from the user (\emph{a user-facing source}), 
 and thus cannot be trusted, or if untrusted data is being used in a sensitive operation,
-participants would navigate through chains of method calls.
-Second, when the participant's goal was to evaluate whether a particular data source was user-facing,
-participants would make inferences based on class names.
-For instance, any class that started with \texttt{Test}, many users assumed was as JUnit test case,
-and thus was not user-facing, and therefore not a potential source of compromised data.
-Finally, when the participant's goal was to reason about the code without searching,
-participants would rely on their existing knowledge of sensitive operations and data sources in the application.
+participants would navigate through chains of method invocations.
+When participants navigated through chains of method invocations,
+they were forced to choose between different tools, where each tool
+had specific advantages and disadvantages.
+Lightweight tools, such as \textsc{find} and \textsc{mark occurrences}, could be easily invoked and the output
+easily interpreted, but they often required multiple invocations and sometimes returned 
+partial or irrelevant information.
+For example, using \textsc{mark occurrences} on a method declaration highlights all invocations of the method 
+within the containing file, but it does not indicate invocations in other files.
+%also doesn't allow for systematic investigation (you can miss some highlights)
+On the other hand, heavyweight tools, such as \textsc{call hierarchy} and \textsc{find references}, 
+return method invocations made from anywhere in the source code, but were slower and clumsier for participants.
+% are undermined by barriers to invocation~\cite{johnson2013don}
+Moreover, even heavyweight tools do not return all invocations when looking for tainted data sources;
+for instance, \textsc{call hierarchy} does not indicate when methods are being called from outside the system
+by a framework.
+%, and does not allow developers to trace the call structure while also tracking where specific parameters are set.
 
-A mix of existing lightweight (i.e. text search and code highlighting) and heavyweight tools (i.e. \textsc{call hierarchy} and \textsc{find references}) partially support some of these strategies. 
-However, even with some degree of tool support, the strategies we observed exhibit several limitations. 
-First, lightweight tools that help developers navigate the flow of a program often require multiple invocations and may return partial or irrelevant information. 
-Existing heavyweight tools provide more complete and precise analysis, but are undermined by barriers to invocation~\cite{johnson2013don}. 
-Even still, existing sophisticated tools still may return incomplete information. 
-For example, \textsc{call hierarchy} does not alert developers when methods are being called from outside the system (i.e. framework hooks), and does not allow developers to trace the call structure while also tracking where specific parameters are set.
-Finally, strategies that rely on developers' prior knowledge of the code base are vulnerable to several failures. 
-For example, if developers are unaware that they are working with unstable recently-changed code they may make incorrect assumptions based on a false sense of knowledge~\cite{fritz2014degree}. 
+Second, when participants asked whether a data source was user-facing,
+participants would make inferences based on class names.
+For instance, any class that started with \texttt{Test} participants assumed was as JUnit test case,
+and thus was not user-facing, and therefore not a potential source of tainted data.
+When participants made inferences based on class names,
+their inferences were generally correct that the class name accurately described
+its role.
+However, this strategy
+%This strategy does not scale particularly well and 
+fails in situations where the word ``Test'' is overloaded;
+this happens in iTrust where ``Test'' can also refer to 
+a medical laboratory test.
+%, or if they accidentally missed one
+
+Third, a common strategy was for
+participants to rely on their existing knowledge of sensitive operations and data sources in the application.
+When participants relied on existing knowledge of sensitive operations and data sources,
+that reliance may be failure-prone whenever the code has been changed without their knowledge.
+Indeed, prior research suggests that developers are 
+less knowledgeable about unstable code~\cite{fritz2014degree}. 
 Additionally, when a developer is only responsible for a portion of the system, as is often the case CITE HERE, he may be unable to reason about the system-wide implications of a change. 
 
-We are not the first to suggest that developers could benefit from increased support in navigating program flow. 
-Researchers have advanced promising tools that help developers visualize call graphs~\cite{latoza2011visualizing} and trace control flow to its origin~\cite{barnett2014getMeHere}.
-However, in a security context, participants were particularly interested in how data propagated throughout the system and asked questions about data flow while navigating the call hierarchy (Sections \ref{dsf} and \ref{cf}).
-Perhaps a new tool could help developers reason about control flow and data flow simultaneously by leveraging the strengths of existing tools.
-Such a tool could adapt a precise, yet heavyweight, control flow navigation tool by reducing its barriers to invocation, a technique successfully demonstrated by \textsc{Spyglass}~\cite{viriyakattiyaporn2010spyglass}.
-Further, the tool could allow developers to specify specific parameters to trace and display information about where those values are modified.
-Finally, the tool could alert developers to the possibility that some calls might originate from outside the system and that tainted user data may enter the system through other channels.
+While investigating potential security vulnerabilities, 
+participants would have benefited from tools that better support navigation of program flow.
+Although researchers have proposed enhanced tools to visualize call graphs~\cite{latoza2011visualizing} and trace control flow to its origin~\cite{barnett2014getMeHere},
+in a security context, these tools share the same limitations as the existing heavyweight tools.
+Existing tools like CodeSonar~\cite{keylist} and Coverity provide source-to-sink notifications for analyzing security
+vulnerabilities, but take control away from the programmer by forcing the developer into a tool-dictated
+workflow.
+
+
+We envision a new tool that helps developers reason about control flow and data flow simultaneously,
+by combining the strengths of existing heavy and lightweight tools.
+We imagine such a tool could use existing, heavyweight program analysis techniques, but still
+use a lightweight user interface.
+For example, such a tool might use a full-program, call hierarchy analysis technique in the back end,
+but use a \textsc{mark occurrences}-like user interface on the front end.
+To indicate calls from outside the current class, additional lightweight notifications would be needed.
+Such a tool could support both lightweight and systematic investigation of the flow of 
+potentially tainted data.
+
+
+
+%Such a tool could adapt a precise, yet heavyweight, control flow navigation tool by reducing its barriers to invocation, a technique successfully demonstrated by \textsc{Spyglass}~\cite{viriyakattiyaporn2010spyglass}.
+%Further, the tool could allow developers to specify specific parameters to trace and display information about where those values are modified.
+%Finally, the tool could alert developers to the possibility that some calls might originate from outside the system and that tainted user data may enter the system through other channels.
 
 \subsection{Vulnerability Assistant}
 Static analysis tools help developers locate potential vulnerabilities and also provide explanatory notifications.
