@@ -610,7 +610,7 @@ The private method containing this vulnerability was only called by one method, 
 All ten participants wanted call information for this vulnerability, often asking the question, \textit{Where is this method being called?} 
 However, participants used various strategies to obtain the same information.
 The most basic strategy was simply skimming the file for method calls. which was error-prone because participants could easily miss calls.
-Other participants used the Eclipse's \textsc{code highlighter} tool, which, to a lesser extent, was error-prone for the same reason. Further, it only found calls within the current file.
+Other participants used the Eclipse's \textsc{mark occurrences} tool, which, to a lesser extent, was error-prone for the same reason. Further, it only found calls within the current file.
 Participants additionally employed Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method. 
 Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identifies proper references to a single method.
