@@ -82,25 +82,22 @@ To assist developers with the task of detecting and removing security defects, t
 One of example of such a tool is Find Security Bugs (FSB),~\cite{FindSecurityBugs} an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential software security vulnerabilities, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity,~\cite{Coverity} can also be used to detect and remove potential security vulnerabilities.
-Unfortunately, however, research suggests that developers are not using static analysis tools, in part because tools do not always effectively communicate relevant information to developers~\cite{johnson2013don}. 
+Unfortunately, however, research suggests that developers are not using static analysis tools, in part because tools do not always effectively address developers' information requirements~\cite{johnson2013don}. 
 
 % maybe connect back to example.
 
 Although existing work has categorized developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities. 
 As we show later in this paper, many questions are unique to using security tools.
 
-Furthermore, in non-security domains, work that identifies questions has helped toolsmiths improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. Similarly, we expect that categorizing the questions developers ask when using security-focused static analysis tools will help improve those tools and yield better adoption. 
-
-
-%Though not the goal of their work, many researchers have taken the findings of LaToza and colleagues and been able to work towards improving the state-of-the-art for program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
-
+Furthermore, in non-security domains, work that identifies questions has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+Similarly, we expect that categorizing the questions developers ask when using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 
 This work aims to help us understand the information developers seek when using static analysis tools to identify and assess security vulnerabilities in code.
 To reach that goal, we conducted a laboratory experiment with ten developers familiar with the iTrust software system~\cite{iTrust}.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We report the kinds of questions they asked while doing so, along with the strategies they used to answer them.
-Using a card sort methodology, we sorted the 559 questions into 17 categories. 
+Using a card sort methodology, we sorted 559 questions into 17 categories. 
 
 Our work makes three contributions. 
 First, we present a categorization of questions software developers ask when fixing security vulnerabilities using a static analysis tool.
