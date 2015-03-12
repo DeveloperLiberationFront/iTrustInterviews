@@ -64,7 +64,7 @@
 Security tools help developers answer questions about potential vulnerabilities in their code. 
 A better understanding of the types of questions asked by developers might help toolsmiths design more effective tools.
 Currently, we lack a categorization of such questions. 
-We began constructing this categorization by conducting a laboratory experiment with novice and experienced software developers.
+We began constructing this categorization by conducting an exploratory laboratory experiment with novice and experienced software developers.
 We equipped them with Find Security Bugs, a security oriented static analysis tool, and observed their interactions with security vulnerabilities in iTrust, a Java medical records software system.
 We found that the tool did not support participants in certain tasks.
 For example, participants employed error-prone strategies while navigating from malicious data sources to sensitive data sinks and while managing all the tasks required to reason about a vulnerability. 
@@ -152,7 +152,7 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 
 \section{Methodology}
 \label{sec:meth}
-We conducted a laboratory experiment with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
+We conducted an exploratory laboratory experiment with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
 Section \ref{rqs} outlines the research question we sought to answer. 
 Section \ref{studyDesign} details how the study was designed and Section \ref{dataAnalysis} describes how we performed data analysis.
 Experimental materials can be found online~\cite{ExperimentalMaterials}.
@@ -240,22 +240,20 @@ Participants also self-reported their familiarity with security vulnerabilities 
 Although we report on experiential and demographic information, the focus of this work is to identify questions that span experience levels.
 In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.
 
-We faced the potential confound of measuring participants learning of a new code base rather than measuring their ability to fix vulnerabilities.
+We faced the potential confound of measuring participants questions about a new code base rather than measuring their questions about vulnerabilities.
 To mitigate this confound, we chose participants who were familiar with iTrust;
 all participants either served as teaching assistants for, or completed a semester-long software engineering course that focused on developing iTrust.
+However, this decision restricted the size of our potential participant population.
+Accordingly, we used a nonprobabilistic, purposive sampling approach~\cite{guest2006many}, which typically yields fewer participants, but gives deeper insights into the observed phenomena.
 To identify eligible participants, we recruited using personal contacts, class rosters, and asked participants at the end of the experiment to recommend other qualified participants.
-
-
 %ideographic, nomethethic, or typical size, grounded theory
 %Typical grounded theory analysis involves X, Y, Z. Other work has reached saturation at X Participants. 
 
-%A somewhat hard to reach population nonprobabilistic, purposive sampling approach
+%
 
 %This format has fewer participants but gives deeper insight.
 
-
-
-Since extracting data from each session required intensive analysis, we ceased recruitment when we determined that we had reached saturation~\cite{glaser2009discovery} and few new questions were emerging from each additional session.
+%Since extracting data from each session required intensive analysis, we ceased recruitment when we determined that we had reached saturation~\cite{glaser2009discovery} and few new questions were emerging from each additional session.
 
   
 \subsubsection{Tasks}
@@ -444,7 +442,7 @@ The structure of most results categories consists of three parts: an overview of
 However, some sections do not contain any discussion either because participants' intentions in asking those questions were unclear, or participants asked the questions without following up or attempting to answer them at all. 
 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{X} participants asked \emph{Y}.''
-Note that this work considers a relatively small sample and is exploratory and qualitative in nature.
+Note that this work is exploratory and qualitative in nature.
 Though we present information about the number of participants who ask specific questions, the reader should not infer any quantitative generalizations.
 
 \subsection{Vulnerabilities, Attacks, and Fixes}
