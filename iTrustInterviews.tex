@@ -899,6 +899,7 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 In this section we discuss two main implications of our work.
 
 \subsection{Flow Navigation}
+\label{flowNav}
 When iTrust performed security-sensitive operations, participants wanted to determine if data originated from a malicious source
 by tracing program flow.
 Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it was sanitized before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
@@ -972,25 +973,47 @@ potentially tainted data.
 %Further, the tool could allow developers to specify specific parameters to trace and display information about where those values are modified.
 %Finally, the tool could alert developers to the possibility that some calls might originate from outside the system and that tainted user data may enter the system through other channels.
 
-\subsection{Vulnerability Assistant}
-Static analysis tools help developers locate potential vulnerabilities and also provide explanatory notifications.
-To completely resolve potential vulnerabilities, developers must perform many cognitively demanding tasks beyond simply locating the vulnerability and understanding the notification, as is evidenced by the breadth of categories we identified. 
-To determine whether a vulnerability is a true positive and if so how to fix it, we observed developers deploying a mix of several high-level strategies including: inspecting the code;
+\subsection{Structured Vulnerability Notifications}
+\label{structuredNotifications}
+Find Security Bugs provided explanatory notifications of potential vulnerabilities.
+However, to completely resolve vulnerabilities,
+participants performed many cognitively demanding tasks beyond simply locating the vulnerability and reading the notification, 
+as is evidenced by the breadth of questions they asked. 
+To resolve potential vulnerabilities, we observed participants deploying a mix of several high-level strategies including: 
+inspecting the code;
 navigating to other relevant areas of the code; 
 comparing the vulnerability to previous vulnerabilities; 
-consulting teammates, documentation, and other resources; 
+consulting documentation and other resources; 
 weighing existing knowledge against information in the notification; 
 and reasoning about the feasibility of all the possible attacks. 
+Yet, these strategies were limited in three respects.
 
-However, static analysis tools that help developers locate vulnerabilities often provide inadequate support for these strategies that developers use to resolve vulnerabilities. 
-Some of the failures that we observed include not supporting navigating the code base and not comparing the current vulnerability to other similar vulnerabilities, specifically those the developer has already fixed. 
-Despite these limitations, some experts successfully employ procedures and existing tools to correctly resolve potential vulnerabilities
-Even so, those that know how to reason about the most complex vulnerabilities are still susceptible interruption~\cite{parnin2012programmer} and disorientation~\cite{deAlwis2006disorient}.
+First, participants used error-prone strategies. 
+%%Cut this example
+For example, in Section \ref{flowNav} we discussed many of the error-prone strategies participants used while navigating program flow.
+Participants also used error-prone strategies even when more reliable tools and strategies were available. 
+%Either replace this example or rework
+For example, in Section \ref{rd}, we noted that participants, unaware of the relevant hyperlinks embedded within the notification text, searched for links to external resources using web search tools. Whereas the web searches returned irrelevant and untrusted results, the embedded links often contained exactly the information participants were searching for.
 
-Perhaps vulnerability-specific checklists~\cite{phang2009triaging} based on successful strategies could benefit both novice and expert users.
-The checklists could be structured hierarchically containing high-level tasks, such as 	``Determine which attacks are feasible'', and subsequently more actionable nested subtasks such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible''.
-Checklists allow users to save the state of their interaction with a vulnerability --- for example by eliminating attack vectors they have ruled out --- diminishing the consequences of an interruption and context loss.
-Additionally, each task could include links to resources that relate specifically to that task and tools that could help developers complete the task.
+Second, even after choosing an appropriate strategy, participants were often unaware of which tools to use to execute the strategy.
+%Replace with different example
+For example, some participants wanted to traverse the call hierarchy, but were unaware of the \textsc{call hierarchy} tool and instead manually searched for method calls.
+Previous research suggests that both novice and experienced developers faces problems of tool awareness~\cite{murphy-Hill2012fluency}.
+
+Third, regardless of the strategies and tools participants used, they had to manually track their progress on each task.
+%Why was this task complicated
+For example, the Servlet Parameter vulnerability introduced the possibility of several types of attacks. 
+Participants had to reason about each of those attacks individually and remember which attacks they had ruled out.
+In a more general programming context, researchers have warned about the risks of burdening developers' memories~\cite{parnin2012programmer} 
+--- interrupting programmers can cause memory failures and the loss of important information.
+
+%Wordy start. Maybe phrase as an approach that makes strategies concrete
+We envision an approach that addresses these limitations through hierarchically structured notifications based on checklists.
+Previous research suggests that the checklist structure can effectively guide developers~\cite{phang2009triaging}.
+We propose a structure that contains hierarchical, customizable tasks for each type of notification.
+For example the notification would contain high-level tasks, such as ``Determine which attacks are feasible'', and subsequently more actionable nested subtasks, such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible''.
+Our notification structure would also include a checklist-like feature that allows users to save the state of their interaction with a particular notification --- for example, checking off which attack vectors they have already ruled out --- diminishing the potential loss from an interruption.
+Additionally, each task could include to resources that relate specifically to that task and tools suggestions that could help developers complete the task.
 
 \section{Threats to Validity}
 \label{limits}
