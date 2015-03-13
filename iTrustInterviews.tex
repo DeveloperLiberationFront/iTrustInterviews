@@ -170,6 +170,11 @@ Where possible, we also try to link questions to the tools and strategies that d
 \label{studyDesign}
 To ensure all participants were familiar with the study environment and Find Security Bugs (FSB),
 each in-person session started with a five-minute briefing section, which included a demonstration of FSB and time for questions.
+During the briefing section, we asked participants to act as if they were in charge of security for iTrust.
+Additionally, we asked them to use a think-aloud protocol, which encourages the participant to verbalize their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
+Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
+We recorded both audio and the screen as experimental artifacts for data analysis.
+
 Following the briefing period, participants progressed through encounters with four vulnerabilities. 
 Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of these encounters.
 All participants consented to participate in our study, which had institutional review board approval, and to have their session recorded using screen and audio capture software.
@@ -186,14 +191,12 @@ Finally, each session concluded with several demographic and open-ended discussi
 
 \subsubsection{Materials}
 Participants used Eclipse to explore vulnerabilities in iTrust, an open source Java medical records web application that ensures the privacy and security of patient records according to the HIPAA statute~\cite{HIPAA}. 
-During the briefing session, participants were given time to familiarize themselves with the development environment and ask any questions about the experimental setup.
 Participants were equipped with a version of FindBugs extended with FSB.
 
 We chose FSB because it detects security defects and compares to other program analysis tools, such as those listed by NIST,~\cite{SecurityAnalyzers} OWASP,~\cite{OWASPSCA} and WASC~\cite{CodeAnalysis}. 
 Whereas some tools may include more advanced bug detection features, FSB is representative of static analysis security tools with respect to its user interface, specifically in how it communicates with its users.
 FSB provides visual code annotations and textual notifications that contain vulnerability-specific information.
 It summarizes all the vulnerabilities it detects in a project and allows users to prioritize potential vulnerabilities based on several metrics such as bug type or severity.
-FSB can be configured to only report certain types of vulnerabilities and extended to provide more detailed reports on custom vulnerabilities.
 
 
 \begin{table}
@@ -286,11 +289,6 @@ Table \ref{table:vulnerabilities} summarizes each of the four tasks.
 \end{tabularx}
 \label{table:vulnerabilities}
 \end{table*}
-
-During the briefing section, we asked participants to pretend they are in charge of security for iTrust and to approach the vulnerabilities as if they were in their normal work environment.
-Additionally, we asked them to use a think-aloud protocol, which encourages the participant to verbalize their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
-Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
-We recorded both audio and the screen as experimental artifacts for data analysis.
 
 
 \subsection{Data Analysis}
