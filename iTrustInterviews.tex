@@ -68,7 +68,7 @@ Security tools help developers answer questions about potential vulnerabilities 
 A better understanding of the types of questions asked by developers might help toolsmiths design more effective tools.
 Currently, we lack a categorization of such questions. 
 We began constructing this categorization by conducting an exploratory laboratory experiment with novice and experienced software developers.
-We equipped them with Find Security Bugs, a security oriented static analysis tool, and observed their interactions with security vulnerabilities in iTrust, a Java medical records software system.
+We equipped them with Find Security Bugs, a security oriented static analysis tool, and observed their interactions with security vulnerabilities in iTrust.
 We found that the tool did not support participants in certain tasks.
 For example, participants employed error-prone strategies while navigating from malicious data sources to sensitive data sinks and while managing all the tasks required to reason about a vulnerability. 
 
@@ -79,13 +79,13 @@ For example, participants employed error-prone strategies while navigating from 
 \section{Introduction}
 
 Software developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
-When software systems contain security defects, often developers must determine the best ways to remove them. 
+When software systems contain security defects, it often falls to developers to fix them. 
 
 To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
 One of example of such a tool is Find Security Bugs (FSB),~\cite{FindSecurityBugs} an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential software security vulnerabilities, such as SQL injection and cross-site scripting.  
-Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity,~\cite{Coverity} can also be used to detect and remove potential security vulnerabilities.
-Unfortunately, however, research suggests that developers are not using static analysis tools, in part because tools do not always effectively address developers' information requirements~\cite{johnson2013don}. 
+Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity~\cite{Coverity}, can also be used to detect and remove potential security vulnerabilities.
+Unfortunately, however, research suggests that developers struggle using static analysis tools, in part because tools do not always effectively address developers' information requirements~\cite{johnson2013don}. 
 
 % maybe connect back to example.
 
@@ -97,7 +97,7 @@ Similarly, we expect that categorizing the questions developers ask when using s
 
 
 This work aims to help us understand the information developers seek when using static analysis tools to identify and assess security vulnerabilities in code.
-To reach that goal, we conducted a laboratory experiment with ten developers familiar with the iTrust software system~\cite{iTrust}.
+To reach that goal, we conducted a laboratory experiment with ten developers familiar with the iTrust software system~\cite{iTrust}, a Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We report the kinds of questions they asked while doing so, along with the strategies they used to answer them.
 Using a card sort methodology, we sorted 559 questions into 17 categories. 
