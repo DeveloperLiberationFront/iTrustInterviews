@@ -385,9 +385,9 @@ At this stage, we discarded five unclear or non pertinent questions and organize
     Group											& Category										& Clusters		& Location in Paper	  	\\
     \hline			
     \multirow{4}{*}{Vulnerabilities, Attacks, and Fixes}
+        											& Preventing and Understanding Potential Attacks	& 11     		& Section~\ref{pupa}		\\
+        											
         											& Understanding Alternative Fixes and Approaches	& 11     		& Section~\ref{uafa}	\\
-
-    												& Preventing and Understanding Potential Attacks	& 11     		& Section~\ref{pupa}		\\
 
     												& Assessing the Application of the Fix				& 9     		& Section~\ref{aaf}				\\
 
@@ -415,13 +415,16 @@ At this stage, we discarded five unclear or non pertinent questions and organize
     \hline
 	\multirow{4}{*}{Problem Solving Support}
 
-    									& Vulnerability Severity and Rank											& 4     		& Section~\ref{bsr}		\\
-
+   	 									& Resources and Documentation									& 10     		& Section~\ref{rd}		\\
+   	 									
+ 
+    									
     									& Understanding and Interacting with Tools						& 9     		& Section~\ref{uit}			\\
 
-   	 									& Resources and Documentation									& 10     		& Section~\ref{rd}		\\
-
+										& Vulnerability Severity and Rank								& 4     		& Section~\ref{bsr}		\\
+ 
     									& Notification Text												& 3     		& Section~\ref{em}		\\
+  
     \hline	
        									& Uncategorized													& 10    		&			 \\
     \hline
@@ -464,12 +467,44 @@ Though we present information about the number of participants who ask specific 
 % next paragraph, go into description of first group 
 
 
+%%%%%%%%%%%% Preventing and Understanding Potential Attacks 
+
+\subsubsection{\textbf{Preventing and Understanding Potential Attacks (10)\{11\}}}\label{pupa}
+Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}) introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
+
+
+\noindent\emph{Is this a real vulnerability? (7)} \\
+\emph{What are the possible attacks that could occur? (5)} \\
+\emph{Why is this a vulnerability? (3)} \\
+\emph{How can I prevent this attack? (3)} \\
+\emph{How can I replicate an attack to exploit this vulnerability? (2)} \\
+\emph{What is the problem (potential attack)? (2)} 
+
+
+Participants sought information about the variety of attacks that could occur in a given context.
+To that end, five participants asked, \textit{What are the possible attacks that could occur?}
+For example, within the first minute of his analysis P2 read the notification about the Path Traversal vulnerability and stated, ``I guess I'm thinking about different types of attacks.''
+Before reasoning about how a specific attack could be executed, he wanted to determine which attacks were relevant to the notification.
+
+Participants also sought information about specific attacks from the notification, asking how particular attacks could exploit a given vulnerability.
+Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
+Seven participants, concerned about false positives, asked the question, \textit{Is this a real vulnerability?} 
+To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. 
+For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
+
+
+%Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
+%Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
+%Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
+%This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
+%One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
+
 %%%%%%%%%%%% Understanding Alt. Fixes
 
 \subsubsection{\textbf{Understanding Alternative Fixes and Approaches (8)\{11\}}}\label{uafa}
 
 When resolving security vulnerabilities, participants explored alternative ways to achieve the same functionality more securely.
-For example, when evaluating the SQL Injection vulnerability (Table~\ref{table:vulnerabilities}), participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement} Class. 
+For example, when evaluating the SQL Injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement} Class. 
 
 \noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
 \emph{What are the alternatives for fixing this? (4)} \\
@@ -503,37 +538,7 @@ It seemed important to P8 that recommended approaches came from trustworthy sour
 
 
 
-%%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 
-\subsubsection{\textbf{Preventing and Understanding Potential Attacks (10)\{11\}}}\label{pupa}
-Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
-
-
-\noindent\emph{Is this a real vulnerability? (7)} \\
-\emph{What are the possible attacks that could occur? (5)} \\
-\emph{Why is this a vulnerability? (3)} \\
-\emph{How can I prevent this attack? (3)} \\
-\emph{How can I replicate an attack to exploit this vulnerability? (2)} \\
-\emph{What is the problem (potential attack)? (2)} 
-
- 
-Participants sought information about the variety of attacks that could occur in a given context.
-To that end, five participants asked, \textit{What are the possible attacks that could occur?}
-For example, within the first minute of his analysis P2 read the notification about the Path Traversal vulnerability and stated, ``I guess I'm thinking about different types of attacks.''.  
-Before reasoning about how a specific attack could be executed, he wanted to determine which attacks were relevant to the notification.
-
-Participants also sought information about specific attacks from the notification, asking how particular attacks could exploit a given vulnerability.
-Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
-Seven participants, concerned about false positives, asked the question, \textit{Is this a real vulnerability?} 
-To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. 
-For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
-
-
-%Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
-%Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
-%Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
-%This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
-%One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
 
 
 %%%%%%%%%%%% Assessing Application % % % % % % % % % % % % % % % % % % % % % % % %
