@@ -1005,12 +1005,14 @@ In a more general programming context, researchers have warned about the risks o
 --- overburdening developers' attentive memories can result in \emph{concentration failure} and \emph{limit failure}~\cite{parnin2012programmer}.
 
 %Wordy start. Maybe phrase as an approach that makes strategies concrete
-We envision an approach that addresses these limitations through hierarchically structured notifications based on checklists.
-Previous research suggests that the checklist structure can effectively guide developers~\cite{phang2009triaging}.
+%Clarify, establish, 
+%%explicating
+We envision an approach that addresses these limitations by explicating developers' strategies in the form of hierarchically structured checklists.
+Previous research suggests that checklists can effectively guide developers~\cite{phang2009triaging}.
 We propose a structure that contains hierarchical, customizable tasks for each type of notification.
-For example the notification would contain high-level tasks, such as ``Determine which attacks are feasible'', and subsequently more actionable nested subtasks, such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible''.
-Our notification structure would also include a checklist-like feature that allows users to save the state of their interaction with a particular notification --- for example, checking off which attack vectors they have already ruled out --- diminishing the risk of \emph{concentration failure} and \emph{limit failure}.
-Additionally, each task could include to resources that relate specifically to that task and tools suggestions that could help developers complete the task.
+For example the structure would contain high-level tasks, such as ``Determine which attacks are feasible'', and subsequently more actionable nested subtasks, such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible''.
+This structure would also include a checklist-like feature that allows users to save the state of their interaction with a particular notification --- for example, checking off which attack vectors they have already ruled out --- diminishing the risk of \emph{concentration failure} and \emph{limit failure}.
+Additionally, each task could include links to resources that relate specifically to that task and tool suggestions that could help developers complete the task.
 
 \section{Threats to Validity}
 \label{limits}
