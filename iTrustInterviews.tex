@@ -82,7 +82,7 @@ Software developers are a critical part of making software secure, a particularl
 When software systems contain security defects, it often falls to developers to fix them. 
 
 To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
-One of example of such a tool is Find Security Bugs (FSB),~\cite{FindSecurityBugs} an extension of FindBugs~\cite{FindBugs}.
+One of example of such a tool is Find Security Bugs (FSB)~\cite{FindSecurityBugs}, an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential software security vulnerabilities, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity~\cite{Coverity}, can also be used to detect and remove potential security vulnerabilities.
 Unfortunately, research suggests that developers struggle using static analysis tools, in part because tools do not always effectively address developers' information requirements~\cite{johnson2013don}. 
@@ -194,7 +194,8 @@ Participants used Eclipse to explore vulnerabilities in iTrust, an open source J
 Participants were equipped with FSB, an extended version of FindBugs.
 
 We chose FSB because it detects security defects and compares to other program analysis tools, such as those listed by NIST,~\cite{SecurityAnalyzers} OWASP,~\cite{OWASPSCA} and WASC~\cite{CodeAnalysis}. 
-Whereas some tools may include more advanced bug detection features, FSB is representative of static analysis security tools with respect to its user interface, specifically in how it communicates with its users.
+Some of the listed tools may include more or less advanced bug detection features. 
+However, FSB is representative of static analysis security tools with respect to its user interface, specifically in how it communicates with its users.
 FSB provides visual code annotations and textual notifications that contain vulnerability-specific information.
 It summarizes all the vulnerabilities it detects in a project and allows users to prioritize potential vulnerabilities based on several metrics such as bug type or severity.
 
@@ -244,9 +245,11 @@ Although we report on experiential and demographic information, the focus of thi
 In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.
 
 We faced the potential confound of measuring participants questions about a new code base rather than measuring their questions about vulnerabilities.
-To mitigate this confound, we chose participants who were familiar with iTrust;
+To mitigate this confound, we required participants to be familiar with iTrust;
 all participants either served as teaching assistants for, or completed a semester-long software engineering course that focused on developing iTrust.
-However, this decision restricted the size of our potential participant population.
+This requirement also ensured that participants had experience using static analysis tools similar to FSB.
+
+However, this requirement restricted the size of our potential participant population.
 Accordingly, we used a nonprobabilistic, purposive sampling approach~\cite{guest2006many}, which typically yields fewer participants, but gives deeper insights into the observed phenomena.
 To identify eligible participants, we recruited using personal contacts, class rosters, and asked participants at the end of the experiment to recommend other qualified participants.
 Although our study involved only ten participants, we reached saturation~\cite{glaser2009discovery} rather quickly; 
