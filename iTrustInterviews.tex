@@ -632,7 +632,7 @@ Tracing up the call chains, the method containing the vulnerability was called f
 Even though all participants did not form this same hypothesis, all ten participants wanted call information for the Path Traversal Vulnerability, often asking the question, \textit{Where is this method being called?} 
 However, participants used various strategies to obtain the same information.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
-Other participants used the Eclipse's \textsc{mark occurrences} tool, which, to a lesser extent, was error-prone for the same reason. 
+Other participants used the Eclipse's \textsc{mark occurrences} tool (code highlighting in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
 Further, it only highlighted calls within the current file.
 Participants additionally employed Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
 Also, it returned references that occurred in dead code or comments.
