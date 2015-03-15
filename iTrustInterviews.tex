@@ -90,17 +90,18 @@ Unfortunately, research suggests that developers struggle using static analysis 
 
 % maybe connect back to example.
 
-Although existing work has categorized developers' information requirements in a broad sense, including the notion that developers have questions about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated questions that developers ask when using tools to diagnose and fix security vulnerabilities. 
-As we show later in this paper, many questions are unique to using security tools.
+Although existing work has categorized developers' information requirements in a broad sense, including the notion that developers require information about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated developers' information requirements while using tools to diagnose and fix security vulnerabilities. 
+As we show later in this paper, developers require unique types of information while assessing security vulnerabilities.
 
-Furthermore, in non-security domains, work that identifies questions has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
-Similarly, we expect that categorizing the questions developers ask when using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
+Furthermore, in non-security domains, work that identifies information requirements has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+Similarly, we expect that categorizing developers' information requirements while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 
 This work helps us understand the information developers seek while using static analysis tools to assess security vulnerabilities.
 To that end, we conducted a laboratory experiment with ten developers familiar with the iTrust software system~\cite{iTrust}, a Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
-We report the questions participants asked while doing so and discuss the strategies participants used to answer their questions.
+We operationalized developers' information requirements by measuring questions, which are the verbal manifestation of an information requirement. 
+We report the questions participants asked throughout our experiment and discuss the strategies participants used to answer their questions.
 Using a card sort methodology, we sorted 559 questions into 17 categories. 
 The primary contribution of this work is a categorization of questions, which researchers and toolsmiths can use to inform the design of better static analysis tools.
 
@@ -156,11 +157,10 @@ Experiment materials can be found online~\cite{ExperimentalMaterials}.
 
 \subsection{Research Question}
 \label{rqs}
-We want to answer the following research question: What questions do developers ask while using static analysis tools to diagnose potential security vulnerabilities? 
+We want to answer the following research question: What information do developers require while using static analysis tools to diagnose potential security vulnerabilities? 
+We measured developers' information requirements by examining the questions they asked.
 The questions that we identified are all available online~\cite{ExperimentalMaterials} and several exemplary questions are listed throughout the results sections.
 Where possible, we also link questions to the tools and strategies that developers used to answer their questions.
-
-
 
 
 \subsection{Study Design}
