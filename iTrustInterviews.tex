@@ -84,28 +84,28 @@ systematic and ad hoc program navigation strategies.
 \section{Introduction}
 
 Software developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
-When software systems contain security defects, it often falls to developers to fix them. 
+When software systems contain security defects, developers are responsible to fix them. 
 
 To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
 One of example of such a tool is Find Security Bugs (FSB)~\cite{FindSecurityBugs}, an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential software security vulnerabilities, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity~\cite{Coverity}, can also be used to detect and remove potential security vulnerabilities.
 These tools provide, for example, information about the locations of potential SQL injection vulnerabilities.
-Unfortunately, research suggests that developers struggle using static analysis tools, in part because the tools provide information that does not adequately align with developers' information requirements~\cite{johnson2013don}. 
+Unfortunately, research suggests that developers struggle using static analysis tools, in part because the tools provide information that does not adequately align with developers' information needs~\cite{johnson2013don}. 
 
 % maybe connect back to example.
 
-Although existing work has categorized developers' information requirements in a broad sense, including the notion that developers require information about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated developers' information requirements while using tools to diagnose security vulnerabilities. 
+Although existing work has categorized developers' information needs in a broad sense, including the notion that developers require information about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated developers' information nedds while using tools to diagnose security vulnerabilities. 
 As we show later in this paper, developers require unique types of information while assessing security vulnerabilities.
 
-Furthermore, in non-security domains, work that identifies information requirements has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
-Similarly, we expect that categorizing developers' information requirements while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
+Furthermore, in non-security domains, work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+Similarly, we expect that categorizing developers' information needs while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 
 This work helps us understand the information developers seek while using static analysis tools to assess security vulnerabilities.
 To that end, we conducted a laboratory experiment with ten developers familiar with the iTrust software system~\cite{iTrust}, a Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
-We operationalized developers' information requirements by measuring questions --- the verbal manifestations of an information requirement. 
+We operationalized developers' information needs by measuring questions --- the verbal manifestations of an information need. 
 We report the questions participants asked throughout our experiment and discuss the strategies participants used to answer their questions.
 Using a card sort methodology, we sorted 559 questions into 17 categories. 
 The primary contribution of this work is a categorization of questions, which researchers and toolsmiths can use to inform the design of better static analysis tools.
@@ -116,7 +116,7 @@ The primary contribution of this work is a categorization of questions, which re
 \label{sec:rw}
 
 We have organized the related work into two subsections. 
-Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools and Section \ref{questions} references other studies that have explored developers' information requirements.
+Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools and Section \ref{questions} references other studies that have explored developers' information needs.
 
 \subsection{Evaluation of Techniques}
 \label{evaluation}
@@ -138,11 +138,11 @@ These studies use various measures of effectiveness, such as false positive rate
 Further, they do not evaluate whether the tools under study answer questions developers have about the code or vulnerabilities. 
 Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
 
-\subsection{Knowledge Requirements Studies}
+\subsection{Knowledge Need Studies}
 \label{questions}
-Several studies have explored the knowledge requirements of developers.
-Similar to our work, some existing studies focus on the questions developers ask to determine these knowledge requirements~\cite{latoza2010hard, latoza2010developers}.
-In contrast, our study focuses specifically on the knowledge requirements of developers when assessing security vulnerabilities.
+Several studies have explored the knowledge needs of developers.
+Similar to our work, some existing studies focus on the questions developers ask to determine these knowledge needs~\cite{latoza2010hard, latoza2010developers}.
+In contrast, our study focuses specifically on the knowledge needs of developers when assessing security vulnerabilities.
 
 
 Much of the work on answering developer questions has occurred in the last decade. 
@@ -163,7 +163,7 @@ Experiment materials can be found online~\cite{ExperimentalMaterials}.
 \subsection{Research Question}
 \label{rqs}
 We want to answer the following research question: What information do developers require while using static analysis tools to diagnose potential security vulnerabilities? 
-We measured developers' information requirements by examining the questions they asked.
+We measured developers' information needs by examining the questions they asked.
 The questions that we identified are all available online~\cite{ExperimentalMaterials} and several exemplary questions are listed throughout the results sections.
 Where possible, we also link questions to the tools and strategies that developers used to answer their questions.
 
@@ -320,7 +320,7 @@ A statement was coded as a question only if it met one of the following criteria
 \\ Example: \textit{I don't know that it's a problem yet.}
 \item \textbf{The participant clearly expresses uncertainty over a statement.}
 \\ Example: \textit{Well, it's private to this object, right?}
-\item \textbf{The participant clearly expresses a knowledge requirement by describing plans to acquire information.}
+\item \textbf{The participant clearly expresses a knowledge need by describing plans to acquire information.}
 \\ Example: \textit{I would figure out where it is being called.}
 
 \end{itemize}
@@ -370,7 +370,7 @@ In an \textit{open} sort, the sorting process begins with no notion of predefine
 Rather, sorters derive categories from emergent themes in the cards. 
 
 We performed our card sort in three distinct stages: clustering, categorization, and validation.
-In the first stage, we formed question clusters by grouping questions that identified the same information requirements. 
+In the first stage, we formed question clusters by grouping questions that identified the same information needs. 
 In this phase we focused on rephrasing similar questions and grouping duplicates.
 For example, P1 asked, \textit{Where can I find information related to this vulnerability?} P7 asked, \textit{Where can I find an example of using \CodeIn{PreparedStatements}?} and P2 asked, \textit{Where can I get more information on path traversal?} 
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
