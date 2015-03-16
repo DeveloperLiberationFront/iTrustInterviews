@@ -21,6 +21,7 @@
 	\setlength{\parsep}{0pt}
 }
 
+\usepackage{subfigure}
 \usepackage{cite}
 \usepackage{url}
 \usepackage{tabularx}
@@ -188,8 +189,22 @@ All participants consented to participate in our study, which had institutional 
 Finally, each session concluded with several demographic and open-ended discussion questions.
 
 \begin{figure}
-	\centering
-	\includegraphics[width=\columnwidth]{Images/environment.png}
+	\subfigcapskip = 5pt
+	\subfigure[Navigation]{
+		\includegraphics[width=\columnwidth]{Images/Nav.png}
+	}
+	
+	\subfigcapskip = 5pt
+	\subfigure[Code]{
+	\includegraphics[width=\columnwidth]{Images/Code.png}
+	}
+	
+	\subfigcapskip = 5pt
+	\subfigure[Short Notification Text]{
+		\includegraphics[width=\columnwidth]{Images/BugInfo.png}
+	}
+	
+
 	\caption{The study environment.}
 	\label{fig:environment} 
 \end{figure}
