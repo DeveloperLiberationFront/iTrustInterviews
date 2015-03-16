@@ -93,16 +93,16 @@ To assist developers with the task of detecting and removing security defects, t
 One of example of such a tool is Find Security Bugs (FSB)~\cite{FindSecurityBugs}, an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential software security vulnerabilities, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity~\cite{Coverity}, can also be used to detect and remove potential security vulnerabilities.
-These tools provide, for example, information about the locations of potential SQL injection vulnerabilities.
+These tools provide, for instance, information about the locations of potential SQL injection vulnerabilities.
 %But developers don't use them because they don't provide right information
 Unfortunately, research suggests that developers struggle using static analysis tools, in part because the tools provide information that does not adequately align with developers' information needs~\cite{johnson2013don}. 
 
 %Other have categorized information needs
-Although existing work has categorized developers' information needs in a broad sense, including the notion that developers need information about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated developers' information nedds while using tools to diagnose security vulnerabilities. 
+Although existing work has broadly categorized developers' information needs, including the notion that developers need information about their code's security~\cite{latoza2010hard}, no prior study has specifically investigated developers' information needs while using tools to diagnose security vulnerabilities. 
 As we show later in this paper, developers need unique types of information while assessing security vulnerabilities.
 
 %And this work has improved the effectivness of tools
-Furthermore, in non-security domains, work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+Furthermore, in non-security domains, work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
 Similarly, we expect that categorizing developers' information needs while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 %What we did
@@ -130,16 +130,17 @@ Using a variety of metrics, many studies have assessed the effectiveness of the 
 Much research has evaluated the effectiveness of tools and techniques based on their false positive rates and how many vulnerabilities they detect~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. 
 Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}. 
 They considered their tool effective because of its low false positive rate (50\%) and its ability to find vulnerabilities previously unknown. 
-Similarly, Livshits and Lam evaluated their own approach to static analysis for detecting security vulnerabilities; the static analyzers used are created from specifications provided by the user~\cite{livshits2005finding}. 
+Similarly, Livshits and Lam evaluated their own approach to security-oriented static analysis; specifications provided by the user create static analyzers~\cite{livshits2005finding}. 
 They also found their tool to be effective because it had a low false positive rate. 
 
 Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
 Comparing the four approaches based on number of vulnerabilities found, false positive rate, and efficiency, they reported that no one technique was capable of discovering every type of vulnerability. 
+
 Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. 
 They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
 
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
-Further, they do not evaluate whether the tools under study answer questions developers have about the code or vulnerabilities. 
+Further, these studies do not evaluate whether the tools answer questions developers have about the code or vulnerabilities. 
 Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
 
 \subsection{Information Needs Studies}
@@ -151,7 +152,7 @@ In contrast, our study focuses specifically on the information needs of develope
 
 Much of the work on answering developer questions has occurred in the last decade. 
 LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
-Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements, or reachability questions~\cite{latoza2010developers}. 
+Futhermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements or reachability questions~\cite{latoza2010developers}. 
 Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions~\cite{ko2004designing}. 
 They found that developers were able to complete more debugging tasks when using their tool than they could without it.
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
@@ -168,7 +169,7 @@ Experiment materials can be found online~\cite{ExperimentalMaterials}.
 \label{rqs}
 We want to answer the following research question: What information do developers need while using static analysis tools to diagnose potential security vulnerabilities? 
 We measured developers' information needs by examining the questions they asked.
-The questions that we identified are all available online~\cite{ExperimentalMaterials} and several exemplary questions are listed throughout the results sections.
+The questions that we identified are all available online~\cite{ExperimentalMaterials} and several exemplary questions are listed in the results sections.
 Where possible, we also link questions to the tools and strategies that developers used to answer their questions.
 
 
@@ -177,8 +178,8 @@ Where possible, we also link questions to the tools and strategies that develope
 To ensure all participants were familiar with the study environment and Find Security Bugs (FSB),
 each in-person session started with a five-minute briefing section, which included a demonstration of FSB and time for questions.
 During the briefing section, we asked participants to act as if they were in charge of security for iTrust.
-Additionally, we asked them to use a think-aloud protocol, which encourages the participant to verbalize their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
-Specifically, they were asked to, ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
+Additionally, we asked them to use a think-aloud protocol, which encourages  participants to verbalize their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
+Specifically, they were asked to: ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 We recorded both audio and the screen as experiment artifacts for data analysis.
 
 Following the briefing period, participants progressed through encounters with four vulnerabilities. 
@@ -245,7 +246,7 @@ It summarizes all the vulnerabilities it detects in a project and allows users t
 \subsubsection{Participants}
 For our experiment, we recruited ten software developers, five students and five professionals. 
 Table~\ref{table:participants} gives additional demographic information on each of the ten participants. 
-Participants ranged in programming experience from 4 years to 10 years, averaging 6.3 years.
+Participants ranged in programming experience from 4 to 10 years, averaging 6.3 years.
 Participants also self-reported their familiarity with security vulnerabilities on a 5 point Likert scale, with a median of 3.
 Although we report on experiential and demographic information, the focus of this work is to identify questions that span experience levels.
 In the remainder of this paper, we will refer to participants by the abbreviations found in the participant column of the table.
@@ -257,7 +258,7 @@ This requirement also ensured that participants had experience using static anal
 
 However, this requirement restricted the size of our potential participant population.
 Accordingly, we used a nonprobabilistic, purposive sampling approach~\cite{guest2006many}, which typically yields fewer participants, but gives deeper insights into the observed phenomena.
-To identify eligible participants, we recruited using personal contacts, class rosters, and asked participants at the end of the experiment to recommend other qualified participants.
+To identify eligible participants, we recruited via personal contacts, class rosters, and asked participants at the end of the experiment to recommend other qualified participants.
 Although our study involved only ten participants, we reached saturation~\cite{glaser2009discovery} rather quickly; 
 no new question categories were introduced after the fourth participant.
 %ideographic, nomethethic, or typical size, grounded theory
@@ -271,7 +272,7 @@ no new question categories were introduced after the fourth participant.
 
   
 \subsubsection{Tasks}
-First we conducted a preliminary pilot study ($n = 4$), in which  participants spent approximately 10-15 minutes with each task and showed signs of fatigue after 60 minutes.
+First we conducted a preliminary pilot study ($n = 4$), in which  participants spent approximately 10 to 15 minutes with each task and showed signs of fatigue after 60 minutes.
 To reduce the effects of fatigue, we asked each participant to assess four vulnerabilities. 
 
 When selecting tasks, we ran FSB on iTrust and identified 118 potential security vulnerabilities, across three topics.
@@ -443,7 +444,7 @@ Table~\ref{table:categories} contains the 17 categories along with the number of
 To validate the categories that we identified, we asked two independent researchers to sort the question clusters into our categories. 
 Rather than sort the entire set of questions, we randomly selected 43 questions for each researcher to sort.
 The first agreed with our categorization with a Cohen's Kappa of $\kappa = .63$. 
-Between the first and second researcher we reworded and clarified some ambiguous questions. The second researcher exhibited greater agreement ($\kappa = .70$). 
+Between the first and second researcher we, reworded and clarified some ambiguous questions. The second researcher exhibited greater agreement ($\kappa = .70$). 
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \section{Results}
@@ -484,7 +485,7 @@ Unlike other types of code defects that may cause code to function unexpectedly 
 \emph{What is the problem (potential attack)? (2)} 
 
 
-Participants sought information about the variety of attacks that could occur in a given context.
+Participants sought information about the types of attacks that could occur in a given context.
 To that end, five participants asked, \textit{What are the possible attacks that could occur?}
 For example, within the first minute of his analysis P2 read the notification about the Path Traversal vulnerability and stated, ``I guess I'm thinking about different types of attacks.''
 Before reasoning about how a specific attack could be executed, he wanted to determine which attacks were relevant to the notification.
@@ -492,7 +493,7 @@ Before reasoning about how a specific attack could be executed, he wanted to det
 Participants also sought information about specific attacks from the notification, asking how particular attacks could exploit a given vulnerability.
 Participants hypothesized about specific attack vectors, how to execute those attacks, and how to prevent those attacks now and in the future.
 Seven participants, concerned about false positives, asked the question, \textit{Is this a real vulnerability?} 
-To answer that question, participants searched for hints that an attacker could actually execute a given attack in a specific context. 
+To answer that question, participants searched for hints that an attacker could successfully execute a given attack in a specific context. 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
 
@@ -578,7 +579,7 @@ It seems that providing suggestions without discussing the associated trade-offs
 \subsubsection{\textbf{Relationship Between Vulnerabilities (4)\{3\}}}\label{rbb}
 
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether similar vulnerabilities exist elsewhere in the code. 
-For example, when participants reached the third and fourth vulnerabilities, they began noticing and speculating about the similarities between the vulnerabilities they inspected.
+For example, when participants reached the third and fourth vulnerabilities, they began speculating about the similarities between the vulnerabilities they inspected.
 
 
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
@@ -597,15 +598,15 @@ For example, when participants reached the third and fourth vulnerabilities, the
 
 Participants asked questions about locating information in their coding environments.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
-Unlike Sections \ref{cf} and \ref{dsf}, questions in this category refer more generally to the process of locating information, not just about locating calling information or data flow information.
+Unlike Sections \ref{cf} and \ref{dsf}, questions in this category more generally refer to the process of locating information, not just about locating calling information or data flow information.
 
 \noindent\emph{Where is this used in the code? (10)} \\
 \emph{Where are other similar pieces of code? (4)} \\
 \emph{Where is this method defined? (1)} 
 
-All ten participants wanted to locate where defective code and tainted values were being used throughout the system. 
+All ten participants wanted to locate where defective code and tainted values were in the system. 
 Most of these questions occurred in the context of assessing the Predictable Random vulnerability.
-Specifically, participants wondered where the potentially insecure random number generator was being used and whether it was being used to generate sensitive data like passwords.
+Specifically, participants wondered where the potentially insecure random number generator was being used and whether it was employed generate sensitive data like passwords.
 
 %Where is similar code?
 In other cases, while fixing one method, four participants wanted to find other methods that implemented similar functionality.
@@ -627,9 +628,9 @@ Participants sought information about the callers and callees of potentially vul
 \emph{What gets called when this method gets called? (2)}
 
 Participants asked some of these questions while exploring the Path Traversal vulnerability.
-While exploring this vulnerability, many participants eventually hypothesized that all the calls originated from the same test class, and therefore were not user-facing, and thus would not be called with tainted values.
+While exploring this vulnerability, many participants eventually hypothesized that all the calls originated from the same test class, therefore were not user-facing, and thus would not be called with tainted values.
 Three participants explicitly asked, \textit{Are all calls coming from the same class?} 
-In fact, in this case participants' hypotheses were partially correct. 
+In fact, in this case, participants' hypotheses were partially correct. 
 Tracing up the call chains, the method containing the vulnerability was called from multiple classes, however those classes were all contained within a test package.
 
 Even though all participants did not form this same hypothesis, all ten participants wanted call information for the Path Traversal Vulnerability, often asking the question, \textit{Where is this method being called?} 
@@ -637,6 +638,7 @@ However, participants used various strategies to obtain the same information.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
 Other participants used the Eclipse's \textsc{mark occurrences} tool (code highlighting in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
 Further, it only highlighted calls within the current file.
+
 Participants additionally employed Eclipse's \textsc{find} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
 Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identified proper references to a single method.
@@ -648,7 +650,7 @@ If the potentially vulnerable code was called from external frameworks, \textsc{
 %%%%%%%%%%%% Data Storage 
 
 \subsubsection{\textbf{Data Storage and Flow (10)\{11\}}}\label{dsf}
-Participants often wanted to understand the type of data being collected and stored, where it originated, and where it was going. 
+Participants often wanted to better understand data being collected and stored: where it originated and where it was going. 
 For example, participants wanted to determine whether data was generated by the application or passed in by the user. 
 Participants also wanted to know if the data touched sensitive resources like a database.
 Questions in this category focus on the application's data --- how it is created, modified, or used --- unlike the questions in Section \ref{cf} that revolve around call information, essentially the paths through which the data can travel.
@@ -675,8 +677,8 @@ They relied on manual searching, because the tool they were using to navigate th
 
 \subsubsection{\textbf{Code Background and Functionality (9)\{17\}}}
 \label{cbf}
-Participants asked questions concerning the background and intended function of the code being analyzed. 
-The questions in this category differ from those in Section \ref{acu}, because they focus on the lower level implementation details of the code.
+Participants asked questions concerning the background and the intended function of the code being analyzed. 
+The questions in this category differ from those in Section \ref{acu} because they focus on the lower-level implementation details of the code.
 
 \noindent\emph{What does this code do? (9)} \\
 \emph{Why was this code written this way? (5)} \\
@@ -811,7 +813,7 @@ For example, while assessing the Potential Path Traversal vulnerability, P2, uns
 If a link was not available, they went to the web to get more information or noted that the notification could have included more information on those concepts.
 While parsing the information provided for the Predictable Random vulnerability, P7 and P8 did not know what CSRF token was.
 The notification for this vulnerability did not include links so they searched the web for more information. 
-When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he wold have liked the notification to include what a servlet is and how it related to client control.
+When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he would have liked the notification to include what a servlet is and how it related to client control.
 
 
 %%%%%%%%%%%% Confirming Expectations
@@ -819,7 +821,7 @@ When asked what information he would like to see added to the notification for t
 \subsubsection{\textbf{Confirming Expectations (4)\{1\}}}\label{ce}
 % possibly could be put with developer planning/self-reflection OR code background and function?
 
-A few participants wanted to be able to confirm whether the code is doing what they expected. 
+A few participants wanted to be able to confirm whether the code accomplishes what they expected. 
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
 
@@ -851,7 +853,7 @@ Participants who did not click the links in the notification had a few reasons f
 For some participants, the hyperlinked text was not descriptive enough for them to know what information the link was offering; others did not know if they could trust the information they found.
 
 Some participants clicked FSB's expecting one type of information, but finding another. 
-For example, P2 clicked the first link, labeled `WASC: Path Traversal'', while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
+For example, P2 clicked the first link, labeled ``WASC: Path Traversal,'' while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
 When he did not see that information, he attempted another web search for the same information. 
 A few participants did not know the links existed, so they typically used other strategies, such as searching the web.
 
@@ -876,7 +878,7 @@ While interacting with these tools, participants asked questions about how to ac
 
 %[ACCESSIBILITY (4 letter word)]
 Participants asked questions about accessing the tools needed to complete a certain task.
-Participants sometimes sought information from a tool, but could not determine how to invoke the tool or possibly did not know what tool to use. 
+Participants sometimes sought information from a tool, but could not determine how to invoke the tool or possibly did not know which tool to use. 
 The question, \emph{What tool do I need for this?} points to a common blocker for both novice and experienced developers, a lack of awareness~\cite{murphy-Hill2012fluency}.
 
 
@@ -896,8 +898,8 @@ Participants asked questions while interpreting these rankings.
 Most of these questions came from participants wanting to know more about the tool's method of ranking the vulnerabilities in the code.
 For example, after completing the first task (Potential Path Traversal), P1 discovered the tool's rank, severity, and confidence reports. 
 He noted how helpful the rankings seemed and included them in his assessment process for the following vulnerabilities.
-As he began working through the final vulnerability (SQL Injection), he admitted that he did not have as good of an understanding of the tool's metrics as he thought. 
-He wasn't sure what whether the rank (15) was high or low and if yellow was a ``good'' color or a ``bad'' color.
+As he began working through the final vulnerability (SQL Injection), he admitted that he did not understand the tool's metrics as well as he thought. 
+He wasn't sure what whether the rank (15) was high or low and if yellow was a ``good'' or ``bad'' color.
 Some participants, like P6, did not notice any of the rankings until after completing all four sessions when the investigator asked about the tool's rankings.
 
 %%%%%%%%%%%% Notification Text
@@ -925,9 +927,9 @@ In this section we discuss two main implications of our work.
 \label{flowNav}
 When iTrust performed security-sensitive operations, participants wanted to determine if data originated from a malicious source
 by tracing program flow.
-Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it was sanitized before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
+Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it was sanitized before being passed to a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
 We observed participants using three strategies to answer program flow questions,
-strategies that were useful, yet potentially error prone.
+strategies that were useful, yet potentially error-prone.
 
 First, when participants asked whether data comes from the user (\emph{a user-facing source}), 
 and thus cannot be trusted, or if untrusted data is being used in a sensitive operation,
@@ -963,10 +965,10 @@ this happens in iTrust where ``Test'' can also refer to
 a medical laboratory test.
 %, or if they accidentally missed one
 
-Third, a common strategy was for
-participants to rely on their existing knowledge of sensitive operations and data sources in the application.
+Third, a common strategy for
+participants was to rely on their existing knowledge of sensitive operations and data sources in the application.
 When participants relied on existing knowledge of sensitive operations and data sources,
-that reliance may be failure-prone whenever the code has been changed without their knowledge.
+such reliance may be failure-prone whenever the code has been changed without their knowledge.
 Indeed, prior research suggests that developers are 
 less knowledgeable about unstable code~\cite{fritz2014degree}. 
 Additionally, when a developer only contributes to a portion of the system, as is often the case in the open source community~\cite{mockus2002open}, he may be unable to reason about the system-wide implications of a change. 
@@ -982,7 +984,7 @@ workflow.
 
 We envision a new tool that helps developers reason about control flow and data flow simultaneously,
 by combining the strengths of existing heavy and lightweight tools.
-We imagine such a tool could use existing, heavyweight program analysis techniques, but still
+We imagine such a tool could use existing heavyweight program analysis techniques, but still
 use a lightweight user interface.
 For example, such a tool might use a full-program, call hierarchy analysis technique in the back end,
 but use a \textsc{mark occurrences}-like user interface on the front end.
@@ -1033,21 +1035,25 @@ In a more general programming context, researchers have warned about the risks o
 We envision an approach that addresses these limitations by explicating developers' strategies in the form of hierarchically structured checklists.
 Previous research suggests that checklists can effectively guide developers~\cite{phang2009triaging}.
 We propose a structure that contains hierarchical, customizable tasks for each type of notification.
-For example the structure would contain high-level tasks, such as ``Determine which attacks are feasible,'' and subsequently more actionable nested subtasks, such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible.''
+For example, the structure would contain high-level tasks, such as ``Determine which attacks are feasible,'' and subsequently more actionable nested subtasks, such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible.''
 This structure would also include a checklist-like feature that allows users to save the state of their interaction with a particular notification --- for example, checking off which attack vectors they have already ruled out --- diminishing the risk of \emph{concentration failure} and \emph{limit failure}.
 Additionally, each task could include links to resources that relate specifically to that task and tool suggestions that could help developers complete the task.
 
 \section{Threats to Validity}
 \label{limits}
+\subsection{External}
+%external
 The developers we recruited may not be representative of all developers.
 We conducted an exploratory study with a small number of developers, including some students and participants who had limited familiarity with security vulnerabilities.
 Developers with more expertise and experience might ask different questions.
 Similarly, developers working on other projects might ask different types of questions.
 
+\subsection{Internal}
 Further, participants were equipped with FSB, an open source static analysis tool. 
 Developers using other tools capable of detecting more complex vulnerabilities might ask different questions.
 We cannot and do not claim that we have identified a comprehensive categorization of all security-related questions.
 
+%internal
 One potential threat is that some participants had not recently worked with iTrust at the time of the experiment. 
 This may have led them to ask questions that a developer working in their every day coding environment might not ask. 
 Along the same lines, another threat is that participants in our study were not responsible for the security of iTrust; we asked them to act as if they were in charge of security for the code.  
