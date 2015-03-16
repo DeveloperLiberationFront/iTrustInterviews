@@ -518,7 +518,7 @@ Some notifications, including those for the SQL Injection and Predictable Random
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches.
  
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
-P7 preferred StackOverflow as a resource, because it included real-world examples of broken code elaborated on why the example was broken.
+P7 preferred StackOverflow as a resource, because it included real-world examples of broken code and elaborated on why the example was broken.
 Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about the process of applying suggestions. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust.
 
@@ -565,7 +565,7 @@ All participants proposed solutions that involved applying one or both of these 
 Specifically, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
 However, unless prompted, none of the participants commented on the disadvantages of using fix suggestions.
-While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6 decided to use \CodeIn{SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
+While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6, decided to use \CodeIn{SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 It seems that providing suggestions without discussing the associated trade-offs appeared to reduce participants' willingness to think broadly about other possible solutions. 
 
 
@@ -633,7 +633,7 @@ However, participants used various strategies to obtain the same information.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
 Other participants used the Eclipse's \textsc{mark occurrences} tool (code highlighting in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
 Further, it only highlighted calls within the current file.
-Participants additionally employed Eclipse's \textsc{text search} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
+Participants additionally employed Eclipse's \textsc{find} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
 Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identified proper references to a single method.
 Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enabled users to traverse the project's entire call structure.
@@ -722,7 +722,7 @@ For instance, often when assessing the vulnerabilities, participants wanted to k
 % B1, 2, 3 -- mostly 2(?)
 Participants tried to determine if the code in the Potential Path Traversal vulnerability was used to test the system. 
 P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
-To answer this question, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations the code of interest is being called.
+To answer this question, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations where the code of interest was being called.
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the codebase, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
@@ -753,11 +753,9 @@ For instance, P6 found a \CodeIn{Validator} method, which he manually inspected,
 % B1
 % P1, P6: all these test data generator so no user access (how did he get to this?)
 % P2: vulnerability only exists if user can access this code (used call hierarchy)
-When assessing the Potential Path Traversal vulnerability, four participants asked whether end-users had access to the part of the code being analyzed.
-P2 used \textsc{call hierarchy} to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability only existed if the user had access to the code.
-P1 and P6 went on a similar mission and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code should be fine as it is written.
-Though participants found the answers to their questions, it took time for them to get the answer using tools designed to answer other questions.
-
+When assessing the Potential Path Traversal vulnerability, four participants asked whether end-user input reached the code being analyzed.
+P2 used \textsc{call hierarchy} to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability was a true positive if user input reached the code.
+P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
 
 
 \subsection{Individuals}
@@ -843,19 +841,19 @@ For example, when assessing the Potential Path Traversal vulnerability, particip
 
  
 All ten participants had questions regarding the resources and documentation available to help them assess a given vulnerability. 
-Even with the links to external resources provided by two of the vulnerabilities, participants still had questions about available resources. 
+Even with the links to external resources provided by two of the notifications, participants still had questions about available resources. 
 Some participants used the links provided by FSB to get more information about the vulnerability.
 Participants who did not click the links in the notification had a few reasons for not doing so.
-For some participants, the hyperlinked text was not descriptive enough to know what information the tool was offering; others did not know if they could trust the information they found.
+For some participants, the hyperlinked text was not descriptive enough for them to know what information the link was offering; others did not know if they could trust the information they found.
 
-Some participants clicked the links provided by FSB thinking they would find what they were looking for, to find that they actually had not. 
-For example, P2 clicked the first link on path traversal while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
-When he did not see that information, he had to go back and attempt another web search for that information. 
+Some participants clicked FSB's expecting one type of information, but finding another. 
+For example, P2 clicked the first link, labeled `WASC: Path Traversal'', while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
+When he did not see that information, he attempted another web search for the same information. 
 A few participants did not know the links existed, so they typically used other strategies, such as searching the web.
 
 Other participants expressed interest in consulting their team members. 
 For example, when P10 had difficulty with the Potential Path Traversal vulnerability, he stated that he would normally ask his team members to explain how the code worked.
-Presumably, the author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
+Presumably, the code's author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
 
 
 %%%%%%%%%%%% Understanding Interacting Tools
@@ -925,7 +923,7 @@ When iTrust performed security-sensitive operations, participants wanted to dete
 by tracing program flow.
 Similarly, given data from the user, participants were interested in determining how it was used in the application and whether it was sanitized before being used in a sensitive operation. Questions related to these tasks appear in four different categories (Sections \ref{li}, \ref{cf}, \ref{dsf}, \ref{eui}).
 We observed participants using three strategies to answer program flow questions,
-strategies that were useful yet potentially error prone.
+strategies that were useful, yet potentially error prone.
 
 First, when participants asked whether data comes from the user (\emph{a user-facing source}), 
 and thus cannot be trusted, or if untrusted data is being used in a sensitive operation,
@@ -973,7 +971,7 @@ While investigating potential security vulnerabilities,
 participants would have benefited from tools that better support navigation of program flow.
 Although researchers have proposed enhanced tools to visualize call graphs~\cite{latoza2011visualizing} and trace control flow to its origin~\cite{barnett2014getMeHere},
 in a security context, these tools share the same limitations as the existing heavyweight tools.
-Existing tools like CodeSonar~\cite{keylist} and Coverity provide source-to-sink notifications for analyzing security
+Existing tools like CodeSonar~\cite{CodeSonar} and Coverity provide source-to-sink notifications for analyzing security
 vulnerabilities, but take control away from the programmer by forcing the developer into a tool-dictated
 workflow.
 
@@ -1054,10 +1052,10 @@ Along the same lines, another threat is that participants in our study were not 
 
 \section{Conclusion}
 \label{sec:concl}
-This paper reported on an experiment conducted to discover the questions developers ask when identifying and assessing security vulnerabilities in software code.
+This paper reported on an experiment conducted to discover developers' information needes while assessing security vulnerabilities in software code.
 During the experiment, we asked ten software developers to describe their thoughts as they assessed potential security vulnerabilities in iTrust, a security-critical web application.
 We presented the results of our experiment as a categorization of questions.
-Our findings have several implications for the design of static analysis tools. Our results suggest that tools should help developers, among other things, navigate program flow and manage the all the tasks required to reason about a vulnerability.
+Our findings have several implications for the design of static analysis tools. Our results suggest that tools should help developers, among other things, navigate program flow to sources of tainted data.
 
 
 
