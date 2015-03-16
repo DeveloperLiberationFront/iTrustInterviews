@@ -98,22 +98,20 @@ In fact, toolsmiths have created over 50, both free and commercial, static analy
 
 These tools provide, for instance, information about the locations of potential SQL injection vulnerabilities.
 %But developers don't use them because they don't provide right information
-Unfortunately, despite their overwhelming availability, research suggests that developers do not use static analysis tools. 
-Developers underuse static analysis tools, partially because the tools provide information that does not adequately align with their information needs~\cite{johnson2013don}. 
+Unfortunately, despite their overwhelming availability, research suggests that developers do not use static analysis tools, partially because the tools provide information that does not adequately align with their information needs~\cite{johnson2013don}. 
 
-%Other have categorized information needs
-Although existing work has broadly categorized developers' information needs, including the notion that developers need information about their code's security~\cite{latoza2010hard}, no prior study has specifically investigated developers' information needs while using tools to diagnose security vulnerabilities. 
+Our work addresses this problem by advancing our understanding of developers' information needs while interacting with security-focused static analysis tools. 
+To our knowledge, no prior study has specifically investigated developers' information needs while using such tools. 
 As we show later in this paper, developers need unique types of information while assessing security vulnerabilities.
 
 %And this work has improved the effectivness of tools
-Furthermore, in non-security domains, work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+In non-security domains, similar work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
 Similarly, we expect that categorizing developers' information needs while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 %What we did
-This work helps us understand the information developers seek while using static analysis tools to assess security vulnerabilities.
 To that end, we conducted a laboratory experiment with ten developers who had contributed to iTrust~\cite{iTrust}, a security-critical Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
-We operationalized developers' information needs by measuring questions --- the verbal manifestations of an information need. 
+We operationalized developers' information needs by measuring questions --- the verbal manifestations of information needs. 
 We report the questions participants asked throughout our experiment and discuss the strategies participants used to answer their questions.
 Using a card sort methodology, we sorted 559 questions into 17 categories. 
 The primary contribution of this work is a categorization of questions, which researchers and toolsmiths can use to inform the design of more usable static analysis tools.
