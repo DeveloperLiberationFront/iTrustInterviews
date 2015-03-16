@@ -2,6 +2,7 @@
 % should be used if it is desired that the figures are to be displayed in
 % draft mode.
 %
+
 \setlength{\paperheight}{11in}
 \setlength{\paperwidth}{8.5in}
 
@@ -83,25 +84,28 @@ systematic and ad hoc program navigation strategies.
 
 \section{Introduction}
 
+%Security is critical
 Software developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
 When software systems contain security defects, developers are responsible to fix them. 
 
+%Tools help developers with security
 To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
 One of example of such a tool is Find Security Bugs (FSB)~\cite{FindSecurityBugs}, an extension of FindBugs~\cite{FindBugs}.
 FSB locates and reports on potential software security vulnerabilities, such as SQL injection and cross-site scripting.  
 Other tools, such as CodeSonar~\cite{CodeSonar} and Coverity~\cite{Coverity}, can also be used to detect and remove potential security vulnerabilities.
 These tools provide, for example, information about the locations of potential SQL injection vulnerabilities.
+%But developers don't use them because they don't provide right information
 Unfortunately, research suggests that developers struggle using static analysis tools, in part because the tools provide information that does not adequately align with developers' information needs~\cite{johnson2013don}. 
 
-% maybe connect back to example.
-
+%Other have categorized information needs
 Although existing work has categorized developers' information needs in a broad sense, including the notion that developers need information about the security of their code~\cite{latoza2010hard}, no prior study has specifically investigated developers' information nedds while using tools to diagnose security vulnerabilities. 
 As we show later in this paper, developers need unique types of information while assessing security vulnerabilities.
 
+%And this work has improved the effectivness of tools
 Furthermore, in non-security domains, work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state-of-the-art of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
 Similarly, we expect that categorizing developers' information needs while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
-
+%What we did
 This work helps us understand the information developers seek while using static analysis tools to assess security vulnerabilities.
 To that end, we conducted a laboratory experiment with ten developers who had contributed to iTrust~\cite{iTrust}, a security-critical Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
