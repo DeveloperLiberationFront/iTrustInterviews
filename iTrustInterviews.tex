@@ -124,15 +124,14 @@ The primary contribution of this work is a categorization of questions, which re
 We have organized the related work into two subsections. 
 Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools and Section \ref{questions} references other studies that have explored developers' information needs.
 
-\subsection{Evaluation of Techniques}
+\subsection{Evaluating Security Tools}
 \label{evaluation}
-Developers use several techniques and tools to help secure their systems.
-Using a variety of metrics, many studies have assessed the effectiveness of the tools and techniques developers use to find and remove vulnerabilities from their code~\cite{martin2005finding, austin2011one, livshits2005finding}.  
+Using a variety of metrics, many studies have assessed the effectiveness of the security tools developers use to find and remove vulnerabilities from their code~\cite{martin2005finding, austin2011one, livshits2005finding}.  
 
-Much research has evaluated the effectiveness of tools and techniques based on their false positive rates and how many vulnerabilities they detect~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. 
-Jovanovic and colleagues attempt to address the problem of vulnerabilities in web applications by implementing and evaluating \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP scripts~\cite{jovanovic2006pixy}. 
-They considered their tool effective because of its low false positive rate (50\%) and its ability to find vulnerabilities previously unknown. 
-Similarly, Livshits and Lam evaluated their own approach to security-oriented static analysis; specifications provided by the user create static analyzers~\cite{livshits2005finding}. 
+Much research has evaluated the effectiveness of tools based on their false positive rates and how many vulnerabilities they detect~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. 
+For instance, Jovanovic and colleagues evaluate their tool, \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP web applications~\cite{jovanovic2006pixy}. 
+They considered \textsc{Pixy} effective because of its low false positive rate (50\%) and its ability to find vulnerabilities previously unknown. 
+Similarly, Livshits and Lam evaluated their own approach to security-oriented static analysis, which creates static analyzers based on inputs from the user~\cite{livshits2005finding}. 
 They also found their tool to be effective because it had a low false positive rate. 
 
 Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
@@ -142,21 +141,21 @@ Dukes and colleagues conducted a case study comparing static analysis and manual
 They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
 
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
-Further, these studies do not evaluate whether the tools answer questions developers have about the code or vulnerabilities. 
-Unlike existing studies, our study explores the questions developers ask when attempting to understand the vulnerabilities in their code.
+Further, these studies do not evaluate whether the tools address developers' information needs. 
+Unlike existing studies, our study focuses on developers' information needs while assessing security vulnerabilities and, accordingly, provides a novel framework for evaluating security tools.
 
 \subsection{Information Needs Studies}
 \label{questions}
-Several studies have explored the developers' information needs.
+Several studies have explored the developers' information needs outside the context of security.
 Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers}.
-In contrast, our study focuses specifically on the information needs of developers when assessing security vulnerabilities.
+In contrast, our study focuses specifically on the information needs of developers while assessing security vulnerabilities.
 
 
 Much of the work on answering developer questions has occurred in the last decade. 
 LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
 Furthermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements or reachability questions~\cite{latoza2010developers}. 
 Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions~\cite{ko2004designing}. 
-They found that developers were able to complete more debugging tasks when using their tool than they could without it.
+They found that developers were able to complete more debugging tasks while using their tool than they could without it.
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
 
@@ -524,7 +523,7 @@ For example, P10 determined that the Predictable Random vulnerability was ``real
 \subsubsection{\textbf{Understanding Alternative Fixes and Approaches (8)\{11\}}}\label{uafa}
 
 When resolving security vulnerabilities, participants explored alternative ways to achieve the same functionality more securely.
-For example, when evaluating the SQL Injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement} Class. 
+For example, while evaluating the SQL Injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement} Class. 
 
 \noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
 \emph{What are the alternatives for fixing this? (4)} \\
@@ -565,7 +564,7 @@ It seemed important to P8 that recommended approaches came from trustworthy sour
 
 \subsubsection{\textbf{Assessing the Application of the Fix (9)\{9\}}}\label{aaf}
 Once participants had identified an approach for fixing a security vulnerability (Section \ref{uafa}), they asked questions about applying the fix to the code.
-For example, when considering the use of \CodeIn{SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
+For example, while considering the use of \CodeIn{SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 
@@ -680,7 +679,7 @@ Questions in this category focus on the application's data --- how it is created
 
 
  
-Participants asked questions about the data pipeline when assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
+Participants asked questions about the data pipeline while assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
 While exploring this vulnerability, participants adapted tools such as the \textsc{call hierarchy} tool to also explore the program's data flow. 
 As we discussed in \emph{\textbf{Control Flow and Call Information}}, the \textsc{call hierarchy} tool helped participants identify methods' callers and callees.
@@ -727,7 +726,7 @@ Knowing whether the code was thrown together haphazardly versus reviewed and edi
 \subsubsection{\textbf{Application Context and Usage (9)\{9\}}}\label{acu}
 
 Unlike questions in Section \ref{cbf}, these questions refer to system-level concepts.
-For instance, often when assessing the vulnerabilities, participants wanted to know what the code was being used for, whether it be testing, creating appointments with patients, or generating passwords.
+For instance, often while assessing the vulnerabilities, participants wanted to know what the code was being used for, whether it be testing, creating appointments with patients, or generating passwords.
 
 
 \noindent\emph{What is the context of this vulnerability/code? (4)} \\
@@ -851,7 +850,7 @@ The question asked in this category was, \textit{Is this doing what I expect it 
 \subsubsection{\textbf{Resources and Documentation (10)\{10\}}}\label{rd}
 
 Many participants indicated they would use external resources and documentation to gain new perspectives on vulnerabilities.
-For example, when assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
+For example, while assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
 
 
 \noindent\emph{Can my team members/resources provide me with more information? (5)} \\
