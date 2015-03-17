@@ -294,7 +294,7 @@ We do not report on data collected from this preliminary study.
 When selecting tasks, we ran FSB on iTrust and identified 118 potential security vulnerabilities, across three topics.
 To increase the diversity of responses, we selected tasks from mutually exclusive topics, as categorized by FSB.
 For the fourth task, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
-Our alterations preserved the functionality of the original code and were based on examples of SQL injection found on OWASP and in open-source projects.
+Our alterations preserved the functionality of the original code and were based on examples of SQL injection found on OWASP~\cite{OWASP} and in open-source projects.
 We chose to add a SQL injection vulnerability, because among all security vulnerabilities, OWASP ranks injection vulnerabilities as the most critical web application security risk.
 Table \ref{table:vulnerabilities} summarizes each of the four tasks. 
 
@@ -366,7 +366,7 @@ Figure \ref{fig:merging} depicts a section of the questions extracted by both au
 
 \subsubsection{Question Review}
 To remove duplicates and ensure the validity of all the questions, each transcript was reviewed jointly by the two authors who initially coded it.
-During the second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
+During this second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
 The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the experiment artifacts.
 This process resulted in a total of 559 questions.
 
@@ -540,7 +540,7 @@ In other cases, participants turned to a variety of sources, such as StackOverfl
  
 Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
 P7 preferred StackOverflow as a resource, because it included real-world examples of broken code and elaborated on why the example was broken.
-Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about the process of applying suggestions. 
+Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about the process of applying it to the code. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust.
 
 While attempting to assess the Servlet Parameter vulnerability, P8 decided to explore some resources on the web and came across a resource that appeared to be affiliated with OWASP~\cite{OWASP}. 
@@ -581,7 +581,7 @@ These questions focus on the process of applying  and reasoning about a given fi
 
  
 When searching for approaches to resolve vulnerabilities, participants gravitated toward fix suggestions provided by the notification.
-The notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided fix suggestions.
+As noted above, the notifications associated with the Predictable Random vulnerability and the SQL Injection vulnerability both provided fix suggestions.
 All participants proposed solutions that involved applying one or both of these suggestions. 
 Specifically, P2 commented that it would be nice if all the notifications contained fix suggestions.
 
@@ -659,7 +659,7 @@ Participants additionally employed Eclipse's \textsc{find} tool, which found all
 Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identified proper references to a single method.
 Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enabled users to traverse the project's entire call structure.
-That said, it only identifies explicit calls made from within the system. 
+That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
  
 
@@ -685,7 +685,7 @@ Participants asked questions about the data pipeline while assessing three of th
 While exploring this vulnerability, participants adapted tools such as the \textsc{call hierarchy} tool to also explore the program's data flow. 
 As we discussed in \emph{\textbf{Control Flow and Call Information}}, the \textsc{call hierarchy} tool helped participants identify methods' callers and callees.
 Specifically, some participants used the \textsc{call hierarchy} tool to locate methods that were generating or modifying data.
-Once participants identified which methods were manipulating or creating data, they manually searched within the method for the specific statements that could modify or create data.
+Once participants identified which methods were manipulating data, they manually searched within the method for the specific statements that could modify or create data.
 They relied on manual searching, because the tool they were using to navigate the program's flow, \textsc{call hierarchy}, did not provide information about which statements were modifying and creating data.
 
 
@@ -769,6 +769,7 @@ For example, while assessing the Potential Path Traversal vulnerability, partici
 When assessing the Potential Path Traversal vulnerability, P1 and P6 wanted to know if the input was coming from the user along with whether the input was being validated in the event that the input did come from the user.
 For these participants, finding the answer required manual inspection of surrounding and relevant code. 
 For instance, P6 found a \CodeIn{Validator} method, which he manually inspected, to determine if it was doing input validation.
+He incorrectly concluded that the \CodeIn{Validator} method adequately validated the data.
 % B1, 3, 4 -- mostly 3
 
 % user access
@@ -824,7 +825,7 @@ For instance, while parsing the potential attacks listed in the notification for
 % P7/P8: what is CSRF token --> no link, wikipedia
 % P4: what is servlet and how relates to client control --> no link (said would have linked some info on that)
 
-Participants often clicked links leading to more information.
+Participants often clicked links leading to more information about specific concepts.
 For example, while assessing the Potential Path Traversal vulnerability, P2, unsure of what path traversal was, clicked the link labeled ``path traversal attack'' provided by FSB to get more information.
 If a link was not available, they went to the web to get more information or noted that the notification could have included more information on those concepts.
 While parsing the information provided for the Predictable Random vulnerability, P7 and P8 did not know what CSRF token was.
@@ -868,7 +869,7 @@ Some participants used the links provided by FSB to get more information about t
 Participants who did not click the links in the notification had a few reasons for not doing so.
 For some participants, the hyperlinked text was not descriptive enough for them to know what information the link was offering; others did not know if they could trust the information they found.
 
-Some participants clicked FSB's expecting one type of information, but finding another. 
+Some participants clicked FSB's links expecting one type of information, but finding another. 
 For example, P2 clicked the first link, labeled ``WASC: Path Traversal,'' while trying to understand the Potential Path Traversal vulnerability hoping to find information on how to resolve the vulnerability.
 When he did not see that information, he attempted another web search for the same information. 
 A few participants did not know the links existed, so they typically used other strategies, such as searching the web.
