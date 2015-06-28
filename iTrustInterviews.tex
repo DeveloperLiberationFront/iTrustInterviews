@@ -69,7 +69,7 @@
 Security tools can help developers answer questions about potential vulnerabilities in their code. 
 A better understanding of the types of questions asked by developers may help toolsmiths design more effective tools.
 In this paper, we describe how we collected and categorized these questions 
-by conducting an exploratory laboratory experiment with novice and experienced software developers.
+by conducting an exploratory study with novice and experienced software developers.
 We equipped them with Find Security Bugs, a security-oriented static analysis tool, and observed their interactions with security vulnerabilities in an open-source system that they had previously contributed to.
 We found that they asked questions not only about security vulnerabilities, associated attacks, and fixes,
 but also questions about the software itself, the social ecosystem that built the software,
@@ -109,10 +109,10 @@ In non-security domains, similar work that identifies information needs has help
 Similarly, we expect that categorizing developers' information needs while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 %What we did
-To that end, we conducted a laboratory experiment with ten developers who had contributed to iTrust~\cite{iTrust}, a security-critical Java medical records software system.
+To that end, we conducted a exploratory study with ten developers who had contributed to iTrust~\cite{iTrust}, a security-critical Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We operationalized developers' information needs by measuring questions --- the verbal manifestations of information needs. 
-We report the questions participants asked throughout our experiment and discuss the strategies participants used to answer their questions.
+We report the questions participants asked throughout our study and discuss the strategies participants used to answer their questions.
 Using a card sort methodology, we sorted 559 questions into 17 categories. 
 The primary contribution of this work is a categorization of questions, which researchers and toolsmiths can use to inform the design of more usable static analysis tools.
 
@@ -161,10 +161,10 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 
 \section{Methodology}
 \label{sec:meth}
-We conducted an exploratory laboratory experiment with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
+We conducted an exploratory study with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
 Section \ref{rqs} outlines the research question we sought to answer. 
 Section \ref{studyDesign} details how the study was designed and Section \ref{dataAnalysis} describes how we performed data analysis.
-Experiment materials can be found online~\cite{ExperimentalMaterials}.
+Study materials can be found online~\cite{ExperimentalMaterials}.
 
 \subsection{Research Question}
 \label{rqs}
@@ -181,7 +181,7 @@ each in-person session started with a five-minute briefing section, which includ
 During the briefing section, we asked participants to act as if they were in charge of security for iTrust.
 Additionally, we asked them to use a think-aloud protocol, which encourages  participants to verbalize their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
 Specifically, they were asked to: ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
-We recorded both audio and the screen as experiment artifacts for data analysis.
+We recorded both audio and the screen as study artifacts for data analysis.
 
 Following the briefing period, participants progressed through encounters with four vulnerabilities. 
 Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of these encounters.
@@ -259,7 +259,7 @@ It summarizes all the vulnerabilities it detects in a project and allows users t
 
 
 \subsubsection{Participants}
-For our experiment, we recruited ten software developers, five students and five professionals. 
+For our study, we recruited ten software developers, five students and five professionals. 
 Table~\ref{table:participants} gives additional demographic information on each of the ten participants. 
 Participants ranged in programming experience from 4 to 10 years, averaging 6.3 years.
 Participants also self-reported their familiarity with security vulnerabilities on a 5 point Likert scale, with a median of 3.
@@ -273,7 +273,7 @@ This requirement also ensured that participants had experience using static anal
 
 However, this requirement restricted the size of our potential participant population.
 Accordingly, we used a nonprobabilistic, purposive sampling approach~\cite{guest2006many}, which typically yields fewer participants, but gives deeper insights into the observed phenomena.
-To identify eligible participants, we recruited via personal contacts, class rosters, and asked participants at the end of the experiment to recommend other qualified participants.
+To identify eligible participants, we recruited via personal contacts, class rosters, and asked participants at the end of the study to recommend other qualified participants.
 Although our study involved only ten participants, we reached saturation~\cite{glaser2009discovery} rather quickly; 
 no new question categories were introduced after the fourth participant.
 %ideographic, nomethethic, or typical size, grounded theory
@@ -367,7 +367,7 @@ Figure \ref{fig:merging} depicts a section of the questions extracted by both au
 \subsubsection{Question Review}
 To remove duplicates and ensure the validity of all the questions, each transcript was reviewed jointly by the two authors who initially coded it.
 During this second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
-The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the experiment artifacts.
+The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the study artifacts.
 This process resulted in a total of 559 questions.
 
 Each question that was only identified by one author required verification.
@@ -468,7 +468,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \subsection{Interpreting the Results}
 \label{sec:results}
 
-In the next four sections, we discuss our experiment's results using the categories we described in the previous section.
+In the next four sections, we discuss our study's results using the categories we described in the previous section.
 Due to their large number, we grouped the categories to organize and facilitate discussion about our findings. 
 Table~\ref{table:categories} provides an overview of these groupings.
 
@@ -1062,7 +1062,7 @@ In this section we discuss the internal and external threats to the validity of 
 
 \subsection{Internal}
 
-One threat is that some participants had not recently worked with iTrust at the time of the experiment. 
+One threat is that some participants had not recently worked with iTrust at the time of the study. 
 This may have led them to ask questions that a developer working in their every day coding environment might not ask. 
 Along the same lines, another threat is that participants in our study were not responsible for the security of iTrust; we asked them to act as if they were in charge of security for the code.  
 
@@ -1081,9 +1081,9 @@ We cannot and do not claim that we have identified a comprehensive categorizatio
 
 \section{Conclusion}
 \label{sec:concl}
-This paper reported on an experiment conducted to discover developers' information needs while assessing security vulnerabilities in software code.
-During the experiment, we asked ten software developers to describe their thoughts as they assessed potential security vulnerabilities in iTrust, a security-critical web application.
-We presented the results of our experiment as a categorization of questions.
+This paper reported on a study conducted to discover developers' information needs while assessing security vulnerabilities in software code.
+During the study, we asked ten software developers to describe their thoughts as they assessed potential security vulnerabilities in iTrust, a security-critical web application.
+We presented the results of our study as a categorization of questions.
 Our findings have several implications for the design of static analysis tools. Our results suggest that tools should help developers, among other things, navigate program flow to sources of tainted data.
 
 
