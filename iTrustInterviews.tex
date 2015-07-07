@@ -299,28 +299,48 @@ To increase the diversity of responses, we selected tasks from mutually exclusiv
 For the fourth task, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
 Our alterations preserved the functionality of the original code and were based on examples of SQL injection found on OWASP~\cite{OWASP} and in open-source projects.
 We chose to add a SQL injection vulnerability, because among all security vulnerabilities, OWASP ranks injection vulnerabilities as the most critical web application security risk.
-Table \ref{table:vulnerabilities} summarizes each of the four tasks. 
+
+Table \ref{table:vulnerabilities} summarizes each of the four tasks and the remainder of this section provides more detail about each task.\\
+
+
+
+
+\noindent\textbf{Task 1} \\
+The method associated with Task 1 opens a file, reads its contents, and executes the contents of the file as SQL queries against the database. 
+Before opening the file, the method does not escape the filepath, potentially allowing arbitrary SQL files to be executed.
+However, the method is only ever executed as a utility from within the unit test framework. On average, participants spent 14 minutes and 49 seconds on this task.
+
+\noindent\textbf{Task 2} \\
+The method associated with Task 2 is used to generate random passwords when a new application user is created. FSB warns \CodeIn{Random} should not be used in secure contexts and instead suggests using \CodeIn{SecureRandom}. \CodeIn{SecureRandom} is a more secure alternative, but its use comes with a slight performance trade-off. 
+On average, participants spent 8 minutes and 52 seconds on this task.
+
+\noindent\textbf{Task 3} \\
+The method associated with Task 3 reads several improperly validated string values from a form. 
+These values are eventually redisplayed on the web page exposing the application to a cross site scripting attack. 
+On average, participants spent 13 minutes and 19 seconds on this task.
+
+\noindent\textbf{Task 4} \\
+In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB reccomends using  \CodeIn{PreparedStatements} instead. On average, participants spent 8 minutes on this task.
 
 \begin{table*} 
-\centering
-\caption{Four vulnerability exploration tasks}
-\begin{tabularx}{\textwidth}{|l|X|l|}
-\rowcolor{gray!50}
-\hline
-    Vulnerability				& Short Description													& Severity Rank 	\\
-    \hline	
-    Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& ``Scary''	    \\
-    \hline
-    Predictable Random			& Use of java.util.Random is predictable. 								& ``Scary''		\\
-    \hline
-    Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& ``Troubling''	\\
-    \hline
-    SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& ``Of Concern'' \\
-    \hline
-\end{tabularx}
-\label{table:vulnerabilities}
+	\centering
+	\caption{Four vulnerability exploration tasks}
+	\begin{tabularx}{\textwidth}{|l|X|l|}
+		\rowcolor{gray!50}
+		\hline
+		Vulnerability				& Short Description													& Severity Rank 	\\
+		\hline	
+		Potential Path Traversal	& An instance of java.io.File is created to read a file.     			& ``Scary''	    \\
+		\hline
+		Predictable Random			& Use of java.util.Random is predictable. 								& ``Scary''		\\
+		\hline
+		Servlet Parameter 			& The method getParameter returns a String value that is controlled by the client.			& ``Troubling''	\\
+		\hline
+		SQL Injection				& [Method name] passes a non-constant String to an execute method on an SQL statement.     	& ``Of Concern'' \\
+		\hline
+	\end{tabularx}
+	\label{table:vulnerabilities}
 \end{table*}
-
 
 \subsection{Data Analysis}
 \label{dataAnalysis}
@@ -329,6 +349,13 @@ Each transcript, along with the associated recording, was analyzed by two of the
 The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
+\begin{figure*}
+	\centering
+	\includegraphics[trim={0 0 0 3mm},clip, width=7.5in]{Images/QuestionMerging}
+	\caption{Question merging process}
+	\label{fig:merging} 
+\end{figure*}
+
 Participants ask both explicit and implicit questions. 
 Drawing from previous work on utterance interpretation~\cite{letovsky1987cognitive}, we developed five criteria to assist in the uniform classification of participant statements. 
 A statement was coded as a question only if it met one of the following criteria:
@@ -348,12 +375,7 @@ A statement was coded as a question only if it met one of the following criteria
 
 \end{itemize}
 
-\begin{figure*}
-	\centering
-	\includegraphics[width=7.5in]{Images/QuestionMerging}
-	\caption{Question merging process}
-	\label{fig:merging} 
-\end{figure*}
+
 
 
 \subsubsection{Question Extraction}
