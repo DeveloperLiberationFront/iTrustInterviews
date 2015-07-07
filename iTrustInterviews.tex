@@ -46,6 +46,7 @@
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
 \begin{document}
+\toappear{}
 \title{Questions Developers Ask While Diagnosing Potential Security Vulnerabilities With Static Analysis}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
@@ -59,7 +60,6 @@
 \affaddr{University of North Carolina at Charlotte}\\
 \affaddr{Charlotte, NC 28223}\\
 \email{\{billchu, heather.lipford\}@uncc.edu}
-%\blind{\{billchu, heather.lipford\}@uncc.edu}
 }
 
 \maketitle
@@ -83,8 +83,12 @@ systematic and ad hoc program navigation strategies.
 %Our results have several implications for designing security tools that support developers
 %by helping them answer their questions.
 \end{abstract}
-% no keywords
 
+% % A category with the (minimum) three required fields
+% \category{H.4}{Information Systems Applications}{Miscellaneous}
+% %A category including the fourth, optional field follows...
+\category{D.2.6}{Software Engineering}{Programming Environments}
+\keywords{Developer questions, human factors, security, static analysis}
 
 \section{Introduction}
 
@@ -187,11 +191,6 @@ Additionally, we asked them to use a think-aloud protocol, which encourages  par
 Specifically, they were asked to: ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 We recorded both audio and the screen as study artifacts for data analysis.
 
-Following the briefing period, participants progressed through encounters with four vulnerabilities. 
-Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of these encounters.
-All participants consented to participate in our study, which had institutional review board approval, and to have their session recorded using screen and audio capture software.
-Finally, each session concluded with several demographic and open-ended discussion questions.
-
 \begin{figure}
 	\subfigcapskip = 5pt
 	\subfigure[Navigation]{
@@ -200,7 +199,7 @@ Finally, each session concluded with several demographic and open-ended discussi
 	
 	\subfigcapskip = 5pt
 	\subfigure[Code]{
-	\includegraphics[width=\columnwidth]{Images/Code.png}
+		\includegraphics[width=\columnwidth]{Images/Code.png}
 	}
 	
 	\subfigcapskip = 5pt
@@ -208,10 +207,15 @@ Finally, each session concluded with several demographic and open-ended discussi
 		\includegraphics[width=\columnwidth]{Images/BugInfo.png}
 	}
 	
-
+	
 	\caption{The study environment.}
 	\label{fig:environment} 
 \end{figure}
+
+Following the briefing period, participants progressed through encounters with four vulnerabilities. 
+Figure \ref{fig:environment} depicts the configuration of the integrated development environment (IDE) for one of these encounters.
+All participants consented to participate in our study, which had institutional review board approval, and to have their session recorded using screen and audio capture software.
+Finally, each session concluded with several demographic and open-ended discussion questions.
 
 
 
@@ -344,18 +348,19 @@ In the method associated with Task 4, a SQL Statement object is created using st
 \end{table*}
 
 \subsection{Data Analysis}
-\label{dataAnalysis}
-To analyze the data, we first transcribed all the audio-video files using oTranscribe~\cite{OTranscribe}.
-Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
-The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
-In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
-\subsubsection{Question Criteria}
 \begin{figure*}
 	\centering
 	\includegraphics[trim={0 0 0 3mm},clip, width=7.5in]{Images/QuestionMerging}
 	\caption{Question merging process}
 	\label{fig:merging} 
 \end{figure*}
+
+\label{dataAnalysis}
+To analyze the data, we first transcribed all the audio-video files using oTranscribe~\cite{OTranscribe}.
+Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
+The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
+In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
+\subsubsection{Question Criteria}
 
 Participants ask both explicit and implicit questions. 
 Drawing from previous work on utterance interpretation~\cite{letovsky1987cognitive}, we developed five criteria to assist in the uniform classification of participant statements. 
