@@ -179,7 +179,7 @@ Where possible, we also link questions to the tools and strategies that develope
 \label{studyDesign}
 To ensure all participants were familiar with the study environment and Find Security Bugs (FSB),
 each in-person session started with a five-minute briefing section, which included a demonstration of FSB and time for questions.
-During the briefing section, we asked participants to act as if they were in charge of security for iTrust.
+During the briefing section, we informed participants of the importance of security to the application and that the software may contain security vulnerabilities.
 Additionally, we asked them to use a think-aloud protocol, which encourages  participants to verbalize their thought process as they complete a task or activity~\cite{nielsen2002getting}. 
 Specifically, they were asked to: ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 We recorded both audio and the screen as study artifacts for data analysis.
@@ -300,10 +300,8 @@ For the fourth task, we added a SQL injection vulnerability to iTrust by making 
 Our alterations preserved the functionality of the original code and were based on examples of SQL injection found on OWASP~\cite{OWASP} and in open-source projects.
 We chose to add a SQL injection vulnerability, because among all security vulnerabilities, OWASP ranks injection vulnerabilities as the most critical web application security risk.
 
+For each task, participants were asked to assess code that ``may contain security vulnerabilities'' and ``justify any proposed code changes.''
 Table \ref{table:vulnerabilities} summarizes each of the four tasks and the remainder of this section provides more detail about each task.\\
-
-
-
 
 \noindent\textbf{Task 1} \\
 The method associated with Task 1 opens a file, reads its contents, and executes the contents of the file as SQL queries against the database. 
