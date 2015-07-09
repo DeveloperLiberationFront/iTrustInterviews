@@ -313,19 +313,19 @@ Table \ref{table:vulnerabilities} summarizes each of the four tasks and the rema
 \noindent\textbf{Task 1} \\
 The method associated with Task 1 opens a file, reads its contents, and executes the contents of the file as SQL queries against the database. 
 Before opening the file, the method does not escape the filepath, potentially allowing arbitrary SQL files to be executed.
-However, the method is only ever executed as a utility from within the unit test framework. On average, participants spent 14 minutes and 49 seconds on this task.
+However, the method is only ever executed as a utility from within the unit test framework. The mean completion time for this task was 14 minutes and 49 seconds.
 
 \noindent\textbf{Task 2} \\
 The method associated with Task 2 is used to generate random passwords when a new application user is created. FSB warns \CodeIn{Random} should not be used in secure contexts and instead suggests using \CodeIn{SecureRandom}. \CodeIn{SecureRandom} is a more secure alternative, but its use comes with a slight performance trade-off. 
-On average, participants spent 8 minutes and 52 seconds on this task.
+The mean completion time for this task was 8 minutes and 52 seconds.
 
 \noindent\textbf{Task 3} \\
 The method associated with Task 3 reads several improperly validated string values from a form. 
 These values are eventually redisplayed on the web page exposing the application to a cross site scripting attack. 
-On average, participants spent 13 minutes and 19 seconds on this task.
+The mean completion time for this task was 13 minutes and 19 seconds.
 
 \noindent\textbf{Task 4} \\
-In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB reccomends using  \CodeIn{PreparedStatements} instead. On average, participants spent 8 minutes on this task.
+In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB reccomends using  \CodeIn{PreparedStatements} instead.The mean completion time for this task was 8 minutes.
 
 \begin{table*} 
 	\centering
@@ -443,7 +443,7 @@ At this stage, we discarded five unclear or non pertinent questions and organize
 
     												& Relationship Between Vulnerabilities							& 3     		& Section~\ref{rbb}			\\
     \hline
-    \multirow{4}{*}{Code and the Application}	
+    \multirow{6}{*}{Code and the Application}	
     												& Locating Information 								& 11      		& Section~\ref{li}		\\
 
     												& Control Flow and Call Information					& 13     		& Section~\ref{cf}	\\
@@ -456,7 +456,7 @@ At this stage, we discarded five unclear or non pertinent questions and organize
 
     									& End-User Interaction											& 3     		& Section~\ref{eui}		\\
     \hline	
-    \multirow{4}{*}{Individuals}	
+    \multirow{3}{*}{Individuals}	
     									& Developer Planning and Self-Reflection						& 14    		& Section~\ref{dpr}		\\
 
     									& Understanding Concepts										& 6 			& Section~\ref{uc}			\\
@@ -494,7 +494,7 @@ Between the first and second researcher we reworded and clarified some ambiguous
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \section{Results}
-
+\vspace{-4mm}
 \subsection{Interpreting the Results}
 \label{sec:results}
 
@@ -514,11 +514,9 @@ Though we present information about the number of participants who ask specific 
 
 \subsection{Vulnerabilities, Attacks, and Fixes}
 \label{sec:results-vaf}
+\vspace{-3mm}
 % next paragraph, go into description of first group 
-
-
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
-
 \subsubsection{\textbf{Preventing and Understanding Potential Attacks (10)\{11\}}}\label{pupa}
 Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}) introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
 \\
@@ -631,16 +629,13 @@ For example, when participants reached the third and fourth vulnerabilities, the
 
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
-\\
 
 
 \subsection{Code and the Application}
+\vspace{-3mm}
 \label{sec:results-ca}
-
 % description of what categories fall into this group
-
 %%%%%%%%%%%% Locating Information
-
 \subsubsection{\textbf{Locating Information (10)\{11\}}}\label{li}
 
 Participants asked questions about locating information in their coding environments.
@@ -819,11 +814,9 @@ P1 and P6 searched similarly and determined that because all the calls to the co
 
 
 \subsection{Individuals}
+\vspace{-3mm}
 \label{sec:results-i}
-
-
 %%%%%%%%%%%% Developer Planning
-
 \subsubsection{\textbf{Developer Planning and Self-Reflection (8)\{14\}}} \label{dpr}
  
 This category contains questions that participants asked about themselves.
@@ -878,16 +871,11 @@ When asked what information he would like to see added to the notification for t
 A few participants wanted to be able to confirm whether the code accomplishes what they expected. 
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
-
-
 \subsection{Problem Solving Support}
+\vspace{-3mm}
 \label{sec:results-pss}
-
-
 %%%%%%%%%%%% Resources
-
 \subsubsection{\textbf{Resources and Documentation (10)\{10\}}}\label{rd}
-
 Many participants indicated they would use external resources and documentation to gain new perspectives on vulnerabilities.
 For example, while assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
 \\
