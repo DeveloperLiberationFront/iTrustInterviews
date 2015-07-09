@@ -55,7 +55,7 @@
 \alignauthor Justin Smith, Brittany Johnson, and Emerson Murphy-Hill\\
 \affaddr{North Carolina State University}\\
 \affaddr{Raleigh, NC 27606} \\
-\email{\{jssmit11, bijohnson\}@ncsu.edu, emerson@csc.ncsu.edu}
+\email{\{jssmit11, bijohnso\}@ncsu.edu, emerson@csc.ncsu.edu}
 \alignauthor Bill Chu and Heather Richter Lipford\\
 \affaddr{University of North Carolina at Charlotte}\\
 \affaddr{Charlotte, NC 28223}\\
@@ -112,7 +112,7 @@ To our knowledge, no prior study has specifically investigated developers' infor
 As we show later in this paper, developers need unique types of information while assessing security vulnerabilities, like information about attacks.
 
 %And this work has improved the effectivness of tools
-In non-security domains, similar work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
+In non-security domains, work that identifies information needs has helped toolsmiths both evaluate the effectiveness of existing tools~\cite{ammar2012empirical}, and improve the state of program analysis tools~\cite{kononenko2012automatically, servant2012history, yoon2013visualization}. 
 Similarly, we expect that categorizing developers' information needs while using security-focused static analysis tools will help researchers evaluate and toolsmiths improve those tools. 
 
 %What we did
@@ -144,7 +144,7 @@ They also found their tool to be effective because it had a low false positive r
 Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
 Comparing the four approaches based on number of vulnerabilities found, false positive rate, and efficiency, they reported that no one technique was capable of discovering every type of vulnerability. 
 
-Dukes and colleagues conducted a case study comparing static analysis and manual testing techniques used to find security vulnerabilities~\cite{dukes2013case}. 
+Dukes and colleagues conducted a case study comparing static analysis and manual testing vulnerability-finding techniques~\cite{dukes2013case}. 
 They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
 
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
@@ -153,7 +153,7 @@ Unlike existing studies, our study focuses on developers' information needs whil
 
 \subsection{Information Needs Studies}
 \label{questions}
-Several studies have explored the developers' information needs outside the context of security.
+Several studies have explored developers' information needs outside the context of security.
 Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers, ko2007information}.
 These three studies explore the questions developers ask while performing general programming tasks.
 In contrast to previous studies, our study focuses specifically on the information needs of developers while performing a more specific task, assessing security vulnerabilities.
@@ -301,7 +301,7 @@ First we conducted a preliminary pilot study ($n = 4$), in which  participants s
 To reduce the effects of fatigue, we asked each participant to assess four vulnerabilities. 
 We do not report on data collected from this preliminary study.
 
-When selecting tasks, we ran FSB on iTrust and identified 118 potential security vulnerabilities, across three topics.
+When selecting tasks, we ran FSB on iTrust and identified 118 potential security vulnerabilities across three topics.
 To increase the diversity of responses, we selected tasks from mutually exclusive topics, as categorized by FSB.
 For the fourth task, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
 Our alterations preserved the functionality of the original code and were based on examples of SQL injection found on OWASP~\cite{OWASP} and in open-source projects.
@@ -325,7 +325,8 @@ These values are eventually redisplayed on the web page exposing the application
 The mean completion time for this task was 13 minutes and 19 seconds.
 
 \noindent\textbf{Task 4} \\
-In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB reccomends using  \CodeIn{PreparedStatements} instead.The mean completion time for this task was 8 minutes.
+In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB recommends using  \CodeIn{PreparedStatements} instead.The mean completion time for this task was 8 minutes.
+\\
 
 \begin{table*} 
 	\centering
@@ -396,7 +397,7 @@ Figure \ref{fig:merging} depicts a section of the questions extracted by both au
 
 \subsubsection{Question Review}
 To remove duplicates and ensure the validity of all the questions, each transcript was reviewed jointly by the two authors who initially coded it.
-During this second pass, the two reviewers examined each question statement, discussing the justification for each question based on the previously stated criteria.
+During this second pass, the two reviewers examined each question statement, discussing its justification based on the previously stated criteria.
 The two reviewers merged duplicate questions, favoring the wording that was most strongly grounded in the study artifacts.
 This process resulted in a total of 559 questions.
 
@@ -494,7 +495,7 @@ Between the first and second researcher we reworded and clarified some ambiguous
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \section{Results}
-\vspace{-4mm}
+\vspace{-2mm}
 \subsection{Interpreting the Results}
 \label{sec:results}
 
@@ -1043,7 +1044,7 @@ potentially tainted data.
 
 \subsection{Structured Vulnerability Notifications}
 \label{structuredNotifications}
-Find Security Bugs provided explanatory notifications of potential vulnerabilities.
+FSB provided explanatory notifications of potential vulnerabilities.
 However, to completely resolve vulnerabilities,
 participants performed many cognitively demanding tasks beyond simply locating the vulnerability and reading the notification, 
 as is evidenced by the breadth of questions they asked. 
