@@ -366,7 +366,7 @@ Each transcript, along with the associated recording, was analyzed by two of the
 The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
-
+\vspace{1mm}
 Participants ask both explicit and implicit questions. 
 Drawing from previous work on utterance interpretation~\cite{letovsky1987cognitive}, we developed five criteria to assist in the uniform classification of participant statements. 
 A statement was coded as a question only if it met one of the following criteria:
@@ -638,12 +638,12 @@ For example, when participants reached the third and fourth vulnerabilities, the
 
 
 \subsection{Code and the Application}
-\vspace{-3mm}
+\vspace{-1mm}
 \label{sec:results-ca}
 % description of what categories fall into this group
 %%%%%%%%%%%% Locating Information
 \subsubsection{Locating Information (10)\{11\}}\label{li}
-
+\vspace{1mm}
 Participants asked questions about locating information in their coding environments.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
 Unlike Sections \ref{cf} and \ref{dsf}, questions in this category more generally refer to the process of locating information, not just about locating calling information or data flow information.
@@ -693,7 +693,7 @@ Further, it only highlighted calls within the current file.
 Participants additionally employed Eclipse's \textsc{find} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
 Also, it returned references that occurred in dead code or comments.
 Alternatively, Eclipse's \textsc{find references} tool identified proper references to a single method.
-Unlike the previous strategies, Eclipse's \textsc{call hierarchy} tool enabled users to traverse the project's entire call structure.
+Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and traverse the project's entire call structure.
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
  
@@ -773,8 +773,6 @@ For instance, often while assessing the vulnerabilities, participants wanted to 
 \emph{What is the method/variable used for in the program? (3)} \\
 \emph{Will usage of this method change? (2)} \\
 \emph{Is the method/variable ever being used? (2)} \\
-\emph{Are we handling secure data in this context? (1)} \\
-\emph{How does the system work? (1)} 
 \\
 
 % B1, 2, 3 -- mostly 1(?)
@@ -820,7 +818,7 @@ P1 and P6 searched similarly and determined that because all the calls to the co
 
 
 \subsection{Individuals}
-\vspace{-3mm}
+\vspace{-1mm}
 \label{sec:results-i}
 %%%%%%%%%%%% Developer Planning
 \subsubsection{Developer Planning and Self-Reflection (8)\{14\}}
@@ -880,7 +878,7 @@ A few participants wanted to be able to confirm whether the code accomplishes wh
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
 \subsection{Problem Solving Support}
-\vspace{-3mm}
+\vspace{-1mm}
 \label{sec:results-pss}
 %%%%%%%%%%%% Resources
 \subsubsection{Resources and Documentation (10)\{10\}}
@@ -926,7 +924,8 @@ While interacting with these tools, participants asked questions about how to ac
 \emph{Can I verify the information the tool provides? (3)} \\
 \emph{What is the tool's confidence? (2)} \\
 \emph{What is the tool output telling me? (1)} \\
-\emph{What tool do I need for this? (1)} 
+\emph{What tool do I need for this? (1)} \\ 
+\emph{How can I annotate that these strings have been escaped and the tool should ignore the warning? (1)}
 \\
 
 %[ACCESSIBILITY (4 letter word)]
@@ -946,7 +945,8 @@ Participants asked questions while interpreting these rankings.
 
 \noindent\emph{How serious is this vulnerability? (2)} \\
 \emph{How do the rankings compare? (2)} \\
-\emph{What do the vulnerability rankings mean? (2)}
+\emph{What do the vulnerability rankings mean? (2)} \\
+\emph{Are all these vulnerabilities the same severity? (1)}
 \\
  
 Most of these questions came from participants wanting to know more about the tool's method of ranking the vulnerabilities in the code.
