@@ -21,6 +21,8 @@
 	\setlength{\parsep}{0pt}
 }
 
+\usepackage{flushend}
+
 \usepackage{subfigure}
 \usepackage{cite}
 \usepackage{url}
@@ -47,18 +49,18 @@
 % Do not put math or special symbols in the title.
 \begin{document}
 \toappear{}
-\title{Questions Developers Ask While Diagnosing Potential Security Vulnerabilities With Static Analysis}
+\title{Questions Developers Ask While Diagnosing Potential Security Vulnerabilities with Static Analysis}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
 \numberofauthors{2}
 \author{
 \alignauthor Justin Smith, Brittany Johnson, and Emerson Murphy-Hill\\
 \affaddr{North Carolina State University}\\
-\affaddr{Raleigh, NC 27606} \\
+\affaddr{Raleigh, NC, USA} \\
 \email{\{jssmit11, bijohnso\}@ncsu.edu, emerson@csc.ncsu.edu}
 \alignauthor Bill Chu and Heather Richter Lipford\\
 \affaddr{University of North Carolina at Charlotte}\\
-\affaddr{Charlotte, NC 28223}\\
+\affaddr{Charlotte, NC, USA}\\
 \email{\{billchu, heather.lipford\}@uncc.edu}
 }
 
@@ -552,10 +554,10 @@ For example, P10 determined that the Predictable Random vulnerability was ``real
 
 %%%%%%%%%%%% Understanding Alt. Fixes
 
-\subsubsection{\textbf{Understanding Alternative Fixes and Approaches (8)\{11\}}}\label{uafa}
+\subsubsection{\textbf{Understanding Alt. Fixes \& Approaches (8)\{11\}}}\label{uafa}
 
 When resolving security vulnerabilities, participants explored alternative ways to achieve the same functionality more securely.
-For example, while evaluating the SQL Injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} Class instead of Java \CodeIn{Statement} Class. 
+For example, while evaluating the potential SQL Injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} class instead of Java \CodeIn{Statement} class. 
 \\
 
 \noindent\emph{Does the alternative function the same as what I'm currently using? (6)} \\
@@ -570,7 +572,7 @@ For example, while evaluating the SQL Injection vulnerability, participants foun
 Some notifications, including those for the SQL Injection and Predictable Random vulnerabilities, explicitly offered alternative fixes. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches.
  
-Three participants specifically mentioned StackOverflow as a source for better understanding alternative approaches and fixes. 
+Three participants specifically cited StackOverflow as a source for alternative approaches and fixes.
 P7 preferred StackOverflow as a resource, because it included real-world examples of broken code and elaborated on why the example was broken.
 Despite the useful information some participants found, often the candidate alternative did not readily provide meta-information about the process of applying it to the code. 
 For example, P9 found a suggestion on StackOverflow that he thought might work, but it was not clear if it could be applied to the code in iTrust.
@@ -1126,7 +1128,7 @@ Our findings have several implications for the design of static analysis tools. 
 
 
 % use section* for acknowledgment
-\section*{Acknowledgments}
+\section{Acknowledgments}
 
 We would like to thank our study participants. 
 Special thanks to Xi Ge, Anthony Elliott, Emma Laperruque, and the Developer Liberation Front\footnote{\blind{\url{research.csc.ncsu.edu/dlf/}}} for their assistance. 
