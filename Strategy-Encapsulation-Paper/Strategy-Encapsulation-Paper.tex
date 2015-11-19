@@ -112,9 +112,8 @@ Consider one of the most common \cite{Ayewah2007} notifications produced by Find
 
 \noindent
 The notification clearly identifies the problem with the code (a null value may be dereferenced), however the notification provides no suggestions about how the developer should proceed to resolve the defect. 
-
 The actions developers take to resolve defects, I refer to collectively as the developer's defect resolution \textit{strategy}.
-For example, one strategy for resolving this defect would be to use Google to search for information about NullPointerExceptions, use Eclipse's call hierarchy tool to explore which branches get executed, and finally add an additional null check only if deemed appropriate.
+For example, one strategy for resolving this defect, which decomposes into three sub-strategies, would be to use Google to search for information about NullPointerExceptions, use Eclipse's call hierarchy tool to explore which branches get executed, and finally add an additional null check only if deemed appropriate.
 Of course, there exist other strategies for resolving this defect.
 
 I envision an alternative paradigm in which static analysis tool notifications explicitly support the resolution of the defects they detect. 
@@ -190,16 +189,16 @@ In this work I focus on identifying those successful and unsuccessful ad-hoc str
 %Goms task decomposition??
 To that end, I reanalyzed the audio and video recordings from ~\cite{Smith2015}. 
 
-Returning to the example of a defect resolution strategy from Section~\ref{sec:intro}, which is notably more concise than the strategies I observed in this study, Figure~\ref{fig:description} depicts the notation I would use to describe the defect resolution strategy. 
+Returning to the example of a defect resolution strategy from Section~\ref{sec:intro}, which is notably more concise than the strategies I observed in this study, Figure~\ref{fig:description} depicts the notation I used to describe the defect resolution strategy. 
 Similar to the notion of attack trees~\cite{attackTrees}, which hierarchically depict the actions an attacker could take to exploit a system, this hierarchical representation describes defect resolution strategies as a structured sets of actions.
 Because different developers might used different strategies to resolve the same defect, I constructed one of these strategy trees for each individual task I observed in the study --- 40 in total.
-Finally, to measure success granularly, I annotated a strategy in the tree whenever it either contributed to or detracted from the accurate resolution of the defect (lines prefixed with +/-, respectively, in Figure \ref{fig:description}).
+Finally, to measure success granularly, I annotated a strategy in the tree whenever it either contributed to or detracted from the accurate resolution of the defect (green and red lines prefixed with $+$/$-$, respectively, in Figure \ref{fig:description}).
 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{"strategy description format"}
-	\caption{Abbreviated description of a strategy for resolving a null dereference defect, including example annotations of observed points of success/failure (marked with +/- in green and red, respectively). }
+	\includegraphics[width=\columnwidth]{"images/strategy description format"}
+	\caption{Example strategy tree for the null dereference defect. }
 	\label{fig:description} 
 
 \end{figure}
@@ -214,7 +213,7 @@ Finally, to measure success granularly, I annotated a strategy in the tree whene
 
 
 \section{Results}
-I identified 40 strategies for defect resolution across 4 types of security defects. 
+I identified 40 top-level strategies for defect resolution, which decompose into 155 child sub-strategies. 
 Not surprisingly, the strategies I observed vary depending on the individual developer.
 For example, the three developers who reported the least familiarity with security vulnerabilities started 11 of the 12 tasks by reading the notification text.
 In contrast, more experienced developers started by reading the code.
