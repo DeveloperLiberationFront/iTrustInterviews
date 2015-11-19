@@ -71,8 +71,8 @@
 Static analysis tools have increasingly drawn attention from the research community because they afford the early detection of potential code defects.
 However, resolving these defects often requires considerable effort from developers.
 Unfortunately, research findings suggest static analysis tools don't fully support developers in resolving the defects the tools detect.
-In this work we examine the ad-hoc strategies developers use to resolve defects. 
-Further, we present a tool that explicates strategies.
+In this work I examine the ad-hoc strategies developers use to resolve defects. 
+Further, I present a tool that explicates strategies.
 [Obviously more work to do here]
 
 \end{abstract}
@@ -92,7 +92,7 @@ Detecting, and more importantly, resolving defects like these early can prevent 
 In their defect reports, static analysis tools provide information to developers in the form of textual \textit{notifications}.
 These notifications typically describe possible defects.
 However, they often fail to fully support developers in actually resolving the defects they detect~\cite{Johnson2013}.
-For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other tertiary activities~\cite{Smith2015}.  
+For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other additional activities~\cite{Smith2015}.  
 Even with notifications that afford actionable ``Quick Fix'' suggestions, developers must still determine whether those suggestions are appropriate for their code.
 Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool, which in this case, does not provide any imperative suggestions:
 
@@ -110,18 +110,19 @@ Consider one of the most common \cite{Ayewah2007} notifications produced by Find
 \end{tabular}
 \vspace{2mm}
 
+\noindent
 The notification clearly identifies the problem with the code (a null value may be dereferenced), however the notification provides no suggestions about how the developer should proceed to resolve the defect. 
 
 The actions developers take to resolve defects, I refer to collectively as the developer's defect resolution \textit{strategy}.
-Fore example, one strategy for resolving this defect would be to use Google to search for information about NullPointerExceptions, use Eclipse's call hierarchy tool to explore which branches get executed, and finally add an additional null check only if deemed appropriate.
+For example, one strategy for resolving this defect would be to use Google to search for information about NullPointerExceptions, use Eclipse's call hierarchy tool to explore which branches get executed, and finally add an additional null check only if deemed appropriate.
 Of course, there exist other strategies for resolving this defect.
 
 I envision an alternative paradigm in which static analysis tool notifications explicitly support the resolution of the defects they detect. 
-Specifically, I envision a tool that supports successful defect resolution strategies by orchestrating the actions developers take and tools developers use to resolve defects.
-In this paper, I present: 
+In particular, I envision a tool that supports successful defect resolution strategies by orchestrating the actions developers take and tools developers use to resolve defects.
+In this paper, I contribute: 
 \begin{enumerate}
 	\compresslist
-	\item A preliminary analysis of the successful and unsuccessful strategies developers employ to resolve defects detected by static analysis and 	
+	\item A preliminary analysis of the successful and unsuccessful strategies developers employ to resolve defects detected by static analysis, and
 	\item A description of a tool that provides developers with the tools and strategies needed to resolve defects.
 	
 \end{enumerate}
@@ -133,19 +134,19 @@ In this paper, I present:
 %In this section, I briefly survey related work.
 %\subsection{Defect Resolution}
 Several researchers have stressed the importance of static analysis tools supporting defect resolution, not just detection.
-For example, Path Projection~\cite{Khoo2008} facilitates defect resolution by presenting program path visualizations and leveraging promising interface features, such as \textit{checklists}. 
+For example, Path Projection~\cite{Khoo2008} facilitates defect resolution by presenting program path visualizations. 
 Similarly, Quick Fix Scout~\cite{Muslu2012} supports defect resolution by performing speculative analysis and therefore enabling developers to preview and compare fixes.
 Taken alone, Path Projection and Quick Fix Scout each only support one step in the defect resolution process.
 In this work, I envision an approach that supports developers throughout every step of the defect resolution process by orchestrating tools that focus on supporting individual steps.
 
 %\subsection{Supporting Effective Strategies}
-Recent research has also focused on the importance of supporting successful strategies in the use of complex computer applications.
+Previous research has also focused on the importance of supporting successful strategies in the use of complex computer applications.
 In computer-aided design applications, for example, Bhavnani and John have measured the performance costs of inefficient strategies~\cite{Bhavnani2000}.
 Their results suggest the use of more efficient strategies leads to faster task completion time and more accurate results.
 They also show that offline educational interventions can increase the use of efficient strategies.
 Leaning on the work of Bhavnani and John, Cockburn and colleagues review interface research and state that knowledge of efficient strategies is also an important factor influencing the novice to expert transition~\cite{Cockburn2014}.
 In his work, Cockburn discusses several techniques for designing interfaces that implicitly encourage the use of efficient strategies.
-These research efforts emphasize the importance of educating users about efficient strategies, however neither proposes to do so by explicitly describing effective strategies to users while they complete the relevant task.
+These research efforts emphasize the importance of educating users about efficient strategies, however neither proposes to do so by explicitly prescribing effective strategies to users while they complete the relevant task.
 Building off this previous work, my approach aims to proliferate strategic knowledge by explicitly describing successful strategies. 
 
 %rather than designing systems that implicitly encourage them.
@@ -181,8 +182,7 @@ To enable tools to explicitly support developers in executing efficient defect r
 
 \subsection{Identifying Successful Strategies}
 In previous work, I conducted a study in which ten developers each worked towards resolving four defects using static analysis~\cite{Smith2015}.
-Specifically, developers in the study interacted with security defects detected by Find Security Bugs~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
-For more details about the study design refer to~\cite{Smith2015}. 
+In particular, developers in the study interacted with security defects detected by Find Security Bugs~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
 As part of this previous work, I identified the information developers needed while resolving these defects.
 
 In the absence of tool-sanctioned defect resolution strategies, developers executed ad-hoc strategies (with varying degrees of success) to gather the information they needed.
@@ -232,8 +232,7 @@ Examining the strategies based on the degree to which they lead to successful ou
 I observed at least one strategic failure in 22 of 30[TODO:Update this] tasks; across the four tasks, every developer's strategies were undermined by at least one failure.
 However, despite the lack of tool support, some developers did resolve defects correctly using successful strategies. I observed 90 instances where developers' defect resolution strategies were successful in leading them to make observable progress on the resolution task.
 
-Drawing from the successful strategies I observed, I devised a tool that presents explicit defect resolution strategies to the developer. 
-Figure~\ref{fig:tool} depicts the tool.
+Drawing from the successful strategies I observed, I sketched (Figure~\ref{fig:tool}) a tool that presents explicit defect resolution strategies to the developer. 
 The strategy this tool presents is a composite strategy, combining the ten strategies I observed developers using for one task.
 Since the developers I studied may not have executed all of the most successful strategies, I supplement the tool by also including defect resolution recommendations published by trusted authorities such as OWASP and CVE~\cite{OWASP, CVE}.
 The tool also includes checkboxes to allow developers to track their progress.
