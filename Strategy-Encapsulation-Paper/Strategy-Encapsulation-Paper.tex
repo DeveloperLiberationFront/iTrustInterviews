@@ -69,11 +69,12 @@
 
 \begin{abstract}
 Static analysis tools have increasingly drawn attention from the research community because they afford the early detection of potential code defects.
-However, resolving these defects often requires considerable effort from developers.
-Unfortunately, research findings suggest static analysis tools don't fully support developers in resolving the defects the tools detect.
-In this work I examine the ad-hoc strategies developers use to resolve defects. 
-Further, I present a tool that explicates strategies.
-[Obviously more work to do here]
+Unfortunately, static analysis tools do not fully support developers in resolving the defects they detect.
+Instead, developers must rely on their own knowledge of good defect resolution \textit{strategies}.
+Accurately and efficiently resolving defects is a complex task that often requires considerable effort from developers.
+For example, some defects require developers to forage for additional information, determine whether the defect is a false positive, use code navigation and debugging tools, consult team members, and modify the source code. 
+In this work I perform a preliminary analysis of the successful and unsuccessful strategies developers use to resolve these defects and outline a tool that, based on the successful strategies I identified, supports developers throughout the defect resolution process. 
+
 
 \end{abstract}
 
@@ -92,7 +93,7 @@ Detecting, and more importantly, resolving defects like these early can prevent 
 In their defect reports, static analysis tools provide information to developers in the form of textual \textit{notifications}.
 These notifications typically describe possible defects.
 However, they often fail to fully support developers in actually resolving the defects they detect~\cite{Johnson2013}.
-For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other additional activities~\cite{Smith2015}.  
+For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other activities~\cite{Smith2015}.  
 Even with notifications that afford actionable ``Quick Fix'' suggestions, developers must still determine whether those suggestions are appropriate for their code.
 Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool, which in this case, does not provide any imperative suggestions:
 
@@ -116,9 +117,9 @@ The actions developers take to resolve defects, I refer to collectively as the d
 For example, one strategy for resolving this defect, which decomposes into three sub-strategies, would be to use Google to search for information about NullPointerExceptions, use Eclipse's call hierarchy tool to explore which branches get executed, and finally add an additional null check only if deemed appropriate.
 Of course, there exist other strategies for resolving this defect.
 
-I envision an alternative paradigm in which static analysis tool notifications explicitly support the resolution of the defects they detect. 
-In particular, I envision a tool that supports successful defect resolution strategies by orchestrating the actions developers take and tools developers use to resolve defects.
+I envision an alternative paradigm in which static analysis tool notifications explicitly support the resolution of the defects they detect by orchestrating the actions developers take and tools developers use.
 In this paper, I contribute: 
+
 \begin{enumerate}
 	\compresslist
 	\item A preliminary analysis of the successful and unsuccessful strategies developers use to resolve defects detected by static analysis, and
@@ -134,7 +135,7 @@ In this paper, I contribute:
 \label{sec:rw}
 %In this section, I briefly survey related work.
 %\subsection{Defect Resolution}
-Several researchers have stressed the importance of static analysis tools supporting defect resolution, not just detection.
+Several researchers have stressed the importance of supporting defect resolution.
 For example, Path Projection~\cite{Khoo2008} facilitates defect resolution by presenting program path visualizations. 
 Quick Fix Scout~\cite{Muslu2012} also supports defect resolution, in this case by performing speculative analysis and therefore enabling developers to preview and compare fixes.
 Taken alone, Path Projection and Quick Fix Scout each only support one step in the defect resolution process.
@@ -170,9 +171,6 @@ Building off this previous work, my approach aims to proliferate strategic knowl
 
 \section{Approach}
 \label{sec:approach}
-To enable tools to explicitly support developers in executing efficient defect resolution strategies, I must first identify the successful strategies those tools should support. 
-
-
 %\subsection{Analyze existing notifications for strategy support?}
 %Debating adding another section here, but will want to discuss in reading group.
 %Analyze all FB messages to determine to what extent static analysis notifications support holistic fixes
@@ -180,21 +178,14 @@ To enable tools to explicitly support developers in executing efficient defect r
 %Only X\% of FindBugs notifications include information about how to resolve the defect. 
 
 %
+To enable tools to support developers in executing accurate and efficient strategies, I must first identify which strategies are successful. 
+I have already conducted a study~\cite{Smith2015} in which I recorded ten developers resolving four security defects while using Find Security Bugs (FSB)~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
+Extending my previous work, in this work I reanalyzed the audio and video recordings from~\cite{Smith2015}, focusing on identifying those successful and unsuccessful strategies developers used to resolve the defects FSB detected.
 
-\subsection{Identifying Successful Strategies}
-In previous work, I conducted a study in which ten developers each worked towards resolving four defects using static analysis~\cite{Smith2015}.
-In particular, developers in the study interacted with security defects detected by Find Security Bugs~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
-As part of this previous work, I identified the information developers needed while resolving these defects.
-
-In the absence of tool-sanctioned defect resolution strategies, developers executed ad-hoc strategies (with varying degrees of success) to gather the information they needed.
-In this work I focus on identifying those successful and unsuccessful ad-hoc strategies.
-%Goms task decomposition??
-To that end, I reanalyzed the audio and video recordings from ~\cite{Smith2015}. 
-
-Returning to the example of a defect resolution strategy from Section~\ref{sec:intro}, which is notably more concise than the strategies I observed in this study, Figure~\ref{fig:description} depicts the notation I used to describe the defect resolution strategy. 
-Similar to the notion of attack trees~\cite{attackTrees}, which hierarchically depict the actions an attacker could take to exploit a system, this hierarchical representation describes defect resolution strategies as a structured sets of actions.
-Because different developers might used different strategies to resolve the same defect, I constructed one of these strategy trees for each individual task I observed in the study --- 40 in total.
-Finally, to measure success granularly, I annotated a strategy in the tree whenever it either contributed to or detracted from the accurate resolution of the defect (green and red lines prefixed with $+$/$-$, respectively, in Figure \ref{fig:description}).
+Returning to the example of a defect resolution strategy from Section~\ref{sec:intro}, Figure~\ref{fig:description} depicts the notation I used to represent defect resolution strategies. 
+Similar to the notion of attack trees~\cite{attackTrees}, which hierarchically organize the actions an attacker could take to exploit a system, this hierarchical representation, which I will refer to as a \textit{strategy tree}, describes defect resolution strategies as a structured sets of actions.
+Recursively, each child of the root is itself a strategy tree representing the sub-strategies developers used.
+Finally, to measure success granularly, I annotated a sub-strategy in the tree whenever it either contributed to or detracted from the accurate resolution of the defect --- green and red lines prefixed with $+$/$-$, respectively.
 
 
 \begin{figure}
@@ -215,38 +206,36 @@ Finally, to measure success granularly, I annotated a strategy in the tree whene
 
 
 \section{Results}
-I identified 40 top-level strategies for defect resolution, which decompose into 155 child sub-strategies. 
-Not surprisingly, the strategies I observed vary depending on the individual developer.
+Because different developers might use different strategies to resolve the same defect, I constructed 40 strategy trees --- one for each top-level strategy I observed in the study. With an average branching factor of approximately four at the roots, these 40 top-level strategies decompose into 155 sub-strategies. 
+
+I inspected the strategies for similarity to determine the feasibility of recommending strategies that apply more broadly.
+The strategies I observed vary depending on the individual developer.
 For example, the three developers who reported the least familiarity with security vulnerabilities started 11 of the 12 tasks by reading the notification text.
 In contrast, more experienced developers started by reading the code.
 The two developers who reported the highest familiarity with security vulnerabilities started only 2 of 8 tasks by reading the notification text. 
+
+Though all the strategies I identified exhibit slight differences (such as how developers chose to start resolving the defect), promisingly, some common patterns emerged across participants and defects. 
+In all 40 strategies, developers read the code surrounding the defect. Furthermore, in 90\% of the strategies developers read the notification text and in 75\% of the strategies developers tried to determine if the notification was a false positive.
+
 %Inexperience read the notification. Promising for our intervention
 
-Though all the strategies I identified exhibit slight differences (such as how developers chose to start resolving the defect), some common patterns emerged across participants and defects. 
-In all 40 strategies, developers read the code surrounding the defect. Furthermore, in 90\% of the strategies developers read the notification text and in 75\% of the strategies developers tried to determine if the notification was a false positive.
-The existence of these patterns is promising, because it may point to the feasibility of recommending strategies that apply more broadly. 
 %At least given a defect?
 %Some underlying patterns possible to suggest strategies that apply generally
 %Promising, because it may suggest the possibility of sharing strategies across developers.
 
-Examining the strategies based on the degree to which they lead to successful outcomes, I observed 62 strategic failures (i.e, instances where a developer's strategy was not efficient or accurate). Some examples of strategic failures include: the developer making an incorrect inference, using a tool incorrectly, or proposing an incorrect code modification.
-I observed at least one strategic failure in 27 tasks; across the four tasks, every developer's strategies were undermined by at least one failure.
-However, despite the lack of tool support, some developers did resolve defects correctly using successful strategies. I observed 105 instances where developers' defect resolution strategies were successful in leading them to make observable progress on the resolution task.
+Examining the strategies based on the degree to which they lead to successful outcomes, I observed 62 strategic failures (i.e, instances where a developer's strategy was not efficient or accurate).
+For example, one developer used Eclipse's call hierarchy tool attempting to locate all the call locations of a \CodeIn{doPost()} method. The tool located several explicit call locations within test classes. However, it did not locate implicit calls that originated from HTML pages.
+This lead the developer to incorrectly conclude that the code was safe, because users did not have access to the vulnerable method. 
+I observed at least one strategic failure in 27 of 40 tasks; across the four tasks, every developer's strategies were undermined by at least one failure.
+The prevalence of strategic failures, even among the the most experienced developers I studied, further motivates this work.
 
-Drawing from the successful strategies I observed, I sketched (Figure~\ref{fig:tool}) a tool that presents explicit defect resolution strategies to the developer. 
+Despite the lack of tool support, some developers resolved some defects correctly using successful strategies. I observed 105 instances where developers' defect resolution strategies succeeded in leading them to make observable progress on the resolution task.
+
+Drawing from the successful strategies I observed, I sketched (Figure~\ref{fig:tool}) a tool that presents explicit defect resolution strategies to developers. 
 The strategy this tool presents is a composite strategy, combining the ten strategies I observed developers using for one task.
 Since the developers I studied may not have executed all of the most successful strategies, I supplement the tool by also including defect resolution recommendations published by trusted authorities such as OWASP and CVE~\cite{OWASP, CVE}.
 The tool also includes checkboxes to allow developers to track their progress.
-Additionally, (talk about invoking other tools)
-
-\section{Contributions}
-%Use in practice to ensure tasks are completed successfully, or in education to disseminate strategic knowledge
-
-
-In this section I restate my contributions from the intro...
-
-%work I present a tool, Strategy-Check, that embraces this paradigm by explicating successful strategies in the form of hierarchically structured checklists;
-
+Additionally, the tool exposes other tools (Open Declaration in this example) in contexts when they would be most helpful.
 
 \begin{figure}
 	\centering
@@ -257,14 +246,22 @@ In this section I restate my contributions from the intro...
 
 
 
+\section{Contributions}
+%
+My preliminary analysis of developers' strategies suggests that strategic failures may undermine developers' in accurately and efficiently resolving defects.  
+I propose a new tool that helps developers resolve defects by providing them with explicit descriptions of successful strategies.
+Used in practice, such an approach may improve code quality and also educate developers by increasing their awareness of more successful strategies.
+
+%work I present a tool, Strategy-Check, that embraces this paradigm by explicating successful strategies in the form of hierarchically structured checklists;
+
+
+
 \bibliographystyle{abbrv}
 \bibliography{Strategy-Encapsulation-Paper}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-
-
 % that's all folks
 \end{document}
 
