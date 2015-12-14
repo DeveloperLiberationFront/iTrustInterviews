@@ -90,7 +90,7 @@ Static analysis tools help developers locate various code defects early in the d
 For example, static analysis tools detect access control vulnerabilities~\cite{Aside}, potential null dereferences~\cite{FindBugs}, and concurrency bugs~\cite{ThreadSafe} by analyzing source code.
 Detecting, and more importantly, resolving defects like these early can prevent more costly failures later in the development process~\cite{ayewah2008using}.
 
-In their defect reports, static analysis tools provide information to developers in the form of textual \textit{notifications}.
+In their defect reports, static analysis tools provide information to developers in the form of textual notifications.
 These notifications typically describe possible defects.
 However, they often fail to fully support developers in actually resolving the defects they detect~\cite{Johnson2013}.
 For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other activities~\cite{Smith2015}.  
@@ -113,7 +113,7 @@ Consider one of the most common \cite{Ayewah2007} notifications produced by Find
 
 \noindent
 The notification clearly identifies the problem with the code (a null value may be dereferenced), however the notification provides no suggestions about how the developer should proceed to resolve the defect. 
-The actions developers take to resolve defects, I refer to collectively as the developer's defect resolution \textit{strategy}.
+The actions developers take to resolve defects, I refer to collectively as the developer's \textit{defect resolution strategy}.
 For example, one strategy for resolving this defect, which decomposes into three sub-strategies, would be to use Google to search for information about NullPointerExceptions, use Eclipse's call hierarchy tool to explore which branches get executed, and finally add an additional null check only if deemed appropriate.
 Of course, there exist other strategies for resolving this defect.
 
