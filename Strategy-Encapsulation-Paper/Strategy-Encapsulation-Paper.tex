@@ -93,7 +93,6 @@ In their defect reports, static analysis tools provide information to developers
 These notifications typically describe possible defects.
 However, they often fail to fully support developers in actually resolving the defects they detect~\cite{Johnson2013}.
 For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other activities~\cite{Smith2015}.  
-Even with notifications that afford actionable ``Quick Fix'' suggestions, developers must still determine whether those suggestions are appropriate for their code.
 Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool, which in this case, does not provide any imperative suggestions:
 
 %\begin{lstlisting}[language=Java, keywordstyle=\color{blue}]
@@ -119,6 +118,12 @@ For example, one strategy for resolving this defect decomposes into three sub-st
 
 I envision an alternative paradigm in which static analysis tool notifications explicitly support the resolution of the defects they detect by orchestrating the actions developers take and tools developers use.
 In this paper, I contribute: 
+
+%TODO QUICK FIX STUFF
+%Some tools support developers in resolving defects by providing actionable ``Quick Fix'' suggestions.
+%Even with Quick Fix suggestions developers must still 
+%Even with notifications that afford , developers must still determine whether those suggestions are appropriate for their code.
+
 
 \begin{itemize}
 	\compresslist
