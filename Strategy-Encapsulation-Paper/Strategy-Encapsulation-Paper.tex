@@ -92,8 +92,9 @@ Detecting, and more importantly, resolving defects like these early can prevent 
 In their defect reports, static analysis tools provide information to developers in the form of textual notifications.
 These notifications typically describe possible defects.
 However, they often fail to fully support developers in actually resolving the defects they detect~\cite{Johnson2013}.
+Resolving defects often requires developers to orchestrate many interleaving activities.
 For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other activities~\cite{Smith2015}.  
-Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool, which in this case, does not provide any imperative suggestions:
+Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool, which in this case, does not suggest how to resolve the defect it detects:
 
 %\begin{lstlisting}[language=Java, keywordstyle=\color{blue}]
 %object.add("foo");
