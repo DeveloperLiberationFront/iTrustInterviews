@@ -185,11 +185,12 @@ Building off this previous work, my approach aims to proliferate strategic knowl
 
 %
 To enable tools to support developers in executing accurate and efficient strategies, I must first identify which strategies are successful. 
-I have already conducted a study~\cite{Smith2015} in which I recorded ten developers resolving four security defects while using Find Security Bugs (FSB)~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
-Extending my previous work, in this work I reanalyzed the audio and video recordings from~\cite{Smith2015}, focusing on identifying those successful and unsuccessful strategies developers used to resolve the defects FSB detected.
+I conducted a study~\cite{Smith2015} in which I recorded ten developers resolving four security defects while using Find Security Bugs (FSB)~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
+Extending my previous study, in this work I reanalyzed the audio and video recordings from~\cite{Smith2015}, focusing on identifying those successful and unsuccessful strategies developers used to resolve the defects FSB detected.
 
 Returning to the example of a defect resolution strategy from Section~\ref{sec:intro}, Figure~\ref{fig:description} depicts the notation I used to represent defect resolution strategies. 
-Similar to the notion of attack trees~\cite{attackTrees}, which hierarchically organize the actions an attacker could take to exploit a system, this hierarchical representation, which I will refer to as a \textit{strategy tree}, describes defect resolution strategies as a structured sets of actions.
+This notation draws from the notion of attack trees~\cite{attackTrees}. Attack trees hierarchically organize the actions an attacker could take to exploit a system. Similarly, this hierarchical representation describes defect resolution strategies as a structured sets of actions.
+I refer to this notation as a \textit{strategy tree}.
 Recursively, each child of the root is itself a strategy tree representing the sub-strategies developers used.
 Finally, to measure success granularly, I annotated a sub-strategy in the tree whenever it either contributed to or detracted from the accurate resolution of the defect --- green and red lines prefixed with $+$/$-$, respectively.
 
