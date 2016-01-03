@@ -70,11 +70,11 @@
 
 \begin{abstract}
 Although static analysis tools detect potential code defects early in the development process, they do not fully support developers in resolving those defects.
-To accurately and efficiently resolve defects, developers must orchestrate several complex tasks, such as, correctly determining whether the defect is a false positive and updating the source code without introducing new defects.
+To accurately and efficiently resolve defects, developers must orchestrate several complex tasks, such as determining whether the defect is a false positive and updating the source code without introducing new defects.
 Without good \textit{defect resolution strategies} developers may resolve defects erroneously or inefficiently.
 %Accurately and efficiently resolving defects is a complex task that often requires considerable effort from developers.
 %For example, defects require developers to determine whether the defect is a false positive, use code navigation and debugging tools, consult team members, and modify the source code. 
-In this work I perform a preliminary analysis of the successful and unsuccessful strategies developers use to resolve defects and outline a tool that, based on the successful strategies I identified, supports developers throughout the defect resolution process. 
+In this work, I perform a preliminary analysis of the successful and unsuccessful strategies developers use to resolve defects. Based on the successful strategies identified, I then outline a tool to support developers throughout the defect resolution process. 
 \end{abstract}
 
 % % A category with the (minimum) three required fields
@@ -87,14 +87,14 @@ In this work I perform a preliminary analysis of the successful and unsuccessful
 \label{sec:intro}
 Static analysis tools help developers locate various code defects early in the development process, even before the code executes. 
 For example, static analysis tools detect access control vulnerabilities~\cite{Aside}, potential null dereferences~\cite{FindBugs}, and concurrency bugs~\cite{ThreadSafe} by analyzing source code.
-Detecting, and more importantly, resolving defects like these early can prevent more costly failures later in the development process~\cite{ayewah2008using}.
+Detecting and, more importantly, resolving defects like these early can prevent more costly failures later in the development process~\cite{ayewah2008using}.
 
 In their defect reports, static analysis tools provide information to developers in the form of textual notifications.
 These notifications typically describe possible defects.
 However, they often fail to fully support developers in actually resolving the defects they detect~\cite{Johnson2013}.
 Resolving defects often requires developers to orchestrate many interleaving activities.
 For example, accurately resolving defects can require developers to identify false positives, explore the existing code, invoke additional tools, modify the code, and verify the correctness of their fix, among other activities~\cite{Smith2015}.  
-Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool, which in this case, does not suggest how to resolve the defect it detects:
+Consider one of the most common \cite{Ayewah2007} notifications produced by FindBugs, a static analysis tool. In this case, it does not suggest how to resolve the defect it detects:
 
 %\begin{lstlisting}[language=Java, keywordstyle=\color{blue}]
 %object.add("foo");
@@ -113,8 +113,8 @@ Consider one of the most common \cite{Ayewah2007} notifications produced by Find
 \noindent
 While the tool identifies a problem with the code (a null value may be dereferenced), it does not provide a suggestion for how the developer should validate and resolve the defect.
 The actions developers take to validate and resolve defects, I refer to collectively as the developer's \textit{defect resolution strategy}.
-There exist many strategies for resolving a given defect.
-For example, one strategy for resolving this defect decomposes into three sub-strategies: Google search for information about NullPointerExceptions; use Eclipse's call hierarchy tool to explore which branches get executed; and finally add an additional null check.
+There are many strategies for resolving a given defect.
+For instance, one strategy for resolving this defect decomposes into three sub-strategies: Google search for information about NullPointerExceptions; use Eclipse's call hierarchy tool to explore which branches get executed; finally, add an additional null check.
 %This straegy is successful when...
 
 
@@ -144,7 +144,7 @@ To that end, this paper makes the following contributions:
 Several researchers have stressed the importance of supporting defect resolution.
 For example, Path Projection~\cite{Khoo2008} facilitates defect resolution by presenting program path visualizations. 
 Quick Fix Scout~\cite{Muslu2012} performs speculative analysis, enabling developers to preview and compare fixes. 
-Taken alone, Path Projection and Quick Fix Scout each only support one step in the defect resolution process.
+Taken alone, Path Projection and Quick Fix Scout each support only one step in the defect resolution process.
 In contrast, I am working toward supporting developers throughout every step of the defect resolution process.
 
 %\subsection{Supporting Effective Strategies}
@@ -155,7 +155,7 @@ They also show that offline educational interventions can increase the use of ef
 Leaning on the work of Bhavnani and John, Cockburn and colleagues review interface research and state that knowledge of efficient strategies is also an important factor influencing the novice to expert transition~\cite{Cockburn2014}.
 In his work, Cockburn discusses several techniques for designing interfaces that implicitly encourage the use of efficient strategies.
 These research efforts emphasize the importance of educating users about efficient strategies, however neither proposes to do so by explicitly prescribing effective strategies to users while they complete the relevant task.
-Building off this previous work, my approach aims to proliferate strategic knowledge by explicitly describing successful strategies. 
+Building on this previous work, my approach aims to proliferate strategic knowledge by explicitly describing successful strategies. 
 
 %rather than designing systems that implicitly encourage them.
 
@@ -185,7 +185,7 @@ Building off this previous work, my approach aims to proliferate strategic knowl
 
 %
 To enable tools to support developers in executing accurate and efficient strategies, I must first identify which strategies are successful. 
-I conducted a study~\cite{Smith2015} in which I recorded ten developers resolving four security defects while using Find Security Bugs (FSB)~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
+I conducted a study~\cite{Smith2015} in which I recorded 10 developers resolving four security defects while using Find Security Bugs (FSB)~\cite{FindSecurityBugs} --- a security-oriented extension of FindBugs~\cite{FindBugs}.
 Extending my previous study, in this work I reanalyzed the audio and video recordings from~\cite{Smith2015}, focusing on identifying those successful and unsuccessful strategies developers used to resolve the defects FSB detected.
 
 Returning to the example of a defect resolution strategy from Section~\ref{sec:intro}, Figure~\ref{fig:description} depicts the notation I used to represent defect resolution strategies. 
@@ -219,9 +219,9 @@ I inspected the strategies for similarity to determine the feasibility of recomm
 The strategies I observed vary depending on the individual developer.
 For example, the three developers who reported the least familiarity with security vulnerabilities started 11 of the 12 tasks by reading the notification text.
 In contrast, more experienced developers started by reading the code.
-The two developers who reported the highest familiarity with security vulnerabilities started only 2 of 8 tasks by reading the notification text. 
+The two developers who reported the highest familiarity with security vulnerabilities started only two of eight tasks by reading the notification text. 
 
-Though all the strategies I identified exhibit slight differences (such as how developers chose to start resolving the defect), promisingly, some common patterns emerged across participants and defects. 
+Though all the strategies I identified exhibit slight differences (such as how developers chose to start resolving the defect), some common patterns promisingly emerged across participants and defects. 
 In all 40 strategies, developers read the code surrounding the defect. Furthermore, in 90\% of the strategies developers read the notification text and in 75\% of the strategies developers tried to determine if the notification was a false positive.
 
 %Inexperience read the notification. Promising for our intervention
@@ -230,16 +230,16 @@ In all 40 strategies, developers read the code surrounding the defect. Furthermo
 %Some underlying patterns possible to suggest strategies that apply generally
 %Promising, because it may suggest the possibility of sharing strategies across developers.
 
-Examining the strategies based on the degree to which they lead to successful outcomes, I observed 62 strategic failures (i.e, instances where a developer's strategy was not efficient or accurate).
+After examining the strategies based on the degree to which they led to successful outcomes, I observed 62 strategic failures (i.e, instances where a developer's strategy was not efficient or accurate).
 For example, one developer used Eclipse's call hierarchy tool attempting to locate all the call locations of a \CodeIn{doPost()} method. The tool located several explicit call locations within test classes. However, it did not locate implicit calls that originated from HTML pages.
-This lead the developer to incorrectly conclude that the code was safe, because users did not have access to the vulnerable method. 
-I observed at least one strategic failure in 27 of 40 tasks; across the four tasks, every developer's strategies were undermined by at least one failure.
+This led the developer to incorrectly conclude that the code was safe, because users did not have access to the vulnerable method. 
+I observed at least one strategic failure in 27 of 40 tasks; across the four tasks, each developer's strategies were undermined by at least one failure.
 The prevalence of strategic failures, even among the the most experienced developers I studied, further motivates this work.
 
-Despite the lack of tool support, some developers resolved some defects correctly using successful strategies. I observed 105 instances where developers' defect resolution strategies succeeded in leading them to make observable progress on the resolution task.
+Despite the lack of tool support, some developers resolved some defects correctly using successful strategies. I observed 105 instances where developers' defect resolution strategies successfully led them to make observable progress on the resolution task.
 
 Drawing from the successful strategies I observed, I sketched (Figure~\ref{fig:tool}) a tool that presents explicit defect resolution strategies to developers. 
-The strategy this tool presents is a composite strategy, combining the ten strategies I observed developers using for one task.
+The strategy this tool presents is a composite strategy, combining the 10 strategies I observed developers using for one task.
 Since the developers I studied may not have executed all of the most successful strategies, I supplement the tool by also including defect resolution recommendations published by trusted authorities such as OWASP and CVE~\cite{OWASP, CVE}.
 The tool also includes checkboxes to allow developers to track their progress.
 Additionally, the tool exposes other tools (Open Declaration in this example) in contexts when they would be most helpful.
@@ -255,9 +255,9 @@ Additionally, the tool exposes other tools (Open Declaration in this example) in
 
 \section{Contributions}
 %
-My preliminary analysis of developers' strategies suggests that strategic failures may undermine developers' in accurately and efficiently resolving defects.  
+My preliminary analysis of developers' strategies suggests that strategic failures may undermine developers in accurately and efficiently resolving defects.  
 I propose a new tool that helps developers resolve defects by providing them with explicit descriptions of successful strategies.
-Used in practice, such an approach may improve code quality and also educate developers by increasing their awareness of more successful strategies.
+In practice, such an approach may improve code quality and also educate developers by increasing their awareness of more successful strategies.
 
 %work I present a tool, Strategy-Check, that embraces this paradigm by explicating successful strategies in the form of hierarchically structured checklists;
 
