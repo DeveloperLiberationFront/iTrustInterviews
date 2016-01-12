@@ -8,7 +8,7 @@
 
 %\documentclass[conference]{IEEEtran}
 %\documentclass{acm_proc_article-sp}
-\documentclass{sig-alternate}
+\documentclass[10pt,journal,compsoc]{IEEEtran}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -48,54 +48,54 @@
 % can use linebreaks \\ within to get better formatting as desired
 % Do not put math or special symbols in the title.
 \begin{document}
-\toappear{}
 \title{Questions Developers Ask While Diagnosing Potential Security Vulnerabilities with Static Analysis}
 % What Questions Do Developers Ask When Reasoning about the Security of Their Code? Building Tools that Answer Developers' Questions about Security Vulnerabilities?
 
-\numberofauthors{2}
-\author{
-\alignauthor Justin Smith, Brittany Johnson, and Emerson Murphy-Hill\\
-\affaddr{North Carolina State University}\\
-\affaddr{Raleigh, NC, USA} \\
-\email{\{jssmit11, bijohnso\}@ncsu.edu, emerson@csc.ncsu.edu}
-\alignauthor Bill Chu and Heather Richter Lipford\\
-\affaddr{University of North Carolina at Charlotte}\\
-\affaddr{Charlotte, NC, USA}\\
-\email{\{billchu, heather.lipford\}@uncc.edu}
-}
-
-\maketitle
+\author{Justin~Smith, Brittany~Johnson, Emerson~Murphy-Hill, Bill~Chu, and Heather~Richter~Lipford%
+		\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
+			of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+			GA, 30332.\protect\\
+			% note need leading \protect in front of \\ to get a newline within \thanks as
+			% \\ is fragile and will error, could use \hfil\break instead.
+			E-mail: see http://www.michaelshell.org/contact.html
+			\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops an unwanted space
+		}
 
 
-% As a general rule, do not put math, special symbols or citations
-% in the abstract
+
+
+\markboth{IEEE Transactions On Software Engineering,~Vol.~XX, No.~X, MONTH~YEAR}%
+{Smith \MakeLowercase{\textit{et al.}}: Questions Developers Ask While Diagnosing Potential Security Vulnerabilities with Static Analysis}
+
+%\affaddr{North Carolina State University}\\
+%\affaddr{Raleigh, NC, USA} \\
+%\email{\{jssmit11, bijohnso\}@ncsu.edu, emerson@csc.ncsu.edu}
+%\alignauthor Bill Chu and Heather Richter Lipford\\
+%\affaddr{University of North Carolina at Charlotte}\\
+%\affaddr{Charlotte, NC, USA}\\
+%\email{\{billchu, heather.lipford\}@uncc.edu}
+
+
+\IEEEtitleabstractindextext{%
 \begin{abstract}
-
-Security tools can help developers answer questions about potential vulnerabilities in their code. 
-A better understanding of the types of questions asked by developers may help toolsmiths design more effective tools.
-In this paper, we describe how we collected and categorized these questions 
-by conducting an exploratory study with novice and experienced software developers.
-We equipped them with Find Security Bugs, a security-oriented static analysis tool, and observed their interactions with security vulnerabilities in an open-source system that they had previously contributed to.
-We found that they asked questions not only about security vulnerabilities, associated attacks, and fixes,
-but also questions about the software itself, the social ecosystem that built the software,
-and related resources and tools.
-For example, when participants asked questions about the source of tainted data,
-their tools forced them to make imperfect tradeoffs between 
-systematic and ad hoc program navigation strategies.
+	Security tools can help developers answer questions about potential vulnerabilities in their code. 
+	A better understanding of the types of questions asked by developers may help toolsmiths design more effective tools.
+	In this paper, we describe how we collected and categorized these questions by conducting an exploratory study with novice and experienced software developers.
+	We equipped them with Find Security Bugs, a security-oriented static analysis tool, and observed their interactions with security vulnerabilities in an open-source system that they had previously contributed to.
+	We found that they asked questions not only about security vulnerabilities, associated attacks, and fixes, but also questions about the software itself, the social ecosystem that built the software, and related resources and tools.
+	For example, when participants asked questions about the source of tainted data, their tools forced them to make imperfect tradeoffs between systematic and ad hoc program navigation strategies.
 %Our results have several implications for designing security tools that support developers
 %by helping them answer their questions.
 \end{abstract}
+}
 
-% % A category with the (minimum) three required fields
-% \category{H.4}{Information Systems Applications}{Miscellaneous}
-% %A category including the fourth, optional field follows...
-\category{D.2.6}{Software Engineering}{Programming Environments}
-\keywords{Developer questions, human factors, security, static analysis}
 
-\section{Introduction}
+\maketitle
+
+\IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
 
 %Security is critical
-Software developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
+\IEEEPARstart{S}{oftware} developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
 When software systems contain security defects, developers are responsible for fixing them. 
 
 %Tools help developers with security
@@ -366,7 +366,6 @@ Each transcript, along with the associated recording, was analyzed by two of the
 The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
 In the remainder of this section, we will detail the question extraction process and question sorting processes, including the criteria used to determine which statements qualified as questions.
 \subsubsection{Question Criteria}
-\vspace{1mm}
 Participants ask both explicit and implicit questions. 
 Drawing from previous work on utterance interpretation~\cite{letovsky1987cognitive}, we developed five criteria to assist in the uniform classification of participant statements. 
 A statement was coded as a question only if it met one of the following criteria:
@@ -499,7 +498,6 @@ Between the first and second researcher we reworded and clarified some ambiguous
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \section{Results}
-\vspace{-2mm}
 \subsection{Interpreting the Results}
 \label{sec:results}
 
@@ -519,7 +517,7 @@ Though we present information about the number of participants who ask specific 
 
 \subsection{Vulnerabilities, Attacks, and Fixes}
 \label{sec:results-vaf}
-\vspace{-3mm}
+
 % next paragraph, go into description of first group 
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 \subsubsection{Preventing \& Understanding Attacks (10)\{11\}}
@@ -638,12 +636,10 @@ For example, when participants reached the third and fourth vulnerabilities, the
 
 
 \subsection{Code and the Application}
-\vspace{-1mm}
 \label{sec:results-ca}
 % description of what categories fall into this group
 %%%%%%%%%%%% Locating Information
 \subsubsection{Locating Information (10)\{11\}}\label{li}
-\vspace{1mm}
 Participants asked questions about locating information in their coding environments.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
 Unlike Sections \ref{cf} and \ref{dsf}, questions in this category more generally refer to the process of locating information, not just about locating calling information or data flow information.
@@ -818,7 +814,6 @@ P1 and P6 searched similarly and determined that because all the calls to the co
 
 
 \subsection{Individuals}
-\vspace{-1mm}
 \label{sec:results-i}
 %%%%%%%%%%%% Developer Planning
 \subsubsection{Developer Planning and Self-Reflection (8)\{14\}}
@@ -878,7 +873,6 @@ A few participants wanted to be able to confirm whether the code accomplishes wh
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
 \subsection{Problem Solving Support}
-\vspace{-1mm}
 \label{sec:results-pss}
 %%%%%%%%%%%% Resources
 \subsubsection{Resources and Documentation (10)\{10\}}
