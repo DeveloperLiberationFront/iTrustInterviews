@@ -581,6 +581,7 @@ Though we present information about the number of participants who ask specific 
 % next paragraph, go into description of first group 
 %%%%%%%%%%%% Preventing and Understanding Potential Attacks 
 \subsubsection{Preventing \& Understanding Attacks (10)\{11\}}
+%#11.X
 \label{pupa}
 Unlike other types of code defects that may cause code to function unexpectedly or incorrectly, security vulnerabilities expose the code to potential attacks. For example, the Servlet Parameter vulnerability (Table~\ref{table:vulnerabilities}) introduced the possibility of SQL injection, path traversal, command injection, and cross-site scripting attacks.
 \\
@@ -604,7 +605,14 @@ Seven participants, concerned about false positives, asked the question, \textit
 To answer that question, participants searched for hints that an attacker could successfully execute a given attack in a specific context. 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
-
+!StrategyNotes
+\begin{itemize}
+	\item Build on first paragraph here (what attacks are possible)
+	\item Strategies included reading vulnerability info, searching on SO, drawing from prior knowledge
+	\item Prone to two types of failures. Either: 
+	\item Consider attacks that were not feasible in the context (incorrect)
+	\item Determine one type of attack has been guarded against, but don't consider other attacks (incomplete)
+\end{itemize}
 %Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
 %Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
 %Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
@@ -614,6 +622,7 @@ For example, P10 determined that the Predictable Random vulnerability was ``real
 %%%%%%%%%%%% Understanding Alt. Fixes
 
 \subsubsection{Understanding Alt. Fixes \& Approaches (8)\{11\}}\label{uafa}
+%#7.X
 
 When resolving security vulnerabilities, participants explored alternative ways to achieve the same functionality more securely.
 For example, while evaluating the potential SQL Injection vulnerability, participants found resources that suggested using the \CodeIn{PreparedStatement} class instead of Java \CodeIn{Statement} class. 
@@ -640,6 +649,14 @@ While attempting to assess the Servlet Parameter vulnerability, P8 decided to ex
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 It seemed important to P8 that recommended approaches came from trustworthy sources.
 
+!StrategyNotes
+\begin{itemize}
+	\item Even when FSB informed participants about a specific alternative, participants leaned heavily on external (not the tool) resources. (Secure Random)
+	\item (already say this in this section, but)  participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for information about alternative approaches.
+	\item also looked elsewhere in the code
+	\item ** Looked elsewhere in the code for prepared statement (found PS code examples in the project helpful!), but not secure random even though SecureRandom is used elsewhere in the project. 
+\end{itemize}
+
 %One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
 
 %The tool could then potentially use speculative analysis, which is used by tools like \textsc{Quick Fix Scout}, to present trade-offs of using the suggested fix or keeping the code as it is~\cite{mucslu2012speculative}.
@@ -651,12 +668,11 @@ It seemed important to P8 that recommended approaches came from trustworthy sour
 
 
 
-
-
-
 %%%%%%%%%%%% Assessing Application % % % % % % % % % % % % % % % % % % % % % % % %
 
 \subsubsection{Assessing the Application of the Fix (9)\{9\}}\label{aaf}
+%#10.X
+
 Once participants had identified an approach for fixing a security vulnerability (Section \ref{uafa}), they asked questions about applying the fix to the code.
 For example, while considering the use of \CodeIn{SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
 The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
@@ -682,10 +698,18 @@ However, unless prompted, none of the participants commented on the disadvantage
 While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6, decided to use \CodeIn{SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 It seems that providing suggestions without discussing the associated trade-offs appeared to reduce participants' willingness to think broadly about other possible solutions. 
 
+!StrategyNotes
+\begin{itemize}
+	\item Look for ways to apply the fix automatically
+	\item None of notifications included quick fixes. Some unsuccessfully attempted to apply quick fixes by clicking on various ui elements
+	\item One proposed unnecessary changes, another proposed changes that would introduce another error
+	\item Heuristic used was if the bug icon goes away. 
+\end{itemize}
 
 %%%%%%%%%%%% Relationship Between Vulnerabilities
 
 \subsubsection{Relationship Between Vulnerabilities (4)\{3\}}\label{rbb}
+%#12.X
 
 Some participants asked questions about the connections between co-occurring vulnerabilities and whether similar vulnerabilities exist elsewhere in the code. 
 For example, when participants reached the third and fourth vulnerabilities, they began speculating about the similarities between the vulnerabilities they inspected.
@@ -694,12 +718,19 @@ For example, when participants reached the third and fourth vulnerabilities, the
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
 
+!StrategyNotes
+\begin{itemize}
+\item Really not much follow up on this one...
+\end{itemize}
+
 
 \subsection{Code and the Application}
 \label{sec:results-ca}
 % description of what categories fall into this group
 %%%%%%%%%%%% Locating Information
 \subsubsection{Locating Information (10)\{11\}}\label{li}
+%#9.X
+
 Participants asked questions about locating information in their coding environments.
 In the process of investigating vulnerabilities, participants searched for information across multiple classes and files.
 Unlike Sections \ref{cf} and \ref{dsf}, questions in this category more generally refer to the process of locating information, not just about locating calling information or data flow information.
@@ -720,10 +751,20 @@ They hypothesized that other code modules implemented the same functionality usi
 For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to find other modules that created SQL statements.
 All participants completed this task manually by scrolling through the package explorer and searching for code using their knowledge of the application.
 
+!StrategyNotes
+\begin{itemize}
+	\item When looking for information within the project, open files and scroll or scroll through already open files.
+	\item unassisted search. Participants 8 scrolled (P2 - P9)
+	\item eclipse provides tools for locating some types of information - declaration, type hierarchy, call hierarchy. When participants were looking for that information, scrolling often preempted use of more sophisticated tools
+\end{itemize}
+
+
 
 %%%%%%%%%%%% Control Flow/Call Information
 
 \subsubsection{Control Flow and Call Information (10)\{13\}}\label{cf}
+%#5.x
+
 Participants sought information about the callers and callees of potentially vulnerable methods.
 \\
 
@@ -753,10 +794,19 @@ Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and travers
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
  
+!StrategyNotes
+\begin{itemize}
+	\item Discussion of strategies already in this section
+	\item Also comes up in the flow navigation section
+	
+\end{itemize}
+
 
 %%%%%%%%%%%% Data Storage 
 
 \subsubsection{Data Storage and Flow (10)\{11\}}\label{dsf}
+%#3.X
+
 Participants often wanted to better understand data being collected and stored: where it originated and where it was going. 
 For example, participants wanted to determine whether data was generated by the application or passed in by the user. 
 Participants also wanted to know if the data touched sensitive resources like a database.
@@ -780,10 +830,24 @@ Specifically, some participants used the \textsc{call hierarchy} tool to locate 
 Once participants identified which methods were manipulating data, they manually searched within the method for the specific statements that could modify or create data.
 They relied on manual searching, because the tool they were using to navigate the program's flow, \textsc{call hierarchy}, did not provide information about which statements were modifying and creating data.
 
+!StrategyNotes
+\begin{itemize}
+	\item Also discussed this a lot in program flow discussion
+	\item Most relevant to task 3. 
+	\item Rather than trace individual pieces of data used an aggregation strategy.
+	\item Input parameters were all put into the form. Validation was correct for some, but not others. 
+	\item P6 got tired out, didn't want to trace all ~12 variables. Incorrectly concluded the validation was correct for all the parameters
+	\item P7 struggled with this task, without a good strategy to see how the data was used he proposed adding validation code (even though it already existed)
+	
+\end{itemize}
+
+
 
 %%%%%%%%%%%% Code Background
 
 \subsubsection{Code Background and Functionality (9)\{17\}}
+%#8.X
+
 \label{cbf}
 Participants asked questions concerning the background and the intended function of the code being analyzed. 
 The questions in this category differ from those in Section \ref{acu} because they focus on the lower-level implementation details of the code.
@@ -802,6 +866,17 @@ For example, P2 asked about the amount of effort put into the code to determine 
 He explained, ``People were rushed and crunched for time, so I'm not surprised to see an issue in the servlets.'' 
 Knowing whether the code was thrown together haphazardly versus reviewed and edited carefully might help developers determine if searching for vulnerabilities will likely yield true positives.
 
+!StrategyNotes
+\begin{itemize}
+	\item To answer questions in this category, participants relied primarily on thier prior knowledge of the system
+	\item Knowledge of architectural decisions, or experiences on teams contributing to the project
+	\item Few strategies to concretely substantiate their existing knowledge
+	\item as a result, Failures like P2 in V1 DBbulder is not called on startup
+	\item Consult teammates as a strategy 
+	\item Already wrote about not surprised issues here
+	\item Also comes up in the flow navigation section
+	
+\end{itemize}
 
 
 %Brings unwanted attention to our inserted vulnerability
@@ -819,6 +894,7 @@ Knowing whether the code was thrown together haphazardly versus reviewed and edi
 %%%%%%%%%%%% Application Context
 
 \subsubsection{Application Context and Usage (9)\{9\}}\label{acu}
+%#4.X
 
 Unlike questions in Section \ref{cbf}, these questions refer to system-level concepts.
 For instance, often while assessing the vulnerabilities, participants wanted to know what the code was being used for, whether it be testing, creating appointments with patients, or generating passwords.
@@ -840,10 +916,20 @@ To answer this question, participants sometimes used tools for traversing the ca
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the code base, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
+!StrategyNotes
+\begin{itemize}
+	\item Determine if it's a test method/ if the user has been authenticated 
+	\item Look for keyword indicators. Class name, random password
+	\item Not much here for strategies
+	
+\end{itemize}
+
 
 %%%%%%%%%%%% End-User Interaction
 
 \subsubsection{End-User Interaction (8)\{3\}}
+%#13.X
+
 \label{eui}
 
 Questions in this category deal with how end users might interact with the system or a particular part of the system. 
@@ -872,9 +958,21 @@ When assessing the Potential Path Traversal vulnerability, four participants ask
 P2 used \textsc{call hierarchy} to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability was a true positive if user input reached the code.
 P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
 
+!StrategyNotes
+\begin{itemize}
+	\item Thinking about the problem on an architectural? level rather than implementation level
+	\item Strategies for answering these questions included some of the strategies we already discussed
+	\item Thorough strategies included navigating dataflow and control flow, locating information
+	\item Othertimes relied on knowledge of code background
+	
+\end{itemize}
+
 
 \subsection{Individuals}
+
 \label{sec:results-i}
+%#1.X
+
 %%%%%%%%%%%% Developer Planning
 \subsubsection{Developer Planning and Self-Reflection (8)\{14\}}
 \label{dpr}
@@ -896,10 +994,19 @@ Participants most frequently asked if they understood the situation, whether it 
 For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the notification before he started exploring, so he went back to reread the notification before investigating further.
 These questions occurred in all four vulnerabilities.
 
+!StrategyNotes
+\begin{itemize}
+	\item Pretty sparse in the strategy analysis. 
+	\item Resolved internally. Though we asked participants to vocalize their thoughts might have been difficult to get at this 
+	\item closest strategy we have is for why do I care P2, V1. Difficult interpreting the severity scale
+	
+\end{itemize}
+
 
 %%%%%%%%%%%% Understanding Concepts
 
 \subsubsection{Understanding Concepts (7)\{6\}}\label{uc}
+%#15.X
 
 Some participants encountered unfamiliar terms and concepts in the code and vulnerability notifications.
 For instance, while parsing the potential attacks listed in the notification for the Servlet Parameter vulnerability, some participants did not know what a CSRF token was.
@@ -922,20 +1029,43 @@ While parsing the information provided for the Predictable Random vulnerability,
 The notification for this vulnerability did not include links so they searched the web for more information. 
 When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he would have liked the notification to include what a servlet is and how it related to client control.
 
+!StrategyNotes
+\begin{itemize}
+	\item Search google for info on secure random
+	\item select wikipedia links for CSRF 
+	\item Copy and paste terms from the notification into google. Iteratively refine search terms. Add the term `java' (P1 V2)
+	\item SO offline for maintenance for one participant
+	\item Click links in the notification (some hesitated to, because it wasn't clear what concepts they pertained to)	
+	\item Across participants, several used the exact same search terms.***
+\end{itemize}
+
+
 
 %%%%%%%%%%%% Confirming Expectations
 
 \subsubsection{Confirming Expectations (4)\{1\}}
+%#16.1
+
 \label{ce}
 % possibly could be put with developer planning/self-reflection OR code background and function?
 
 A few participants wanted to be able to confirm whether the code accomplishes what they expected. 
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
+!StrategyNotes
+\begin{itemize}
+	\item Ensure validation forms are correct. (P6 again). Didn't actually confirm the correctness... 
+	\item Not much here...
+\end{itemize}
+
+
+
 \subsection{Problem Solving Support}
 \label{sec:results-pss}
 %%%%%%%%%%%% Resources
 \subsubsection{Resources and Documentation (10)\{10\}}
+%#6.X
+
 \label{rd}
 Many participants indicated they would use external resources and documentation to gain new perspectives on vulnerabilities.
 For example, while assessing the Potential Path Traversal vulnerability, participants wanted to know what their team members would do or if they could provide any additional information about the vulnerability. 
@@ -964,10 +1094,23 @@ Other participants expressed interest in consulting their team members.
 For example, when P10 had difficulty with the Potential Path Traversal vulnerability, he stated that he would normally ask his team members to explain how the code worked.
 Presumably, the code's author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
 
+!StrategyNotes
+\begin{itemize}
+	\item Touched on many of these in other strategy sections 
+	\item Strategies include clicking links in FSB
+	\item Searching (and refining searches) on the web
+	\item (teammates)
+	\item  read comments, self-documenting code - var/class names
+	\item read inline javadocs
+	\item search for the specific FSB code
+\end{itemize}
+
 
 %%%%%%%%%%%% Understanding Interacting Tools
 
 \subsubsection{Understanding and Interacting with Tools (8)\{9\}}
+%#18.X
+
 \label{uit}
 
 Throughout the study participants interacted with a variety of tools including FSB, \textsc{call hierarchy}, and \textsc{find references}. 
@@ -987,10 +1130,24 @@ Participants asked questions about accessing the tools needed to complete a cert
 Participants sometimes sought information from a tool, but could not determine how to invoke the tool or possibly did not know which tool to use. 
 The question, \emph{What tool do I need for this?} points to a common blocker for both novice and experienced developers, a lack of awareness~\cite{murphy-Hill2012fluency}.
 
+!StrategyNotes
+\begin{itemize}
+	\item Tool selection strategies:
+	\item Often they know what they want the tool to do, but don't know where to find it
+	\item right click within the code, or search through menus. 
+	\item Failed when participants didn't recognize the tool they were looking for V1 P2
+	\item Evaluating selected tool: Unnecessarily switch views and open/close/reopen the same tool
+	\item Misinterpret tools output, whether it be FSB's notifications, severity rankings, or call hierarchy
+	\item After reading the notification, relate its content back to the code
+\end{itemize}
+
+
 
 %%%%%%%%%%%% Vulnerability Severity/Ranking
 
 \subsubsection{Vulnerability Severity and Ranking (5)\{4\}}
+%#2.X
+
 \label{bsr}
 
 FSB estimates the severity of each vulnerability it encounters and reports those rankings to its users (Table \ref{table:vulnerabilities}). 
@@ -1010,9 +1167,18 @@ As he began working through the final vulnerability (SQL Injection), he admitted
 He wasn't sure what whether the rank (15) was high or low and if yellow was a ``good'' or ``bad'' color.
 Some participants, like P6, did not notice any of the rankings until after completing all four sessions when the investigator asked about the tool's rankings.
 
+!StrategyNotes
+\begin{itemize}
+	\item Tried to understand severity rankings, but didn't place much weight on them for determining bugs actual severity. (loose connection)
+	\item Not much else for strategies
+	
+\end{itemize}
+
+
 %%%%%%%%%%%% Notification Text
 
 \subsubsection{Notification Text (6)\{3\}}\label{em}
+%#14.X
 
 FSB provided long and short descriptions of each vulnerability (Figure \ref{fig:environment}). 
 Participants read and contemplated these notifications to guide their analysis.
@@ -1027,6 +1193,13 @@ Beyond asking about the content of the notification, participants also asked que
 For example, the Predictable Random vulnerability notes that a predicable random value could lead to an attack when being used in a secure context. 
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+
+!StrategyNotes
+\begin{itemize}
+	\item Read the notification text
+	\item mentioned relating content back in interacting with tools
+	\item Participants found unclear sentences distracting
+\end{itemize}
 
 
 \section{Discussion}
