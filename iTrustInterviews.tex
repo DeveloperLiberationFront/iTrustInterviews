@@ -352,7 +352,7 @@ In the method associated with Task 4, a SQL Statement object is created using st
 	\label{table:vulnerabilities}
 \end{table*}
 
-\subsection{Data Analysis}
+\subsection{Data Analysis --- Questions}
 \begin{figure*}
 	\centering
 	\includegraphics[trim={0 0 0 3mm},clip, width=\textwidth]{Images/QuestionMerging}
@@ -429,64 +429,6 @@ For example, P1 asked, \textit{Where can I find information related to this vuln
 Of these questions, we created a question cluster labeled \textit{Where can I get more information?}
 At this stage, we discarded five unclear or non pertinent questions and organized the remaining 554 into 155 unique question clusters.
 
-
-\begin{table*} 
-\centering
-\caption{Organizational Groups and Emergent Categories}
-\begin{tabularx}{\textwidth}{|l|X|r|c|}
-\rowcolor{gray!50}
-\hline
-    Group											& Category										& Clusters		& Location in Paper	  	\\
-    \hline			
-    \multirow{4}{*}{Vulnerabilities, Attacks, and Fixes}
-        											& Preventing and Understanding Potential Attacks	& 11     		& Section~\ref{pupa}		\\
-        											
-        											& Understanding Alternative Fixes and Approaches	& 11     		& Section~\ref{uafa}	\\
-
-    												& Assessing the Application of the Fix				& 9     		& Section~\ref{aaf}				\\
-
-    												& Relationship Between Vulnerabilities							& 3     		& Section~\ref{rbb}			\\
-    \hline
-    \multirow{6}{*}{Code and the Application}	
-    												& Locating Information 								& 11      		& Section~\ref{li}		\\
-
-    												& Control Flow and Call Information					& 13     		& Section~\ref{cf}	\\
-
-    												& Data Storage and Flow								& 11     		& Section~\ref{dsf}  	\\
-
-    												& Code Background and Functionality	 				& 17     		& Section~\ref{cbf}			\\
-
-    									& Application Context/Usage										& 9     		& Section~\ref{acu}			\\
-
-    									& End-User Interaction											& 3     		& Section~\ref{eui}		\\
-    \hline	
-    \multirow{3}{*}{Individuals}	
-    									& Developer Planning and Self-Reflection						& 14    		& Section~\ref{dpr}		\\
-
-    									& Understanding Concepts										& 6 			& Section~\ref{uc}			\\
-
-    									& Confirming Expectations					 					& 1				& Section~\ref{ce}  \\
-    \hline
-	\multirow{4}{*}{Problem Solving Support}
-
-   	 									& Resources and Documentation									& 10     		& Section~\ref{rd}		\\
-   	 									
- 
-    									
-    									& Understanding and Interacting with Tools						& 9     		& Section~\ref{uit}			\\
-
-										& Vulnerability Severity and Rank								& 4     		& Section~\ref{bsr}		\\
- 
-    									& Notification Text												& 3     		& Section~\ref{em}		\\
-  
-    \hline	
-       									& Uncategorized													& 10    		&			 \\
-    \hline
-\end{tabularx}
-\label{table:categories}
-\end{table*}
-
-
 In the second stage, we identified emergent themes and grouped the clusters into categories based on the themes. 
 For example, we placed the question \textit{Where can I get more information?} into a category called \emph{\textbf{Resources/Documentation}}, along with questions like \textit{Is this a reliable/trusted resource?} and \textit{What information is in the documentation?} 
 Table~\ref{table:categories} contains the 17 categories along with the number of distinct clusters each contains. 
@@ -496,6 +438,124 @@ Rather than sort the entire set of questions, we randomly selected 43 questions 
 The first agreed with our categorization with a Cohen's Kappa of $\kappa = .63$. 
 Between the first and second researcher we reworded and clarified some ambiguous questions. The second researcher exhibited greater agreement ($\kappa = .70$). 
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
+
+\subsection{Data Analysis --- Strategies}
+%This analysis took place after everything in Questions analysis
+To answer RQ2 (identify the successful and unsuccessful strategies participants used to meet their information needs) the first author performed two additional passes through the transcripts and recordings. 
+%Pass 1
+In the first pass, we focused on identifying each participant's defect resolution strategy for each task. 
+We define a defect resolution strategy as all the actions a developer takes to validate and resolve a defect. 
+Such actions include invoking additional tools, modifying the source code, and searching the web, for example.
+%Granularity? Is an action a click? Sometimes. 
+
+To represent these defect resolution strategies we drew from the notion of attack trees [CITE]. 
+Attack trees encode the actions an attacker could take to exploit a system, including the idea that he may combine multiple actions to achieve a higher-level goal. 
+Much like attack trees, our notation organizes actions hierarchically.
+We refer to this notation as a strategy tree.
+We use strategy trees to represent the hierarchical set of actions a developer takes to resolve a security defect. Figure XX depicts an example strategy tree...
+
+Given screen recordings and participant's think-aloud verbalizations, were able to identify their actions without inference. 
+To do so, whenever a participant performed an action we added that action to the strategy tree. 
+%how do you decide what depth to place an action at.
+
+
+%Pass 2 Succsess/failure Also information needs annotation
+
+\subsection{Data Analysis --- Assumptions}
+%Motivation
+%Annecdote Help them unask the question
+
+Close relationship between information needs and assumptions. 
+Assumptions can satisfy information needs. Can't figure something out? Make an assumption.
+Assumptions also drive information needs. Need information to validate assumptions.
+Made an assumption? See if it's right. 
+
+Reasons to look at assumptions:
+
+1) Making incorrect assumptions causes developers to seek unnecessary information.
+This is the idea of ``going down the rabbit hole." Ex. Assume the random number generator is implemented incorrectly. Start debugging the code that comprises that module, when really it was called with the wrong parameter. Wasting developer's resources -- time.
+
+2) Incorrect assumptions not only cause developers to explore the wrong paths, but can lead them to make incorrect conclusions. Assume the code is just called from tests. Conclude it is safe.
+
+3) Correct assumptions suggest alignment between mental model and reality. 
+Proxy for measuring success.
+Given the correct assumptions, the information you seek will be relevant to the solution.
+ 
+%Methodology
+How often do developers make assumptions and to what extent are those assumptions correct.
+
+%Only consider assumption developers explictly made to us.
+
+What we consider an assumption. Looking for explicit assumptions:
+- Keywords (Assume, assuming, presume, reckon, believe, ...)
+Should we attempt to identify implicitly held assumption? 
+- Trial run 
+- 
+
+Implicit assumptions are pervasive in texts~\cite{fairclough2003analysing}; 
+to enumerate all the implicit assumptions would be intractable.
+We consider only the assumptions that are explicitly triggered within the text. 
+Tried to enumerate implicit assumptions, but so . Infinite number of assumptions them. Give plausible examples... 
+Assumption was valid, invalid, cannot determine... relate to things outside the scope of the experiment.
+
+
+\begin{table*} 
+	\centering
+	\caption{Organizational Groups and Emergent Categories}
+	\begin{tabularx}{\textwidth}{|l|X|r|c|}
+		\rowcolor{gray!50}
+		\hline
+		Group											& Category										& Clusters		& Location in Paper	  	\\
+		\hline			
+		\multirow{4}{*}{Vulnerabilities, Attacks, and Fixes}
+		& Preventing and Understanding Potential Attacks	& 11     		& Section~\ref{pupa}		\\
+		
+		& Understanding Alternative Fixes and Approaches	& 11     		& Section~\ref{uafa}	\\
+		
+		& Assessing the Application of the Fix				& 9     		& Section~\ref{aaf}				\\
+		
+		& Relationship Between Vulnerabilities							& 3     		& Section~\ref{rbb}			\\
+		\hline
+		\multirow{6}{*}{Code and the Application}	
+		& Locating Information 								& 11      		& Section~\ref{li}		\\
+		
+		& Control Flow and Call Information					& 13     		& Section~\ref{cf}	\\
+		
+		& Data Storage and Flow								& 11     		& Section~\ref{dsf}  	\\
+		
+		& Code Background and Functionality	 				& 17     		& Section~\ref{cbf}			\\
+		
+		& Application Context/Usage										& 9     		& Section~\ref{acu}			\\
+		
+		& End-User Interaction											& 3     		& Section~\ref{eui}		\\
+		\hline	
+		\multirow{3}{*}{Individuals}	
+		& Developer Planning and Self-Reflection						& 14    		& Section~\ref{dpr}		\\
+		
+		& Understanding Concepts										& 6 			& Section~\ref{uc}			\\
+		
+		& Confirming Expectations					 					& 1				& Section~\ref{ce}  \\
+		\hline
+		\multirow{4}{*}{Problem Solving Support}
+		
+		& Resources and Documentation									& 10     		& Section~\ref{rd}		\\
+		
+		
+		
+		& Understanding and Interacting with Tools						& 9     		& Section~\ref{uit}			\\
+		
+		& Vulnerability Severity and Rank								& 4     		& Section~\ref{bsr}		\\
+		
+		& Notification Text												& 3     		& Section~\ref{em}		\\
+		
+		\hline	
+		& Uncategorized													& 10    		&			 \\
+		\hline
+	\end{tabularx}
+	\label{table:categories}
+\end{table*}
+
+
 
 \section{Results}
 \subsection{Interpreting the Results}
