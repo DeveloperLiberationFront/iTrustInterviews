@@ -448,18 +448,34 @@ We define a defect resolution strategy as all the actions a developer takes to v
 Such actions include invoking additional tools, modifying the source code, and searching the web, for example.
 %Granularity? Is an action a click? Sometimes. 
 
-To represent these defect resolution strategies we drew from the notion of attack trees [CITE]. 
+To represent these defect resolution strategies we drew from the notion of attack trees~\cite{attackTrees}. 
 Attack trees encode the actions an attacker could take to exploit a system, including the idea that he may combine multiple actions to achieve a higher-level goal. 
 Much like attack trees, our notation organizes actions hierarchically.
 We refer to this notation as a strategy tree.
-We use strategy trees to represent the hierarchical set of actions a developer takes to resolve a security defect. Figure XX depicts an example strategy tree...
+We use strategy trees to represent the hierarchical set of actions a developer takes to resolve a security defect. Figure \ref{fig:description} depicts an example strategy tree.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{"Images/descriptionFormat.png}
+	\caption{Example strategy tree for a null dereference defect. }
+	\label{fig:description} 
+\end{figure}
+
 
 Given screen recordings and participant's think-aloud verbalizations, were able to identify their actions without inference. 
 To do so, whenever a participant performed an action we added that action to the strategy tree. 
 %how do you decide what depth to place an action at.
 
-
 %Pass 2 Succsess/failure Also information needs annotation
+During the second pass we added annotations to each strategy tree. 
+As depicted in Figure \ref{fig:description} (lines prefixed with $+$/$-$), we annotated the trees whenever an action lead to a success or a failure. 
+To best understand which strategies contributed to success, we measured success/failure as granularly as possible.
+Rather than annotating the entire tree as successful or not, we annotated the sub-strategies that compose the tree.
+Participants could succeed with some strategies while failing with others.
+For example, participants could succeed in locating relevant information, but fail to interpret it correctly. 
+Note: not all sub-strategies were observably successful/failure-inducing. 
+
+%Second annotation Link questions and strategies
 
 \subsection{Data Analysis --- Assumptions}
 %Motivation
