@@ -448,7 +448,7 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \subsection{Data Analysis --- Strategies}
 \label{sec:strategyAnalysis}
 %This analysis took place after everything in Questions analysis
-To answer RQ2 (identify the successful and unsuccessful strategies participants used to meet their information needs) the first author performed two additional passes through the transcripts and recordings. 
+To answer RQ2 the first author performed two additional passes through the transcripts and recordings. 
 %Pass 1
 In the first pass, we focused on identifying each participant's defect resolution strategy for each task. 
 We define a defect resolution strategy as all the actions a developer takes to validate and resolve a defect. 
@@ -488,39 +488,24 @@ Note: not all sub-strategies were observably successful/failure-inducing.
 \label{sec:assumptionAnalysis}
 %Motivation
 %Annecdote Help them unask the question
-
-Close relationship between information needs and assumptions. 
-Assumptions can satisfy information needs. Can't figure something out? Make an assumption.
-Assumptions also drive information needs. Need information to validate assumptions.
-Made an assumption? See if it's right. 
-
-Reasons to look at assumptions:
-
-1) Making incorrect assumptions causes developers to seek unnecessary information.
-This is the idea of ``going down the rabbit hole." Ex. Assume the random number generator is implemented incorrectly. Start debugging the code that comprises that module, when really it was called with the wrong parameter. Wasting developer's resources -- time.
-
-2) Incorrect assumptions not only cause developers to explore the wrong paths, but can lead them to make incorrect conclusions. Assume the code is just called from tests. Conclude it is safe.
-
-3) Correct assumptions suggest alignment between mental model and reality. 
-Proxy for measuring success.
-Given the correct assumptions, the information you seek will be relevant to the solution.
  
 %Methodology
-How often do developers make assumptions and to what extent are those assumptions correct.
+To answer RQ3, we identified participants' assumptions and analyzed each assumption to determine if it was correct.
+%How often do developers make assumptions and to what extent are those assumptions correct.
+Because implicit assumptions are so pervasive ~\cite{fairclough2003analysing}, it would be intractable to enumerate all of them. 
+Participants likely made many assumptions silently. 
+For example, they may have implicitly assumed the Eclipse environment was configured correctly and all the relevant source files were accessible.
+Instead of speculating about all of these assumptions, we only consider the assumptions that are explicitly triggered within the transcripts. 
 
-%Only consider assumption developers explictly made to us.
-
-What we consider an assumption. Looking for explicit assumptions:
-- Keywords (Assume, assuming, presume, reckon, believe, ...)
-Should we attempt to identify implicitly held assumption? 
-- Trial run 
-- 
-
-Implicit assumptions are pervasive in texts~\cite{fairclough2003analysing}; 
-to enumerate all the implicit assumptions would be intractable.
-We consider only the assumptions that are explicitly triggered within the text. 
-Tried to enumerate implicit assumptions, but so . Infinite number of assumptions them. Give plausible examples... 
-Assumption was valid, invalid, cannot determine... relate to things outside the scope of the experiment.
+%Tried to enumerate implicit assumptions, but so . Infinite number of assumptions them. Give plausible examples... 
+%
+To identify the explicit assumptions participants made, we searched the transcripts for keywords such as, \textit{assume}, \textit{assuming}, \textit{presume}, \textit{reckon}, \textit{believe}, and  \textit{guess}.
+This search process returned some false-positives. 
+For example, one participant referred to the interviewer's assumptions rather than making an assumption of his own asking, ``Am I assumed to have some prior knowledge?''
+To filter only the assumptions participants made about the task or the code, first author inspected each search result.
+After determining the result was an assumption, we evaluated its correctness.
+For example, one participant's assumed an external library was implemented securely. 
+We determined this assumption was incorrect by locating a vulnerability in the library using the common vulnerability and exposures database.\footnote{cve.mitre.org} 
 
 
 \begin{table*} 
