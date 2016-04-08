@@ -172,16 +172,22 @@ Fritz and Murphy developed a model and prototype tool to assist developers with 
 \section{Methodology}
 \label{sec:meth}
 We conducted an exploratory study with ten software developers. In our analysis, we extracted and categorized the questions developers asked during each study session. 
-Section \ref{rqs} outlines the research question we sought to answer. 
-Section \ref{studyDesign} details how the study was designed and Section \ref{dataAnalysis} describes how we performed data analysis.
+Section \ref{rqs} outlines the research questions we sought to answer. 
+Section \ref{studyDesign} details how the study was designed and Sections \ref{sec:questionAnalysis}, \ref{sec:strategyAnalysis}, and \ref{sec:assumptionAnalysis} describe how we performed our three phases of data analysis.
 Study materials can be found online~\cite{ExperimentalMaterials}.
 
 \subsection{Research Question}
 \label{rqs}
-We want to answer the following research question: What information do developers need while using static analysis tools to diagnose potential security vulnerabilities? 
-We measured developers' information needs by examining the questions they asked.
-The questions that we identified are all available online~\cite{ExperimentalMaterials} and several exemplary questions are listed in the results sections.
-Where possible, we also link questions to the tools and strategies that developers used to answer their questions.
+We want to answer the following research questions:
+\begin{itemize}
+	\item \textbf{RQ1}: What information do developers need while using static analysis tools to diagnose potential security vulnerabilities? 
+	\item \textbf{RQ2}: What (successful and unsuccessful) strategies do developers use to acquire the information they need?
+	\item \textbf{RQ3}: What (correct and incorrect) assumptions do developers make while executing these strategies?
+	\end{itemize}
+We measured developers' information needs (RQ1) by examining the questions they asked.
+The questions that we identified are all available online~\cite{ExperimentalMaterials}.
+We list several exemplary questions throughout Section \ref{sec:results} along side the strategies (RQ2) developers used to answer those questions.
+Finally, in Section \ref{sec:assumptions} we discuss the assumptions (RQ3) developers made while executing their strategies. 
 
 
 \subsection{Study Design}
@@ -360,7 +366,7 @@ In the method associated with Task 4, a SQL Statement object is created using st
 	\label{fig:merging} 
 \end{figure*}
 
-\label{dataAnalysis}
+\label{sec:questionAnalysis}
 To analyze the data, we first transcribed all the audio-video files using oTranscribe~\cite{OTranscribe}.
 Each transcript, along with the associated recording, was analyzed by two of the authors for implicit and explicit questions. 
 The two question sets for each session were then iteratively compared against each other until the authors reached agreement on the question sets. 
@@ -440,6 +446,7 @@ Between the first and second researcher we reworded and clarified some ambiguous
 These values are within the $.60 - .80$ range, indicating substantial agreement~\cite{Landis1977agreement}.
 
 \subsection{Data Analysis --- Strategies}
+\label{sec:strategyAnalysis}
 %This analysis took place after everything in Questions analysis
 To answer RQ2 (identify the successful and unsuccessful strategies participants used to meet their information needs) the first author performed two additional passes through the transcripts and recordings. 
 %Pass 1
@@ -478,6 +485,7 @@ Note: not all sub-strategies were observably successful/failure-inducing.
 %Second annotation Link questions and strategies
 
 \subsection{Data Analysis --- Assumptions}
+\label{sec:assumptionAnalysis}
 %Motivation
 %Annecdote Help them unask the question
 
@@ -574,8 +582,8 @@ Assumption was valid, invalid, cannot determine... relate to things outside the 
 
 
 \section{Results}
-\subsection{Interpreting the Results}
 \label{sec:results}
+\subsection{Interpreting the Results}
 
 In the next four sections, we discuss our study's results using the categories we described in the previous section.
 Due to their large number, we grouped the categories to organize and facilitate discussion about our findings. 
@@ -1220,6 +1228,9 @@ In this situation, the method containing the vulnerability was named \CodeIn{ran
 	\item Participants found unclear sentences distracting
 \end{itemize}
 
+\section{Assumptions}
+\label{sec:assumptions}
+In this section we discuss the results of the assumption analysis...
 
 \section{Discussion}
 In this section we discuss two main implications of our work.
