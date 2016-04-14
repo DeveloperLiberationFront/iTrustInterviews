@@ -753,13 +753,19 @@ However, unless prompted, none of the participants commented on the disadvantage
 While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6, decided to use \CodeIn{SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 It seems that providing suggestions without discussing the associated trade-offs appeared to reduce participants' willingness to think broadly about other possible solutions. 
 
-!StrategyNotes
-\begin{itemize}
-	\item Look for ways to apply the fix automatically
-	\item None of notifications included quick fixes. Some unsuccessfully attempted to apply quick fixes by clicking on various ui elements
-	\item One proposed unnecessary changes, another proposed changes that would introduce another error
-	\item Heuristic used was if the bug icon goes away. 
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+Although participants were not asked to make any modifications to the code, they did describe their strategies for applying and assessing fixes.
+Many participants looked for ways to apply fixes automatically.
+However, none of the FSB notifications included quick fixes.
+Still, some participants unsuccessfully attempted to apply quick fixes by clicking on various interface elements.
+
+To assess whether the fix had been applied correctly, participants commonly described one particular heuristic. P1, for instance, would make the change and simply ``see if the bug [icon] goes away." 
+This strategy typically ensures the original vulnerability gets fixed, but fails when the fix introduces new defects.
+
+%\item One proposed unnecessary changes, another proposed changes that would introduce another error
 
 %%%%%%%%%%%% Relationship Between Vulnerabilities
 
