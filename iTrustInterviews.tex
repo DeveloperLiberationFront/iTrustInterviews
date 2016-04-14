@@ -653,13 +653,21 @@ For example, P10 determined that the Predictable Random vulnerability was ``real
 \noindent \textbf{Strategy Analysis Results}
 \vspace{.5em}
 
-\begin{itemize}
-	\item Build on first paragraph here (what attacks are possible)
-	\item Strategies included reading vulnerability info, searching on SO, drawing from prior knowledge
-	\item Prone to two types of failures. Either: 
-	\item Consider attacks that were not feasible in the context (incorrect)
-	\item Determine one type of attack has been guarded against, but don't consider other attacks (incomplete)
-\end{itemize}
+Participants used various strategies to answer the question, \textit{What are the possible attacks that could occur?}. 
+For some vulnerabilities, participants read FSB's vulnerability information. 
+When FSB did not provide sufficient information, participants turned to the web, searching on sites like Google and Stack Overflow. 
+
+These strategies for determining the set of vulnerabilities to consider were prone to two types of failures. 
+First, because web search engines are not fully aware of a developer's programming context, they may return a superset of the relevant attacks.
+For example, searching for attacks that exploit unvalidated input vulnerabilities returns results about cross site scripting attacks, injection attacks, and buffer overflow attacks. 
+However, due to Java's automatic array bounds checking, buffer overflow attacks are not feasible in the vast majority of Java programs.
+Considering buffer overflow attacks would distract developers from other more relevant attacks. 
+
+Secondly, by executing these strategies some participants erroneously considered only a subset of the possible attacks. 
+This failure was especially evident for the Servlet Parameter vulnerability, where a cross site scripting attack was feasible, but a SQL injection attack was not. 
+Some participants correctly determined the data was sanitized before reaching the database, dismissed SQL injection, and prematurely concluded the vulnerability was a false positive.
+By failing to consider cross site scripting attacks, participants overlooked the program path that exposed a true attack.
+
 %Some Find Security Bugs notifications attempt to provide developers with the means to answer some of these questions by providing links to relevant information. 
 %Many of the links provided linked to information regarding why the code may be broken, however, do not provide information to improve understanding of what the potential attacks are. 
 %Some of the questions, such as \textit{How do I find out if this is a real vulnerability?}, may not be as simple to answer by providing a link. 
