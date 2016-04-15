@@ -779,10 +779,10 @@ For example, when participants reached the third and fourth vulnerabilities, the
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
 
-!StrategyNotes
-\begin{itemize}
-\item Really not much follow up on this one...
-\end{itemize}
+%!StrategyNotes
+%\begin{itemize}
+%\item Really not much follow up on this one...
+%\end{itemize}
 
 
 \subsection{Code and the Application}
@@ -812,13 +812,17 @@ They hypothesized that other code modules implemented the same functionality usi
 For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to find other modules that created SQL statements.
 All participants completed this task manually by scrolling through the package explorer and searching for code using their knowledge of the application.
 
-!StrategyNotes
-\begin{itemize}
-	\item When looking for information within the project, open files and scroll or scroll through already open files.
-	\item unassisted search. Participants 8 scrolled (P2 - P9)
-	\item eclipse provides tools for locating some types of information - declaration, type hierarchy, call hierarchy. When participants were looking for that information, scrolling often preempted use of more sophisticated tools
-\end{itemize}
 
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+%8 Participants scrolled (P2 - P9) "unassisted search"
+
+For the majority of participants, scrolling through the source file was a key component of their strategies for locating information.
+Eclipse provides many tools designed to help users locate specific types of information.
+For example, \textsc{Open Declaration} locates method declarations, \textsc{References} locates references.
+More generally Eclipse provides a customizable \textsc{Search} tool for locating other information.
+Despite the availability of such dedicated tools, many participants unsuccessfully scrolled through the package explorer and open files before using tools. 
 
 
 %%%%%%%%%%%% Control Flow/Call Information
