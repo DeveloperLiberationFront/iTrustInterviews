@@ -931,18 +931,17 @@ For example, P2 asked about the amount of effort put into the code to determine 
 He explained, ``People were rushed and crunched for time, so I'm not surprised to see an issue in the servlets.'' 
 Knowing whether the code was thrown together haphazardly versus reviewed and edited carefully might help developers determine if searching for vulnerabilities will likely yield true positives.
 
-!StrategyNotes
-\begin{itemize}
-	\item To answer questions in this category, participants relied primarily on thier prior knowledge of the system
-	\item Knowledge of architectural decisions, or experiences on teams contributing to the project
-	\item Few strategies to concretely substantiate their existing knowledge
-	\item as a result, Failures like P2 in V1 DBbulder is not called on startup
-	\item Consult teammates as a strategy 
-	\item Already wrote about not surprised issues here
-	\item Also comes up in the flow navigation section
-	
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
 
+%System has changed and not responsible for all modules
+To answer questions in this category, participants relied primarily on their prior knowledge of the system.
+We observed relatively few instances where participants executed additional strategies to substantiate their existing knowledge. 
+This strategy, or lack thereof, was susceptible to failures when participants overestimated their knowledge of the system.
+For example, while assessing the Path Traversal vulnerability, P2 incorrectly assumed that the methods in the DBBulder module were called on startup.
+
+%\item Consult teammates as a strategy 
 
 %Brings unwanted attention to our inserted vulnerability
 %As P2, P7, and P8 explored the code pertaining to the SQL Injection vulnerability, they became curious as to why developers of the code would use Java's \texttt{Statement} instead of the presumably more secure \texttt{PreparedStatement} for sending queries to a Database Access Object.
