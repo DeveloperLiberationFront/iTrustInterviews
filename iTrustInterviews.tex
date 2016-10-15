@@ -658,6 +658,7 @@ Participants used various strategies to answer the question, \textit{What are th
 For some vulnerabilities, participants read FSB's vulnerability information. 
 When FSB did not provide sufficient information, participants turned to the web, searching on sites like Google and StackOverflow. 
 
+%TODO Ground in participant data
 These strategies for determining the set of vulnerabilities to consider were prone to two types of failures. 
 First, because web search engines are not fully aware of a developer's programming context, they may return a superset of the relevant attacks.
 For example, searching for attacks that exploit unvalidated input vulnerabilities returns results about cross site scripting attacks, injection attacks, and buffer overflow attacks. 
@@ -705,13 +706,29 @@ While attempting to assess the Servlet Parameter vulnerability, P8 decided to ex
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 It seemed important to P8 that recommended approaches came from trustworthy sources.
 
-!StrategyNotes
-\begin{itemize}
-	\item Even when FSB informed participants about a specific alternative, participants leaned heavily on external (not the tool) resources. (Secure Random)
-	\item (already say this in this section, but)  participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for information about alternative approaches.
-	\item also looked elsewhere in the code
-	\item ** Looked elsewhere in the code for prepared statement (found PS code examples in the project helpful!), but not secure random even though SecureRandom is used elsewhere in the project. 
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+Participants strategies for acquiring information about alternative fixes centered around three information sources --- FSB, the web, and other modules in the code. 
+Even when FSB informed participants about a specific alternative, participants sought supplementary information from the other two external sources.
+
+For example, during Task 4, FSB suggested using \texttt{PreparedStatements}. 
+In search of information about \texttt{PreparedStatements'} syntax, participants navigated to the project's related code modules they suspected would contain \texttt{PreparedStatements}.
+Participants largely found examples from these related modules helpful, because they were easy to translate back to the original method.
+
+For Task 2, participants similarly sought examples of \texttt{SecureRandom}, but were ultimately less successful.
+Unaware that the project contained examples of \texttt{SecureRandom}, in this case, participants turned to online resources.
+Although some participants understood the relevant online API documentation, others struggled to compare the online documentation to the original method.
+
+%After determining which alternatives were available and before committing to a particular alternative, participants assessed the applicability of each option.
+%Also understanding own code and how it compared with online examples. Juxtaposition. Ensure alt implements all methods (secure random)
+%\begin{itemize}
+%	\item (Secure Random)
+%	\item (already say this in this section, but)  participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for information about alternative approaches.
+%	\item also looked elsewhere in the code
+%	\item ** Looked elsewhere in the code for prepared statement (found PS code examples in the project helpful!), but not secure random even though SecureRandom is used elsewhere in the project. 
+%\end{itemize}
 
 %One way a tool might help developers determine the changes, if any, they should making would be by noting other places in the code the alternative under  consideration has been used, if they exist. 
 
@@ -980,13 +997,24 @@ To answer this question, participants sometimes used tools for traversing the ca
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the code base, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
-!StrategyNotes
-\begin{itemize}
-	\item Determine if it's a test method/ if the user has been authenticated 
-	\item Look for keyword indicators. Class name, random password
-	\item Not much here for strategies
-	
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+Participants were particularly interested in differentiating between two contexts --- test code and application code. 
+%20:04
+As P4 explained, test code does not ship with the product, so it is held to a different standard from a security perspective. 
+To glean the context of a given method (e.g. whether it was a test method), participants looked for certain keyword indicators, such as ``test'' or ``test case''.
+Additionally, for tests, participants scrolled through the package explorer in search of test packages.
+Unfortunately, sometimes these heuristic strategies mislead participants.
+For instance, P9 incorrectly inferred the code for Task 3 was contained within a test class. 
+
+
+%\begin{itemize}
+%	\item Determine  if the user has been authenticated or how the random num gen is used
+%	\item Look for keyword indicators.  random password
+%	\item Easy because in iTrust test can refer to a medical test or a jUnit test (Move that to here?)
+%\end{itemize}
 
 
 %%%%%%%%%%%% End-User Interaction
