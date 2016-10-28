@@ -1050,14 +1050,15 @@ When assessing the Potential Path Traversal vulnerability, four participants ask
 P2 used \textsc{call hierarchy} to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability was a true positive if user input reached the code.
 P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
 
-!StrategyNotes
-\begin{itemize}
-	\item Thinking about the problem on an architectural? level rather than implementation level
-	\item Strategies for answering these questions included some of the strategies we already discussed
-	\item Thorough strategies included navigating dataflow and control flow, locating information
-	\item Othertimes relied on knowledge of code background
-	
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+Participants' strategies for answering questions about end user interaction typically included strategies from other categories. In other words, participants gathered evidence by Locating Information (Section \ref{li}), examining Control Flow (Section \ref{cf}), retracing Data Flow (Section \ref{dsf}) information, and recalling information about the Code Background (Section \ref{cbf}). 
+Participants successfully answered questions in this category when they successfully synthesized the results of these other efforts.
+
+
+
 
 
 \subsection{Individuals}
@@ -1234,17 +1235,19 @@ Participants asked questions about accessing the tools needed to complete a cert
 Participants sometimes sought information from a tool, but could not determine how to invoke the tool or possibly did not know which tool to use. 
 The question, \emph{What tool do I need for this?} points to a common blocker for both novice and experienced developers, a lack of awareness~\cite{murphy-Hill2012fluency}.
 
-!StrategyNotes
-\begin{itemize}
-	\item Tool selection strategies:
-	\item Often they know what they want the tool to do, but don't know where to find it
-	\item right click within the code, or search through menus. 
-	\item Failed when participants didn't recognize the tool they were looking for V1 P2
-	\item Evaluating selected tool: Unnecessarily switch views and open/close/reopen the same tool
-	\item Misinterpret tools output, whether it be FSB's notifications, severity rankings, or call hierarchy
-	\item After reading the notification, relate its content back to the code
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
 
+We observed two types of strategies in this category, tool selection strategies and tool evaluation strategies. 
+While selecting tools, participants often knew what functionality they wanted to achieve, but were unsure how to find a tool to achieve that functionality. For example, P2 knew he wanted to navigate to methods up the call hierarchy, but struggled to identify an appropriate tool. 
+His tool selection strategy involved first Ctrl-hovering over the current method's name followed by right clicking the method name.
+This strategy failed because the tool was not available in the Ctrl-hover menu and he failed to recognize the tool in the right-click menu.
+
+Rather than search for the ideal tool, some participants opted to opportunistically invoke tools and evaluate the appropriateness of their output. Unfortunately, these strategies were susceptible to misinterpretations. For example, one participant opened, closed, and reopened the \textsc{call hierarchy} tool several times, unable to determine whether it was appropriate. 
+
+%\item Misinterpret tools output, whether it be FSB's notifications, severity rankings, or call hierarchy
+%\item After reading the notification, relate its content back to the code
 
 
 %%%%%%%%%%%% Vulnerability Severity/Ranking
@@ -1298,12 +1301,26 @@ For example, the Predictable Random vulnerability notes that a predicable random
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 
-!StrategyNotes
-\begin{itemize}
-	\item Read the notification text
-	\item mentioned relating content back in interacting with tools
-	\item Participants found unclear sentences distracting
-\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+Participants defect resolution strategies appeared to include reading portions of the notification text. 
+Some participants read the entirety of the message before proceeding, whereas others read just the short descriptions. 
+Several participants only read the visible parts of the message, neglecting to scroll further to reveal the rest of the message.
+
+More interestingly, participants' strategies seemed to depend on their experience.
+The three participants (P3, P4, and P6) who reported the lowest familiarity with vulnerabilities 
+started 11 of 12 tasks by immediately reading the notification text. 
+Conversely, the participants (P5 and P7) who reported the most familiarity with vulnerabilities only started reading the notification text for 2 of 8 tasks.
+
+
+%!StrategyNotes
+%\begin{itemize}
+%	\item Read the notification text
+%	\item mentioned relating content back in interacting with tools
+%	\item Participants found unclear sentences distracting
+%\end{itemize}
 
 \section{Assumptions}
 %TODO Write assumption results up
