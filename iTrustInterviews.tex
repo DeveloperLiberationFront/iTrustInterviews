@@ -509,7 +509,7 @@ To do so, whenever a participant performed an action we added that action to the
 
 %Pass 2 Succsess/failure Also information needs annotation
 During the second pass we added annotations to each strategy tree. 
-As depicted in Figure \ref{fig:description} (lines prefixed with $+$/$-$), we annotated the trees whenever an action lead to a success or a failure. 
+As depicted in Figure \ref{fig:description} (lines prefixed with $+$/$-$), we annotated the trees whenever an action led to a success or a failure. 
 To best understand which strategies contributed to success, we measured success/failure as granularly as possible.
 Rather than annotating the entire tree as successful or not, we annotated the sub-strategies that compose the tree.
 Participants could succeed with some strategies while failing with others.
@@ -526,17 +526,18 @@ Note: not all sub-strategies were observably successful/failure-inducing.
 %Methodology
 To answer RQ3, we identified participants' assumptions and analyzed each assumption to determine if it was correct.
 %How often do developers make assumptions and to what extent are those assumptions correct.
-Because implicit assumptions are so pervasive ~\cite{fairclough2003analysing}, it would be intractable to enumerate all of them. 
+Because implicit assumptions are pervasive ~\cite{fairclough2003analysing}, it would be intractable to identify them all. 
 Participants likely made many assumptions silently. 
 For example, they may have implicitly assumed the Eclipse environment was configured correctly and all the relevant source files were accessible.
-Instead of speculating about all of these assumptions, we only consider the assumptions that are explicitly triggered within the transcripts. 
+Instead of speculating about all of these assumptions, we only consider the assumptions participants explicitly stated.
 
 %Tried to enumerate implicit assumptions, but so . Infinite number of assumptions them. Give plausible examples... 
 %
 To identify the explicit assumptions participants made, we searched the transcripts for keywords such as, \textit{assume}, \textit{assuming}, \textit{presume}, \textit{reckon}, \textit{believe}, and  \textit{guess}.
 This search process returned some false-positives. 
 For example, one participant referred to the interviewer's assumptions rather than making an assumption of his own asking, ``Am I assumed to have some prior knowledge?''
-To filter only the assumptions participants made about the task or the code, first author inspected each search result.
+To filter only the assumptions participants made about the task or the code, the first author inspected each search result.
+
 After determining the result was an assumption, we evaluated its correctness.
 For example, one participant's assumed an external library was implemented securely. 
 We determined this assumption was incorrect by locating a vulnerability in the library using the common vulnerability and exposures database.\footnote{cve.mitre.org} 
