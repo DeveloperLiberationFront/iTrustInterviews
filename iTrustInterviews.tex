@@ -796,10 +796,17 @@ For example, when participants reached the third and fourth vulnerabilities, the
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
 
-%!StrategyNotes
-%\begin{itemize}
-%\item Really not much follow up on this one...
-%\end{itemize}
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+!StrategyNotes
+\begin{itemize}
+\item Really not much follow up on this one...
+\item Only one occurrence. 
+P3 for Task 3 incorrectly guessed all the nearby defects were the same (wrong because some did not need sanitation).
+Otherwise, nothing more general to talk about here.
+\end{itemize}
 
 
 \subsection{Code and the Application}
@@ -876,6 +883,11 @@ Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and travers
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
  
+ \vspace{.5em}
+ \noindent \textbf{Strategy Analysis Results}
+ \vspace{.5em}
+ 
+ 
 !StrategyNotes
 \begin{itemize}
 	\item Discussion of strategies already in this section
@@ -911,6 +923,11 @@ As we discussed in \emph{\textbf{Control Flow and Call Information}}, the \texts
 Specifically, some participants used the \textsc{call hierarchy} tool to locate methods that were generating or modifying data.
 Once participants identified which methods were manipulating data, they manually searched within the method for the specific statements that could modify or create data.
 They relied on manual searching, because the tool they were using to navigate the program's flow, \textsc{call hierarchy}, did not provide information about which statements were modifying and creating data.
+
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
 
 !StrategyNotes
 \begin{itemize}
@@ -1087,6 +1104,11 @@ Participants most frequently asked if they understood the situation, whether it 
 For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the notification before he started exploring, so he went back to reread the notification before investigating further.
 These questions occurred in all four vulnerabilities.
 
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
+
 !StrategyNotes
 \begin{itemize}
 	\item Pretty sparse in the strategy analysis. 
@@ -1157,10 +1179,14 @@ Finally, we noticed some consistency in the strategies participants were using t
 A few participants wanted to be able to confirm whether the code accomplishes what they expected. 
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
 !StrategyNotes
 \begin{itemize}
 	\item Ensure validation forms are correct. (P6 again). Didn't actually confirm the correctness... 
-	\item Not much here...
+	\item Not much here... 6 occurrences in strategy analysis
 \end{itemize}
 
 
@@ -1286,10 +1312,14 @@ As he began working through the final vulnerability (SQL Injection), he admitted
 He wasn't sure what whether the rank (15) was high or low and if yellow was a ``good'' or ``bad'' color.
 Some participants, like P6, did not notice any of the rankings until after completing all four sessions when the investigator asked about the tool's rankings.
 
+\vspace{.5em}
+\noindent \textbf{Strategy Analysis Results}
+\vspace{.5em}
+
 !StrategyNotes
 \begin{itemize}
 	\item Tried to understand severity rankings, but didn't place much weight on them for determining bugs actual severity. (loose connection)
-	\item Not much else for strategies
+	\item Not much else for strategies (only 4 occurrences)
 	
 \end{itemize}
 
@@ -1326,8 +1356,6 @@ The three participants (P3, P4, and P6) who reported the lowest familiarity with
 started 11 of 12 tasks by immediately reading the notification text. 
 Conversely, the participants (P5 and P7) who reported the most familiarity with vulnerabilities only started reading the notification text for 2 of 8 tasks.
 
-
-%!StrategyNotes
 %\begin{itemize}
 %	\item Read the notification text
 %	\item mentioned relating content back in interacting with tools
