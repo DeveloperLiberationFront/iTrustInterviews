@@ -655,10 +655,7 @@ Seven participants, concerned about false positives, asked the question, \textit
 To answer that question, participants searched for hints that an attacker could successfully execute a given attack in a specific context. 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
-
+\textbf{Strategy Analysis Results:}
 Participants used various strategies to answer the question, \textit{What are the possible attacks that could occur?} 
 For some vulnerabilities, participants read FSB's vulnerability information. 
 When FSB did not provide sufficient information, participants turned to the web, searching on sites like Google and StackOverflow. 
@@ -711,10 +708,8 @@ While attempting to assess the Servlet Parameter vulnerability, P8 decided to ex
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 It seemed important to P8 that recommended approaches came from trustworthy sources.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 Participants' strategies for acquiring information about alternative fixes centered around three information sources --- FSB, the web, and other modules in the code. 
 Even when FSB informed participants about a specific alternative, participants sought supplementary information from the other two external sources.
 
@@ -775,10 +770,8 @@ However, unless prompted, none of the participants commented on the disadvantage
 While exploring the Predictable Random vulnerability, many participants, including P1, P2, and P6, decided to use \CodeIn{SecureRandom} without considering any alternative solutions, even though the use of that suggested fix reduces performance.
 It seems that providing suggestions without discussing the associated trade-offs appeared to reduce participants' willingness to think broadly about other possible solutions. 
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 Although participants were not asked to make any modifications to the code, they did describe their strategies for applying and assessing fixes.
 Many participants looked for ways to apply fixes automatically.
 However, none of the FSB notifications included quick fixes.
@@ -801,10 +794,8 @@ For example, when participants reached the third and fourth vulnerabilities, the
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 !StrategyNotes
 \begin{itemize}
 \item Really not much follow up on this one...
@@ -842,11 +833,9 @@ For example, while assessing the SQL Injection vulnerability, P2 and P5 both wan
 All participants completed this task manually by scrolling through the package explorer and searching for code using their knowledge of the application.
 
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
-%8 Participants scrolled (P2 - P9) "unassisted search"
 
+\textbf{Strategy Analysis Results:}
+%8 Participants scrolled (P2 - P9) "unassisted search"
 For the majority of participants, scrolling through the source file was a key component of their strategies for locating information.
 Eclipse provides many tools designed to help users locate specific types of information.
 For example, \textsc{Open Declaration} locates method declarations, \textsc{find references} locates references.
@@ -888,11 +877,8 @@ Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and travers
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
  
- \vspace{.5em}
- \noindent \textbf{Strategy Analysis Results}
- \vspace{.5em}
  
- 
+\textbf{Strategy Analysis Results:}
 !StrategyNotes
 \begin{itemize}
 	\item Discussion of strategies already in this section
@@ -929,11 +915,8 @@ Specifically, some participants used the \textsc{call hierarchy} tool to locate 
 Once participants identified which methods were manipulating data, they manually searched within the method for the specific statements that could modify or create data.
 They relied on manual searching, because the tool they were using to navigate the program's flow, \textsc{call hierarchy}, did not provide information about which statements were modifying and creating data.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
-
+\textbf{Strategy Analysis Results:}
 !StrategyNotes
 \begin{itemize}
 	\item Also discussed this a lot in program flow discussion
@@ -970,10 +953,8 @@ For example, P2 asked about the amount of effort put into the code to determine 
 He explained, ``People were rushed and crunched for time, so I'm not surprised to see an issue in the servlets.'' 
 Knowing whether the code was thrown together haphazardly versus reviewed and edited carefully might help developers determine if searching for vulnerabilities will likely yield true positives.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 %System has changed and not responsible for all modules
 To answer questions in this category, participants relied primarily on their prior knowledge of the system.
 We observed relatively few instances where participants executed additional strategies to substantiate their existing knowledge. 
@@ -1019,10 +1000,8 @@ To answer this question, participants sometimes used tools for traversing the ca
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the code base, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 Participants were particularly interested in differentiating between two contexts --- test code and application code. 
 %20:04
 As P4 explained, test code does not ship with the product, so it is held to a different standard from a security perspective. 
@@ -1072,10 +1051,8 @@ When assessing the Potential Path Traversal vulnerability, four participants ask
 P2 used \textsc{call hierarchy} to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability was a true positive if user input reached the code.
 P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 Participants' strategies for answering questions about end user interaction typically included strategies from other categories. In other words, participants gathered evidence by Locating Information (Section \ref{li}), examining Control Flow (Section \ref{cf}), retracing Data Flow (Section \ref{dsf}) information, and recalling information about the Code Background (Section \ref{cbf}). 
 Participants successfully answered questions in this category when they successfully synthesized the results of these other efforts.
 
@@ -1109,11 +1086,8 @@ Participants most frequently asked if they understood the situation, whether it 
 For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the notification before he started exploring, so he went back to reread the notification before investigating further.
 These questions occurred in all four vulnerabilities.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
-
+\textbf{Strategy Analysis Results:}
 !StrategyNotes
 \begin{itemize}
 	\item Pretty sparse in the strategy analysis. 
@@ -1149,10 +1123,8 @@ While parsing the information provided for the Predictable Random vulnerability,
 The notification for this vulnerability did not include links so they searched the web for more information. 
 When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he would have liked the notification to include what a servlet is and how it related to client control.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 As mentioned above, participants' strategies for finding information about concepts included clicking the links provided by FSB.
 Some participants hesitated to click the links provided by FSB, because they were not clear on what concepts the links pertained to.
 Instead, these participants preferred to search the web for information about concepts.
@@ -1184,10 +1156,8 @@ Finally, we noticed some consistency in the strategies participants were using t
 A few participants wanted to be able to confirm whether the code accomplishes what they expected. 
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 !StrategyNotes
 \begin{itemize}
 	\item Ensure validation forms are correct. (P6 again). Didn't actually confirm the correctness... 
@@ -1230,10 +1200,8 @@ Other participants expressed interest in consulting their team members.
 For example, when P10 had difficulty with the Potential Path Traversal vulnerability, he stated that he would normally ask his team members to explain how the code worked.
 Presumably, the code's author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 Participants' primary strategy involved consulting the code (i.e. variable and class names) along with its sparse comments.
 Participants seemed to successfully use this information to understand the syntax of the application code (e.g. which variables were being stored in which data structures).
 However, these strategies sometimes failed to convey security-relevant semantic information. 
@@ -1278,10 +1246,8 @@ Participants asked questions about accessing the tools needed to complete a cert
 Participants sometimes sought information from a tool, but could not determine how to invoke the tool or possibly did not know which tool to use. 
 The question, \emph{What tool do I need for this?} points to a common blocker for both novice and experienced developers, a lack of awareness~\cite{murphy-Hill2012fluency}.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 We observed two types of strategies in this category, tool selection strategies and tool evaluation strategies. 
 While selecting tools, participants often knew what functionality they wanted to achieve, but were unsure how to find a tool to achieve that functionality. For example, P2 knew he wanted to navigate to methods up the call hierarchy, but struggled to identify an appropriate tool. 
 His tool selection strategy involved first Ctrl-hovering over the current method's name followed by right clicking the method name.
@@ -1317,10 +1283,8 @@ As he began working through the final vulnerability (SQL Injection), he admitted
 He wasn't sure what whether the rank (15) was high or low and if yellow was a ``good'' or ``bad'' color.
 Some participants, like P6, did not notice any of the rankings until after completing all four sessions when the investigator asked about the tool's rankings.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 !StrategyNotes
 \begin{itemize}
 	\item Tried to understand severity rankings, but didn't place much weight on them for determining bugs actual severity. (loose connection)
@@ -1348,10 +1312,8 @@ For example, the Predictable Random vulnerability notes that a predicable random
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 
-\vspace{.5em}
-\noindent \textbf{Strategy Analysis Results}
-\vspace{.5em}
 
+\textbf{Strategy Analysis Results:}
 Participants defect resolution strategies appeared to include reading portions of the notification text. 
 Some participants read the entirety of the message before proceeding, whereas others read just the short descriptions. 
 Several participants only read the visible parts of the message, neglecting to scroll further to reveal the rest of the message.
