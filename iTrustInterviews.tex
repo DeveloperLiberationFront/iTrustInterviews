@@ -1005,10 +1005,13 @@ To answer this question, participants sometimes used tools for traversing the ca
 Participants were particularly interested in differentiating between two contexts --- test code and application code. 
 %20:04
 As P4 explained, test code does not ship with the product, so it is held to a different standard from a security perspective. 
-To glean the context of a given method (e.g. whether it was a test method), participants looked for certain keyword indicators, such as ``test'' or ``test case''.
-Additionally, for tests, participants scrolled through the package explorer in search of test packages.
-Unfortunately, sometimes these heuristic strategies mislead participants.
-For instance, P9 incorrectly inferred the code for Task 3 was contained within a test class. 
+
+Participants' strategies for this task were undermined by the FSB ``Bug Explorer'' view, because it obscured many of the usual cues participants would have used to differentiate between contexts.
+In iTrust, tests are organized into a test package, which is separate from the application code. 
+By default, the ``Bug Explorer'' view closes the package explorer and omits package names from the notification text.
+Without visible package names or the package explorer, unfortunately some participants were mislead.
+For instance, P9 incorrectly inferred the code for Task 3 was contained within a test class before eventually correcting his mistake, 
+``This one I would be more inclined to ignore, because it's a test method I believe... Wait no, it's not a test method. No, it's not.'' 
 
 
 %\begin{itemize}
