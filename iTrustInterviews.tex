@@ -84,7 +84,7 @@ To build better security tools and subsequently help developers resolve defects 
 In this paper, we report on an exploratory study with novice and experienced software developers.
 We equipped them with Find Security Bugs, a security-oriented static analysis tool, and observed their interactions with security vulnerabilities in an open-source system that they had previously contributed to.
 We found that they asked questions not only about security vulnerabilities, associated attacks, and fixes, but also questions about the software itself, the social ecosystem that built the software, and related resources and tools.
-Finally, we describe the strategic successes and failures we observed, and how future tools can leverage our findings to encourage better strategies.	
+We describe the strategic successes and failures we observed and how future tools can leverage our findings to encourage better strategies.	
 	
 %For example, when participants asked questions about the source of tainted data, their tools forced them to make imperfect tradeoffs between systematic and ad hoc program navigation strategies.
 %Our results have several implications for designing security tools that support developers
@@ -103,9 +103,10 @@ Finally, we describe the strategic successes and failures we observed, and how f
 When software systems contain security defects, developers are responsible for fixing them. 
 
 Static analysis tools, like Find Security Bugs (FSB)~\cite{FindSecurityBugs} and many others~\cite{CodeAnalysis, OWASPSCA, SecurityAnalyzers, CodeSonar, Coverity}, promise to help developers remove security defects early in the development life cycle.
-These tools locate and report on potential software security vulnerabilities, such as SQL injection and cross-site scripting, even before the code executes.  
-Unfortunately, despite their availability, research suggests that developers do not use static analysis tools, partially because tools do not provide the information needed to resolve defects~\cite{johnson2013don}. 
+These tools locate and report on potential software security vulnerabilities, such as SQL injection and cross-site scripting even before the code executes.  
+Unfortunately, research suggests that developers do not use static analysis tools, despite their availability, partially because tools do not provide the information needed to resolve defects~\cite{johnson2013don}. 
 
+%TODO: ~\cite{christakis2016developers}
 
 %%Tools help developers with security
 %To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
@@ -117,12 +118,12 @@ Unfortunately, despite their availability, research suggests that developers do 
 %These tools provide, for instance, information about the locations of potential SQL injection vulnerabilities.
 %But developers don't use them because they don't provide right information
 
-Our work addresses this problem by advancing our understanding of how developers use a security-focused static analysis tool resolve security defects, including their information needs, defect resolution strategies, and assumptions.
-To our knowledge, no prior study has specifically investigated developers' information needs, strategies, or assumptions while using such a tool. 
+Our work addresses this problem by advancing our understanding of how developers use a security-focused static analysis tool to resolve security defects, including their information needs, defect resolution strategies, and assumptions.
+No prior study has specifically investigated developers' information needs, strategies, or assumptions while using such a tool. 
 %As we show later in this paper, developers need unique types of information while assessing security vulnerabilities, like information about attacks.
 
 %What we did
-To that end, we conducted an exploratory study with ten developers who had contributed to iTrust~\cite{iTrust}, a security-critical Java medical records software system.
+To that end, we conducted an exploratory think-aloud study with ten developers who had contributed to iTrust~\cite{iTrust}, a security-critical Java medical records software system.
 We observed each developer as they assessed potential security vulnerabilities identified by FSB. 
 We operationalized developers' information needs by measuring questions --- the verbal manifestations of information needs.
 Using a card sort methodology, we sorted 559 questions into 17 categories. 
@@ -161,7 +162,7 @@ Similarly, we expect that categorizing developers' information needs while using
 %Given the correct assumptions, the information you seek will be relevant to the solution.
 
 An earlier version of this work appeared as a conference paper~\cite{Smith2015Questions}. 
-It focused solely on the categorization of questions developers asked while resolving security vulnerabilities. 
+It focuses solely on the categorization of questions developers ask while resolving security vulnerabilities. 
 In this work, we also consider the approaches developers take to answer those questions.
 This paper makes the following additional contributions:
 
