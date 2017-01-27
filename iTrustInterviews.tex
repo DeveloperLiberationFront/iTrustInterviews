@@ -1484,10 +1484,12 @@ To find success, participants sought information that was scattered around diffe
 Depending on the task and an individual's approach, participants found critical clues hidden on StackOverflow, official documentation pages, and personal blogs, for instance. 
 
 To reach these helpful web resources, participants either (1) followed the links that FSB had curated, or (2) used an online search engine. As we will discuss, both of these approaches are failure-prone.
-Drawing inspiration from the positive aspects of each of these approaches, we will propose a new tool for gathering resources from the web while diagnosing a static analysis defect.
+However, by drawing inspiration from the positive aspects of each of these approaches, we will propose a new tool-assisted approach for gathering resources from the web while diagnosing a static analysis defects. 
+We will refer to this approach as \textit{context-informed web search}.
 
 (1)
 FSB includes links to web resources in its description of some defects under the header ``References.''
+%A practice common to many such static analysis tools???
 FSB's designers supposedly deem these references relevant and helpful, and, when references to the right types of information were available, participants tended to agree.
 Unfortunately, the links in each references section cover a limited number of topics.
 For example, the references might describe the defect and how to exploit it, but not how to remedy the vulnerability.
@@ -1498,50 +1500,43 @@ In summary, the references encapsulate the tool \textit{designer's} expertise an
 %Can't assess their credibility, no preview of the contents. 
 %Appear off-screen, participants didn't scroll down
 %Little indication of what information each link promised
-%PRO: Perfectly suited to the defect the tool was detecting. 
+%pro: Perfectly suited to the defect the tool was detecting. 
 
 (2)
-con
-con
-con
-pro
+Participants also used search engines to locate web resources, sometimes as a primary means, other times after having exhausted the FSB links.
+With this approach, participants had to sift through long lists of irrelevant results to find useful information.
+As described in Section \ref{uc}, some participants iteratively refined their search terms to filter out as many irrelevant results as possible.
+Others simply tested link after link until they found something useful or gave up.
+
+The two approaches for accessing web resources described so far exist at opposite ends of a spectrum and fail in complementary ways. 
+The tool's list of links (1) only cover a narrow set of topics, with each link highly relevant to the defect reported. 
+Conversely, search engines (2) over-approximate the set of relevant resources, but cover far more topics of interest. 
+
+We envision a new way for developers to access web resources while resolving defects with static analysis, \textit{context-informed web search}. This approach improves on existing approaches by combining the breadth of web search with the relevance afforded by a tool's contextual awareness.
+Users would perform a \textit{context-informed web search} just as they would any other web search, but enter their query into a specialized search engine, rather than a general-purpose search engine.
+The specialized search engine would work in tandem with the developers' static analysis tool and would start by fetching results just like a general-purpose search engine.
+Before returning those results to the user, the specialized search engine would query the static analysis tool for details about the developers context --- information the tool has already computed in order to detect defects.
+Finally, the specialized search engine would only display context-relevant results.
+%also look to see if links provided by toolsmith pop up
+
+Consider, for example, a developer who searches for `secure random number.'
+A general-purpose search engine would return results targeted at Ruby, Javascript, Android, and Java developers.
+The specialized search engine could conclude from the static analysis tool that the developer was using Java and importing java.util.Random and filter out irrelevant results.
 
 
-Two approaches for accessing web resources exist at opposite ends of a spectrum and fail in complementary ways. 
-FSB's links covered a narrow set of topics, but each was highly relevant to the defect FSB reported. 
-Conversely, search engine results potentially
-On one hand short FSB list is not enough. Other hand full websearch over-approximates relevant results. Envision an alternative at the midpoint of this spectrum. 
 
 
+%Successful participants informally implemented this strategy by extracting verbatim text from the notification to form their web search phrases. 
+%Basically, copying and pasting the short description or snippets from the long description.
+%This helped to ensure results were relevant to that specific issue, but misses relevant resources that might be (other tools or other versions of the same tool)
+%Search had no knowledge of code or libraries and result quality depended on participants' ability to select the correct text.
+%Formalize that approach
 
-Successful participants informally implemented this strategy by extracting verbatim text from the notification to form their web search phrases. 
-Basically, copying and pasting the short description or snippets from the long description.
-This helped to ensure results were relevant to that specific issue, but misses relevant resources that might be (other tools or other versions of the same tool)
-Search had no knowledge of code or libraries and result quality depended on participants' ability to select the correct text.
-
-Envision a tool that formalizes that approach.
-
-
-Further complicating these strategies, some searches succeed only in certain contexts.
-
-Participants were working with 
-
-(java array bounds checking?)
-
-
-Locating information, some people used tools others scrolled
-
-Info foraging.
-
-disorientation stuff??
-
-Common behavior was search
-
-Security implications of a given strategy varied depending on the context and type of vulnerability. 
-Password vs form input.
-
-
-envision context-aware tools that support context-aware strategies
+%Info foraging.
+%disorientation stuff??
+%Common behavior was search
+%Security implications of a given strategy varied depending on the context and type of vulnerability. 
+%envision context-aware tools that support context-aware strategies
 
 \section{Threats to Validity}
 \label{limits}
