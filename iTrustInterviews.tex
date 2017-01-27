@@ -177,49 +177,6 @@ This paper elaborates on the earlier work with the following two additional cont
 %(3) An expanded discussion of related work in Section \ref{sec:rw}
 %(4) A more concrete depiction of the notifications described in Section %\ref{structuredNotifications}
 
-\section{Related Work}
-\label{sec:rw}
-
-We have organized the related work into two subsections. 
-Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools and Section \ref{questions} references other studies that have explored developers' information needs.
-
-\subsection{Evaluating Security Tools}
-\label{evaluation}
-Using a variety of metrics, many studies have assessed the effectiveness of the security tools developers use to find and remove vulnerabilities from their code~\cite{martin2005finding, austin2011one, livshits2005finding}.  
-
-Much research has evaluated the effectiveness of tools based on their false positive rates and how many vulnerabilities they detect~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. 
-For instance, Jovanovic and colleagues evaluate their tool, \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP web applications~\cite{jovanovic2006pixy}. 
-They considered \textsc{Pixy} effective because of its low false positive rate (50\%) and its ability to find vulnerabilities previously unknown. 
-Similarly, Livshits and Lam evaluated their own approach to security-oriented static analysis, which creates static analyzers based on inputs from the user~\cite{livshits2005finding}. 
-They also found their tool to be effective because it had a low false positive rate. 
-
-Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
-Comparing the four approaches based on number of vulnerabilities found, false positive rate, and efficiency, they reported that no one technique was capable of discovering every type of vulnerability. 
-
-Dukes and colleagues conducted a case study comparing static analysis and manual testing vulnerability-finding techniques~\cite{dukes2013case}. 
-They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
-
-These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
-Further, these studies do not evaluate whether the tools address developers' information needs. 
-Unlike existing studies, our study focuses on developers' information needs while assessing security vulnerabilities and, accordingly, provides a novel framework for evaluating security tools.
-
-\subsection{Information Needs Studies}
-\label{questions}
-Several studies have explored developers' information needs outside the context of security.
-Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers, ko2007information}.
-These three studies explore the questions developers ask while performing general programming tasks.
-In contrast to previous studies, our study focuses specifically on the information needs of developers while performing a more specific task, assessing security vulnerabilities.
-Unsurprisingly, some of the questions previously identified as general programming questions also occur while developers assess security vulnerabilities (e.g., Sections \ref{cf} and \ref{dsf}).
-
-Much of the work on answering developer questions has occurred in the last decade. 
-LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
-Furthermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements or reachability questions~\cite{latoza2010developers}. 
-Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions~\cite{ko2004designing}. 
-They found that developers were able to complete more debugging tasks while using their tool than they could without it.
-Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
-
-
-%TODO Add other related work
 
 \section{Methodology}
 \label{sec:meth}
@@ -1538,6 +1495,53 @@ The specialized search engine could conclude from the static analysis tool that 
 %Security implications of a given strategy varied depending on the context and type of vulnerability. 
 %envision context-aware tools that support context-aware strategies
 
+\section{Related Work}
+\label{sec:rw}
+
+We have organized the related work into two subsections. 
+Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools and Section \ref{questions} references other studies that have explored developers' information needs.
+
+\subsection{Evaluating Security Tools}
+\label{evaluation}
+Using a variety of metrics, many studies have assessed the effectiveness of the security tools developers use to find and remove vulnerabilities from their code~\cite{martin2005finding, austin2011one, livshits2005finding}.  
+
+Much research has evaluated the effectiveness of tools based on their false positive rates and how many vulnerabilities they detect~\cite{jovanovic2006pixy, austin2011one, dukes2013case}. 
+For instance, Jovanovic and colleagues evaluate their tool, \textsc{Pixy}, a static analysis tool that detects cross-site scripting vulnerabilities in PHP web applications~\cite{jovanovic2006pixy}. 
+They considered \textsc{Pixy} effective because of its low false positive rate (50\%) and its ability to find vulnerabilities previously unknown. 
+Similarly, Livshits and Lam evaluated their own approach to security-oriented static analysis, which creates static analyzers based on inputs from the user~\cite{livshits2005finding}. 
+They also found their tool to be effective because it had a low false positive rate. 
+
+Austin and Williams compared the effectiveness of four existing techniques for discovering security vulnerabilities: systematic and exploratory manual  penetration testing, static analysis, and automated penetration testing~\cite{austin2011one}. 
+Comparing the four approaches based on number of vulnerabilities found, false positive rate, and efficiency, they reported that no one technique was capable of discovering every type of vulnerability. 
+
+Dukes and colleagues conducted a case study comparing static analysis and manual testing vulnerability-finding techniques~\cite{dukes2013case}. 
+They found combining manual testing and static analysis was most effective, because it located the most vulnerabilities.
+
+These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
+Further, these studies do not evaluate whether the tools address developers' information needs. 
+Unlike existing studies, our study focuses on developers' information needs while assessing security vulnerabilities and, accordingly, provides a novel framework for evaluating security tools.
+
+\subsection{Information Needs Studies}
+\label{questions}
+Several studies have explored developers' information needs outside the context of security.
+Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers, ko2007information}.
+These three studies explore the questions developers ask while performing general programming tasks.
+In contrast to previous studies, our study focuses specifically on the information needs of developers while performing a more specific task, assessing security vulnerabilities.
+Unsurprisingly, some of the questions previously identified as general programming questions also occur while developers assess security vulnerabilities (e.g., Sections \ref{cf} and \ref{dsf}).
+
+Much of the work on answering developer questions has occurred in the last decade. 
+LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
+Furthermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements or reachability questions~\cite{latoza2010developers}. 
+Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions~\cite{ko2004designing}. 
+They found that developers were able to complete more debugging tasks while using their tool than they could without it.
+Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
+
+
+\subsection{Strategies}
+\label{strategies}
+TODO add related work for strategies
+
+
 \section{Threats to Validity}
 \label{limits}
 In this section we discuss the internal and external threats to the validity of our study.
@@ -1576,7 +1580,6 @@ Our findings have several implications for the design of static analysis tools. 
 
 
 % conference papers do not normally have an appendix
-
 
 % use section* for acknowledgment
 \section{Acknowledgments}
