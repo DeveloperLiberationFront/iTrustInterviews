@@ -636,16 +636,17 @@ To answer that question, participants searched for hints that an attacker could 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
 \textbf{Strategy Analysis Results:}
-Participants used various strategies to answer the question, \textit{What are the possible attacks that could occur?} 
-For some vulnerabilities, participants read FSB's vulnerability information. 
+Participants used various strategies to answer questions about attacks.
+When available, participants read FSB's vulnerability information. 
 When FSB did not provide sufficient information, participants turned to the web, searching on sites like Google and StackOverflow. 
 
-%TODO Ground in participant data
-These strategies for determining the set of attacks to consider were prone to two types of failures. 
-First, because web search engines are not fully aware of a developer's programming context, they may return a superset of the relevant attacks.
-For example, searching for attacks that exploit unvalidated input vulnerabilities returns results about cross site scripting attacks, injection attacks, and buffer overflow attacks. 
-However, due to Java's automatic array bounds checking, buffer overflow attacks are not feasible in the vast majority of Java programs.
-Considering buffer overflow attacks would distract developers from other more relevant attacks. 
+These strategies for getting information about different types of attacks were prone to two types of failures. 
+First, because web search engines were not fully aware of participants' programming contexts, they returned information about a superset of the relevant attacks.
+For example, P2 searched for attacks that exploit unvalidated input vulnerabilities.
+Searching the web returns results about cross site scripting attacks, injection attacks, and buffer overflow attacks. 
+However, due to Java's automatic array bounds checking, buffer overflow attacks are not feasible in the vast majority of Java programs, including iTrust.
+Devoting more effort to buffer overflow attacks would have distracted P2 from the other more relevant attacks. 
+
 
 Secondly, by executing these strategies some participants erroneously considered only a subset of the possible attacks. 
 This failure was especially evident for the Servlet Parameter vulnerability, where a cross site scripting attack was feasible, but a SQL injection attack was not. 
