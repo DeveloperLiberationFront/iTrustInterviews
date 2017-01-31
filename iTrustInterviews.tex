@@ -847,9 +847,11 @@ While exploring this vulnerability, many participants eventually hypothesized th
 Three participants explicitly asked, \textit{Are all calls coming from the same class?} 
 In fact, in this case, participants' hypotheses were partially correct. 
 Tracing up the call chains, the method containing the vulnerability was called from multiple classes, however those classes were all contained within a test package.
-
 Even though all participants did not form this same hypothesis, all ten participants wanted call information for the Path Traversal Vulnerability, often asking the question, \textit{Where is this method being called?} 
-However, participants used various strategies to obtain the same information.
+
+ 
+\textbf{Strategy Analysis Results:}
+Participants used various strategies to obtain information about control flow.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
 Other participants used the Eclipse's \textsc{mark occurrences} tool (code highlighting in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
 Further, it only highlighted calls within the current file.
@@ -860,16 +862,13 @@ Alternatively, Eclipse's \textsc{find references} tool identified proper referen
 Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and traverse the project's entire call structure.
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
- 
- 
-\textbf{Strategy Analysis Results:}
-!StrategyNotes
-\begin{itemize}
-	\item Discussion of strategies already in this section
-	\item Also comes up in the flow navigation section
-	
-\end{itemize}
 
+%\begin{itemize}
+%	\item Discussion of strategies already in this section
+%	\item Also comes up in the flow navigation section
+%	
+%\end{itemize}
+%
 
 %%%%%%%%%%%% Data Storage 
 
@@ -893,25 +892,29 @@ Questions in this category focus on the application's data --- how it is created
  
 Participants asked questions about the data pipeline while assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
+
+\textbf{Strategy Analysis Results:}
 While exploring this vulnerability, participants adapted tools such as the \textsc{call hierarchy} tool to also explore the program's data flow. 
-As we discussed in \emph{\textbf{Control Flow and Call Information}}, the \textsc{call hierarchy} tool helped participants identify methods' callers and callees.
+As we discussed in \emph{Control Flow and Call Information}, the \textsc{call hierarchy} tool helped participants identify methods' callers and callees.
 Specifically, some participants used the \textsc{call hierarchy} tool to locate methods that were generating or modifying data.
 Once participants identified which methods were manipulating data, they manually searched within the method for the specific statements that could modify or create data.
 They relied on manual searching, because the tool they were using to navigate the program's flow, \textsc{call hierarchy}, did not provide information about which statements were modifying and creating data.
 
+Some participants failed because they used aggregation strategies, rather than tracing individual data elements.
+This was particularly evident for Task 3, where 12 variables were aggregated in a form object.
+By tracing individual variables, some participants uncovered the incorrect validation function. 
+Others, like P6, grew tired of tracing each variable and instead considered the form as a whole.
+As a result, he overlooked the validation function and incorrectly concluded the vulnerability was a false positive.
 
-\textbf{Strategy Analysis Results:}
-!StrategyNotes
-\begin{itemize}
-	\item Also discussed this a lot in program flow discussion
-	\item Most relevant to task 3. 
-	\item Rather than trace individual pieces of data used an aggregation strategy.
-	\item Input parameters were all put into the form. Validation was correct for some, but not others. 
-	\item P6 got tired out, didn't want to trace all ~12 variables. Incorrectly concluded the validation was correct for all the parameters
-	\item P7 struggled with this task, without a good strategy to see how the data was used he proposed adding validation code (even though it already existed)
-	
-\end{itemize}
 
+%begin{itemize}
+%	\item Most relevant to task 3. 
+%	\item Rather than trace individual pieces of data used an aggregation strategy.
+%
+%	\item P7 struggled with this task, without a good strategy to see how the data was used he proposed adding validation code (even though it already existed)
+%	
+%\end{itemize}
+%
 
 
 %%%%%%%%%%%% Code Background
