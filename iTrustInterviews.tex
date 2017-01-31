@@ -517,7 +517,7 @@ Next, we applied lemmatisation to identify all the inflected forms of these word
 %Lemmatisation - http://wordnetweb.princeton.edu/perl/webwn
 Finally, we searched the transcripts for the stems of all the words identified by the lemmatisation process.
 This search process returned some false-positives. 
-For example, one participant referred to the interviewer's assumptions rather than making an assumption of his own asking, ``Am I assumed to have some prior knowledge?''
+For example, one participant referred to the interviewer's assumptions rather than making an assumption of his own asking, ``Am I \textit{assumed} to have some prior knowledge?''
 To filter only the assumptions participants made about the task or the code, the first author inspected each search result.
 
 After determining the result was an assumption, we evaluated its correctness.
@@ -1321,6 +1321,38 @@ P3 read the rest of the description and realized it contained the information he
 
 \section{Assumptions}
 %TODO Write assumption results up
+While performing their tasks, participants made different types of assumptions. 
+Overall, we observed 73 total assumptions --- 27 incorrect and 46 correct. 
+We identified assumptions across all participants, except for P3.
+Additionally, we found at least one assumption during each task.
+In this section we will describe different types of correct and incorrect assumptions as well as elaborate on how those assumptions contributed to defect resolution.
+
+%External library correctness
+iTrust inherits functionality from many external libraries.
+Participants commonly made assumptions about these external libraries, their correctness, and their usage.
+Some assumptions centered around the proper usage of an external library. 
+For instance, while skimming \CodeIn{SecureRandom} documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
+Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality nextInt already provided.
+%citation for readability?
+Other assumptions pertained to the security of external libraries.
+For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure seeding of random number generators.
+In contrast with P8, P7's correct assumption lead him to propose the most valid and readable solution.
+
+Topic: Code functionality
+General description of these types of assumptions
+Give an example of this assumption
+How does this contribute to overall defect resolution!
+
+Topic: Tool output
+General description of these types of assumptions
+Give an example of this assumption
+How does this contribute to overall defect resolution!
+
+%Report the breakdown by count / participant / task?
+%Or.... just focus on the types? 
+%Types of assumptions (informal categorization) ad-hoc organization
+
+
 \label{sec:assumptions}
 In this section we discuss the results of the assumption analysis...
 
