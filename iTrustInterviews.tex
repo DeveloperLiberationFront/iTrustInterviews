@@ -146,7 +146,7 @@ Similarly, we expect that categorizing developers' information needs while using
 
 %%TODO Add assumption analysis to intro
 %Close relationship between information needs and assumptions. 
-%Assumptions can satisfy information needs. Can't figure something out? Make an assumption.
+%Assumptions can satisfy information needs. Can't figure something out? Make an assumption. short circut an investigation
 %Assumptions also drive information needs. Need information to validate assumptions.
 %Made an assumption? See if it's right. 
 %
@@ -1320,7 +1320,7 @@ P3 read the rest of the description and realized it contained the information he
 %\end{itemize}
 
 \section{Assumptions}
-%TODO Write assumption results up
+\label{sec:assumptions}
 While performing their tasks, participants made different types of assumptions. 
 Overall, we observed 73 total assumptions --- 27 incorrect and 46 correct. 
 We identified assumptions across all participants, except for P3.
@@ -1331,30 +1331,38 @@ In this section we will describe different types of correct and incorrect assump
 iTrust inherits functionality from many external libraries.
 Participants commonly made assumptions about these external libraries, their correctness, and their usage.
 Some assumptions centered around the proper usage of an external library. 
-For instance, while skimming \CodeIn{SecureRandom} documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
+For instance, while skimming \CodeIn{SecureRandom}'s documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
 Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality nextInt already provided.
 %citation for readability?
 Other assumptions pertained to the security of external libraries.
 For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure seeding of random number generators.
 In contrast with P8, P7's correct assumption lead him to propose the most valid and readable solution.
 
-Topic: Code functionality
-General description of these types of assumptions
-Give an example of this assumption
-How does this contribute to overall defect resolution!
+Tools attempt to communicate information about the location and type of defect in the code.
+When FSB failed to effectively communicate that information to participants, they made assumptions.
+For Task 3, P10 incorrectly assumed FSB was indicating an issue with the DAO objects. 
+Based on that assumption, he proposed adding a sanitization method to those objects, which is an incorrect fix.
+Sanitization methods already existed in another class and just needed to be modified.
+%P9 T1 issue relates to SQL file
 
-Topic: Tool output
-General description of these types of assumptions
-Give an example of this assumption
-How does this contribute to overall defect resolution!
+
+As we discussed in Section \ref{dsf}, tracing the sources of data was an important part of participants' tasks.
+Participants made assumptions about where data comes from, whether it be from a user or hard-coded test data.
+For Task 1, P1 incorrectly assumed data was passed in from a user.
+He followed up on this weakly-held assumption by further investigating the origin of the data.
+His successful investigation strategy, which included him using the \textsc{call hierarchy} tool, led him to correct his initial assumption and resolve the defect correctly.
+
+
+%Topic: Code functionality
+%General description of these types of assumptions
+%Give an example of this assumption
+%How does this contribute to overall defect resolution!
+
 
 %Report the breakdown by count / participant / task?
 %Or.... just focus on the types? 
 %Types of assumptions (informal categorization) ad-hoc organization
 
-
-\label{sec:assumptions}
-In this section we discuss the results of the assumption analysis...
 
 \section{Discussion}
 \label{sec:discussion}
