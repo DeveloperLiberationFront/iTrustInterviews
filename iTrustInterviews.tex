@@ -1543,8 +1543,8 @@ The specialized search engine could conclude from the static analysis tool that 
 \section{Related Work}
 \label{sec:rw}
 
-We have organized the related work into two subsections. 
-Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools and Section \ref{questions} references other studies that have explored developers' information needs.
+We have organized the related work into three subsections. 
+Section \ref{evaluation} outlines some of the current approaches researchers use to evaluate security tools, Section \ref{questions} references other studies that have explored developers' information needs, and Section \ref{strategies} relates our work to the other work on strategies.
 
 \subsection{Evaluating Security Tools}
 \label{evaluation}
@@ -1564,12 +1564,12 @@ They found combining manual testing and static analysis was most effective, beca
 
 These studies use various measures of effectiveness, such as false positive rates or vulnerabilities found by a tool, but none focus on how developers interact with the tool. 
 Further, these studies do not evaluate whether the tools address developers' information needs. 
-Unlike existing studies, our study focuses on developers' information needs while assessing security vulnerabilities and, accordingly, provides a novel framework for evaluating security tools.
+Unlike existing studies, our study examines a security tool through the lens of developers' information needs and, accordingly, provides a novel framework for evaluating security tools.
 
 \subsection{Information Needs Studies}
 \label{questions}
 Several studies have explored developers' information needs outside the context of security.
-Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers, ko2007information}.
+Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers, Ko:2007:information, Sillito:2006questions}.
 These three studies explore the questions developers ask while performing general programming tasks.
 In contrast to previous studies, our study focuses specifically on the information needs of developers while performing a more specific task, assessing security vulnerabilities.
 Unsurprisingly, some of the questions previously identified as general programming questions also occur while developers assess security vulnerabilities (e.g., Sections \ref{cf} and \ref{dsf}).
@@ -1581,10 +1581,33 @@ Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of deb
 They found that developers were able to complete more debugging tasks while using their tool than they could without it.
 Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
 
+%Questions programmers ask during software evolution tasks??
 
-\subsection{Strategies}
+\subsection{Defect Resolution Approaches}
 \label{strategies}
-TODO add related work for strategies
+Prior work has noted the importance of strategies.
+In their inspirational work, Bhavnani and John observed that knowledge of tasks and tools for complex computer applications such as CAD were insufficient for developers to be efficient; they found that users needed to learn good strategies~\cite{Bhavnani2000}. 
+Additionally, they argue that the identification of efficient strategies should be a key research goal. 
+Our work furthers progress toward that goal by identifying successful strategies for resolving security vulnerabilities.
+Further, Katz and Anderson, found that a developer's choice of bug-location strategy affects his or her ability to asses the correctness of a line of code~\cite{Katz:1987}.
+Our work extends that of Katz and Anderson by focusing on the defect resolution process after a potential bug has been located.
+
+
+Several studies have explored the effects of strategies and assumptions in end-user programming environments.
+Grigoreanu and colleagues examined gender differences in debugging strategies for spreadsheet end-user programmers~\cite{Grigoreanu:2012:sense, Grigoreanu:2009}. 
+Through a think-aloud study, they found that women and men employed different strategies. 
+For example, women tended to use comprehensive information processing styles, where they overview the task before making changes; in contrast, men tended to selectively process information.
+Gross and colleagues conducted an exploratory study in which end-user programmers were asked to find and modify code for specific functionality with unfamiliar programs, which they classified into models~\cite{Gross:2010}.
+Ko and colleagues categorized six types of learning barriers faced by end-user programmers~\cite{Ko:2004:barriers}.
+They discussed how end-user programmers can overcome learning barriers by making simplifying assumptions, but incorrect assumptions often lead to errors.
+
+
+%Romero and colleagues investigated, through virtual and textual-based views, how developers represented high-level and low-level debugging strategies in these software development environments.  
+%They found that changes in the explicit representation of the software environment influenced the choice of strategies developers used in solving the task~\cite{Romero2007}.
+
+%Lieber and colleagues evaluate an IDE extension for visualizing run-time behavior, Theseus~\cite{Lieber:2014:theseus}.
+%In their work, they note that minor changes to the IDE's user interface affected noticeable changes to developers' strategies.
+
 
 
 \section{Threats to Validity}
