@@ -101,12 +101,16 @@ We describe the strategic successes and failures we observed and how future tool
 %Security is critical
 \IEEEPARstart{S}{oftware} developers are a critical part of making software secure, a particularly important task considering security vulnerabilities are likely to cause incidents that affect company profits as well as end users~\cite{chen2002mops}.
 When software systems contain security defects, developers are responsible for fixing them. 
+In fact, a recent survey by Christakis and Bird found that developers cared more about security issues than other reliability issues~\cite{christakis2016developers}.
 
 Static analysis tools, like Find Security Bugs (FSB)~\cite{FindSecurityBugs} and many others~\cite{CodeAnalysis, OWASPSCA, SecurityAnalyzers, CodeSonar, Coverity}, promise to help developers remove security defects early in the development life cycle.
-These tools locate and report on potential software security vulnerabilities, such as SQL injection and cross-site scripting even before the code executes.  
-Unfortunately, research suggests that developers do not use static analysis tools, despite their availability, partially because tools do not provide the information needed to resolve defects~\cite{johnson2013don}. 
+These tools locate and report on potential software security vulnerabilities, such as SQL injection and cross-site scripting even before the code executes.
 
-%TODO: ~\cite{christakis2016developers}
+Unfortunately, these tools are confusing for developers to use.
+Researchers cite several related reasons why these tools do not help developers resolve defects, for instance, the tools: ``may not give enough information''~\cite{johnson2013don}; produce ``bad warning messages''~\cite{christakis2016developers}; and ``miscommunicate'' with developers ~\cite{johnson2016cross}.
+
+
+%Unfortunately, research suggests that developers do not use static analysis tools, despite their availability, partially because tools do not provide the information needed to resolve defects~\cite{johnson2013don}. 
 
 %%Tools help developers with security
 %To assist developers with the task of detecting and removing security defects, toolsmiths provide a variety of static analysis tools.
@@ -118,8 +122,8 @@ Unfortunately, research suggests that developers do not use static analysis tool
 %These tools provide, for instance, information about the locations of potential SQL injection vulnerabilities.
 %But developers don't use them because they don't provide right information
 
-Our work addresses this problem by advancing our understanding of how developers use a security-focused static analysis tool to resolve security defects, including their information needs, defect resolution strategies, and assumptions.
-No prior study has specifically investigated developers' information needs, strategies, or assumptions while using such a tool. 
+Our work investigates this tool understanding problem by advancing our knowledge of how developers use a security-focused static analysis tool to resolve security defects, including their information needs, defect resolution strategies, and assumptions.
+No prior study has specifically investigated these facets of security tool usage. 
 %As we show later in this paper, developers need unique types of information while assessing security vulnerabilities, like information about attacks.
 
 %What we did
@@ -162,8 +166,13 @@ Similarly, we expect that categorizing developers' information needs while using
 %Given the correct assumptions, the information you seek will be relevant to the solution.
 
 An earlier version of this work appeared as a conference paper~\cite{Smith2015Questions}. 
-It focuses solely on the categorization of questions developers ask while resolving security vulnerabilities. 
-This paper elaborates on the earlier work with the following two additional contributions:
+The contribution we presented in that paper was a categorization of questions developers asked while resolving security defects.
+While that contribution explains the information needs of developers, it did not explain how developers \textit{answer} those questions.
+In this work we explore how developers acquire the information they need either actively (through strategies) or passively (through assumptions).
+
+%It focuses solely on the categorization of questions developers ask while resolving security vulnerabilities. 
+
+Consequently, this paper elaborates on the earlier work with the following two additional contributions:
 
 \begin{itemize}
 	\item A catalog of developers defect resolution strategies, organized by the information need each strategy addresses (Section \ref{sec:results}). 
