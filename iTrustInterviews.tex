@@ -122,7 +122,7 @@ Researchers cite several related reasons why these tools do not help developers 
 %These tools provide, for instance, information about the locations of potential SQL injection vulnerabilities.
 %But developers don't use them because they don't provide right information
 
-Our work investigates this tool understanding problem by advancing our knowledge of how developers use a security-focused static analysis tool to resolve security defects, including their information needs, defect resolution strategies, and assumptions.
+Our work investigates this tool understanding problem by advancing our knowledge of how developers use a security-focused static analysis tool to resolve security defects, including developers' information needs, defect resolution strategies, and assumptions.
 No prior study has specifically investigated these facets of security tool usage. 
 %As we show later in this paper, developers need unique types of information while assessing security vulnerabilities, like information about attacks.
 
@@ -176,9 +176,9 @@ Consequently, this paper elaborates on the earlier work with the following two a
 
 \begin{itemize}
 	\item A catalog of developers defect resolution strategies, organized by the information need each strategy addresses (Section \ref{sec:results}). 
-	For example, to understand how to implement a fix, participants strategically surveyed multiple sources, including the web, the tool's notification, and other modules in the code.
+	For example, to understand how to implement a fix, participants strategically surveyed multiple sources of information, including the web, the tool's notification, and other modules in the code.
 	\item A description of the common assumptions that undermined those strategies (Section \ref{sec:assumptions}). 
-	For example, participants incorrectly assumed input validation had been handled securely.
+	For some tasks, some participants incorrectly assumed input validation had been handled securely.
 \end{itemize}
 
 %Other stuff??
@@ -196,7 +196,7 @@ Study materials can be found online~\cite{ExperimentalMaterials} and in the appe
 
 \subsection{Research Question}
 \label{rqs}
-We want to answer the following research questions:
+We answer the following research questions:
 \begin{itemize}
 	\item \textbf{RQ1}: What information do developers need while using static analysis tools to diagnose potential security vulnerabilities? 
 	\item \textbf{RQ2}: What strategies do developers use to acquire the information they need?
@@ -204,8 +204,8 @@ We want to answer the following research questions:
 	\end{itemize}
 We measured developers' information needs (RQ1) by examining the questions they asked.
 The questions that we identified are all available online~\cite{ExperimentalMaterials}.
-We list several exemplary questions throughout Section \ref{sec:results} along side the strategies (RQ2) developers used to answer those questions.
-Where appropriate, we also describe how participants' strategies led to successes or failures.
+We list several exemplary questions throughout Section \ref{sec:results} alongside the strategies (RQ2) developers used to answer those questions.
+Where possible, we also describe how participants' strategies led to information seeking successes or failures.
 Finally, in Section \ref{sec:assumptions} we discuss the correct and incorrect assumptions (RQ3) developers made while executing their strategies. 
 
 
@@ -513,7 +513,7 @@ Some sub-strategies were not observably successful/failure-inducing and were, th
 %Methodology
 To answer RQ3, we identified participants' assumptions and analyzed each assumption to determine if it was correct.
 %How often do developers make assumptions and to what extent are those assumptions correct.
-Because implicit assumptions are pervasive ~\cite{fairclough2003analysing}, it would be intractable to identify them all. 
+Because implicit assumptions are pervasive~\cite{fairclough2003analysing}, it would be intractable to identify them all. 
 Participants likely made many assumptions silently. 
 For example, they may have implicitly assumed the Eclipse environment was configured correctly and all the relevant source files were accessible.
 Instead of speculating about all of these assumptions, we only consider the assumptions participants explicitly stated.
@@ -867,7 +867,7 @@ Further, it only highlighted calls within the current file.
 
 Participants additionally employed Eclipse's \textsc{find} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
 Also, it returned references that occurred in dead code or comments.
-Alternatively, Eclipse's \textsc{find references} tool identified proper references to a single method.
+Alternatively, Eclipse's \textsc{find references} tool identified references to a single method.
 Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and traverse the project's entire call structure.
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
@@ -1005,7 +1005,7 @@ As P4 explained, test code does not ship with the product, so it is held to a di
 Participants' strategies for this task were undermined by the FSB ``Bug Explorer'' view, because it obscured many of the usual cues participants would have used to differentiate between contexts.
 In iTrust, tests are organized into a test package, which is separate from the application code. 
 By default, the ``Bug Explorer'' view closes the package explorer and omits package names from the notification text.
-Without visible package names or the package explorer, unfortunately some participants were mislead.
+Without visible package names or the package explorer, some participants were mislead.
 For instance, P9 incorrectly inferred the code for Task 3 was contained within a test class before eventually correcting his mistake, 
 ``This one I would be more inclined to ignore, because it's a test method I believe... Wait no, it's not a test method. No, it's not.''
 Had P9 not corrected his mistake, he would have misdiagnosed the error and ignored a true positive.
@@ -1332,8 +1332,8 @@ P3 read the rest of the description and realized it contained the information he
 \label{sec:assumptions}
 While performing their tasks, participants made different types of assumptions. 
 Overall, we observed 73 total assumptions --- 27 incorrect and 46 correct. 
-We identified assumptions across all participants, except for P3.
-Additionally, we found at least one assumption during each task.
+We identified assumptions across all participants, except for P3, who may have made assumptions without stating them explicitly.
+Additionally, participants stated at least one assumption during each task.
 In this section we will describe different types of correct and incorrect assumptions as well as elaborate on how those assumptions contributed to defect resolution.
 
 %External library correctness
@@ -1341,15 +1341,15 @@ iTrust inherits functionality from many external libraries.
 Participants commonly made assumptions about these external libraries, their correctness, and their usage.
 Some assumptions centered around the proper usage of an external library. 
 For instance, while skimming \CodeIn{SecureRandom}'s documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
-Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality nextInt already provided.
+Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality \CodeIn{nextInt} already provided.
 %citation for readability?
 Other assumptions pertained to the security of external libraries.
 For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure seeding of random number generators.
-In contrast with P8, P7's correct assumption lead him to propose the most valid and readable solution.
+In contrast with P8, P7's correct assumption lead him to propose a more succinct solution.
 
 Tools attempt to communicate information about the location and type of defect in the code.
 When FSB failed to effectively communicate that information to participants, they made assumptions.
-For Task 3, P10 incorrectly assumed FSB was indicating an issue with the DAO objects. 
+For Task 3, P10 incorrectly assumed FSB was indicating an issue with the database access objects. 
 Based on that assumption, he proposed adding a sanitization method to those objects, which is an incorrect fix.
 Sanitization methods already existed in another class and just needed to be modified.
 %P9 T1 issue relates to SQL file
@@ -1504,7 +1504,7 @@ We will refer to this approach as \textit{context-informed web search}.
 (1)
 FSB includes links to web resources in its description of some defects under the header ``References.''
 %A practice common to many such static analysis tools???
-FSB's designers supposedly deem these references relevant and helpful, and, when references to the right types of information were available, participants tended to agree.
+FSB's designers assumedly deem these references relevant and helpful, and, when references to the right types of information were available, participants tended to agree.
 Unfortunately, the links in each references section cover a limited number of topics.
 For example, the references might describe the defect and how to exploit it, but not how to remedy the vulnerability.
 In practice participants sought information and visited sites beyond what was available in the finite reference sections.
@@ -1598,7 +1598,7 @@ Prior work has noted the importance of strategies.
 In their inspirational work, Bhavnani and John observed that knowledge of tasks and tools for complex computer applications such as CAD were insufficient for developers to be efficient; they found that users needed to learn good strategies~\cite{Bhavnani2000}. 
 Additionally, they argue that the identification of efficient strategies should be a key research goal. 
 Our work furthers progress toward that goal by identifying successful strategies for resolving security vulnerabilities.
-Further, Katz and Anderson, found that a developer's choice of bug-location strategy affects his or her ability to asses the correctness of a line of code~\cite{Katz:1987}.
+Further, Katz and Anderson, found that a developer's choice of bug-location strategy affects his or her ability to assess the correctness of a line of code~\cite{Katz:1987}.
 Our work extends that of Katz and Anderson by focusing on the defect resolution process after a potential bug has been located.
 
 
