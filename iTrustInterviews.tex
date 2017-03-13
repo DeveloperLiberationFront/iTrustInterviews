@@ -1498,11 +1498,11 @@ Accessing web resources was an important element of participants' strategies acr
 To find success, participants sought information that was scattered around different sites.
 Depending on the task and an individual's approach, participants found critical clues hidden on StackOverflow, official documentation pages, and personal blogs, for instance. 
 
-To reach these helpful web resources, participants either (1) followed the links that FSB had curated, or (2) used an online search engine. As we will discuss, both of these approaches are failure-prone.
+To reach these helpful web resources, participants either followed the links that FSB had curated, or used an online search engine. 
+Both of these approaches are failure-prone.
 However, by drawing inspiration from the positive aspects of each of these approaches, we will propose a new tool-assisted approach for gathering resources from the web while diagnosing a static analysis defects. 
 We will refer to this approach as \textit{context-informed web search}.
 
-(1)
 FSB includes links to web resources in its description of some defects under the header ``References.''
 %A practice common to many such static analysis tools???
 FSB's designers assumedly deem these references relevant and helpful, and, when references to the right types of information were available, participants tended to use them.
@@ -1511,21 +1511,20 @@ For example, the references might describe the defect and how to exploit it, but
 In practice participants sought information and visited sites beyond what was available in the finite reference sections.
 In summary, the references encapsulate the tool \textit{designer's} expertise and knowledge of a specific defect pattern, but are not tailored to the user's needs.
 
-%Other limitations of (1)
+%Other limitations of fsb links
 %Can't assess their credibility, no preview of the contents. 
 %Appear off-screen, participants didn't scroll down
 %Little indication of what information each link promised
 %pro: Perfectly suited to the defect the tool was detecting. 
 
-(2)
 Participants also used search engines to locate web resources, sometimes as a primary means, other times after having exhausted the FSB links.
 With this approach, participants had to sift through long lists of irrelevant results to find useful information.
 As described in Section \ref{uc}, some participants iteratively refined their search terms to filter out as many irrelevant results as possible.
 Others simply tested link after link until they found something useful or gave up.
 
-The two approaches for accessing web resources described so far exist at opposite ends of a spectrum and fail in complementary ways. 
-The tool's list of links (1) only cover a narrow set of topics, with each link highly relevant to the defect reported. 
-Conversely, search engines (2) over-approximate the set of relevant resources, but cover far more topics of interest. 
+The two approaches for accessing web resources described so far (using tool links and performing a search) fail in complementary ways. 
+The tool's list of links only cover a narrow set of topics, with each link highly relevant to the defect reported. 
+Conversely, search engines over-approximate the set of relevant resources, but cover far more topics of interest. 
 
 We envision a new way for developers to access web resources while resolving defects with static analysis, \textit{context-informed web search}. This approach improves on existing approaches by combining the breadth of web search with the relevance afforded by a tool's contextual awareness.
 Users would perform a \textit{context-informed web search} just as they would any other web search, but enter their query into a specialized search engine, rather than a general-purpose search engine.
