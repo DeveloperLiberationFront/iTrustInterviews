@@ -167,8 +167,8 @@ Similarly, we expect that categorizing developers' information needs while using
 
 An earlier version of this work appeared as a conference paper~\cite{Smith2015Questions}. 
 The contribution we presented in that paper was a categorization of questions developers asked while resolving security defects.
-While that contribution explains the information needs of developers, it did not explain how developers \textit{answer} those questions.
-In this work we explore how developers acquire the information they need either actively (through strategies) or passively (through assumptions).
+While that contribution explains developers' information needs, it did not explain how developers \textit{answer} those questions.
+In this work, we explore how developers acquire the information they need either actively (through strategies) or passively (through assumptions).
 
 %It focuses solely on the categorization of questions developers ask while resolving security vulnerabilities. 
 
@@ -204,9 +204,8 @@ We answer the following research questions:
 	\end{itemize}
 We measured developers' information needs (RQ1) by examining the questions they asked.
 The questions that we identified are all available online~\cite{ExperimentalMaterials}.
-We list several exemplary questions throughout Section \ref{sec:results} alongside the strategies (RQ2) developers used to answer those questions.
-Where possible, we also describe how participants' strategies led to information seeking successes or failures.
-Finally, in Section \ref{sec:assumptions} we discuss the correct and incorrect assumptions (RQ3) developers made while executing their strategies. 
+We list several exemplary questions throughout Section \ref{sec:results} alongside the strategies developers used (RQ2) and assumptions developers made (RQ3) while answering those questions.
+Where possible, we also describe how participants' strategies and assumptions led to information seeking successes or failures.
 
 
 \subsection{Study Design}
@@ -608,6 +607,12 @@ Some sections contain less discussion than others either because participants' i
 The strategies for answering individual questions often overlap, especially within a given category.
 Accordingly, to present a coherent discussion and avoid duplication, we discuss strategies for each category rather than for each question.
 
+While performing their tasks, participants made different types of assumptions. 
+Overall, we observed 73 total assumptions --- 27 incorrect and 46 correct. 
+We identified assumptions across all participants, except for P3, who may have made assumptions without stating them explicitly.
+Additionally, participants stated at least one assumption during each task.
+%In this section we will describe different types of correct and incorrect assumptions as well as elaborate on how those assumptions contributed to defect resolution.
+
 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{X} participants asked \emph{Y}.''
 Note that this work is exploratory and qualitative in nature.
@@ -643,7 +648,7 @@ Seven participants, concerned about false positives, asked the question, \textit
 To answer that question, participants searched for hints that an attacker could successfully execute a given attack in a specific context. 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants used various strategies to answer questions about attacks.
 When available, participants read FSB's vulnerability information. 
 When FSB did not provide sufficient information, participants turned to the web, searching on sites like Google and StackOverflow. 
@@ -698,7 +703,7 @@ Because he recognized OWASP as ``the authority on security,'' he clicked the lin
 It seemed important to P8 that recommended approaches came from trustworthy sources.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants' strategies for acquiring information about alternative fixes centered around three information sources --- FSB, the web, and other modules in the code. 
 Even when FSB informed participants about a specific alternative, participants sought supplementary information from the other two external sources.
 
@@ -760,7 +765,7 @@ While exploring the Predictable Random vulnerability, many participants, includi
 It seems that providing suggestions without discussing the associated trade-offs appeared to reduce participants' willingness to think broadly about other possible solutions. 
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Although participants were not asked to make any modifications to the code, they did describe their strategies for applying and assessing fixes.
 Many participants looked for ways to apply fixes automatically.
 However, none of the FSB notifications included quick fixes.
@@ -784,7 +789,7 @@ For example, when participants reached the third and fourth vulnerabilities, the
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
 \\
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants asked a few passing questions about the relationships between vulnerabilities, but were not explicitly asked to relate the vulnerabilities to each other across tasks. 
 As a result, we did not observe the emergence of any predominant strategies in this category.
 
@@ -826,7 +831,7 @@ All participants completed this task manually by scrolling through the package e
 
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 %8 Participants scrolled (P2 - P9) "unassisted search"
 For the majority of participants, scrolling through the source file was a key component of their strategies for locating information.
 As Robillard and colleagues observed, such unstructured navigation may signal ineffectiveness~\cite{robillard2004effective}.
@@ -859,7 +864,7 @@ Tracing up the call chains, the method containing the vulnerability was called f
 Even though all participants did not form this same hypothesis, all ten participants wanted call information for the Path Traversal Vulnerability, often asking the question, \textit{Where is this method being called?} 
 
  
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants used various strategies to obtain information about control flow.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
 Other participants used Eclipse's \textsc{mark occurrences} tool (code highlighting in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
@@ -902,7 +907,7 @@ Questions in this category focus on the application's data --- how it is created
 Participants asked questions about the data pipeline while assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 While exploring this vulnerability, participants adapted tools such as the \textsc{call hierarchy} tool to also explore the program's data flow. 
 As we discussed in \emph{Control Flow and Call Information}, the \textsc{call hierarchy} tool helped participants identify methods' callers and callees.
 Specifically, some participants used the \textsc{call hierarchy} tool to locate methods that were generating or modifying data.
@@ -914,6 +919,11 @@ This was particularly evident for Task 3, where 12 variables were aggregated in 
 By tracing individual variables, some participants uncovered the incorrect validation function. 
 Others, like P6, grew tired of tracing each variable and instead considered the form as a whole.
 As a result, he overlooked the validation function and incorrectly concluded the vulnerability was a false positive.
+
+Rather than investigate, participants also made assumptions about where data comes from, whether it be from a user or hard-coded test data.
+For Task 1, P1 incorrectly assumed data was passed in from a user.
+He followed up on this weakly-held assumption by further investigating the origin of the data.
+His successful investigation strategy, which included him using the \textsc{call hierarchy} tool, led him to correct his initial assumption and resolve the defect correctly.
 
 
 %begin{itemize}
@@ -950,12 +960,23 @@ He explained, ``People were rushed and crunched for time, so I'm not surprised t
 Knowing whether the code was thrown together haphazardly versus reviewed and edited carefully might help developers determine if searching for vulnerabilities will likely yield true positives.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 %System has changed and not responsible for all modules
 To answer questions in this category, participants relied primarily on their prior knowledge of the system.
 We observed relatively few instances where participants executed additional strategies, such as looking at version control information or system documentation, to substantiate their existing knowledge. 
 This strategy, or lack thereof, was susceptible to failures when participants overestimated their knowledge of the system.
 For example, while assessing the Path Traversal vulnerability, P2 incorrectly assumed that the methods in the DBBulder module were only called during development and deployment when iTrust first starts up.
+
+Participants also sought information about external libraries and commonly made assumptions about these external libraries, their correctness, and their functionality.
+Some assumptions centered around the proper usage of an external library. 
+For instance, while skimming \CodeIn{SecureRandom}'s documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
+Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality \CodeIn{nextInt} already provided.
+%citation for readability?
+Other assumptions pertained to the security of external libraries.
+For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure seeding of random number generators.
+In contrast with P8, P7's correct assumption lead him to propose a more succinct solution.
+
+
 
 %\item Consult teammates as a strategy 
 
@@ -997,7 +1018,7 @@ To answer this question, participants sometimes used tools for traversing the ca
 %Though all participants had experience coding in iTrust, and had some knowledge about the code base, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants were particularly interested in differentiating between two contexts --- test code and application code. 
 %20:04
 As P4 explained, test code does not ship with the product, so it is held to a different standard from a security perspective. 
@@ -1009,6 +1030,8 @@ Without visible package names or the package explorer, some participants were mi
 For instance, P9 incorrectly inferred the code for Task 3 was contained within a test class before eventually correcting his mistake, 
 ``This one I would be more inclined to ignore, because it's a test method I believe... Wait no, it's not a test method. No, it's not.''
 Had P9 not corrected his mistake, he would have misdiagnosed the error and ignored a true positive.
+
+
 
 
 %\begin{itemize}
@@ -1052,7 +1075,7 @@ P2 used \textsc{call hierarchy} to answer this question by tracking where the me
 P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants' strategies for answering questions about end-user interaction typically included strategies from other categories. In other words, participants gathered evidence by Locating Information (Section \ref{li}), examining Control Flow (Section \ref{cf}), retracing Data Flow (Section \ref{dsf}) information, and recalling information about the Code Background (Section \ref{cbf}). 
 Participants successfully answered questions in this category when they successfully synthesized the results of these other efforts.
 
@@ -1087,7 +1110,7 @@ For instance, as P6 started exploring the validity of the SQL Injection vulnerab
 These questions occurred in all four vulnerabilities.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Compared to other categories, the strategy analysis results in this category are sparse.
 Although we asked participants to think-aloud, they seemed to resolve questions in this category internally. 
 
@@ -1119,7 +1142,7 @@ The notification for this vulnerability did not include links so they searched t
 When asked what information he would like to see added to the notification for the Servlet Parameter vulnerability, which also did not include any links, P4 noted he would have liked the notification to include what a servlet is and how it related to client control.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 As mentioned above, participants' strategies for finding information about concepts included clicking the links provided by FSB.
 However, this strategy failed when the hyperlink text poorly described the links' contents.
 Unable to determine the quality and type of information hidden behind FSB's links, some participants preferred to search the web for information about concepts.
@@ -1152,7 +1175,7 @@ A few participants wanted to be able to confirm whether the code accomplishes wh
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 We did not observe many overarching strategies in this category, in part because participants rarely signaled to us when they were testing their expectations. 
 When we did observe participants questioning their expectations, their strategies varied situationally.
 
@@ -1192,7 +1215,7 @@ For example, when P10 had difficulty with the Potential Path Traversal vulnerabi
 Presumably, the code's author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants' primary strategy involved consulting the code (i.e. variable and class names) along with its sparse comments.
 Participants seemed to successfully use this information to understand basic code constructs (i.e. control structures, variable types, method calls, and which variables were being stored in which data structures).
 However, these strategies sometimes failed to convey security-relevant semantic information. 
@@ -1238,13 +1261,19 @@ Participants sometimes sought information from a tool, but could not determine h
 The question, \emph{What tool do I need for this?} points to a common blocker for both novice and experienced developers, a lack of awareness~\cite{murphy-Hill2012fluency}.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 We observed two types of strategies in this category, tool selection strategies and tool evaluation strategies. 
 While selecting tools, participants often knew what functionality they wanted to achieve, but were unsure how to find a tool to achieve that functionality. For example, P2 knew he wanted to navigate to methods up the call hierarchy, but struggled to identify an appropriate tool. 
 His tool selection strategy involved first Ctrl-hovering over the current method's name followed by right clicking the method name.
 This strategy failed because the tool was not available in the Ctrl-hover menu and he failed to recognize the tool in the right-click menu.
 
 Rather than search for the ideal tool, some participants opted to opportunistically invoke tools and evaluate the appropriateness of their output. Unfortunately, these strategies were susceptible to misinterpretations. For example, one participant opened, closed, and reopened the \textsc{call hierarchy} tool several times, unable to determine whether it was appropriate. 
+
+When FSB failed to effectively communicate information about the location of defects to participants, they made assumptions.
+For Task 3, P10 incorrectly assumed FSB was indicating an issue with the database access objects. 
+Based on that assumption, he proposed adding a sanitization method to those objects, which is an incorrect fix.
+Sanitization methods already existed in another class and just needed to be modified.
+
 
 %\item Misinterpret tools output, whether it be FSB's notifications, severity rankings, or call hierarchy
 %\item After reading the notification, relate its content back to the code
@@ -1275,7 +1304,7 @@ He wasn't sure whether the rank (15) was high or low and if yellow was a ``good'
 Some participants, like P6, did not notice any of the rankings until after completing all four sessions when the investigator asked about the tool's rankings.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Severity ratings typically help developers triage vulnerabilities.
 Due to the limitations of our controlled study, we preselected the vulnerabilities and the order in which they would appear.
 As a result, working with the severity rankings was not critical for participants to complete their tasks.
@@ -1300,7 +1329,7 @@ Many participants attempted to relate this piece of information back to the code
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
 
 
-\textbf{Strategy Analysis Results:}
+\textbf{Strategies and Assumptions:}
 Participants' defect resolution strategies appeared to include reading portions of the notification text. 
 The three participants (P3, P4, and P6) who reported the lowest familiarity with vulnerabilities 
 started 11 of 12 tasks by immediately reading the notification text. 
@@ -1328,38 +1357,17 @@ P3 read the rest of the description and realized it contained the information he
 %	\item Participants found unclear sentences distracting
 %\end{itemize}
 
-\section{Assumptions}
-\label{sec:assumptions}
-While performing their tasks, participants made different types of assumptions. 
-Overall, we observed 73 total assumptions --- 27 incorrect and 46 correct. 
-We identified assumptions across all participants, except for P3, who may have made assumptions without stating them explicitly.
-Additionally, participants stated at least one assumption during each task.
-In this section we will describe different types of correct and incorrect assumptions as well as elaborate on how those assumptions contributed to defect resolution.
+%\section{Assumptions}
+%\label{sec:assumptions}
 
 %External library correctness
-iTrust inherits functionality from many external libraries.
-Participants commonly made assumptions about these external libraries, their correctness, and their usage.
-Some assumptions centered around the proper usage of an external library. 
-For instance, while skimming \CodeIn{SecureRandom}'s documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
-Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality \CodeIn{nextInt} already provided.
-%citation for readability?
-Other assumptions pertained to the security of external libraries.
-For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure seeding of random number generators.
-In contrast with P8, P7's correct assumption lead him to propose a more succinct solution.
+%-> App context and usage
 
-Tools attempt to communicate information about the location and type of defect in the code.
-When FSB failed to effectively communicate that information to participants, they made assumptions.
-For Task 3, P10 incorrectly assumed FSB was indicating an issue with the database access objects. 
-Based on that assumption, he proposed adding a sanitization method to those objects, which is an incorrect fix.
-Sanitization methods already existed in another class and just needed to be modified.
+%-> tools 
 %P9 T1 issue relates to SQL file
 
 
-As we discussed in Section \ref{dsf}, tracing the sources of data was an important part of participants' tasks.
-Participants made assumptions about where data comes from, whether it be from a user or hard-coded test data.
-For Task 1, P1 incorrectly assumed data was passed in from a user.
-He followed up on this weakly-held assumption by further investigating the origin of the data.
-His successful investigation strategy, which included him using the \textsc{call hierarchy} tool, led him to correct his initial assumption and resolve the defect correctly.
+%-> data storage and flow
 
 
 %Topic: Code functionality
