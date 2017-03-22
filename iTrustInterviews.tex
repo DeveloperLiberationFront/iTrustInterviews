@@ -1063,22 +1063,30 @@ For example, while assessing the Potential Path Traversal vulnerability, partici
  
 % seemed mostly a concern for B3, but also B1 and B4 for some
 When assessing the Potential Path Traversal vulnerability, P1 and P6 wanted to know if the input was coming from the user along with whether the input was being validated in the event that the input did come from the user.
-For these participants, finding the answer required manual inspection of surrounding and relevant code. 
-For instance, P6 found a \CodeIn{Validator} method, which he manually inspected, to determine if it was doing input validation.
-He incorrectly concluded that the \CodeIn{Validator} method adequately validated the data.
+While working on the same task, four participants also asked whether end-user input reached the code being analyzed.
+
+
+
 % B1, 3, 4 -- mostly 3
 
 % user access
 % B1
 % P1, P6: all these test data generator so no user access (how did he get to this?)
 % P2: vulnerability only exists if user can access this code (used call hierarchy)
-When assessing the Potential Path Traversal vulnerability, four participants asked whether end-user input reached the code being analyzed.
-P2 used \textsc{call hierarchy} to answer this question by tracking where the method the code is contained in gets called; for him, the vulnerability was a true positive if user input reached the code.
-P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
+
 
 
 \textbf{Strategies and Assumptions:}
-Participants' strategies for answering questions about end-user interaction typically included strategies from other categories. In other words, participants gathered evidence by Locating Information (Section \ref{li}), examining Control Flow (Section \ref{cf}), retracing Data Flow (Section \ref{dsf}) information, and recalling information about the Code Background (Section \ref{cbf}). 
+For participants, answering their questions required manual inspection of the source code. 
+For instance, P6 found a \CodeIn{Validator} method, which he manually inspected, to determine if it was doing input validation.
+He incorrectly concluded that the \CodeIn{Validator} method adequately validated the data.
+
+P2 used \textsc{call hierarchy} to trace end-user input; for him, the vulnerability was a true positive if user input reached the vulnerable line.
+P1 and P6 searched similarly and determined that because all the calls to the code of interest appeared to happen in methods called \CodeIn{testDataGenerator()}, the code was not vulnerable.
+
+
+More generally, participants' strategies for answering questions about end-user interaction typically included strategies from other categories. 
+In other words, participants gathered evidence by Locating Information (Section \ref{li}), examining Control Flow (Section \ref{cf}), retracing Data Flow (Section \ref{dsf}) information, and recalling information about the Code Background (Section \ref{cbf}). 
 Participants successfully answered questions in this category when they successfully synthesized the results of these other efforts.
 
 
