@@ -25,7 +25,6 @@
 
 \usepackage{subfigure}
 \usepackage{cite}
-\usepackage{url}
 \usepackage{tabularx}
 \usepackage[table, svgnames]{xcolor} 
 \usepackage{color}
@@ -34,6 +33,8 @@
 \usepackage{wasysym}
 \input{macros}
 \usepackage{dcolumn}
+\usepackage[hidelinks]{hyperref}
+
 \newcolumntype{Y}{D..{6.4}}
 
 %\newcommand{\blind}[1]{{\color{white}\{#1\}}}
@@ -1786,6 +1787,72 @@ average?
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
+
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Headshots/Justin}}]{Justin Smith}
+	Justin is a PhD student at North Carolina State University. His research interests include human-computer interaction, software engineering, and security tools. 
+	Contact him at jssmit11@ncsu.edu; 
+	\url{http://www4.ncsu.edu/~jssmit11}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Headshots/Brittany}}]{Brittany Johnson}
+	Brittany is a PhD candidate at North Carolina State University. Her research interests are at the intersection of human-computer interaction, software engineering, and machine learning. She holds a B.A. in Computer Science from the College of Charleston. 
+	Contact her at brittany\_johnson@ncsu.edu; 
+	\url{http://www4.ncsu.edu/~bijohnso}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Headshots/Emerson}}]{Emerson Murphy-Hill}
+	Emerson is an associate professor at North Carolina State University. His research interests include human-computer interaction and software tools. He holds a Ph.D. in Computer Science from Portland State University. 
+	Contact him at emerson@csc.ncsu.edu; \url{https://people.engr.ncsu.edu/ermurph3/}
+	
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Headshots/Bill}}]{Bill Chu}
+	Bill Chu is  Professor of Software and Information Systems at University of North Carolina at Charlotte. His research interest is in software security. He received  Ph.D. in Computer Science from the University of Maryland at College Park. 
+	Contact him at billchu@uncc.edu
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{Headshots/Heather}}]{Heather Ricter Lipford}
+	Heather Richter Lipford is an Associate Professor at the University of
+	North Carolina at Charlotte. Her research interests are in usable
+	security and privacy. She holds a Ph.D. from the Georgia Institute of
+	Technology. 
+	Contact her at Heather.Lipford@uncc.edu;
+	\url{http://webpages.uncc.edu/richter}
+\end{IEEEbiography}
+
+%% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{John Doe}
+%	Biography text here.
+%\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
 
 
 
