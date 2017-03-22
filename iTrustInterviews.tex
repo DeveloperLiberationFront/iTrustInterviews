@@ -1014,15 +1014,17 @@ For instance, often while assessing the vulnerabilities, participants wanted to 
 % B1, 2, 3 -- mostly 2(?)
 Participants tried to determine if the code in the Potential Path Traversal vulnerability was used to test the system. 
 P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
-To answer this question, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations where the code of interest was being called.
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the code base, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
 
 
 \textbf{Strategies and Assumptions:}
+
 Participants were particularly interested in differentiating between two contexts --- test code and application code. 
 %20:04
 As P4 explained, test code does not ship with the product, so it is held to a different standard from a security perspective. 
+To answer their questions about tests, participants sometimes used tools for traversing the call hierarchy; using these types of tools allowed them to narrow their search to only locations where the code of interest was being called.
+
 
 Participants' strategies for this task were undermined by the FSB ``Bug Explorer'' view, because it obscured many of the usual cues participants would have used to differentiate between contexts.
 In iTrust, tests are organized into a test package, which is separate from the application code. 
