@@ -1283,7 +1283,8 @@ This strategy failed because the tool was not available in the Ctrl-hover menu a
 Rather than search for the ideal tool, some participants opted to opportunistically invoke tools and evaluate the appropriateness of their output. Unfortunately, these strategies were susceptible to misinterpretations. For example, one participant opened, closed, and reopened the \textsc{call hierarchy} tool several times, unable to determine whether it was appropriate. 
 
 When FSB failed to effectively communicate information about the location of defects to participants, they made assumptions.
-For Task 3, P10 incorrectly assumed FSB was indicating an issue with the database access objects. 
+For Task 3, P10 incorrectly assumed FSB was indicating an issue with the database access objects (DAOs), rather than the sanitization methods.
+He probably made this assumption, because FSB placed its bug markers in the file containing the DAOs and not their associated sanitization methods. 
 Based on that assumption, he proposed adding a sanitization method to those objects, which is an incorrect fix.
 Sanitization methods already existed in another class and just needed to be modified.
 
