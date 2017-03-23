@@ -1524,11 +1524,19 @@ Both of these approaches are failure-prone.
 However, by drawing inspiration from the positive aspects of each of these approaches, we will propose a new tool-assisted approach for gathering resources from the web while diagnosing a static analysis defects. 
 We will refer to this approach as \textit{context-informed web search}.
 
-FSB includes links to web resources in its description of some defects under the header ``References.''
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{Images/FSBRefs}
+	\caption{Reference links provided by FSB for Path Traversal vulnerability}
+	\label{fig:links} 
+\end{figure}
+
+
+FSB includes links to web resources in its description of some defects under the header ``References'' (Figure \ref{fig:links}).
 %A practice common to many such static analysis tools???
 FSB's designers assumedly deem these references relevant and helpful, and, when references to the right types of information were available, participants tended to use them.
 Unfortunately, the links in each references section cover a limited number of topics.
-For example, the references might describe the defect and how to exploit it, but not how to remedy the vulnerability.
+As in the example depicted by Figure \ref{fig:links}, the reference material might describe the defect and how to exploit it, but not provide code examples for remedies.
 In practice participants sought information and visited sites beyond what was available in the finite reference sections.
 In summary, the references encapsulate the tool \textit{designer's} expertise and knowledge of a specific defect pattern, but are not tailored to the user's needs.
 
