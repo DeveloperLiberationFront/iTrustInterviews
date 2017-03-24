@@ -1562,11 +1562,18 @@ Users would perform a \textit{context-informed web search} just as they would an
 The specialized search engine would work in tandem with the developers' static analysis tool and would start by fetching results just like a general-purpose search engine.
 Before returning those results to the user, the specialized search engine would query the static analysis tool for details about the developers context --- information the tool has already computed in order to detect defects.
 Finally, the specialized search engine would only display context-relevant results.
-%also look to see if links provided by toolsmith pop up
 
 Consider, for example, a developer who searches for `secure random number.'
 A general-purpose search engine would return results targeted at Ruby, Javascript, Android, and Java developers.
 The specialized search engine could conclude from the static analysis tool that the developer was using Java and importing java.util.Random and filter out irrelevant results pertaining to other languages.
+
+This information searching approach draws inspiration Rahman and colleagues~\cite{rahman2014towards} and Goldman and Miller~\cite{goldman2009codetrail} who similarly describe IDE-based search engines.
+These previous works create search queries using information from the source code and from stack traces.
+Our proposed approach differs in that we also consider contextual information from a static analysis tool.
+
+
+%also look to see if links provided by toolsmith pop up
+
 
 %Successful participants informally implemented this strategy by extracting verbatim text from the notification to form their web search phrases. 
 %Basically, copying and pasting the short description or snippets from the long description.
