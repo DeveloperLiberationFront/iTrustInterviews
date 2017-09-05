@@ -116,11 +116,11 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 	Have I used this package before? \#1.12 \\
 	Am I making the right decision for my code? \#1.13 \\
 	How long have we been talking? \#1.14 \\
-\textbf{Bug Severity/Ranking \#2.X} \\
-	How serious is this bug? \#2.1 \\
-	Are all these bugs the same severity? \#2.2 \\
+\textbf{Vulnerability Severity and Rank \#2.X} \\
+	How serious is this vulnerability? \#2.1 \\
+	Are all these vulnerabilities the same severity? \#2.2 \\
 	How do the rankings compare? \#2.3 \\
-	What do the bug rankings mean? \#2.4 \\
+	What do the vulnerability rankings mean? \#2.4 \\
 \textbf{Data Storage and Flow \#3.X} \\
 	How is data put into this variable? \#3.1 \\
 	Does data from this method/code travel to the database? \#3.2 \\
@@ -136,14 +136,14 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 \textbf{Application Context/Usage \#4.X} \\
 	What is this method/variable used for in the program? \#4.1 \\
 	Are we handling secure data in this context? \#4.2 \\
-	What is the context of this bug/code? \#4.3 \\
+	What is the context of this vulnerability/code? \#4.3 \\
 	How does the system work? \#4.4 \\
 	Will usage of this method change? \#4.5 \\
 	Is this method/variable ever being used? \#4.6 \\
 	Is this code used to test the program/functionality? \#4.7 \\
 	Does test utils get sent to production code? \#4.8 \\
 	How many layers of code/security have we passed through before reaching this point? \#4.9 \\
-\textbf{Control Flow/Call Information \#5.X} \\
+\textbf{Control Flow and Call Information \#5.X} \\
 	What is the call hierarchy?  \#5.1 \\
 	How can I get calling information? \#5.2 \\
 	Who can call this? \#5.3 \\
@@ -157,7 +157,7 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 	How many calls does it take to reach the vulnerability?  \#5.11 \\
 	What are the parameters called?  \#5.12 \\
 	Is the entire set of possible parameters known in advance?  \#5.13 \\
-\textbf{Resources/Documentation \#6.X} \\
+\textbf{Resources and Documentation \#6.X} \\
 	What type of information does this resource link me to? \#6.1 \\
 	What is the documentation?  \#6.2 \\
 	Can my team members/resources provide me with more information? \#6.3 \\
@@ -179,7 +179,7 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 	Is secure random good?  \#7.8 \\
 	Is prepared statement a Java thing or a 3rd party library?  \#7.9 \\
 	How secure is secure random?  \#7.10 \\
-\textbf{Code Background and Function \#8.X} \\
+\textbf{Code Background and Functionality \#8.X} \\
 	Who wrote this code? \#8.1 \\
 	Why is this code needed? \#8.2  \\
 	Is this library code? \#8.3 \\
@@ -197,7 +197,7 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 	What is the name of the current class?  \#8.15 \\
 	Could the pointer be null?  \#8.16 \\
 	Does it throw an exception instead  \#8.17 \\
-\textbf{Locating Information in the Code \#9.X} \\
+\textbf{Locating Information \#9.X} \\
 	Where is this used in the code? \#9.1 \\
 	Where are other similar pieces of code? \#9.2 \\
 	Where is this artifact?  \#9.3 \\
@@ -231,15 +231,15 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 	How do I find out if this is a real vulnerability? \#11.9 \\
 	How much value would you get from randomly injecting stuff? \#11.10 \\
 	Is releaseForms handling data securely? \#11.11 \\
-\textbf{Relationship Between Bugs \#12.X} \\
-	Does this other piece code have the same bug as the code I'm working with?  \#12.1 \\
-	Are all the bugs related in my code? \#12.2 \\
+\textbf{Relationship Between Vulnerabilities \#12.X} \\
+	Does this other piece code have the same vulnerability as the code I'm working with?  \#12.1 \\
+	Are all the vulnerabilities related in my code? \#12.2 \\
 	Are all of these notifications vulnerabilities?  \#12.3 \\
 \textbf{End-User Interaction \#13.X} \\
 	Is there input coming from the user? \#13.1 \\
 	Does the user have access to this code? \#13.2 \\
 	Does user input get validated/sanitized? \#13.3 \\
-\textbf{Error Messages \#14.X} \\
+\textbf{Notification Text \#14.X} \\
 	What is the relatinoship between the error message and the code? \#14.1 \\
 	What code caused this error message to occur? \#14.2 \\
 	What does the error message say? \#14.3 \\
