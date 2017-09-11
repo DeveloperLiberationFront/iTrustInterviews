@@ -22,6 +22,22 @@
 }
 
 \usepackage{flushend}
+\usepackage{color}
+\usepackage{listings}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{javapurple}\bfseries,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false}
 
 \usepackage{subfigure}
 \usepackage{cite}
@@ -348,18 +364,68 @@ The method associated with Task 1 opens a file, reads its contents, and executes
 Before opening the file, the method does not escape the filepath, potentially allowing arbitrary SQL files to be executed.
 However, the method is only ever executed as a utility from within the unit test framework. The mean completion time for this task was 14 minutes and 49 seconds.
 
+\begin{lstlisting}[language=Java]
+private List<String> parseSQLFile(String path)
+{
+ FileReader r =
+  new FileReader(new File(path));
+ ... 
+}
+\end{lstlisting}
+
 \noindent\textbf{Task 2} \\
 The method associated with Task 2 is used to generate random passwords when a new application user is created. FSB warns \CodeIn{Random} should not be used in secure contexts and instead suggests using \CodeIn{SecureRandom}. \CodeIn{SecureRandom} is a more secure alternative, but its use comes with a slight performance trade-off. 
 The mean completion time for this task was 8 minutes and 52 seconds.
 
+\begin{lstlisting}[language=Java]
+public class RandomPassword
+{
+ private static final Random r = new Random();
+ ...
+}	
+\end{lstlisting}
+
 \noindent\textbf{Task 3} \\
 The method associated with Task 3 reads several improperly validated string values from a form. 
-These values are eventually redisplayed on the web page exposing the application to a cross site scripting attack. 
+Entering an apostrophe (') into any of the fields modifies the underlying JSP and permits form manipulation. 
+Additional modification of the form fields can produce more unexpected behavior. 
+The values entered into the form are eventually redisplayed on the web page exposing the application to a cross site scripting attack. 
 The mean completion time for this task was 13 minutes and 19 seconds.
+
+\begin{lstlisting}
+protected void doPost(HttpServletRequest req, 
+	HttpServletResponse response)
+{
+ currentMID = req.getParameter("currentMID");
+ recPhone = req.getParameter("recPhone");
+ recEmail = req.getParameter("recEmail");
+ ...
+}
+\end{lstlisting}
 
 \noindent\textbf{Task 4} \\
 In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB recommends using  \CodeIn{PreparedStatements} instead. The mean completion time for this task was 8 minutes.
 \\
+
+\begin{lstlisting}[language=Java]
+public void addApptRequest(ApptBean bean)
+{
+ ...
+ String query = String.format(
+ "INSERT INTO appointmentrequests 
+ (appt_type, patient_id, doctor_id,
+ sched_date, comment, pending, accepted) 
+ VALUES ('%s', %d, %d, '%s', '%s', %d, %d);",
+ bean.getApptType(),
+ bean.getPatient(),
+ bean.getHcp(),
+ bean.getDate(),
+ bean.getComment(),
+
+ stmt.executeUpdate(query);
+ ...
+}
+\end{lstlisting}
 
 \begin{table*} 
 	\centering
