@@ -351,6 +351,13 @@ First we conducted a preliminary pilot study ($n = 4$), in which  participants s
 To reduce the effects of fatigue, we asked each participant to assess four vulnerabilities. 
 We do not report on data collected from this preliminary study.
 
+Dan Cornell reports statistics on vulnerability remediation tasks in industry. 
+These statistics serve as a point of comparison, illustrating how the tasks performed in our study compare to authentic tasks outside the lab.
+In practice, Cornell estimates that, depending on the type of vulnerability, defects could take anywhere from 2.6 minutes on average (for removing dead code) to 97.5 minutes on average (for fixing complex SQL injection vulnerabilities)~\cite{cornell2012remediation}.
+Cornell further notes that the time to complete a remediation task is not entirely determined by the time spent coding.
+His estimates also include activities such as setting up development environments, performing functional testing, and deployment.
+Because our study focuses on how developers diagnose vulnerabilities, we do not ask participants to perform these auxiliary tasks. 
+
 When selecting tasks, we ran FSB on iTrust and identified 118 potential security vulnerabilities across three topics.
 To increase the diversity of responses, we selected tasks from mutually exclusive topics, as categorized by FSB.
 For the fourth task, we added a SQL injection vulnerability to iTrust by making minimal alterations to one of the database access objects.
