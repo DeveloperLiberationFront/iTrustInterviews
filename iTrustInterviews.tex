@@ -365,12 +365,16 @@ Our alterations preserved the functionality of the original code and were based 
 We chose to add a SQL injection vulnerability, because among all security vulnerabilities, OWASP ranks injection vulnerabilities as the most critical web application security risk.
 
 For each task, participants were asked to assess code that ``may contain security vulnerabilities'' and ``justify any proposed code changes.''
-Table \ref{table:vulnerabilities} summarizes each of the four tasks and the remainder of this section provides more detail about each task.\\
+Table \ref{table:vulnerabilities} summarizes each of the four tasks and the remainder of this section provides more detail about each task, including excerpts from the lines FSB initially flagged.\\
 
 \noindent\textbf{Task 1} \\
-The method associated with Task 1 opens a file, reads its contents, and executes the contents of the file as SQL queries against the database. 
+The method associated with Task 1, \texttt{parseSQLFile}, opens a file, reads its contents, and executes the contents of the file as SQL queries against the database. 
 Before opening the file, the method does not escape the filepath, potentially allowing arbitrary SQL files to be executed.
-However, the method is only ever executed as a utility from within the unit test framework. The mean completion time for this task was 14 minutes and 49 seconds.
+However, the method is only ever executed as a utility from within the unit test framework.
+Therefore, the method is only ever passed a predefined set of filepaths that cannot be maliciously manipulated.
+
+To complete this task, participants needed to recognize that \texttt{parseSQLFile} was only used in tests and that the filepaths were essentially hard-coded, which could be accomplished by examining all of \texttt{parseSQLFile}'s call locations.
+The mean completion time for this task was 14 minutes and 49 seconds.
 
 \begin{lstlisting}[language=Java]
 private List<String> parseSQLFile(String path)
@@ -382,7 +386,11 @@ private List<String> parseSQLFile(String path)
 \end{lstlisting}
 
 \noindent\textbf{Task 2} \\
-The method associated with Task 2 is used to generate random passwords when a new application user is created. FSB warns \CodeIn{Random} should not be used in secure contexts and instead suggests using \CodeIn{SecureRandom}. \CodeIn{SecureRandom} is a more secure alternative, but its use comes with a slight performance trade-off. 
+The method associated with Task 2 is used to generate random passwords when a new application user is created. 
+FSB warns \CodeIn{Random} should not be used in secure contexts (such as password generation) and instead suggests using \CodeIn{SecureRandom}. 
+\CodeIn{SecureRandom} is a more secure alternative.
+Using \CodeIn{SecureRandom} does impose a slight performance trade-off, however participants were not explicitly instructed that performance was a concern.
+Correct fixes for this vulnerability replace \CodeIn{Random} with \CodeIn{SecureRandom}, ensure the number generator is securely seeded, and appropriate API calls are used.
 The mean completion time for this task was 8 minutes and 52 seconds.
 
 \begin{lstlisting}[language=Java]
@@ -412,7 +420,11 @@ protected void doPost(HttpServletRequest req,
 \end{lstlisting}
 
 \noindent\textbf{Task 4} \\
-In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. FSB recommends using  \CodeIn{PreparedStatements} instead. The mean completion time for this task was 8 minutes.
+In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. 
+FSB recommends using  \CodeIn{PreparedStatements} instead. 
+In this case, although the inputs had likely already been sanitized elsewhere in the application, the cost of switching to \CodeIn{PreparedStatements} is negligible.
+Furthermore, the standard as implemented by other database access objects (DAOs) in iTrust is to use the more secure \CodeIn{PreparedStatement} class.
+The mean completion time for this task was 8 minutes.
 \\
 
 \begin{lstlisting}[language=Java]
