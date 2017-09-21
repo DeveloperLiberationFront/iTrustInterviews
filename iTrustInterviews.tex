@@ -352,8 +352,8 @@ To reduce the effects of fatigue, we asked each participant to assess just four 
 We do not report on data collected from this pilot study.
 
 The tasks we chose encompass a subset of the vulnerability remediation activities in the wild.
-In a talk given at RSA conference, Dan Cornell describes the activities involved in vulnerability remediation tasks in industry~\cite{cornell2012remediation}.
-His description illustrates how the tasks performed in our study compare to tasks outside the lab.
+In a talk given at an RSA conference, Dan Cornell describes the activities involved in vulnerability remediation tasks in industry~\cite{cornell2012remediation}.
+He illustrates how the tasks performed in our study compare to tasks outside the lab.
 %In practice, Cornell estimates that, depending on the type of vulnerability, defects could take anywhere from 2.6 minutes on average (for removing dead code) to 97.5 minutes on average (for fixing complex SQL injection vulnerabilities)~\cite{cornell2012remediation}.
 %Cornell further notes that the time to complete a remediation task is not entirely determined by the time spent coding.
 By his account, vulnerability remediation includes activities such as planning, setting up development environments, performing functional testing, and deployment.
@@ -366,7 +366,8 @@ Our alterations preserved the functionality of the original code and were based 
 We chose to add a SQL injection vulnerability, because among all security vulnerabilities, OWASP ranks injection vulnerabilities as the most critical web application security risk.
 
 For each task, participants were asked to assess code that ``may contain security vulnerabilities'' and ``justify any proposed code changes.''
-Table \ref{table:vulnerabilities} summarizes each of the four tasks and the remainder of this section provides more detail about each task, including excerpts from the lines FSB initially flagged.\\
+Table \ref{table:vulnerabilities} summarizes each of the four tasks and the remainder of this section provides more detail about each task, including excerpts from the lines FSB initially flagged.
+Although we are not specifically studying task completion time, we report the mean completion time for each task.\\
 
 \noindent\textbf{Task 1} \\
 The method associated with Task 1, \texttt{parseSQLFile}, opens a file, reads its contents, and executes the contents of the file as SQL queries against the database. 
@@ -388,8 +389,7 @@ private List<String> parseSQLFile(String path)
 
 \noindent\textbf{Task 2} \\
 The method associated with Task 2 is used to generate random passwords when a new application user is created. 
-FSB warns \CodeIn{Random} should not be used in secure contexts (such as password generation) and instead suggests using \CodeIn{SecureRandom}. 
-\CodeIn{SecureRandom} is a more secure alternative.
+FSB warns \CodeIn{Random} should not be used in secure contexts (such as password generation) and instead suggests using \CodeIn{SecureRandom}, a more secure alternative. 
 Using \CodeIn{SecureRandom} does impose a slight performance trade-off, however participants were not explicitly instructed that performance was a concern.
 Correct fixes for this vulnerability replace \CodeIn{Random} with \CodeIn{SecureRandom}, ensure the number generator is securely seeded, and appropriate API calls are used.
 The mean completion time for this task was 8 minutes and 52 seconds.
@@ -404,9 +404,11 @@ public class RandomPassword
 
 \noindent\textbf{Task 3} \\
 The method associated with Task 3 reads several improperly validated string values from a form. 
-Entering an apostrophe (') into any of the fields modifies the underlying JSP and permits form manipulation. 
+Entering an apostrophe (') into any of the fields modifies the underlying Java server page (JSP) and permits form manipulation.
 Additional modification of the form fields can produce more unexpected behavior. 
 The values entered into the form are eventually redisplayed on the web page exposing the application to a cross site scripting attack. 
+Correct fixes for this task either modify the JSP to escape output or modify the validation methods to reject apostrophes. 
+Either of these fixes require participants to navigate away from the file containing the FSB warning.
 The mean completion time for this task was 13 minutes and 19 seconds.
 
 \begin{lstlisting}
@@ -421,10 +423,11 @@ protected void doPost(HttpServletRequest req,
 \end{lstlisting}
 
 \noindent\textbf{Task 4} \\
-In the method associated with Task 4, a SQL Statement object is created using string interpolation, which is potentially vulnerable to SQL injection. 
+In the method associated with Task 4, a SQL statement object is created using string interpolation, which is potentially vulnerable to SQL injection. 
 FSB recommends using  \CodeIn{PreparedStatements} instead. 
 In this case, although the inputs had likely already been sanitized elsewhere in the application, the cost of switching to \CodeIn{PreparedStatements} is negligible.
 Furthermore, the standard as implemented by other database access objects (DAOs) in iTrust is to use the more secure \CodeIn{PreparedStatement} class.
+Therefore, a correct fix would be to convert the method to use \CodeIn{PreparedStatements}.
 The mean completion time for this task was 8 minutes.
 \\
 
