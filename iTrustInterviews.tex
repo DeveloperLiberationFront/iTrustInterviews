@@ -616,13 +616,13 @@ To identify the explicit assumptions participants made, we searched the transcri
 To derive the search set, we started with the following base words: \textit{assume}, \textit{presume}, \textit{reckon}, \textit{believe}, and \textit{guess}.
 Next, we applied lemmatisation to identify all the inflected forms of these words, such as \textit{hypothesize}, \textit{speculate}, \textit{suppose}, etc. 
 %Lemmatisation - http://wordnetweb.princeton.edu/perl/webwn
-Finally, we searched the transcripts for the stems of all the words identified by the lemmatisation process.
+Finally, we searched the transcripts for the stems of all the words identified by lemmatisation.
 This search process returned some false-positives. 
 For example, one participant referred to the interviewer's assumptions rather than making an assumption of his own asking, ``Am I \textit{assumed} to have some prior knowledge?''
 To filter only the assumptions participants made about the task or the code, the first author inspected each search result.
 
 After determining the result was an assumption, we evaluated its correctness.
-For example, one participant's assumed an external library was implemented securely. 
+For example, one participant assumed an external library was implemented securely. 
 We determined this assumption was incorrect by locating a vulnerability in the library using the common vulnerability and exposures database.\footnote{\url{cve.mitre.org}}
 
 
@@ -1757,8 +1757,6 @@ In contrast to the prior work, we focus on the domain of security vulnerabilitie
 
 \section{Threats to Validity}
 \label{limits}
-In this section we discuss the internal and external threats to the validity of our study.
-
 %Internal
 We faced the internal threat of recording questions that participants asked because they lacked a basic familiarity with the study environment. 
 We took two steps to mitigate this threat.
@@ -1774,9 +1772,9 @@ The participants we studied limit generalization and may not represent the range
 For instance, we likely cannot completely generalize these results to security experts --- none of our participants self-identified as such.
 
 %External
-Because this study was conducted in a controlled environment rather than an industrial development setting, our results face an additional threat to their external validity. 
+The fact that this study was conducted in a controlled environment rather than an industrial development setting raises a threat to the external validity of our results. 
 Though we cannot and do not claim that we have identified a comprehensive categorization of all security-related questions all developers might ask, we have made several efforts to mitigate this threat.
-First, we included both students and professionals in our sample, because developers with more or less experience might ask different questions. 
+First, we included both students and professionals in our sample, because questions might differ based on experience.
 Further, participants were equipped with FSB, a representative open source static analysis tool with respect to its user interface.
 Finally, we chose iTrust, an industrial-scale open-source project as our subject application.
 
@@ -1784,12 +1782,12 @@ Another reason we cannot claim our categorization is comprehensive is because th
 We did not study all types of security defects. 
 In fact, there are many defects that are not even detected by FSB.
 Although we chose the four notifications to span different topics as categorized by FSB, there may be information needs and strategies these topics did not expose.
-For example, FSB detects vulnerabilities relating to unvalidated redirects.
-It is possible this type of defect would elicit new types of resolution approaches.
+%For example, FSB detects vulnerabilities relating to unvalidated redirects.
+%It is possible this type of defect would elicit new types of resolution approaches.
 
-Participants also may have spent an unrealistic amount of time (either too much or too little) on each task due to working outside their normal work environment.
+Participants also may have spent an unrealistic amount of time (either too much or too little) on each task due to working outside their normal environment.
 To counteract this threat, we did not restrict the amount of time alloted for each task.
-Further, whenever a participant asked the interviewer what to do next, the interviewer provided minimal guidance, typically prompting the participant to proceed as she would in her normal work environment.
+Further, whenever a participant asked the interviewer what to do next, the interviewer provided minimal guidance, typically prompting the participant to proceed as (s)he would in her normal work environment.
 
 An additional threat is that the think aloud protocol may have influenced participants actions.
 Consequently, participants may have had different information needs or strategies than they would in the wild.
