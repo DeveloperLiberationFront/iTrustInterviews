@@ -622,8 +622,8 @@ For example, one participant referred to the interviewer's assumptions rather th
 To filter only the assumptions participants made about the task or the code, the first author inspected each search result.
 
 After determining the result was an assumption, we evaluated its correctness.
-For example, one participant assumed an external library was implemented securely. 
-We determined this assumption was incorrect by locating a vulnerability in the library using the common vulnerability and exposures database.\footnote{\url{cve.mitre.org}}
+For example, one participant (P4) assumed an external library was implemented securely. 
+We determined this assumption was incorrect by locating a vulnerability in the library using the common vulnerability and exposures database.\footnote{\url{cve.mitre.org}} We discuss this particular assumption in Section~\ref{cbf} and the rest of the assumptions throughout Section~\ref{sec:results}.
 
 
 \begin{table*} 
@@ -1069,11 +1069,13 @@ Some assumptions centered around the proper usage of an external library.
 For instance, while skimming \CodeIn{SecureRandom}'s documentation during Task 2, P8 incorrectly assumed \CodeIn{SecureRandom} does not provide a \CodeIn{nextInt} method.
 Based on that assumption, P8 proposed a workaround that was valid, but duplicated the functionality \CodeIn{nextInt} already provided.
 %citation for readability?
+
 Other assumptions pertained to the security of external libraries.
 For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure seeding of random number generators.
 In contrast with P8, P7's correct assumption led him to propose a more succinct solution.
-
-
+P4 stated that he typically uses the Django framework for web applications and assumed that using such external library frameworks meant that he was following best security practices.
+Though this assumption did not directly impact any of P4's tasks, it illustrates a potentially troubling trust for external libraries.
+Unfortunately, web framework libraries like Django are susceptible to their own vulnerabilities, many of which have been enumerated in online databases.\footnote{\url{cve.mitre.org}} 
 
 %\item Consult teammates as a strategy 
 
