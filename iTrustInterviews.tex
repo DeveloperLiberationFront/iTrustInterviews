@@ -641,7 +641,7 @@ We determined this assumption was incorrect by locating a vulnerability in the l
 		\multirow{4}{*}{Vulnerabilities, Attacks, and Fixes}
 		& Preventing and Understanding Potential Attacks	& T1 -- T4 & 11     		& Section~\ref{pupa}		\\
 		
-		& Understanding Alternative Fixes and Approaches	& T1 -- T4 & 10     		& Section~\ref{uafa}	\\
+		& Understanding Approaches and Fixes 	& T1 -- T4 & 10     		& Section~\ref{uafa}	\\
 		
 		& Assessing the Application of the Fix				& T1 -- T4 & 9     		& Section~\ref{aaf}				\\
 		
@@ -773,9 +773,9 @@ By failing to consider cross site scripting attacks, participants overlooked the
 %This kind of question may require triangulation of information; some information from the web on the vulnerability itself and the potential attacks, and some information from fellow developers who may better understand the likelihood the bug is a vulnerability in their system. 
 %One way tools can help is by providing easy access to the top web resources and developers to use when assessing the vulnerability; many of our participants preferred StackOverflow as a resource and a degree of knowledge model, like the one proposed by Fritz and his colleagues, could provide the developers most familiar with the code~\cite{fritz2010degree}.
 
-%%%%%%%%%%%% Understanding Alternative Fixes
+%%%%%%%%%%%% Understanding Approaches and Fixes 
 
-\subsubsection{Understanding Alternative Fixes and Approaches (8)\{10\}}\label{uafa}
+\subsubsection{Understanding Approaches and Fixes (8)\{10\}}\label{uafa}
 %#7.X
 
 When resolving security vulnerabilities, participants explored alternative ways to achieve the same functionality more securely.
@@ -791,7 +791,7 @@ For example, while evaluating the potential SQL Injection vulnerability, partici
  
 %The developer could attempt to apply the new fix or approach, but the data we report in Section~\ref{aaf} suggests developers also have questions about this process that make it difficult to quickly and effectively complete.
 %SAVE THIS CONNECTION FOR LATER
-Some notifications, including those for the SQL Injection and Predictable Random vulnerabilities, explicitly offered alternative fixes. 
+Some notifications, including those for the SQL Injection and Predictable Random vulnerabilities, explicitly offered fix suggestions. 
 In other cases, participants turned to a variety of sources, such as StackOverflow, official documentation, and personal blogs for alternative approaches.
  
 Three participants specifically cited StackOverflow as a source for alternative approaches and fixes.
@@ -805,7 +805,7 @@ It seemed important to P8 that recommended approaches came from trustworthy sour
 
 
 \textbf{Strategies and Assumptions:}
-Participants' strategies for acquiring information about alternative fixes centered around three information sources --- FSB, the web, and other modules in the code. 
+Participants' strategies for acquiring information about fixes centered around three information sources --- FSB, the web, and other modules in the code. 
 Even when FSB informed participants about a specific alternative, participants sought supplementary information from the other two external sources.
 
 For example, during Task 4, FSB suggested using \texttt{PreparedStatements}. 
@@ -842,7 +842,7 @@ Although some participants understood the relevant online API documentation, oth
 
 Once participants had identified an approach for fixing a security vulnerability (Section \ref{uafa}), they asked questions about applying the fix to the code.
 For example, while considering the use of \CodeIn{SecureRandom} to resolve the Predictable Random vulnerability, participants questioned the applicability of the fix and the consequences of making the change. 
-The questions in this category differ from those in \emph{\textbf{Understanding Alternative Fixes and Approaches}} (Section \ref{uafa}). 
+The questions in this category differ from those in \emph{\textbf{Understanding Approaches and Fixes }} (Section \ref{uafa}). 
 These questions focus on the process of applying  and reasoning about a given fix, rather than identifying and understanding possible fixes.
 \\
 
