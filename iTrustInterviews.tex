@@ -531,9 +531,11 @@ The agreement scores suggest that the two reviewers consistently held similar in
 
 It is also important to note that participants' questions related to several topics in addition to security. 
 We discuss the questions that are most closely connected to security in Sections \ref{pupa}, \ref{eui}, and \ref{bsr}.
-Although our primary focus is security, we are also interested in the other questions that participants posed, as those questions often have security implications.
+Although our primary focus is security, we are also interested in the other questions that participants posed, as those questions often have security implications and require special considerations in the context of security.
 For example, researchers have observed that developers ask questions about data flow, like \emph{What is the original source of this data}, even outside security~\cite{latoza2010hard}.
-However, in a security context, this question is particularly important, because potentially insecure data sources often require special handling to prevent attacks.
+A developer concerned with security might need to consider that attackers are one potential source of data.
+Data originating from an attacker could be crafted to disguise its malicious nature or to do more damage to the system.
+In such a context, the implications are somewhat unique to security, because, for example, potentially insecure data sources often require special handling to prevent attacks.
 
 
 \subsubsection{Question Sorting}
