@@ -1570,8 +1570,8 @@ but use a \textsc{mark occurrences}-like user interface on the front end.
 To indicate calls from outside the current class, additional lightweight notifications would be needed.
 Such a tool could support both lightweight and systematic investigation of the flow of 
 potentially tainted data.
-
-
+We implemented such a prototype tool, which we call Flower, as a plugin for the Eclipse IDE~\cite{Smith_etal:2017:flower}.
+Our preliminary evaluation showed that Flower helped developers navigate program flow quickly and accurately, especially over program structures with relatively few branches.
 
 %Such a tool could adapt a precise, yet heavyweight, control flow navigation tool by reducing its barriers to invocation, a technique successfully demonstrated by \textsc{Spyglass}~\cite{viriyakattiyaporn2010spyglass}.
 %Further, the tool could allow developers to specify specific parameters to trace and display information about where those values are modified.
@@ -1617,6 +1617,7 @@ We propose a structure that contains hierarchical, customizable tasks for each t
 For example, the structure would contain high-level tasks, such as ``Determine which attacks are feasible,'' and subsequently more actionable nested subtasks, such as ``Determine if a SQL injection attack is feasible'' or ``Determine if an XSS attack is feasible.''
 This structure would also include a checklist-like feature that allows users to save the state of their interaction with a particular notification --- for example, checking off which attack vectors they have already ruled out --- diminishing the risk of \emph{concentration failure} and \emph{limit failure}.
 Additionally, each task could include links to resources that relate specifically to that task and tool suggestions that could help developers complete the task.
+We present more details about our vision for such a tool, including a mockup, in a related publication~\cite{smith2016identifying}.
 
 \subsection{Context-Informed Web Search}
 Accessing web resources was an important element of participants' strategies across several categories (Section \ref{pupa}, Section \ref{uafa}, Section \ref{uc}, Section \ref{rd}).
