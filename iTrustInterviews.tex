@@ -1666,9 +1666,12 @@ Consider, for example, a developer who searches for `secure random number.'
 A general-purpose search engine would return results targeted at Ruby, Javascript, Android, and Java developers.
 The specialized search engine could conclude from the static analysis tool that the developer was using Java and importing java.util.Random and filter out irrelevant results pertaining to other languages.
 
-This information searching approach draws inspiration Rahman and colleagues~\cite{rahman2014towards} and Goldman and Miller~\cite{goldman2009codetrail} who similarly describe IDE-based search engines.
+This information searching approach draws inspiration from several prior efforts.
+The Mica tool~\cite{stylos2006mica} analyzes search results and presents users with information about which results might be most relevant, compared with our approach, which proposes taking information from the source code and a static analysis tool.
+Rahman and colleagues~\cite{rahman2014towards} and Goldman and Miller~\cite{goldman2009codetrail} similarly describe adapted search engines, theirs based in the IDE.
 These previous works create search queries using information from the source code and from stack traces.
 Our proposed approach differs in that we also consider contextual information from a static analysis tool.
+
 
 
 %also look to see if links provided by toolsmith pop up
