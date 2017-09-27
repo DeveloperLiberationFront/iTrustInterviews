@@ -1718,17 +1718,35 @@ Unlike existing studies, our study examines a security tool through the lens of 
 \subsection{Information Needs Studies}
 \label{questions}
 Several studies have explored developers' information needs outside the context of security.
-Similar to our work, some existing studies determine these needs by focusing on the questions developers ask~\cite{latoza2010hard, latoza2010developers, Ko:2007:information, Sillito:2006questions}.
-These four studies explore the questions developers ask while performing general programming tasks.
 In contrast to previous studies, our study focuses specifically on the information needs of developers while performing a more specific task, assessing security vulnerabilities.
-Unsurprisingly, some of the questions previously identified as general programming questions also occur while developers assess security vulnerabilities (e.g., Sections \ref{cf} and \ref{dsf}).
+Though some prior studies identify needs pertaining to debugging and defect fixing, none specifically study the process of diagnosing security defects.
+Unsurprisingly, some of the information needs previously identified as general programming needs and general debugging needs also occur while developers assess security vulnerabilities (e.g., Sections \ref{cf} and \ref{dsf}).
+Here we will summarize these prior works and compare to their methodologies chosen and task domains 
+studied.
+In the results section (Section~\ref{sec:results}) we highlight noteworthy similarities and differences in terms of our findings.
+%However, other questions are unique to security and those that are not unique have security-specific implications.
 
-Much of the work on answering developer questions has occurred in the last decade. 
+Sillito and colleagues studied the questions asked during change tasks~\cite{sillito2008asking}, creating a catalog of 44 questions.
+They conducted two observational studies with developers who were either familiar or unfamiliar with the code they were contributing to.
+Unlike our study, the tasks in these studies were primarily focused on changes that added features to the code base, rather than fixing some type of defect.
+
+Fritz and Murphy conducted a series of 11 open interviews and identified 78 questions developers ask~\cite{fritz2010using}. 
+Rather than study questions that focus on the source code, their study identifies questions that require developers to integrate multiple types of information.
+As a result, most questions identified in this study pertain to the social and collaborative aspects of developing software, as opposed to more granular questions about code.
+Based on the questions they identified, Fritz and Murphy developed a model and prototype tool to assist developers with answering their questions. 
+Our study complements this work because we identify developers' questions while observing them interacting with a code base and a static analysis tool.
+
+Similar to Fritz and Murphy, Haenni and colleagues also investigate developers' social and collaborative information needs by surveying framework and library developers in software ecosystems~\cite{haenni2013categorizing}.
+They organize their findings into two main categories, upstream and downstream information needs, identifying 6 and 8 needs in each category, respectively.
+
+In a similar approach to our study, Ko and colleagues identified 21 information needs by observing developers --- however, in their study participants were members of collocated teams~\cite{Ko:2007:information}. 
 LaToza and Myers surveyed professional software developers to understand the questions developers ask during their daily coding activities, focusing on the hard to answer questions~\cite{latoza2010hard}. 
-Furthermore, after observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements or reachability questions~\cite{latoza2010developers}. 
-Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions~\cite{ko2004designing}. 
-They found that developers were able to complete more debugging tasks while using their tool than they could without it.
-Fritz and Murphy developed a model and prototype tool to assist developers with answering the questions they want to ask based on interviews they conducted~\cite{fritz2010using}.
+After observing developers in a lab study, they discovered that the questions developers ask tend to be questions revolving around searching through the code for target statements or reachability questions~\cite{latoza2010developers}. 
+These studies give us excellent insight into the needs of developers during general programming tasks.
+Our work supplements theirs by taking a more focused look at how developers address security issues.
+
+%Ko and Myers developed \textsc{Whyline}, a tool meant to ease the process of debugging code by helping answer ``why did'' and ``why didn't'' questions~\cite{ko2004designing}. 
+%They found that developers were able to complete more debugging tasks while using their tool than they could without it.
 
 %Questions programmers ask during software evolution tasks??
 
