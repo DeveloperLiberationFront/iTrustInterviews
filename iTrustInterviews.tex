@@ -749,6 +749,11 @@ Seven participants, concerned about false positives, asked the question, \textit
 To answer that question, participants searched for hints that an attacker could successfully execute a given attack in a specific context. 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
+Previous studies have identified related information needs pertaining to preventing and understanding bugs, problems, defects, and failures.
+For example, several questions from the prior literature appear similar to the questions we identified: ``Is this a problem?''~\cite{Ko:2007:information}; ``What does the failure look like?''~\cite{Ko:2007:information}; ``How do I debug in this environment?''~\cite{latoza2010hard}
+However, the difference in terminology between these prior findings and ours (problems/failures/bugs vs. attacks) reflects the novelty of our contribution.
+
+
 \textbf{Strategies and Assumptions:}
 Participants used various strategies to answer questions about attacks.
 When available, participants read FSB's vulnerability information. 
@@ -803,6 +808,12 @@ While attempting to assess the Servlet Parameter vulnerability, P8 decided to ex
 Because he recognized OWASP as ``the authority on security,'' he clicked the link and used it to make his final decision regarding the vulnerability. 
 It seemed important to P8 that recommended approaches came from trustworthy sources.
 
+Previous studies have similarly observed that developers ask questions like those in this category.
+For instance, Ko and colleagues report developers ask, ``What data structures or functions can be used to
+implement this behavior?'' while considering the `space of existing reusable code'~\cite{Ko:2007:information}.
+Additionally, it has similarly been reported that developers ask, ``Which function or object should I pick?''~\cite{latoza2010hard} and need information about alternative upstream frameworks (``Comparison with similar upstreams'')~\cite{haenni2013categorizing}.
+These previous findings pertain to general programming tasks or implementations of new behavior, which is the primary difference compared with our results. 
+Our results reveal the salience of these questions to developers working on \textit{defective} code.
 
 \textbf{Strategies and Assumptions:}
 Participants' strategies for acquiring information about fixes centered around three information sources --- FSB, the web, and other modules in the code. 
@@ -866,6 +877,13 @@ While exploring the Predictable Random vulnerability, many participants, includi
 It seems that providing suggestions without discussing the associated trade-offs appeared to reduce participants' willingness to think broadly about other possible solutions. 
 
 
+Based on the identification of these questions, assessing the application of fixes is important in a security context, but perhaps not unique to security.
+Prior studies have identified some questions that are similar to those asked by our participants:
+``Did I make any mistakes in my new code?''~\cite{Ko:2007:information};
+``What are the implications of this change for API clients, security, concurrency, performance, platforms, tests, or obfuscation?''~\cite{latoza2010hard};
+``Will this completely solve the problem or provide the enhancement?''~\cite{sillito2008asking}.
+
+
 \textbf{Strategies and Assumptions:}
 Although participants were not asked to make any modifications to the code, they did describe their strategies for applying and assessing fixes.
 Many participants looked for ways to apply fixes automatically.
@@ -889,6 +907,11 @@ For example, when participants reached the third and fourth vulnerabilities, the
 \noindent\emph{Are all the vulnerabilities related in my code? (3)} \\
 \emph{Does this other piece code have the same vulnerability as the code I'm working with? (1)} 
 \\
+
+Previous studies report questions about relationships between code elements, but not defects~\cite{fritz2010using, latoza2010hard}. 
+For instance, ``Which other code that I worked on uses this code pattern / utility function?''~\cite{fritz2010using}.
+Ko and colleagues briefly discuss the relationships between defects as it relates to the question: ``Is this a legitimate problem?'' 
+Sometimes developers answered this question by determining if the same problem had been reported by others as a duplicate~\cite{Ko:2007:information}.
 
 \textbf{Strategies and Assumptions:}
 Participants asked a few passing questions about the relationships between vulnerabilities, but were not explicitly asked to relate the vulnerabilities to each other across tasks. 
