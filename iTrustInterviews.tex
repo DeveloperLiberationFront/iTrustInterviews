@@ -750,8 +750,18 @@ To answer that question, participants searched for hints that an attacker could 
 For example, P10 determined that the Predictable Random vulnerability was ``real'' because an attacker could deduce the random seed and use that information to determine other users' passwords. 
 
 Previous studies have identified related information needs pertaining to preventing and understanding bugs, problems, defects, and failures.
-For example, several questions from the prior literature appear similar to the questions we identified: ``Is this a problem?''~\cite{Ko:2007:information}; ``What does the failure look like?''~\cite{Ko:2007:information}; ``How do I debug in this environment?''~\cite{latoza2010hard}
+For example, several questions from the prior literature appear similar to the questions we identified: ``Is this a problem?''~\cite{Ko:2007:information}; ``What does the failure look like?''~\cite{Ko:2007:information}; ``How do I debug in this environment?''~\cite{latoza2010hard}.
 However, the difference in terminology between these prior findings and ours (problems/failures/bugs vs. attacks) reflects the novelty of our contribution.
+As we discussed in Section ~\ref{sec:questionAnalysis}, attacks require special consideration because they originate from a malicious agents. 
+	
+
+
+%A developer concerned with security might need to consider that attackers are one potential source of data.
+%Data originating from an attacker could be crafted to disguise its malicious nature or to do more damage to the system.
+%In such a context, the implications are somewhat unique to security, because, for example, potentially insecure data sources often require special handling to prevent attacks.
+
+%TODO: Add more substantive difference. Name of problem reflects where the problem originates Attacker vs unexpected failure.
+%Crafted to do more damage etc...
 
 
 \textbf{Strategies and Assumptions:}
@@ -953,7 +963,15 @@ They hypothesized that other code modules implemented the same functionality usi
 For example, while assessing the SQL Injection vulnerability, P2 and P5 both wanted to find other modules that created SQL statements.
 All participants completed this task manually by scrolling through the package explorer and searching for code using their knowledge of the application.
 
-
+Asking `Where' questions and locating information has been broadly discussed in the prior literature, though the types of information sought depend on the study.
+Some developers asked questions about locating recent changes made by teammates such as ``Where has code been changing [this week]?'' and
+``Where have changes been made related to you?''~\cite{fritz2010using}.
+Others ask questions about the functionality of the code, more resembling the questions we identified:
+``Where is this functionality implemented?''~\cite{latoza2010hard};  
+``Where is this defined?''~\cite{latoza2010hard};
+``Where is this variable or data structure being accessed?''~\cite{sillito2008asking};
+``Where are instances of this class created?''~\cite{sillito2008asking}.
+None of Ko and colleagues' questions refer to locating information, but they report, as we will discuss subsequently, that participants used search tools to find information. ~\cite{Ko:2007:information}.
 
 \textbf{Strategies and Assumptions:}
 %8 Participants scrolled (P2 - P9) "unassisted search"
@@ -987,7 +1005,18 @@ In fact, in this case, participants' hypotheses were partially correct.
 Tracing up the call chains, the method containing the vulnerability was called from multiple classes, however those classes were all contained within a test package.
 Even though all participants did not form this same hypothesis, all ten participants wanted call information for the Path Traversal Vulnerability, often asking the question, \textit{Where is this method being called?} 
 
- 
+
+Call information is not a security-specific information need. 
+For instance, prior studies have identified the following related questions:
+``What’s statically related to this code?~\cite{Ko:2007:information}'';
+``When during the execution is this method called?''~\cite{sillito2008asking};
+``Where is this method called or type referenced?''~\cite{sillito2008asking}.
+Further, Latoza and Myers identified a similar category of `Hard-to-answer questions' in their study.~\cite{latoza2010hard} 
+Many questions they report overlap with those that we report. 
+However, they do not report questions about the distribution of call sites, in other words, whether calls all originate from the same source or multiple possible call sites. 
+As we discussed above, this type of question had security implications, because it helped our participants assess whether a vulnerability could be exploited.
+
+
 \textbf{Strategies and Assumptions:}
 Participants used various strategies to obtain information about control flow.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
@@ -1030,6 +1059,13 @@ Questions in this category focus on the application's data --- how it is created
  
 Participants asked questions about the data pipeline while assessing three of the four vulnerabilities, many of these questions arose while assessing the Path Traversal vulnerability. 
 
+In their study, Sillito and colleagues identified two questions that relate to the questions in this category:
+``What data can we access from this object?'' and
+``What data is being modified in this code?''~\cite{sillito2008asking}.
+Additional questions arose in the study by Latoza and Myers, who identified a similarly named category~\cite{latoza2010hard}.
+Unlike these prior studies, we observed some unique questions with security implications. 
+In our study, for example, participants asked whether data reached sensitive contexts (e.g., databases or web displays) and also whether all data passed through sanitization/validation before reaching those contexts.
+This suggests that developers might require dedicated tool support --- beyond what is provided by general navigation tools --- to answer these questions.
 
 \textbf{Strategies and Assumptions:}
 While exploring this vulnerability, participants adapted tools such as the \textsc{call hierarchy} tool to also explore the program's data flow. 
