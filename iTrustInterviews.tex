@@ -697,14 +697,14 @@ Due to their large number, we grouped the categories to organize and facilitate 
 Table~\ref{table:categories} provides an overview of these groupings.
 The table also describes which tasks each question category occurred in (e.g., we observed questions from the Understanding Concepts category in all four tasks).
 
-For each category, we selected several questions to discuss. A full categorization of questions can be found online along with the full descriptions of participants strategies and assumptions~\cite{ExperimentalMaterials}.
+For each category, we selected several questions to discuss. A full categorization of questions can be found online and in the appendix along with the full descriptions of participants strategies and assumptions~\cite{ExperimentalMaterials}.
 The numbers next to the category titles denote the number of participants that asked questions in that category and the total number of questions in that category --- in parenthesis and brackets respectively. Similarly, the number in parenthesis next to each question marks the number of participants that asked that question.
 
 When discussing the questions participants asked for each category, we will use phrases such as ``\emph{X} participants asked \emph{Y}.''
 Note that this work is exploratory and qualitative in nature.
 Though we present information about the number of participants who ask specific questions, the reader should not infer any quantitative generalizations.
 
-The structure of most results categories consists of four parts: an overview of the category, several of the questions we selected, a discussion of those questions (RQ1), and a discussion of how participants answer the questions in that category (RQ2 and RQ3).
+The structure of most results categories consists of five parts: an overview of the category, several of the questions we selected, a discussion of those questions (RQ1), a discussion relating the category to questions from previous studies, and a discussion of how participants answer the questions in that category (RQ2 and RQ3).
 Some sections contain less discussion than others either because participants' intentions in asking questions were unclear, or participants asked questions without following up or attempting to answer them at all. 
 
 To answer RQ2, we describe developers' defect resolution strategies.
@@ -1008,7 +1008,7 @@ Even though all participants did not form this same hypothesis, all ten particip
 
 Call information is not a security-specific information need. 
 For instance, prior studies have identified the following related questions:
-``What’s statically related to this code?~\cite{Ko:2007:information}'';
+``What’s statically related to this code?''~\cite{Ko:2007:information};
 ``When during the execution is this method called?''~\cite{sillito2008asking};
 ``Where is this method called or type referenced?''~\cite{sillito2008asking}.
 Further, Latoza and Myers identified a similar category of `Hard-to-answer questions' in their study.~\cite{latoza2010hard} 
@@ -1119,11 +1119,25 @@ For example, P2 asked about the amount of effort put into the code to determine 
 He explained, ``People were rushed and crunched for time, so I'm not surprised to see an issue in the servlets.'' 
 Knowing whether the code was thrown together haphazardly versus reviewed and edited carefully might help developers determine if searching for vulnerabilities will likely yield true positives.
 
+Questions about code background have been commonly reported by previous studies:
+``How much work [have] people done?''~\cite{fritz2010using};
+``Who created the API [that I'm about to change]?''~\cite{fritz2010using};
+``Why was this code implemented this way?''~\cite{Ko:2007:information};
+``Why was it done this way?''~\cite{latoza2010hard};
+``Why wasn’t it done this other way?''~\cite{latoza2010hard};
+``Was this intentional, accidental, or a hack?''~\cite{latoza2010hard};
+``When, how, by whom, and why was this code changed or inserted?''~\cite{latoza2010hard}.
+One difference in a security context is the subtext of the questions.
+As we discussed above, our participants asked about rushed components and components designed by novices, because those components might be more vulnerable.
+Answering questions about code background could help developers allocate their scarce security resources.
+
 
 \textbf{Strategies and Assumptions:}
 %System has changed and not responsible for all modules
 To answer questions in this category, participants relied primarily on their prior knowledge of the system.
+Although they were prohibited by our study design, developers in collocated teams also seek this design rationale from the author of the code through face-to-face conversations~\cite{Ko:2007:information}.
 We observed relatively few instances where participants executed additional strategies, such as looking at version control information or system documentation, to substantiate their existing knowledge. 
+
 This strategy, or lack thereof, was susceptible to failures when participants overestimated their knowledge of the system.
 For example, while assessing the Path Traversal vulnerability, P2 incorrectly assumed that the methods in the DBBulder module were only called during development and deployment when iTrust first starts up.
 
@@ -1177,6 +1191,12 @@ Participants tried to determine if the code in the Potential Path Traversal vuln
 P2, P4, P9, and P10 asked whether the code they were examining occurred in classes that were only used to test the application. 
 
 %Though all participants had experience coding in iTrust, and had some knowledge about the code base, many still encountered situations where they wanted to know the usage or context of a segment of code within the application. 
+Prior studies report that developers ask about how code is generally intended to be used:
+``What is the purpose of this code''~\cite{Ko:2007:information}
+``What is the intent of this code?''~\cite{latoza2010hard}.
+More closely related to the questions in this category, developers ask,
+``How do test cases relate to packages/classes?''~\cite{fritz2010using}.
+As we will discuss below, in a security context participants asked this type of question to determine whether to scrutinize a module.
 
 
 \textbf{Strategies and Assumptions:}
@@ -1226,6 +1246,13 @@ For example, while assessing the Potential Path Traversal vulnerability, partici
 When assessing the Potential Path Traversal vulnerability, P1 and P6 wanted to know if the input was coming from the user along with whether the input was being validated in the event that the input did come from the user.
 While working on the same task, four participants also asked whether end-user input reached the code being analyzed.
 
+The questions in this category are most closely related to \textit{reachability questions}, and with some effort could be rephrased as such~\cite{latoza2010developers}.
+For instance, \emph{Is there input coming from the user?}, asks whether there is a feasible upstream trace originating at a user input function reaching the current statement.
+Otherwise, prior studies that report information needs in general programming contexts say little about end-user interactions.
+
+However, these questions do pertain to security research on attack surfaces~\cite{howard2005measuring} and attack surface approximation~\cite{theisen2015approximating}.
+An attack trace, or the sum of all paths for untrusted data into and out of a system, describes where end-user input interacts with a system.
+Identifying or approximating a system's attack surface could help developers answer the questions in this category.
 
 
 % B1, 3, 4 -- mostly 3
@@ -1249,8 +1276,6 @@ P1 and P6 searched similarly and determined that because all the calls to the co
 More generally, participants' strategies for answering questions about end-user interaction typically included strategies from other categories. 
 In other words, participants gathered evidence by Locating Information (Section \ref{li}), examining Control Flow (Section \ref{cf}), retracing Data Flow (Section \ref{dsf}) information, and recalling information about the Code Background (Section \ref{cbf}). 
 Participants successfully answered questions in this category when they successfully synthesized the results of these other efforts.
-
-
 
 
 
@@ -1279,6 +1304,9 @@ The questions in this category involve the participants' relationship to the pro
 Participants most frequently asked if they understood the situation, whether it be the code, the notification, or a piece of documentation. 
 For instance, as P6 started exploring the validity of the SQL Injection vulnerability, he wanted to know if he fully understood the notification before he started exploring, so he went back to reread the notification before investigating further.
 These questions occurred in all four vulnerabilities.
+We identified two questions in the prior literature that could be categorized here:
+``What am I supposed to work on?''~\cite{fritz2010using} and
+``Is the problem worth fixing?''~\cite{Ko:2007:information}.
 
 
 \textbf{Strategies and Assumptions:}
@@ -1346,6 +1374,7 @@ A few participants wanted to be able to confirm whether the code accomplishes wh
 The question asked in this category was, \textit{Is this doing what I expect it to?} 
 
 
+
 \textbf{Strategies and Assumptions:}
 We did not observe many overarching strategies or assumptions in this category, in part because participants rarely signaled to us when they were testing their expectations. 
 When we did observe participants questioning their expectations, their strategies varied situationally.
@@ -1384,6 +1413,15 @@ A few participants did not know the links existed, so they typically used other 
 Other participants expressed interest in consulting their team members. 
 For example, when P10 had difficulty with the Potential Path Traversal vulnerability, he stated that he would normally ask his team members to explain how the code worked.
 Presumably, the code's author could explain how the code was working, enabling the developer to proceed with fixing the vulnerability.
+
+Prior information needs studies discuss the use of resources and documentation.
+For instance, Fritz and Murphy report that developers rely on team members for code review, ``Who has knowledge to do code review?''.
+In software ecosystems, downstream users rely on the availability of good documentation~\cite{haenni2013categorizing}. 
+Ko and colleagues's questions do not refer directly to documentation or help resources~\cite{Ko:2007:information}. 
+Instead, documentation is discussed as a means of obtaining answers to questions.
+It seems quality help resources and documentation are valued in many contexts, including but not limited to security. 
+%On slight difference in the context of security is that the demand for quality resources is often also phrased  as trustworthiness??
+%Specifically, in the context of security %Security trustworthiness / authority
 
 
 \textbf{Strategies and Assumptions:}
@@ -1425,10 +1463,12 @@ While interacting with these tools, participants asked questions about how to ac
 \emph{How can I annotate that these strings have been escaped and the tool should ignore the warning? (1)}
 \\
 
-%[ACCESSIBILITY (4 letter word)]
 Participants asked questions about accessing the tools needed to complete a certain task.
 Participants sometimes sought information from a tool, but could not determine how to invoke the tool or possibly did not know which tool to use. 
 The question, \emph{What tool do I need for this?} points to a common blocker for both novice and experienced developers, a lack of awareness~\cite{murphy-Hill2012fluency}.
+
+Other information needs studies discuss how developers use tools to answer questions and that there are mismatches between questions asked and those that tools can answer~\cite{Ko:2007:information, sillito2008asking}.
+However, relatively few studies report any questions about tools themselves.
 
 
 \textbf{Strategies and Assumptions:}
@@ -1475,6 +1515,11 @@ As he began working through the final vulnerability (SQL Injection), he admitted
 He wasn't sure whether the rank (15) was high or low and if yellow was a ``good'' or ``bad'' color.
 Some participants, like P6, did not notice any of the rankings until after completing all four sessions when the investigator asked about the tool's rankings.
 
+Participants in Ko and colleagues' study made similar inquiries about the severity of defects, asking:
+``Is this a legitimate problem?''~\cite{Ko:2007:information};
+``How difficult will this problem be to fix?''~\cite{Ko:2007:information};
+``Is the problem worth fixing?''~\cite{Ko:2007:information}.
+
 
 \textbf{Strategies and Assumptions:}
 Severity ratings typically help developers triage vulnerabilities.
@@ -1499,6 +1544,14 @@ Beyond asking about the content of the notification, participants also asked que
 For example, the Predictable Random vulnerability notes that a predicable random value could lead to an attack when being used in a secure context. 
 Many participants attempted to relate this piece of information back to the code by looking to see if anything about the code that suggested it is in a secure context. 
 In this situation, the method containing the vulnerability was named \CodeIn{randomPassword()}, which suggested to participants that the code was in a secure context and therefore a vulnerability that should be resolved.
+
+
+As we discussed in Section~\ref{uit} prior information needs studies discuss the use of tools, but identified relatively few questions about the tools themselves.
+Similarly, relatively few questions about tool notifications have been reported by previous studies.
+Sillito and colleagues identify,``Where in the code is the text in this error message or UI element?'' which is similar to our, \emph{What is the relationship between the notification text and the code?}~\cite{sillito2008asking}.
+Ko and colleagues report that their participants struggled to make sense of tool notifications, ``Three developers used static analysis tools to check for
+fault-prone design patterns, but could not understand the tools' recommendations''~\cite{Ko:2007:information}.
+These questions likely arise in our study, because our focus was on how participants interacted with a static analysis tool.
 
 
 \textbf{Strategies and Assumptions:}
