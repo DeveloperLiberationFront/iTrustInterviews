@@ -625,22 +625,32 @@ This process resulted in the reviewer checking off all of the tree elements, whi
 \label{sec:assumptionAnalysis}
 %Motivation
 %Anecdote Help them unask the question
- 
+
+Like strategies, assumptions can satisfy developers information needs.
+Unlike strategies, assumptions do not comprise any actions and instead represent an accepted truth without proof.
+To draw a programming analogy, one can think of assumptions as \textit{null} strategies --- satisfying an information need without investigation. 
+
 %Methodology
 To answer RQ3, we identified participants' assumptions and analyzed each assumption to determine if it was correct.
-Participants likely made many assumptions implicitly. 
+For the purposes of our study, assumptions are defined rather narrowly so that they can be identified unambiguously.
+Specifically, we only consider the assumptions participants explicitly state using the word ``assume'' or related words.
+This choice enables us to accurately identify assumptions, but underapproximates the assumptions made during our study.
+
+Participants likely made many assumptions implicitly that we did not capture. 
 %How often do developers make assumptions and to what extent are those assumptions correct.
 Because such implicit assumptions are pervasive~\cite{fairclough2003analysing}, it would be intractable to identify them all. 
-For example, they may have implicitly assumed the Eclipse environment was configured correctly and all the relevant source files were accessible.
+For example, participants may have implicitly assumed the Eclipse environment was configured correctly and all the relevant source files were accessible.
 Instead of speculating about all of these assumptions, we only consider the assumptions participants explicitly stated.
 
 %Tried to enumerate implicit assumptions, but so . Infinite number of assumptions them. Give plausible examples... 
 %
+
 To identify the explicit assumptions participants made, we searched the transcripts for keywords.
 To derive the search set, we started with the following base words: \textit{assume}, \textit{presume}, \textit{reckon}, \textit{believe}, and \textit{guess}.
 Next, we applied lemmatisation to identify all the inflected forms of these words, such as \textit{hypothesize}, \textit{speculate}, \textit{suppose}, etc. 
 %Lemmatisation - http://wordnetweb.princeton.edu/perl/webwn
 Finally, we searched the transcripts for the stems of all the words identified by lemmatisation.
+
 This search process returned some false-positives. 
 For example, one participant referred to the interviewer's assumptions rather than making an assumption of his own asking, ``Am I \textit{assumed} to have some prior knowledge?''
 To filter only the assumptions participants made about the task or the code, the first author inspected each search result.
@@ -1946,9 +1956,17 @@ Although we chose the four notifications to span different topics as categorized
 %For example, FSB detects vulnerabilities relating to unvalidated redirects.
 %It is possible this type of defect would elicit new types of resolution approaches.
 
+As we discussed in Section~\ref{sec:assumptionAnalysis}, participants likely made many assumptions without explicitly stating them.
+Participants might have also felt obliged to actively pursue strategies while being observed in a lab setting.
+As a result, we likely identified fewer assumptions than participants actually made.
+Therefore, relative to the results for RQ2 where strategies were visible, there are fewer assumptions to discuss.
+To mitigate this threat, we used stemming and lemmatisation to capture as many explicitly stated assumptions as possible, specifically those where participants did not just use the word ``assume.''
+Despite the scarcity of assumptions in our results, we believe they are worthwhile to include because they give us insight into how developers sometimes choose to satisfy information needs without actively executing a strategy.
+
 Participants also may have spent an unrealistic amount of time (either too much or too little) on each task due to working outside their normal environment.
 To counteract this threat, we did not restrict the amount of time alloted for each task.
 Further, whenever a participant asked the interviewer what to do next, the interviewer provided minimal guidance, typically prompting the participant to proceed as (s)he would in her normal work environment.
+
 
 An additional threat is that the think aloud protocol may have influenced participants actions.
 Consequently, participants may have had different information needs or strategies than they would in the wild.
