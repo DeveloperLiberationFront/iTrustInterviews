@@ -565,23 +565,33 @@ These values are within the $.60 - .80$ range, indicating substantial agreement~
 \subsection{Data Analysis --- Strategies}
 \label{sec:strategyAnalysis}
 
-\subsubsection{Strategy Extraction}
-%This analysis took place after everything in Questions analysis
-To answer RQ2 the first author performed two additional passes through the transcripts and recordings. 
-%Pass 1
-In the first pass, we focused on identifying each participant's defect resolution strategy for each task. 
+\subsubsection{Strategy Definitions}
+\label{sec:stratDef}
 We define a defect resolution strategy as all the actions a developer takes to validate and resolve a defect. 
-Such actions include invoking additional tools, modifying the source code, and searching the web.
-%Granularity? Is an action a click? Sometimes. 
+Such actions include invoking tools, modifying the source code, and searching the web, among many other things.
+We adapt Bhavani and John's related definition of a strategy, ``a method of task
+decomposition that is non-obligatory and goal directed,'' to determine which actions to include in a strategy~\cite{bhavnani1997sufficient}.
 
-To represent these defect resolution strategies we drew from the notion of attack trees~\cite{attackTrees}. 
+Consider the following example which illustrates this notion of non-obligatory actions and how we use it as a stopping criteria for our strategy analysis.
+Say a developer's goal is to get more information about the code. 
+One strategy would be to read the code itself, another would be to read the documentation.
+These are both considered strategies because they help the developer achieve a goal, and the developer is not obligated to choose either one of these approaches.
+Now consider a negative example where a developer's goal is to read the code.
+We wouldn't consider the developer's act of fixating  his gaze on the screen a strategy, because it is obligatory (assuming the developer does not also use a screen reader or other similar technology).
+%Because it was our intention to capture developers' overall defect resolution strategies, our analysis strives to summarize all non-obligatory, goal directed actions.
+
+There are many ways to represent strategies. 
+Our screen and audio recordings represent strategies with high fidelity because they contain everything that happened during the study.
+However, this format is difficult to work with and does not summarize the essence of a strategy.
+Another format we considered was to synthesize each participant's strategies into unstructured textual summaries.
+This format has the advantage over raw recordings of being easy to search and consume, but it does not represent the relationships between strategies.
+
+Ultimately, we created a new notation for representing strategies, called strategy trees.
+Strategy trees are based on the idea of attack trees~\cite{attackTrees}. 
 Attack trees encode the actions an attacker could take to exploit a system, including the idea that he may combine multiple actions to achieve a higher-level goal. 
 Much like attack trees, our representation organizes actions hierarchically.
-We refer to this representation as a strategy tree.
 Whereas attack trees describe an attacker's actions, we use strategy trees to represent the hierarchical set of actions a developer takes to resolve a security defect. 
 Figure \ref{fig:description} depicts an example strategy tree.
-To identify participants' actions and construct the strategy trees, we used the screen recordings and participants' think-aloud verbalizations. 
-%how do you decide what depth to place an action at.
 
 \begin{figure}
 	\centering
@@ -589,6 +599,24 @@ To identify participants' actions and construct the strategy trees, we used the 
 	\caption{Example strategy tree for a null dereference defect. }
 	\label{fig:description} 
 \end{figure}
+
+%
+%how the authors came up with the strategy tree, 
+%Base on the idea of a GOMS model and attack tree
+%-Why wasn't GOMS sufficient...
+
+
+
+\subsubsection{Strategy Extraction}
+To answer RQ2 the first author performed two additional passes through the transcripts and recordings. 
+This analysis took place after the questions analysis had been completed and was conducted separately.
+%Pass 1
+In the first pass, we considered participants' screen recordings and think-aloud verbalizations to identify their defect resolution strategy for each task. 
+We watched the videos, pausing approximately every minute to take notes.
+Using the definitions of strategies and stopping criteria described in the previous section (Section ~\ref{sec:stratDef}) we decided what to include in the strategy trees.
+This process resulted in 40 strategy trees, which we finally referenced against each other to ensure the use of consistent terminology.
+%Granularity? Is an action a click? Sometimes. 
+%how do you decide what depth to place an action at.
 
 
 
@@ -600,6 +628,11 @@ Rather than annotating the entire tree as successful or not, we annotated the su
 Participants could succeed with some strategies while failing with others.
 For example, participants could succeed in locating relevant information, but fail to interpret it correctly. 
 Some sub-strategies were not observably successful/failure-inducing and were, therefore, not annotated. 
+
+The following criteria, though not complete, guided us when in determining when strategies were successful or unsuccessful.
+Whenever we observed an outcome that contributed to a participant's understanding of the problem or demonstrated progress toward a solution, it was marked as a success.
+Whenever we observed the participant making a verifiably incorrect statement, abandoning a strategy without achieving the desired result, overlooking information they sought marked it as a failure.
+
 
 %Second annotation Link questions and strategies
 
