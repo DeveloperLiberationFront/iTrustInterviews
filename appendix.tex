@@ -1,4 +1,5 @@
 \documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{tabularx}
 
 \begin{document}
 
@@ -95,6 +96,7 @@ average?
 \item In general how effectively did the FindBugs communicate information to you? What did you or didn't you like?
 \item What security related questions could the tool answer better?
 \end{itemize}
+
 
 \section*{Categorized Questions}
 Here we present the full list of questions we identified and categorized. 
@@ -274,5 +276,91 @@ The \textit{\#Y.X} notation corresponds with the tags used in strategy and assum
 	What is the related stack trace for this method? \#18.8 \\
 	How can I annotate that these strings have been escaped and the tool should ignore the warning? \#18.9 \\
 \textbf{Discarded (5) \#Discard}
+
+
+\section*{Assumptions}
+
+\begin{table*}
+	\centering
+	\begin{tabularx}{\textwidth}{|X|c|c|}
+		\hline
+		Rephrased Assumption (+/- indicates correct/incorrect)	&	Task	&	Participant	\\
+		\hline
+		-Assume the SQL file comes from the user	&	T1	&	P1	\\
+		-The SQL file is coming from the user.	&	T1	&	P1	\\
+		+Assume the results from call hierarchy are in alphabetical order	&	T1	&	P1	\\
+		+Assume this statement returns a number between 0 and 26 	&	T2	&	P1	\\
+		+The two instances of the bug are the same.	&	T3	&	P1	\\
+		-Assume that redisplaying partial information on the web form is not dangerous *	&	T3	&	P1	\\
+		-Assume that someone else on the team wrote the validation code correctly.	&	T3	&	P1	\\
+		-Assume that someone else on the team wrote the validation code correctly.	&	T3	&	P1	\\
+		-Assume the validation code is correct.	&	T3	&	P1	\\
+		+Assume the validation method throws an error.	&	T3	&	P1	\\
+		-Assume the validate method detects bad input.	&	T3	&	P1	\\
+		-Assume the form input is not used anywhere else.	&	T3	&	P1	\\
+		+%d indicates a a toString call on a decimal.	&	T4	&	P1	\\
+		+Assume the data in the bean is valid.	&	T4	&	P1	\\
+		+Assume bean data has been validated.	&	T4	&	P1	\\
+		+Assume DAO data has been validated.	&	T4	&	P1	\\
+		-Assume all forms are validated.	&	T4	&	P1	\\
+		+This attack could be prevented by preventing ../ and other similar escape sequences.	&	T1	&	P2	\\
+		+Assume that Eclipses’s call hierarchy for java and C++are similar.	&	T1	&	P2	\\
+		+By changing the import statement, I could determine if random is a valid method in secure random.	&	T2	&	P2	\\
+		+The SQL file contains queries to be run agains the database.	&	T1	&	P4	\\
+		+Assume the calls in create tables and drop tables can be trusted.	&	T1	&	P5	\\
+		+Assume prepared statements prevent SQL injection	&	T4	&	P5	\\
+		-Presumably the Django framework is safe. (45 vulnerabilities in CVE) 	&	T4	&	P5	\\
+		+TestDataGenerator code is only accessible by admins.	&	T1	&	P6	\\
+		+Assume Java.io.file is secure.	&	T1	&	P6	\\
+		-All external packages have been tested and work securely.	&	T1	&	P6	\\
+		+Assume the typo could be fixed by replacing “in” with “it”	&	T3	&	P6	\\
+		+Assume string parameters correlate with session variables.	&	T3	&	P6	\\
+		-True and fales in java are implemented as enum.	&	T3	&	P6	\\
+		+Assume the file is opened in order.	&	T3	&	P6	\\
+		+Assume the method is used to make first passwords or reset passwords.	&	T2	&	P7	\\
+		+The secure random library handles correctly seeding the random number generator.	&	T2	&	P7	\\
+		-Assume the code author didn’t know what he was doing.	&	T4	&	P7	\\
+		+Assume there is nothing bad in the file.	&	T1	&	P8	\\
+		+Assume it’s safe to execute the SQL file.	&	T1	&	P8	\\
+		+I believe I checked the caller for all of the methods.	&	T1	&	P8	\\
+		+The method is not vulnerable because it’s called only from the testdatagenerator.	&	T1	&	P8	\\
+		+Secure random is sufficient for this application.	&	T2	&	P8	\\
+		-Secure random doesn’t provide a nextInt method. 	&	T2	&	P8	\\
+		+More secure random numbers take longer to generate.	&	T2	&	P8	\\
+		+Assume owasp.org is OWASP’s site.	&	T3	&	P8	\\
+		+I’m looking at the official OWASP site.	&	T3	&	P8	\\
+		-The warnings are false positives.	&	T3	&	P8	\\
+		+The pattern that findbugs detects exists in other parts of the application as well.	&	T3	&	P8	\\
+		-The values are only being used for SQL queries (not being used in other dangerous contexts)	&	T3	&	P8	\\
+		+The code uses the statement class, not prepared statements.	&	T4	&	P8	\\
+		-Assume all DAO’s use prepared statements.	&	T4	&	P8	\\
+		-Assume the value gets selected from a drop down menu.	&	T4	&	P8	\\
+		-Assume there is a flaw in the file.io method. 	&	T1	&	P9	\\
+		-The issue relates to using SQL files that directly access the file system.	&	T1	&	P9	\\
+		+The code is used to release records.	&	T3	&	P9	\\
+		+Assume that by this point the user has been authenticated.	&	T3	&	P9	\\
+		-Assume the problem is that there is no validation on anything.	&	T3	&	P9	\\
+		-There are not drawbacks to overly redundant security. 	&	T4	&	P9	\\
+		+Presume the tool doesn’t know how the method is used.	&	T1	&	P10	\\
+		+Presume the code is used to build a database.	&	T1	&	P10	\\
+		+Assume the method creates passwords on first login.	&	T1	&	P10	\\
+		+Assume iTrust uses jUnit testing.	&	T1	&	P10	\\
+		-Assume all test classes contains setup and teardown methods. [beanbuildertest]	&	T1	&	P10	\\
+		+Assume this class is responsible for generating random passwords.	&	T1	&	P10	\\
+		+Presume the password is used for login purposes.	&	T2	&	P10	\\
+		-Assume the random seed is actually random.	&	T2	&	P10	\\
+		+Assume the notification text is correct.	&	T2	&	P10	\\
+		-Presume the vulnerability pertains to the DAO objects.	&	T3	&	P10	\\
+		+Assume the method handles a post request.	&	T3	&	P10	\\
+		+Presume http\_servlet\_request is an api object.	&	T3	&	P10	\\
+		-Presume the object wraps the get protocol.	&	T3	&	P10	\\
+		+Assume the bean class doesn’t perform any sanitization. 	&	T3	&	P10	\\
+		+Presume once in the form, the data gets checked with logic.	&	T3	&	P10	\\
+		+Presume the method handles post requests.	&	T3	&	P10	\\
+		-Presume that the form handles data securely.	&	T3	&	P10	\\
+		+Presume the statement is a DAO object.	&	T4	&	P10	\\
+		\hline
+	\end{tabularx}
+\end{table*}
 
 \end{document}
