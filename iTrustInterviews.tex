@@ -1044,6 +1044,7 @@ Eclipse provides many tools designed to help users locate specific types of info
 For example, \textsc{Open Declaration} locates method declarations, \textsc{find references} locates references.
 More generally Eclipse provides a customizable \textsc{Search} tool for locating other information.
 Despite the availability of such dedicated tools from the start, many participants first scrolled through the package explorer and open files, failed to find the information they needed, then switched to using tools. 
+We hypothesize that developers did not use search tools because of a lack of familiarity and that knowledge of tools improves developers' effectiveness in resolving security defects.
 
 
 %%%%%%%%%%%% Control Flow/Call Information
@@ -1092,6 +1093,9 @@ Alternatively, Eclipse's \textsc{find references} tool identified references to 
 Eclipse's \textsc{call hierarchy} tool enabled users to locate calls and traverse the project's entire call structure.
 That said, it only identified explicit calls made from within the system. 
 If the potentially vulnerable code was called from external frameworks, \textsc{call hierarchy} would not alert the user.
+
+We hypothesize that developers first default to the tools and techniques, like scrolling or using \textsc{mark occurrences}, that are easiest for them to invoke.
+Which tools are easier to use may depend on an individual developer's familiarity.
 
 %\begin{itemize}
 %	\item Discussion of strategies already in this section
@@ -1215,7 +1219,8 @@ For example, P7 correctly assumed that \CodeIn{SecureRandom} handles the secure 
 In contrast with P8, P7's correct assumption led him to propose a more succinct solution.
 P4 stated that he typically uses the Django framework for web applications and assumed that using such external library frameworks meant that he was following best security practices.
 Though this assumption did not directly impact any of P4's tasks, it illustrates a potentially troubling trust for external libraries.
-Unfortunately, web framework libraries like Django are susceptible to their own vulnerabilities, many of which have been enumerated in online databases.\footnote{\url{cve.mitre.org}} 
+Unfortunately, web framework libraries like Django are susceptible to their own vulnerabilities, many of which have been enumerated in online databases.\footnote{\url{cve.mitre.org}}
+We hypothesize that developers look for shallow cues, like a familiar name (Django) or certain keywords (Secure) while assessing the trustworthiness of external libraries.
 
 %\item Consult teammates as a strategy 
 
@@ -1315,7 +1320,7 @@ Otherwise, prior studies that report information needs in general programming co
 
 However, these questions do pertain to security research on attack surfaces~\cite{howard2005measuring} and attack surface approximation~\cite{theisen2015approximating}.
 An attack trace, or the sum of all paths for untrusted data into and out of a system, describes where end-user input interacts with a system.
-Identifying or approximating a system's attack surface could help developers answer the questions in this category.
+We hypothesize that providing developers attack surface information, such as whether a program point is on the attack surface, could help them answer the questions in this category.
 
 
 % B1, 3, 4 -- mostly 3
