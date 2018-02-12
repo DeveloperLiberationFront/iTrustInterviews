@@ -437,6 +437,7 @@ The mean completion time for this task was 8 minutes.
 \begin{lstlisting}[language=Java]
 public void addApptRequest(ApptBean bean)
 {
+ Statement stmt;
  ...
  String query = String.format(
  "INSERT INTO appointmentrequests 
@@ -448,7 +449,7 @@ public void addApptRequest(ApptBean bean)
  bean.getHcp(),
  bean.getDate(),
  bean.getComment(),
-
+ ...
  stmt.executeUpdate(query);
  ...
 }
