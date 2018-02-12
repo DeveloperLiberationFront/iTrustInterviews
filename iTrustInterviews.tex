@@ -239,26 +239,13 @@ Additionally, we asked participants to use a think-aloud protocol, which encoura
 Specifically, they were asked to: ``Say any questions or thoughts that cross your mind regardless of how relevant you think they are.''
 We recorded both audio and the screen as study artifacts for data analysis.
 
-\begin{figure}
-	\subfigcapskip = 5pt
-	\subfigure[Navigation]{
-		\includegraphics[width=\columnwidth]{Images/Nav.png}
-	}
-	
-	\subfigcapskip = 5pt
-	\subfigure[Code]{
-		\includegraphics[width=\columnwidth]{Images/Code.png}
-	}
-	
-	\subfigcapskip = 5pt
-	\subfigure[Short Notification Text]{
-		\includegraphics[width=\columnwidth]{Images/BugInfo.png}
-	}
-	
-	
-	\caption{The study environment.}
+\begin{figure*}
+	\centering
+	\includegraphics[width=\textwidth]{Images/StudyEnvironment_Circles}
+	\caption{Study environment, including: short vulnerability description in the bug explorer (A); vulnerable code (B); long vulnerability description (C).}
 	\label{fig:environment} 
-\end{figure}
+\end{figure*}
+
 
 Following the briefing period, participants progressed through encounters with four vulnerabilities. 
 Figure \ref{fig:environment} depicts the configuration of the Eclipse for Java integrated development environment (IDE) for one of these encounters.
@@ -1085,7 +1072,7 @@ As we discussed above, this type of question had security implications, because 
 \textbf{Strategies and Assumptions:}
 Participants used various strategies to obtain information about control flow.
 The most basic strategy was simply skimming the file for method calls, which was error-prone because participants could easily miss calls.
-Other participants used Eclipse's \textsc{mark occurrences} tool (code highlighting in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
+Other participants used Eclipse's \textsc{mark occurrences} tool (code highlighting near (B) in Figure \ref{fig:environment}), which, to a lesser extent, was error-prone for the same reason. 
 Further, it only highlighted calls within the current file.
 
 Participants additionally employed Eclipse's \textsc{find} tool, which found all occurrences of a method name, but there was no guarantee that strings returned referred to the same method.
@@ -1600,7 +1587,7 @@ Therefore, we observed few assumptions and relatively shallow strategies in this
 \subsubsection{Notification Text (6)\{3\}}\label{em}
 %#14.X
 
-FSB provided long and short descriptions of each vulnerability (Figure \ref{fig:environment}). 
+FSB provided short and long descriptions of each vulnerability (See (A) and (C) in Figure \ref{fig:environment}, respectively). 
 Participants read and contemplated these notifications to guide their analysis.
 \\
 
