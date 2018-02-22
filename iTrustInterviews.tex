@@ -72,7 +72,7 @@
 \author{Justin~Smith, Brittany~Johnson, Emerson~Murphy-Hill, Bill~Chu, and Heather~Richter~Lipford%
 		\IEEEcompsocitemizethanks{
 			\IEEEcompsocthanksitem J. Smith is with North Carolina State University, Raleigh, NC 27603. E-mail: jssmit11@ncsu.edu
-			\IEEEcompsocthanksitem B. Johnson is with North Carolina State University, Raleigh, NC 27603. E-mail: bijohnso@ncsu.edu
+			\IEEEcompsocthanksitem B. Johnson is with University of Massachusetts Amherst, Amherst, MA 01003. E-mail: bjohnson@cs.umass.edu
 			\IEEEcompsocthanksitem E. Murphy-Hill is with North Carolina State University, Raleigh, NC 27603. E-mail: emerson@csc.ncsu.edu
 			\IEEEcompsocthanksitem B. Chu is with University of North Carolina at Charlotte, Charlotte, NC 28223. E-mail: billchu@uncc.edu
 			\IEEEcompsocthanksitem H. Richter Lipford is with University of North Carolina at Charlotte, Charlotte, NC 28223. E-mail: heater.lipford@uncc.edu}
@@ -574,7 +574,7 @@ However, this format is difficult to work with and does not summarize the essenc
 Another format we considered was to synthesize each participant's strategies into unstructured textual summaries.
 This format has the advantage over raw recordings of being easy to search and consume, but it does not represent the relationships between strategies.
 
-Ultimately, we created a new notation for representing strategies, called strategy trees.
+Ultimately, we created a new notation for representing strategies, called \textit{strategy trees}.
 Strategy trees are based on the idea of attack trees~\cite{attackTrees}. 
 Attack trees encode the actions an attacker could take to exploit a system, including the idea that he may combine multiple actions to achieve a higher-level goal. 
 Much like attack trees, our representation organizes actions hierarchically.
@@ -583,7 +583,7 @@ Figure \ref{fig:description} depicts an example strategy tree.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{"Images/descriptionFormat.png}
+	\includegraphics[width=\columnwidth]{Images/descriptionFormat.png}
 	\caption{Example strategy tree for a null dereference defect. }
 	\label{fig:description} 
 \end{figure}
@@ -619,7 +619,7 @@ Some sub-strategies were not observably successful/failure-inducing and were, th
 
 The following criteria, though not complete, guided us when in determining when strategies were successful or unsuccessful.
 Whenever we observed an outcome that contributed to a participant's understanding of the problem or demonstrated progress toward a solution, it was marked as a success.
-Whenever we observed the participant making a verifiably incorrect statement, abandoning a strategy without achieving the desired result, overlooking information they sought marked it as a failure.
+Whenever we observed the participant making a verifiably incorrect statement, abandoning a strategy without achieving the desired result, or overlooking information they sought, it was marked as a failure.
 
 
 %Second annotation Link questions and strategies
@@ -951,7 +951,7 @@ Many participants looked for ways to apply fixes automatically.
 However, none of the FSB notifications included quick fixes.
 Still, some participants unsuccessfully attempted to apply quick fixes by clicking on various interface elements.
 
-To assess whether the fix had been applied correctly, participants commonly described one particular heuristic. P1, for instance, would make the change and simply ``see if the bug [icon] goes away." 
+To assess whether the fix had been applied correctly, participants commonly described one particular heuristic. P1, for instance, would make the change and simply ``see if the bug [icon] goes away.'' 
 This strategy typically ensures the original vulnerability gets fixed, but fails when the fix introduces new defects.
 
 %\item One proposed unnecessary changes, another proposed changes that would introduce another error
@@ -1006,7 +1006,7 @@ Unlike Sections \ref{cf} and \ref{dsf}, questions in this category more generall
 
 All ten participants wanted to locate where defective code and tainted values were in the system. 
 Most of these questions occurred in the context of assessing the Predictable Random vulnerability.
-Specifically, participants wondered where the potentially insecure random number generator was being used and whether it was employed generate sensitive data like passwords.
+Specifically, participants wondered where the potentially insecure random number generator was being used and whether it was employed to generate sensitive data like passwords.
 
 %Where is similar code?
 In other cases, while fixing one method, four participants wanted to find other methods that implemented similar functionality.
